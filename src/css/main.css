@@ -1,0 +1,122 @@
+@page {
+    size: auto;
+    /* auto is the initial value */
+    margin: 0;
+    /* this affects the margin in the printer settings */
+}
+
+body {
+    -webkit-print-color-adjust: exact !important;
+}
+
+.dark-blue {
+    background-color: #1B2540 !important;
+}
+.grey{
+    background-color: #DCD8D7 !important;
+}
+
+h1.name{
+    font-size: 26px;
+    margin-bottom:4px;
+}
+h2{
+    font-size: 22px;
+}
+h3.title{
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+.personal,
+.personal a {
+    color: #f5f5f5 !important;
+}
+.personal .section {
+    padding:20px 0px;
+    color: #f5f5f5 !important;
+}
+.personal h4 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom:35px;
+    color: #f5f5f5 !important;
+}
+
+div.personal .row{
+    margin-bottom: 7px !important;
+    color: #f5f5f5 !important;
+}
+
+div.personal div.text {
+    color: #f5f5f5 !important;
+}
+
+.personal .col-md-12 {
+    padding: 0;
+    color: #f5f5f5 !important;
+}
+.personal .contact,
+.personal .follow {
+    text-align:center;
+    margin: 20px;
+    color: #f5f5f5 !important;
+}
+.personal .follow a{
+    font-size: 12px;
+    color: #f5f5f5 !important;
+}
+.personal span.glyphicon {
+    font-size: 24px;
+    margin-bottom: 5px;
+    color: #f5f5f5 !important;
+    -webkit-print-color-adjust: exact !important;
+}
+.personal .page {
+    font-size: 18px;
+    color: #f5f5f5 !important;
+    -webkit-print-color-adjust: exact !important;
+}
+
+.experience > ng-include > div.row {
+    margin-bottom: 30px !important;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.experience .row .progress {
+    height: 12px !important;
+    margin-bottom: 14px;
+}
+
+.experience ul.no-decoration{
+    list-style: none;
+    padding-left: 0;
+}
+.experience ul li{
+    margin-bottom: 5px;
+}
+
+.experience .job .from{
+    font-weight: bold;
+}
+
+.experience .job .title span{
+    font-weight:bold;
+    font-size:16px;
+}
+
+.experience .job .title {
+    font-size: 16px;
+    margin-bottom: 7px;
+}
+
+.experience .row.job{
+    margin-bottom: 15px;
+}
+
+.experience .webs span {
+    font-size: 12px;
+    font-weight: bold;
+}
