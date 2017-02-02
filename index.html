@@ -1,20 +1,20 @@
-<html>
+<html ng-app="cv" ng-controller="MainController as vm">
 
 <head>
-    <base href="/cv-design/">
-    <link rel="stylesheet" href="vendor/bootstrap.min.css">
-    <link rel="stylesheet" href="vendor/font-awesome.min.css">
+    <base href="{{vm.baseUrl}}">
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/fa/css/font-awesome.min.css">
     <link rel="stylesheet" href="src/css/main.css">
     <link rel="stylesheet" href="src/css/main.css" media="print">
 </head>
 
-<body class="container" ng-app="cv" ng-controller="MainController">
+<body class="container">
     <div class="row">
         <div class="col-md-3 col-xs-3 personal">
-            <ng-include src="'/cv-design/src/js/partials/personal/index.html'"></ng-include>
+            <ng-include src="vm.baseUrl+'src/js/partials/personal/index.html'"></ng-include>
         </div>
         <div class="col-md-9 col-xs-9 experience">
-            <ng-include src="'/cv-design/src/js/partials/experience/index.html'"></ng-include>
+            <ng-include src="vm.baseUrl+'src/js/partials/experience/index.html'"></ng-include>
         </div>
     </div>
 
