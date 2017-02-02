@@ -2,19 +2,19 @@
 
 <head>
     <base href="/cv-design/">
-    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="/src/css/main.css">
-    <link rel="stylesheet" href="/src/css/main.css" media="print">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="src/css/main.css">
+    <link rel="stylesheet" href="src/css/main.css" media="print">
 </head>
 
 <body class="container" ng-app="cv" ng-controller="MainController">
     <div class="row">
         <div class="col-md-3 col-xs-3 personal">
-            <ng-include src="'/src/js/partials/personal/index.html'"></ng-include>
+            <ng-include src="'src/js/partials/personal/index.html'"></ng-include>
         </div>
         <div class="col-md-9 col-xs-9 experience">
-            <ng-include src="'/src/js/partials/experience/index.html'"></ng-include>
+            <ng-include src="'src/js/partials/experience/index.html'"></ng-include>
         </div>
     </div>
 
@@ -23,8 +23,8 @@
             <p style="font-size:10px">This CV has been created using Bootstrap, Font Awesome and AngularJS 1.5. The code is posted in <i>https://github.com/pearpages/cv-design</i></p> 
         </div>
     </div>
-    <script src="/node_modules/angular/angular.min.js"></script>
-    <script src="/src/js/main.js"></script>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="src/js/main.js"></script>
 </body>
 
 </html>
