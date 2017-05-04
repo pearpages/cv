@@ -1,4 +1,5 @@
 import React from 'react'
+import ContainerWithTitle from './container-with-title';
 
 export default class Period extends React.Component {
 
@@ -15,8 +16,11 @@ export default class Period extends React.Component {
 
             <div className="period-description">{data.description}</div>
 
-            <h3><span className="fa fa-cogs"></span> Projects</h3>
-            <div dangerouslySetInnerHTML={{ __html: data.projects }} />
+            <ContainerWithTitle name="Projects" icon="wrench" html={data.projects}/>
+
+            <ContainerWithTitle name="Recommendations" icon="certificate" html={data.recommendations[0].text}/>
+
+            <hr/>
         </div>);
     }
 }

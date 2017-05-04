@@ -1,8 +1,8 @@
 import React from 'react';
-import Profile from './components/profile';
-import Education from './components/education';
-import Skills from './components/skills';
-import Resume from './components/resume';
+import Profile from './profile';
+import Education from './education';
+import Skills from './skills';
+import Resume from './resume';
 import './experience.scss';
 
 export default class Experience extends React.Component {
@@ -17,6 +17,12 @@ export default class Experience extends React.Component {
     mapPeriods() {
         return this.props.data.periods.map((period) => {
             period.employer = this.props.data.employers.find((employer) => employer.id === period.employer);
+            period.recommendations = period.recommendations.map( (id) => {
+                const recom = this.props.data.recommendations.find((re) => re.id === id);
+                recom.colleague = this.props.data.colleagues.find( (col) => col.id === recom.colleague);
+                return recom;
+            });
+            console.log(period);
             return period;
         });
     }
