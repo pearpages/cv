@@ -1,0 +1,76 @@
+@page {
+    size: auto;
+    /* auto is the initial value */
+    margin: 10pt 20pt 25pt 20pt;
+    /* this affects the margin in the printer settings */
+}
+
+@media print {
+    body {
+        nav.navbar{
+            display: none !important;
+        }
+        -webkit-print-color-adjust: exact !important;
+        text-align: justify;
+        .col-sm-3 {
+            flex: 0 0 25%;
+            max-width: 25%;
+        }
+        .col-sm-9 {
+            flex: 0 0 75%;
+            max-width: 75%;
+        }
+    }
+    a[href]:after {
+        content: "" !important;
+    }
+    #cv {
+        .personal .glyphicon::before,
+        .personal span.fa::before {
+            color: #f5f5f5 !important;
+        }
+        .experience .progress {
+           background-color: #f5f5f5 !important;
+            -webkit-print-color-adjust: exact !important;
+            .progress-bar {
+                background-color: #337ab7 !important;
+                -webkit-print-color-adjust: exact !important;
+            }
+        }
+        .print {
+            display:block
+        }
+    }
+}
+
+@media screen {
+    .print{
+        display:none;
+    }
+}
+
+#cv {
+    .dark-blue {
+        background-color: #1B2540 !important;
+    }
+
+    .grey {
+        background-color: #DCD8D7 !important;
+    }
+
+    h1.name {
+        font-size: 26px;
+        margin-bottom: 4px;
+    }
+
+    h2 {
+        font-size: 22px;
+        margin: 0px 0px 20px 0px;
+    }
+
+    h3.title {
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 0;
+    }
+}
