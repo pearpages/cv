@@ -50,7 +50,7 @@ export default class Skills extends React.Component {
                 </div>
 
                 <div className="row">
-                    <div className="col-sm-3">AngularJS 1.5</div>
+                    <div className="col-sm-3">Angular 1.5</div>
                     <div className="col-sm-9">
                         <div className="progress">
                             <div className="progress-bar" role="progressbar" style={{ width: '85%' }}></div>
@@ -68,7 +68,7 @@ export default class Skills extends React.Component {
                 </div>
 
                 <div className="row">
-                    <div className="col-sm-3">AngularJS 2</div>
+                    <div className="col-sm-3">Angular 2</div>
                     <div className="col-sm-9">
                         <div className="progress">
                             <div className="progress-bar" role="progressbar" style={{ width: '80%' }}></div>
