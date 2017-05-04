@@ -10930,7 +10930,7 @@ var Picture = function (_React$Component) {
     _createClass(Picture, [{
         key: "render",
         value: function render() {
-            return _react2.default.createElement("img", { id: "profile-picture", className: "img-fluid center-block", src: "/media/pere-pages.jpg", alt: "Pere Pages" });
+            return _react2.default.createElement("img", { id: "profile-picture", className: "img-fluid center-block", src: "media/pere-pages.jpg", alt: "Pere Pages" });
         }
     }]);
 
