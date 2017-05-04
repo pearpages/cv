@@ -1,4 +1,5 @@
 import React from 'react';
+import LinkWithIcon from './link-with.icon';
 
 const socialNetworks = [{
     icon: 'github',
@@ -36,15 +37,7 @@ export default class FollowMe extends React.Component {
     renderLinks() {
         let links = [];
         socialNetworks.forEach((v) => {
-            links.push((
-                <div className="follow" key={v.icon}>
-                    <a target="_blank" href={v.url}>
-                    <div className="social-link">
-                        <span className={"fa fa-" + v.icon}></span> {v.name}
-                    </div>
-                   {v.short_url}</a>
-                </div>
-            ));
+            links.push(<LinkWithIcon linkData={v} />);
         });
 
         return links;

@@ -25,10 +25,17 @@
         content: "" !important;
     }
     #cv {
-        .personal .glyphicon::before,
-        .personal span.fa::before {
-            color: #f5f5f5 !important;
+        .personal {
+            .glyphicon::before,
+                span.fa::before {
+                color: #f5f5f5 !important;
+            }
+            #contact, #follow-me {
+                padding-left: 0;
+                padding-right: 0;
+            }
         }
+
         .experience .progress {
            background-color: #f5f5f5 !important;
             -webkit-print-color-adjust: exact !important;
