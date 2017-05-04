@@ -3,7 +3,7 @@ import Profile from './profile';
 import Education from './education';
 import Skills from './skills';
 import Resume from './resume';
-import './experience.scss';
+import './index.scss';
 
 export default class Experience extends React.Component {
 
@@ -22,7 +22,6 @@ export default class Experience extends React.Component {
                 recom.colleague = this.props.data.colleagues.find( (col) => col.id === recom.colleague);
                 return recom;
             });
-            console.log(period);
             return period;
         });
     }

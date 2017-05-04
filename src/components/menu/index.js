@@ -1,5 +1,5 @@
 import React from 'react';
-import './menu.scss';
+import './index.scss';
 
 const links = [{
     name: 'Summary',

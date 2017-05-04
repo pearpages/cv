@@ -1,7 +1,14 @@
 import React from 'react'
 import ContainerWithTitle from './container-with-title';
+import Recommendation from './recommendation';
 
 export default class Period extends React.Component {
+
+    getRecommendations() {
+        return this.props.data.recommendations.map( (re) => {
+            return <Recommendation key={re.id} data={re} />
+        });
+    }
 
     render() {
         const data = this.props.data;
@@ -18,9 +25,8 @@ export default class Period extends React.Component {
 
             <ContainerWithTitle name="Projects" icon="wrench" html={data.projects}/>
 
-            <ContainerWithTitle name="Recommendations" icon="certificate" html={data.recommendations[0].text}/>
+            <ContainerWithTitle name="Recommendations" icon="certificate" html={this.getRecommendations()}/>
 
-            <hr/>
         </div>);
     }
 }

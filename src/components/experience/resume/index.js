@@ -1,5 +1,5 @@
 import React from 'react';
-import './resume.scss';
+import './index.scss';
 import Period from './period';
 
 export default class Resume extends React.Component {

@@ -1,0 +1,21 @@
+.recommendation {
+    img {
+        border-radius: 50%;
+    }
+    div.text {
+        p {
+            font-size: 0.8rem;
+            font-style: italic;
+        }
+        p:first-child::before{
+            font-family: FontAwesome;
+            content: "\f10d ";
+        }
+
+        p:last-child::after{
+            font-family: FontAwesome;
+            content: " \f10e";
+        }
+    }
+
+}

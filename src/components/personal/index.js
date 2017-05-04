@@ -2,7 +2,7 @@ import React from 'react';
 import Picture from './components/picture';
 import Contact from './components/contact';
 import FollowMe from './components/follow-me';
-import './personal.scss';
+import './index.scss';
 
 export default class Personal extends React.Component {
 
