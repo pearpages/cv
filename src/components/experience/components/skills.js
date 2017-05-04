@@ -1,4 +1,17 @@
-import React from 'react'
+import React from 'react';
+import Stars from './stars';
+import ProgressBar from './progress-bar';
+
+const skills = [
+    {name: 'Javascript',value:'80%'},
+    {name: 'Angular 1.5',value:'85%'},
+    {name: 'Ionic',value:'75%'},
+    {name: 'Angular 2',value:'80%'},
+    {name: 'REACT',value:'75%'},
+    {name: 'Node',value:'70%'},
+    {name: 'Bootstrap',value:'80%'},
+    {name: 'CSS',value:'75%'}
+];
 
 export default class Skills extends React.Component {
     render() {
@@ -7,101 +20,17 @@ export default class Skills extends React.Component {
                 <h2><span className="fa fa-chevron-circle-right"></span> SKILLS</h2>
 
                 <div className="row skills">
-                    <div className="col-4">
-                        <div>English</div>
-                        <div>
-                            <span className="fa fa-star"></span>
-                            <span className="fa fa-star"></span>
-                            <span className="fa fa-star"></span>
-                            <span className="fa fa-star"></span>
-                            <span className="fa fa-star-o"></span>
-                        </div>
-                    </div>
-                    <div className="col-4">
-                        <div>Spanish</div>
-                        <div>
-                            <span className="fa fa-star"></span>
-                            <span className="fa fa-star"></span>
-                            <span className="fa fa-star"></span>
-                            <span className="fa fa-star"></span>
-                            <span className="fa fa-star"></span>
-                        </div>
-                    </div>
-                    <div className="col-4">
-                        <div>Catalan</div>
-                        <span className="fa fa-star"></span>
-                        <span className="fa fa-star"></span>
-                        <span className="fa fa-star"></span>
-                        <span className="fa fa-star"></span>
-                        <span className="fa fa-star"></span>
-                        <div></div>
-                    </div>
+                    <Stars data={{name:'English',class: 'col-4', stars: 4}}/>
+                    <Stars data={{name:'Spanish',class: 'col-4', stars: 5}}/>
+                    <Stars data={{name:'Catalan',class: 'col-4', stars: 5}}/>
                 </div>
 
                 <hr />
 
-                <div className="row">
-                    <div className="col-sm-3">Javascript</div>
-                    <div className="col-sm-9">
-                        <div className="progress">
-                            <div className="progress-bar" role="progressbar" style={{ width: '80%' }}></div>
-                        </div>
-                    </div>
-                </div>
+                {skills.map( (data,i) => {
+                    return <ProgressBar data={data} key={i} />
+                })}
 
-                <div className="row">
-                    <div className="col-sm-3">Angular 1.5</div>
-                    <div className="col-sm-9">
-                        <div className="progress">
-                            <div className="progress-bar" role="progressbar" style={{ width: '85%' }}></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="row">
-                    <div className="col-sm-3">Ionic</div>
-                    <div className="col-sm-9">
-                        <div className="progress">
-                            <div className="progress-bar" role="progressbar" style={{ width: '75%' }}></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="row">
-                    <div className="col-sm-3">Angular 2</div>
-                    <div className="col-sm-9">
-                        <div className="progress">
-                            <div className="progress-bar" role="progressbar" style={{ width: '80%' }}></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="row">
-                    <div className="col-sm-3">REACT</div>
-                    <div className="col-sm-9">
-                        <div className="progress">
-                            <div className="progress-bar" role="progressbar" style={{ width: '75%' }}></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="row">
-                    <div className="col-sm-3">Bootstrap</div>
-                    <div className="col-sm-9">
-                        <div className="progress">
-                            <div className="progress-bar" role="progressbar" style={{ width: '80%' }}></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="row">
-                    <div className="col-sm-3">CSS</div>
-                    <div className="col-sm-9">
-                        <div className="progress">
-                            <div className="progress-bar" role="progressbar" style={{ width: '75%' }}></div>
-                        </div>
-                    </div>
-                </div>
             </div>
         );
     }
