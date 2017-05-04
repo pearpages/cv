@@ -39,6 +39,59 @@
                 "id": 2,
                 "name": "Tokio Marine HCC",
                 "image": "tokio-marine.png"
+            },
+            {
+                "id": 3,
+                "name": "Wefitter",
+                "image": "wefitter.png"
+            }
+        ],
+        "recommendations": [
+            {
+                "colleague": 4,
+                "text": "<p>Pere is a highly talented web frontend developer. During his time at WeFitter he did great work improving our app and sites using latest technologies like Angular2, which he masters. Hard worker and always open to help, he has taught the team on best development practices, and he inspired us to make better code and be aware of latest trends. </p><p>Apart from professional skills, he is a great team mate and fosters a nice work environment. He makes the office a better and more fun place to be from minute 0. I wish him all the best in his future career!</p>"
+            },
+            {
+                "colleague": 3,
+                "text": "<p>I had a great experience working with Pere. A lot have been achieved as a team. One of the main achievement has been to successfully developed a ReportMaker tool which ran accurate, quick and nice reports. We have also adopted an efficient communication method between Programmer and Business Analyst through Agile process.</p><p>Pere is a reliable person whom like to understand all the parameters of what he does to better serve his stakeholder.</p>"
+            },
+            {
+                "colleague": 2,
+                "text": "<p>I had the pleasure to work with Pere for over five years, where he worked as front-end developer in my team. Pere was a valuable colleague, with very strong team spirit, always available to help and share his knowledge. During his tenure he worked on different projects with various technologies, ranging from PHP (Zend Framework), Symfony, and finaly Angular which he eventually specialised in. Pere is a serious worker who likes to improve and keeping up to date with the technology. I would strongly recommend him to any team looking for an experienced front-end developer that has a good sense of user experience.</p>"
+            },
+            {
+                "colleague": 1,
+                "text": "<p>Worked with Pere for some years in many backend (PHP/Drupal) related projects and as far as I remember, he was a very dedicated developer.</p><p>He was reading or asking others when didn't know something, always used to pay attention on all project aspects and details, was helping others even when didn't have time to deal with his own issues.</p><p>Lately I've seen his transition from the backend development to frontend using the latest and modern JavaScript libraries and frameworks and still keeping the same spirit as years before. And if you have any questions, feel free to contact me.</p>"
+            }
+        ],
+        "colleagues": [
+            {
+                "id": 4,
+                "name": "Alvaro R Moya",
+                "title": "CTO at Wefitter",
+                "image": "alvaro-r-moya.jpg",
+                "employer": 3
+            },
+            {
+                "id": 2,
+                "name": "Loris Candylaftis",
+                "title": "IT Manager",
+                "image": "loris-candylaftis.jpg",
+                "employer": 2
+            },
+            {
+                "id": 3,
+                "name": "Karine Lesueur",
+                "title": "Operations Manager",
+                "image": "karine-lesueur.jpg",
+                "employer": 2
+            },
+            {
+                "id": 1,
+                "name": "Georgi Svetoslavov",
+                "title": "Senior Full Stack Software Developer",
+                "image": "georgi-svetoslavov.jpg",
+                "employer": 1
             }
         ]
     },
