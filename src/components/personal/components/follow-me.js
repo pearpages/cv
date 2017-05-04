@@ -46,7 +46,7 @@ export default class FollowMe extends React.Component {
     render() {
         return (
             <div className="col-md-12">
-                <h4>FOLLOW ME</h4>
+                <h4>COMMUNITY</h4>
 
                 {this.renderLinks()}
 

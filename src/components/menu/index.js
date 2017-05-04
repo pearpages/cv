@@ -1,6 +1,35 @@
 import React from 'react';
 import './menu.scss';
 
+const links = [{
+    name: 'Summary',
+    id: 'summary'
+},
+{
+    name: 'Skills',
+    id: 'skills'
+},
+{
+    name: 'Education',
+    id: 'education'
+},
+{
+    name: 'Experience',
+    id: 'experience'
+},
+{
+    name: 'Picture',
+    id: 'picture'
+},
+{
+    name: 'Contact',
+    id: 'contact'
+},
+{
+    name: 'Community',
+    id: 'community'
+}];
+
 export default class Menu extends React.Component {
 
     constructor() {
@@ -33,13 +62,11 @@ export default class Menu extends React.Component {
     menu() {
         return (<div className={this.state.collapse ? 'collapse navbar-collapse' : 'navbar-collapse'} id="navbarNav">
             <ul className="navbar-nav">
-                <li className="nav-item"><a onClick={this.setActive('summary')} className={this.getLinkClasses('summary')} href="#summary">Summary</a></li>
-                <li className="nav-item"><a onClick={this.setActive('skills')} className={this.getLinkClasses('skills')} href="#skills">Skills</a></li>
-                <li className="nav-item"><a onClick={this.setActive('education')} className={this.getLinkClasses('education')} href="#education">Education</a></li>
-                <li className="nav-item"><a onClick={this.setActive('experience')} className={this.getLinkClasses('experience')} href="#experience">Experience</a></li>
-                <li className="nav-item"><a onClick={this.setActive('picture')} className={this.getLinkClasses('picture')} href="#picture">Picture</a></li>
-                <li className="nav-item"><a onClick={this.setActive('contact')} className={this.getLinkClasses('contact')} href="#contact">Contact</a></li>
-                <li className="nav-item"><a onClick={this.setActive('follow-me')} className={this.getLinkClasses('follow-me')} href="#follow-me">Follow Me</a></li>
+                {links.map( (v) => {
+                    return (<li className="nav-item" key={v.id}>
+                        <a onClick={this.setActive(v.id)} className={this.getLinkClasses(v.id)} href={'#'+v.id}>{v.name}</a>
+                        </li>);
+                })}
             </ul>
         </div>);
     }

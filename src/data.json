@@ -1,0 +1,46 @@
+{
+    "experience": {
+        "periods": [
+            {
+                "id": 3,
+                "from": "June 2015",
+                "to": "Present",
+                "title": "Front End Developer",
+                "employer": 2,
+                "description": "Maintainence of the previously created Reporting System. Front End Developer of the Company after having successfully introduced AngularJS as the client-side framework for the company and becoming its evangelist.",
+                "projects": "<ul><li>eFolder project with AngularJS</li><li>AngularJS widgets e.g. Fac Out Calculator</li><li>Portfolio Analysis Report with AngularJS</li><li>Mobile Version of the Ticketing Tool with Ionic</li></ul>"
+            },
+            {
+                "id": 2,
+                "from": "April 2011",
+                "to": "June 2015",
+                "title": "Analyst Programmer",
+                "employer": 2,
+                "description": "The creation of a Reporting System for the UWs and Management team with the requirements of the Business Analyst team.",
+                "projects": "<ul><li><strong>Reporting System</strong> with Zend PHP, jQuery, Javascript, MSSQL and Bootstrap<ul><li>Gross Written Premium Report</li><li>Monthly Activity Report</li><li>Fac Out Limits Report</li><li>Claims Acitivity Report</li><li>Broker Trip Report</li><li>Underwriting Activity Report</li><li>Others</li></ul></li><li><strong>Ticketing Tool (Helpdesk App)</strong> for the offices of Barcelona and Madrid with Zend PHP, jQuery, Javascript, MSSQL and UIKit</li><li><strong>Booking Tool (Travel App)</strong> with Zend PHP, jQuery, Javascript, MSSQL and Bootstrap</li></ul>"
+            },
+            {
+                "id": 1,
+                "from": "January 2007",
+                "to": "April 2011",
+                "title": "Web Developer",
+                "employer": 1,
+                "description": "Projects with PHP, Drupal and MySQL.",
+                "projects": "<ul className='webs'><li>Col·legi de Periodistes de Catalunya <span>www.periodistes.org</span></li><li>Associcació d'Escriptors en Llengua Catalana <span>www.escriptors.cat</span></li><li>Il·lustre Col·legi de l'Advocacia de Barcelona <span>www.icab.cat</span></li><li>Grup Mas i Mas <span>www.masimas.com</span></li><li>La Sala Teatre, Olicatessen ...</li></ul>"
+            }
+        ],
+        "employers": [
+            {
+                "id": 1,
+                "name": "Putput Comunicacions",
+                "image": "putput.png"
+            },
+            {
+                "id": 2,
+                "name": "Tokio Marine HCC",
+                "image": "tokio-marine.png"
+            }
+        ]
+    },
+    "personal": ""
+}

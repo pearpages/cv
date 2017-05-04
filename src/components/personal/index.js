@@ -19,7 +19,7 @@ export default class Personal extends React.Component {
                     <Contact />
                 </div>
 
-                <div id="follow-me" className="row section dark-blue">
+                <div id="community" className="row section dark-blue">
                     <FollowMe />
                 </div>
             </div>);

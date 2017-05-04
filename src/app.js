@@ -7,11 +7,13 @@ import './styles.scss';
 import '../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
+import data from './data.json';
 
 class App extends React.Component {
 
     constructor() {
         super();
+        this.state = {data};
         this.updateDimensions = this.updateDimensions.bind(this);
     }
 
@@ -40,9 +42,9 @@ class App extends React.Component {
             <div className={this.hasMobileSize() ? 'mobile' : 'pc'}>
                 <Menu />
                 <div className="row" >
-                    {!this.hasMobileSize() ? <Personal mobile={false}/> : null}
-                    <Experience />
-                    {this.hasMobileSize() ? <Personal mobile={true} /> : null}
+                    {!this.hasMobileSize() ? <Personal data={this.state.data.personal} mobile={false}/> : null}
+                    <Experience data={this.state.data.experience}/>
+                    {this.hasMobileSize() ? <Personal data={this.state.data.personal} mobile={true} /> : null}
                 </div>
             </div>
         )
