@@ -31,14 +31,18 @@ class App extends React.Component {
         window.removeEventListener("resize", this.updateDimensions);
     }
 
+    hasMobileSize() {
+        return this.state.width < 576;
+    }
+
     render() {
         return (
-            <div>
+            <div className={this.hasMobileSize() ? 'mobile' : 'pc'}>
                 <Menu />
                 <div className="row" >
-                    {this.state.width > 575 ? <Personal mobile={false}/> : null}
+                    {!this.hasMobileSize() ? <Personal mobile={false}/> : null}
                     <Experience />
-                    {this.state.width < 576 ? <Personal mobile={true} /> : null}
+                    {this.hasMobileSize() ? <Personal mobile={true} /> : null}
                 </div>
             </div>
         )

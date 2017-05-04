@@ -1,11 +1,20 @@
-.experience {
-    .progress {
-        -webkit-print-color-adjust: exact;
-    }
+.pc .experience{
     div.row.grey,
     div.row.profile {
         padding: 20px 40px;
         margin-bottom: 30px !important;
+    }
+}
+.mobile .experience{
+    div.row.grey,
+    div.row.profile {
+        padding: 10px 20px;
+        margin-bottom: 30px !important;
+    }
+}
+.experience {
+    .progress {
+        -webkit-print-color-adjust: exact;
     }
     div.row.skills {
         text-align: center;
