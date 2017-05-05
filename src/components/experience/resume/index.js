@@ -7,7 +7,7 @@ export default class Resume extends React.Component {
     render() {
         const data = this.props.data;
         return (
-            <div className="container">
+            <div className="resume">
                 {data.map((v) => {
                     return <Period key={v.id} data={v} />
                 })}

@@ -4,7 +4,6 @@ import './recommendation.scss';
 export default class Recommendation extends React.Component {
     render () {
         const re = this.props.data;
-        console.log(re);
         return (
         <div className="row recommendation">
             <div className="col-2 person">

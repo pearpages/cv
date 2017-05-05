@@ -2,14 +2,14 @@
     div.row.grey,
     div.row.profile {
         padding: 40px 40px;
-        margin-bottom: 30px !important;
+        margin-bottom: 30px;
     }
 }
 .mobile .experience{
     div.row.grey,
     div.row.profile {
         padding: 20px 20px;
-        margin-bottom: 30px !important;
+        margin-bottom: 30px;
     }
 }
 .experience {
@@ -26,15 +26,12 @@
         margin-bottom: 1rem;
     }
     p { font-size: 1rem}
-    .progress {
-        -webkit-print-color-adjust: exact;
-    }
     div.row.skills {
         text-align: center;
     }
     div.row {
         .progress {
-            height: 12px !important;
+            height: 12px;
             margin-bottom: 14px;
         }
         ul.no-decoration {

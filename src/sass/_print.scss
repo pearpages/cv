@@ -1,0 +1,49 @@
+@page {
+    size: auto;
+    /* auto is the initial value */
+    margin: 10pt 20pt 25pt 20pt;
+    /* this affects the margin in the printer settings */
+}
+
+@media print {
+    body {
+        -webkit-print-color-adjust: exact !important;
+        nav.navbar{
+            display: none !important;
+        }
+        text-align: justify;
+        .col-sm-3 {
+            flex: 0 0 25%;
+            max-width: 25%;
+        }
+        .col-sm-9 {
+            flex: 0 0 75%;
+            max-width: 75%;
+        }
+    }
+    a[href]:after {
+        content: "" !important;
+    }
+    #cv {
+        .personal {
+            .glyphicon::before,
+                span.fa::before {
+                color: $color1 !important;
+            }
+            #contact, #follow-me {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+
+        .experience .progress {
+           background-color: $color1 !important;
+            .progress-bar {
+                background-color: $color2 !important;
+            }
+        }
+        .print {
+            display:block
+        }
+    }
+}

@@ -1,3 +1,5 @@
+@import '../../sass/colors';
+
 nav.navbar {
     background: none;
     button.navbar-toggler {
@@ -7,12 +9,12 @@ nav.navbar {
         text-align: center;
         text-transform: uppercase;
         padding: 14px 0px;
-        border-bottom: 1px solid #EEE;
+        border-bottom: 1px solid $color5;
     }
     li.nav-item:last-child{
         border-bottom: none;
     }
 }
 nav.navbar.nav-open {
-    background: #f5f5f5;
+    background: $color1;
 }
