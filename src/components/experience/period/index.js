@@ -1,6 +1,7 @@
 import React from 'react'
 import ContainerWithTitle from './container-with-title';
 import Recommendation from './recommendation';
+import './index.scss';
 
 export default class Period extends React.Component {
 

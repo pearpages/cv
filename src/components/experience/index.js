@@ -2,7 +2,7 @@ import React from 'react';
 import Summary from './summary';
 import Education from './education';
 import Skills from './skills';
-import Resume from './resume';
+import Period from './period';
 import ExperienceContainer from './experience-container';
 import './index.scss';
 
@@ -47,10 +47,12 @@ export default class Experience extends React.Component {
                 </ExperienceContainer>
 
                 <ExperienceContainer id="experience" name="EXPERIENCE">
-                    <Resume data={this.getPeriods()} />
+                    <div className="resume">
+                        {this.getPeriods().map((v) => {
+                            return <Period key={v.id} data={v} />
+                        })}
+                    </div>
                 </ExperienceContainer>
-
-
             </div>
         );
     }

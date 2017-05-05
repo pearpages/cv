@@ -1,32 +1,13 @@
 @import '../../sass/colors';
 
-.pc .experience{
-    div.row.grey,
-    div.experience-container,
-    div.row.profile {
-        padding: 40px 40px;
-        margin-bottom: 30px;
-    }
-}
-.mobile .experience{
-    div.row.grey,
-    div.experience-container,
-    div.row.profile {
-        padding: 20px 20px;
-        margin-bottom: 30px;
-    }
-}
 .experience {
-    .experience-container {
-        background-color: $color4;
-    }
     h1 {
         font-size: 1.55rem;
         margin-bottom: 1rem;
     }
     h2 {
         font-size: 1.40rem;
-        margin-bottom: 2.5rem;
+        margin: none;
     }
     h3 {
         font-size: 1.20rem;
