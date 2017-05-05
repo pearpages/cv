@@ -1,6 +1,7 @@
 import React from 'react'
 import ContainerWithTitle from './container-with-title';
 import Recommendation from './recommendation';
+import TitleWithImage from '../title-with-image';
 import './index.scss';
 
 export default class Period extends React.Component {
@@ -14,19 +15,18 @@ export default class Period extends React.Component {
     render() {
         const data = this.props.data;
         return (<div className="timeline-item" {...{ 'data-date-is': data.from }}>
-            <div className="employer-header">
-                <div className="employer-image float-left" ><img width="68px" src={"media/" + data.employer.image} alt={data.employer.name} /></div>
-                <div className="name-and-title">
-                    <h1><span className="fa fa-user"></span> {data.title}</h1>
-                    <h2>{data.employer.name}</h2>
-                </div>
-            </div>
+            <TitleWithImage data={{
+                icon: 'user',
+                imageFile: data.employer.image,
+                line1: data.title,
+                line2: data.employer.name
+                }}/>
 
             <div className="period-description">{data.description}</div>
 
-            <ContainerWithTitle name="Projects" icon="wrench" html={data.projects}/>
+            <ContainerWithTitle name="Projects" icon="code" html={data.projects}/>
 
-            <ContainerWithTitle name="Recommendations" icon="certificate" html={this.getRecommendations()}/>
+            <ContainerWithTitle name="Recommendations" icon="handshake-o" html={this.getRecommendations()}/>
 
         </div>);
     }

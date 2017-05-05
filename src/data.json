@@ -40,19 +40,33 @@
                     "value": "75%"
                 }
             ],
-            "stars": [{
-                "name": "English",
-                "stars": 4
-            },
-            {
-                "name": "Spanish",
-                "stars": 5
-            },
-            {
-                "name": "Catalan",
-                "stars": 5
-            }]
+            "stars": [
+                {
+                    "name": "English",
+                    "stars": 4
+                },
+                {
+                    "name": "Spanish",
+                    "stars": 5
+                },
+                {
+                    "name": "Catalan",
+                    "stars": 5
+                }
+            ]
         },
+        "education": [
+            {
+                "name": "UOC",
+                "description": "Bachelor Degree in Computer Science",
+                "image": "UOC.png"
+            },
+            {
+                "name": "University Of Sheffield",
+                "description": "Erasmus",
+                "image": "University-of-sheffield.png"
+            }
+        ],
         "periods": [
             {
                 "id": 3,

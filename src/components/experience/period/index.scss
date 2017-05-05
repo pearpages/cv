@@ -2,87 +2,47 @@
 
 $border-color: rgba(black, .3);
 
-.resume {
-	max-width: 1024px;
-	width: 90%;
-	margin: 0 auto;
-	font-size: 14px;
-	line-height: 1.5;
-
-	h1 {
-		font-size: 2rem;
-		margin-bottom: .5em;
-	}
+.timeline-item {
+	padding: 3em 2em 2em;
+	position: relative;
+	border-left: 2px solid $border-color;
 
 	p {
-		font-size: .8rem;
+		font-size: 1rem;
 	}
 
-	.timeline-item {
-		padding: 3em 2em 2em;
-		position: relative;
-		border-left: 2px solid $border-color;
-
-		p {
-			font-size: 1rem;
-		}
-
-		&::before {
-			content: attr(data-date-is);
-			position: absolute;
-			left: 2em;
-			font-weight: bold;
-			top: 1em;
-			display: block;
-			font-weight: 700;
-			font-size: .785rem;
-		}
-
-		&::after {
-			width: 10px;
-			height: 10px;
-			display: block;
-			top: 1em;
-			position: absolute;
-			left: -7px;
-			border-radius: 10px;
-			content: '';
-			border: 2px solid $border-color;
-			background: white;
-		}
-
-		&:last-child {
-			border-image: linear-gradient(
-				to bottom,
-				$border-color 60%,
-				rgba($border-color, 0)) 1 100%
-			;
-		}
+	&::before {
+		content: attr(data-date-is);
+		position: absolute;
+		left: 2em;
+		font-weight: bold;
+		top: 1em;
+		display: block;
+		font-weight: 700;
+		font-size: .785rem;
 	}
 
-	.employer-header {
-		.employer-image {
-			margin-right: 20px;
-			img {
-				border: dotted 1px $color6;
-				border-radius: 6px;
-			}
-		}
-		h1 {
-			margin-bottom: 0.4rem;
-			font-size: 1.2rem;
-		}
-		h2 {
-			color: $color7;
-			font-size: 1rem;
-			margin-bottom: 0;
-		}
-		.name-and-title {
-			padding: 12px;
-			margin-bottom: 1.5rem;
-		}
+	&::after {
+		width: 10px;
+		height: 10px;
+		display: block;
+		top: 1em;
+		position: absolute;
+		left: -7px;
+		border-radius: 10px;
+		content: '';
+		border: 2px solid $border-color;
+		background: white;
 	}
-	.period-description {
-		margin-bottom: 20px;
+
+	&:last-child {
+		border-image: linear-gradient(
+			to bottom,
+			$border-color 60%,
+			rgba($border-color, 0)) 1 100%
+		;
 	}
+}
+.period-description {
+	margin-bottom: 20px;
 }

@@ -7,7 +7,7 @@
     }
     h2 {
         font-size: 1.40rem;
-        margin: none;
+        margin: 0;
     }
     h3 {
         font-size: 1.20rem;
@@ -47,5 +47,21 @@
     .webs span {
         font-size: 12px;
         font-weight: bold;
+    }
+    .resume {
+        max-width: 1024px;
+        width: 90%;
+        margin: 0 auto;
+        font-size: 14px;
+        line-height: 1.5;
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: .5em;
+        }
+
+        p {
+            font-size: .8rem;
+        }
     }
 }
