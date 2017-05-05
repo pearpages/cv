@@ -18,7 +18,9 @@ export default class Experience extends React.Component {
     mapPeriods() {
         return this.props.data.periods.map((period) => {
             period.employer = this.props.data.employers.find((employer) => employer.id === period.employer);
-            period.recommendations = this.mapRecomendations(period.recommendations);
+            if(period.recommendations) {
+                period.recommendations = this.mapRecomendations(period.recommendations);
+            }
             return period;
         });
     }

@@ -69,9 +69,48 @@
         ],
         "periods": [
             {
+                "id": 7,
+                "from": "May 2017",
+                "to": "March 2017",
+                "title": "Contributor",
+                "employer": 6,
+                "description": "to fill",
+                "projects": "to fill"
+            },
+            {
+                "id": 6,
+                "from": "May 2017",
+                "to": "March 2017",
+                "title": "Contributor",
+                "employer": 5,
+                "description": "to fill",
+                "projects": "to fill"
+            },
+            {
+                "id": 5,
+                "from": "May 2017",
+                "to": "March 2017",
+                "title": "Contributor",
+                "employer": 4,
+                "description": "to fill",
+                "projects": "to fill"
+            },
+            {
+                "id": 4,
+                "from": "October 2016",
+                "to": "March 2017",
+                "title": "Lead Front End Engineer",
+                "employer": 3,
+                "description": "to fill",
+                "projects": "to fill",
+                "recommendations": [
+                    4
+                ]
+            },
+            {
                 "id": 3,
                 "from": "June 2015",
-                "to": "Present",
+                "to": "September 2016",
                 "title": "Front End Developer",
                 "employer": 2,
                 "description": "Maintainence of the previously created Reporting System. Front End Developer of the Company after having successfully introduced AngularJS as the client-side framework for the company and becoming its evangelist.",
@@ -120,6 +159,21 @@
                 "id": 3,
                 "name": "Wefitter",
                 "image": "wefitter.png"
+            },
+            {
+                "id": 4,
+                "name": "AngularCamp Barcelona",
+                "image": "angularcamp-bcn.png"
+            },
+            {
+                "id": 5,
+                "name": "Cinema JS",
+                "image": "cinema-js.png"
+            },
+            {
+                "id": 6,
+                "name": "Angular Beers",
+                "image": "angular-beers.png"
             }
         ],
         "recommendations": [

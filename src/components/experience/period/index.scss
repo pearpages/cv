@@ -11,18 +11,15 @@ $border-color: rgba(black, .3);
 		font-size: 1rem;
 	}
 
-	&::before {
-		content: attr(data-date-is);
-		position: absolute;
-		left: 2em;
+	.date {
 		font-weight: bold;
-		top: 1em;
 		display: block;
-		font-weight: 700;
+		position: absolute;
+		top: 0.8em;
 		font-size: .785rem;
 	}
 
-	&::after {
+	&::before {
 		width: 10px;
 		height: 10px;
 		display: block;

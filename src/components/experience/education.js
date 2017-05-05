@@ -8,7 +8,7 @@ export default class Education extends React.Component {
                 <ul className="no-decoration">
                     {this.props.data.map( (data,i) => {
                         return (
-                            <li>
+                            <li key={i}>
                                 <TitleWithImage data={{
                                     icon: 'graduation-cap',
                                     imageFile: data.image,
