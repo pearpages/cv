@@ -16,9 +16,7 @@ const skills = [
 export default class Skills extends React.Component {
     render() {
         return (
-            <div className="col-md-12">
-                <h2><span className="fa fa-chevron-circle-right"></span> SKILLS</h2>
-
+            <div>
                 <div className="row skills">
                     <Stars data={{name:'English',class: 'col-4', stars: 4}}/>
                     <Stars data={{name:'Spanish',class: 'col-4', stars: 5}}/>

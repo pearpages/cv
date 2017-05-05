@@ -3,6 +3,7 @@ import Profile from './profile';
 import Education from './education';
 import Skills from './skills';
 import Resume from './resume';
+import ExperienceContainer from './experience-container';
 import './index.scss';
 
 export default class Experience extends React.Component {
@@ -33,20 +34,19 @@ export default class Experience extends React.Component {
                     <Profile />
                 </div>
 
-                <div id="skills" className="row grey">
+                <ExperienceContainer id="skills" name="SKILLS">
                     <Skills />
-                </div>
+                </ExperienceContainer>
 
-                <div id="education" className="row grey">
+                <ExperienceContainer id="education" name="EDUCATION">
                     <Education />
-                </div>
+                </ExperienceContainer>
 
-                <div id="experience" className="row grey">
-                    <div className="col-md-12">
-                        <h2><span className="fa fa-chevron-circle-right"></span> EXPERIENCE</h2>
-                        <Resume data={this.getPeriods()} />
-                    </div>
-                </div>
+                <ExperienceContainer id="experience" name="EXPERIENCE">
+                   <Resume data={this.getPeriods()} />
+                </ExperienceContainer>
+
+
             </div>
         );
     }

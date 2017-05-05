@@ -161,5 +161,35 @@
                 "short_url": "Barcelona"
             }
         ]
-    }
+    },
+    "config": [
+        {
+            "name": "Summary",
+            "id": "summary"
+        },
+        {
+            "name": "Skills",
+            "id": "skills"
+        },
+        {
+            "name": "Education",
+            "id": "education"
+        },
+        {
+            "name": "Experience",
+            "id": "experience"
+        },
+        {
+            "name": "Picture",
+            "id": "picture"
+        },
+        {
+            "name": "Contact",
+            "id": "contact"
+        },
+        {
+            "name": "Community",
+            "id": "community"
+        }
+    ]
 }

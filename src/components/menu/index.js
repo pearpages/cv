@@ -1,35 +1,6 @@
 import React from 'react';
 import './index.scss';
 
-const links = [{
-    name: 'Summary',
-    id: 'summary'
-},
-{
-    name: 'Skills',
-    id: 'skills'
-},
-{
-    name: 'Education',
-    id: 'education'
-},
-{
-    name: 'Experience',
-    id: 'experience'
-},
-{
-    name: 'Picture',
-    id: 'picture'
-},
-{
-    name: 'Contact',
-    id: 'contact'
-},
-{
-    name: 'Community',
-    id: 'community'
-}];
-
 export default class Menu extends React.Component {
 
     constructor() {
@@ -62,7 +33,7 @@ export default class Menu extends React.Component {
     menu() {
         return (<div className={this.state.collapse ? 'collapse navbar-collapse' : 'navbar-collapse'} id="navbarNav">
             <ul className="navbar-nav">
-                {links.map( (v) => {
+                {this.props.data.map( (v) => {
                     return (<li className="nav-item" key={v.id}>
                         <a onClick={this.setActive(v.id)} className={this.getLinkClasses(v.id)} href={'#'+v.id}>{v.name}</a>
                         </li>);
