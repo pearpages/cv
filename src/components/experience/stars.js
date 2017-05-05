@@ -25,7 +25,7 @@ export default class Stars extends React.Component {
 
     render() {
         const data = this.props.data;
-        return (<div className={data.class}>
+        return (<div className={this.props.class}>
             <div>{data.name}</div>
             <div>
                 {this.renderFullStars(data.stars)}
