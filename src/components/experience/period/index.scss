@@ -3,7 +3,7 @@
 $border-color: rgba(black, .3);
 
 .timeline-item {
-	padding: 3em 0 2em 2em;
+	padding: 3em 0 4em 2em;
 	position: relative;
 	border-left: 2px solid $border-color;
 
@@ -20,12 +20,12 @@ $border-color: rgba(black, .3);
 	}
 
 	&::before {
-		width: 10px;
-		height: 10px;
+		width: 18px;
+		height: 18px;
 		display: block;
 		top: 1em;
 		position: absolute;
-		left: -7px;
+		left: -10px;
 		border-radius: 10px;
 		content: '';
 		border: 2px solid $border-color;
@@ -41,5 +41,5 @@ $border-color: rgba(black, .3);
 	}
 }
 .period-description {
-	margin-bottom: 20px;
+	margin: 20px 0;
 }

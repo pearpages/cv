@@ -25,7 +25,7 @@ export default class ContainerWithTitle extends React.Component {
     render() {
         return (
             <div className="container-with-title">
-                <h3 onClick={this.handleClick}><span className={"icon fa fa-"+this.props.icon}></span> {this.props.name} <span className={"fa fa-caret-"+((this.state.hidden) ? 'up' : 'down')}></span></h3>
+                <h3 onClick={this.handleClick}><span className={"icon fa fa-"+this.props.icon}></span> {this.props.name} <span className={"fa fa-caret-square-o-"+((this.state.hidden) ? 'up' : 'down')}></span></h3>
                 {this.getContent()}
             </div>
         );

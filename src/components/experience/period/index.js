@@ -16,27 +16,36 @@ export default class Period extends React.Component {
         return false;
     }
 
+    makeEmployerObject() {
+        const data = this.props.data;
+        let res = {
+                    icon: 'user',
+                    imageFile: data.employer.image,
+                    line1: data.title,
+                    line2: data.employer.name
+                };
+
+        (data.employer.url) ? res.url = this.props.data.employer.url : null;
+        return res;
+    }
+
     render() {
         const data = this.props.data;
         return (<div className="timeline-item">
             <div className="date">{data.from} - {data.to}</div>
 
-            <TitleWithImage data={{
-                icon: 'user',
-                imageFile: data.employer.image,
-                line1: data.title,
-                line2: data.employer.name
-            }} />
+            <div className="wrapper">
+                <TitleWithImage data={this.makeEmployerObject()} />
 
-            <div className="period-description">{data.description}</div>
+                {(data.description) ? <div className="period-description">{data.description}</div> : null}
 
-            <ContainerWithTitle name="Projects" icon="code" html={data.projects} />
+                {(data.projects) ? <ContainerWithTitle name="Projects" icon="code" html={data.projects} /> : null}
 
-            {
-                (this.getRecommendations()) ?
-                    <ContainerWithTitle name="Recommendations" icon="handshake-o" html={this.getRecommendations()} /> : null
-            }
-
+                {
+                    (this.getRecommendations()) ?
+                        <ContainerWithTitle name="Recommendations" icon="handshake-o" html={this.getRecommendations()} /> : null
+                }
+            </div>
 
         </div>);
     }

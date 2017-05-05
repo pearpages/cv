@@ -8,4 +8,9 @@
     .hidden {
         display:none;
     }
+    a.external-link::after {
+        font-family: FontAwesome;
+        content: ' \f08e';
+        font-size: 0.6rem;
+    }
 }

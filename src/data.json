@@ -70,30 +70,24 @@
         "periods": [
             {
                 "id": 7,
-                "from": "May 2017",
-                "to": "March 2017",
+                "from": "March 2017",
+                "to": "May 2017",
                 "title": "Contributor",
-                "employer": 6,
-                "description": "to fill",
-                "projects": "to fill"
+                "employer": 6
             },
             {
                 "id": 6,
-                "from": "May 2017",
-                "to": "March 2017",
+                "from": "March 2017",
+                "to": "May 2017",
                 "title": "Contributor",
-                "employer": 5,
-                "description": "to fill",
-                "projects": "to fill"
+                "employer": 5
             },
             {
                 "id": 5,
-                "from": "May 2017",
-                "to": "March 2017",
+                "from": "March 2017",
+                "to": "May 2017",
                 "title": "Contributor",
-                "employer": 4,
-                "description": "to fill",
-                "projects": "to fill"
+                "employer": 4
             },
             {
                 "id": 4,
@@ -101,8 +95,8 @@
                 "to": "March 2017",
                 "title": "Lead Front End Engineer",
                 "employer": 3,
-                "description": "to fill",
-                "projects": "to fill",
+                "description": "Lead frontend development and design being updated on new technologies and latest trends. Teach team about frontend development, design patterns, best practices, resources... Identify opportunities and risks and propose new solutions to identified problems in your area of expertise.",
+                "projects": "<p>Develop, improve, refactor the Company App <a href='https://itunes.apple.com/es/app/wefitter-fitness-and-motivation/id1090432973?l=en&mt=8' class='external-link'>WeFitter App</a><p>",
                 "recommendations": [
                     4
                 ]
@@ -148,32 +142,38 @@
             {
                 "id": 1,
                 "name": "Putput Comunicacions",
-                "image": "putput.png"
+                "image": "putput.png",
+                "url": "https://www.putput.cat/es/"
             },
             {
                 "id": 2,
                 "name": "Tokio Marine HCC",
-                "image": "tokio-marine.png"
+                "image": "tokio-marine.png",
+                "url": "https://www.tmhcc.com/global"
             },
             {
                 "id": 3,
                 "name": "Wefitter",
-                "image": "wefitter.png"
+                "image": "wefitter.png",
+                "url": "https://www.wefitter.com/"
             },
             {
                 "id": 4,
                 "name": "AngularCamp Barcelona",
-                "image": "angularcamp-bcn.png"
+                "image": "angularcamp-bcn.png",
+                "url": "https://angularcamp.org/"
             },
             {
                 "id": 5,
                 "name": "Cinema JS",
-                "image": "cinema-js.png"
+                "image": "cinema-js.png",
+                "url": "https://cinemajs.tech/"
             },
             {
                 "id": 6,
                 "name": "Angular Beers",
-                "image": "angular-beers.png"
+                "image": "angular-beers.png",
+                "url": "https://angularbeers.org/"
             }
         ],
         "recommendations": [
@@ -204,6 +204,7 @@
                 "name": "Alvaro R Moya",
                 "title": "CTO at Wefitter",
                 "image": "alvaro-r-moya.jpg",
+                "in": "https://es.linkedin.com/in/alvarormoya",
                 "employer": 3
             },
             {
@@ -211,6 +212,7 @@
                 "name": "Loris Candylaftis",
                 "title": "IT Manager",
                 "image": "loris-candylaftis.jpg",
+                "in": "https://es.linkedin.com/in/loriscandylaftis",
                 "employer": 2
             },
             {
@@ -218,6 +220,7 @@
                 "name": "Karine Lesueur",
                 "title": "Operations Manager",
                 "image": "karine-lesueur.jpg",
+                "in": "https://es.linkedin.com/in/karine-lesueur-12b96531",
                 "employer": 2
             },
             {
@@ -225,6 +228,7 @@
                 "name": "Georgi Svetoslavov",
                 "title": "Senior Full Stack Software Developer",
                 "image": "georgi-svetoslavov.jpg",
+                "in": "https://no.linkedin.com/in/gsvetoslavov",
                 "employer": 1
             }
         ]
@@ -266,7 +270,7 @@
             {
                 "icon": "phone",
                 "name": "",
-                "url": "javascript:void(0)",
+                "url": "",
                 "short_url": "Not Available Online"
             },
             {

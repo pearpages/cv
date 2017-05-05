@@ -17,7 +17,7 @@ export default class ExperienceContainer extends React.Component {
         return (
             <div id={this.props.id} className="row experience-container">
                 <div className="col-md-12">
-                    <h2 onClick={this.handleClick} ><span className="fa fa-chevron-circle-right"></span> {this.props.name}</h2>
+                    <h2 onClick={this.handleClick} ><span className="fa fa-chevron-circle-right"></span> {this.props.name} <span className={"fa fa-caret-square-o-"+((this.state.hidden) ? 'up' : 'down')}></span></h2>
                     <div className={"contain "+(this.state.hidden ?'hidden':null)}>
                         {this.props.children}
                     </div>

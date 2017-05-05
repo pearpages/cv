@@ -11,9 +11,9 @@ export default class Recommendation extends React.Component {
                 </div>
                 <div className="col-12 person">
                     <div className="float-right">
-                        <img className="float-left" src={"media/" + re.colleague.image} alt={re.colleague.name} />
+                        <div><img src={"media/" + re.colleague.image} alt={re.colleague.name} /></div>
                         <div className="info">
-                            <div className="name">{re.colleague.name}</div>
+                            <div className="name"><a className="external-link" target="_blank" href={re.colleague.url}>{re.colleague.name}</a></div>
                             <div className="position"><span className="fa fa-user"></span> {re.colleague.title}</div>
                         </div>
                     </div>
