@@ -238,31 +238,31 @@
             {
                 "icon": "github",
                 "name": "Github",
-                "url": "https: //github.com/pearpages",
+                "url": "https://github.com/pearpages",
                 "short_url": "github.com/pearpages"
             },
             {
                 "icon": "twitter",
                 "name": "Twitter",
-                "url": "https: //twitter.com/pearpages",
+                "url": "https://twitter.com/pearpages",
                 "short_url": "twitter.com/pearpages"
             },
             {
                 "icon": "pencil",
                 "name": "Blog",
-                "url": "https: //pearpages.com",
+                "url": "https://pearpages.com",
                 "short_url": "pearpages.com"
             },
             {
                 "icon": "stack-overflow",
                 "name": "Stackoverflow",
-                "url": "http: //stackoverflow.com/users/3955722/pere-pages",
+                "url": "http://stackoverflow.com/users/3955722/pere-pages",
                 "short_url": "stackoverflow.com/users/3955722/pere-pages"
             },
             {
                 "icon": "linkedin",
                 "name": "Linkedin",
-                "url": "https: //www.linkedin.com/in/pearpages/",
+                "url": "https://www.linkedin.com/in/pearpages/",
                 "short_url": "www.linkedin.com/in/pearpages/"
             }
         ],
