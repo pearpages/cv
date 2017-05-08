@@ -1,100 +1,86 @@
 {
-    "experience": {
-        "summary": {
-            "name": "Pere Pages Soms",
-            "title": "Full Stack Developer",
-            "summary": "<p>I am a programmer with over 10 years experience. My main languages are Javascript and PHP. I have worked in Web Development and Insurance, in Front End and Back End projects, independently and with teams, alongside Designers and Business Analysts.</p><p>I like simplicity, minimalism and quality. For me, code must be easy to understand, consistent, testable, short and modular.</p><p>I try to write code daily, attend talks weekly and meet colleagues as often as I can.</p>"
-        },
-        "skills": {
-            "bars": [
-                {
-                    "name": "Javascript",
-                    "value": "80%"
-                },
-                {
-                    "name": "Angular 1.5",
-                    "value": "85%"
-                },
-                {
-                    "name": "Ionic",
-                    "value": "75%"
-                },
-                {
-                    "name": "Angular 2",
-                    "value": "80%"
-                },
-                {
-                    "name": "REACT",
-                    "value": "75%"
-                },
-                {
-                    "name": "Node",
-                    "value": "70%"
-                },
-                {
-                    "name": "Bootstrap",
-                    "value": "80%"
-                },
-                {
-                    "name": "CSS",
-                    "value": "75%"
-                }
-            ],
-            "stars": [
-                {
-                    "name": "English",
-                    "stars": 4
-                },
-                {
-                    "name": "Spanish",
-                    "stars": 5
-                },
-                {
-                    "name": "Catalan",
-                    "stars": 5
-                }
-            ]
-        },
-        "education": [
+    "summary": {
+        "name": "Pere Pages Soms",
+        "title": "Full Stack Developer",
+        "summary": "<p>I am a programmer with over 10 years experience. My main languages are Javascript and PHP. I have worked in Web Development and Insurance, in Front End and Back End projects, independently and with teams, alongside Designers and Business Analysts.</p><p>I like simplicity, minimalism and quality. For me, code must be easy to understand, consistent, testable, short and modular.</p><p>I try to write code daily, attend talks weekly and meet colleagues as often as I can.</p>"
+    },
+    "skills": {
+        "bars": [
             {
-                "name": "UOC",
-                "description": "Bachelor Degree in Computer Science",
-                "image": "UOC.png"
+                "name": "Javascript",
+                "value": "80%"
             },
             {
-                "name": "University Of Sheffield",
-                "description": "Erasmus",
-                "image": "University-of-sheffield.png"
+                "name": "Angular 1.5",
+                "value": "85%"
+            },
+            {
+                "name": "Ionic",
+                "value": "75%"
+            },
+            {
+                "name": "Angular 2",
+                "value": "80%"
+            },
+            {
+                "name": "REACT",
+                "value": "75%"
+            },
+            {
+                "name": "Node",
+                "value": "70%"
+            },
+            {
+                "name": "Bootstrap",
+                "value": "80%"
+            },
+            {
+                "name": "CSS",
+                "value": "75%"
             }
         ],
+        "stars": [
+            {
+                "name": "English",
+                "stars": 4
+            },
+            {
+                "name": "Spanish",
+                "stars": 5
+            },
+            {
+                "name": "Catalan",
+                "stars": 5
+            }
+        ]
+    },
+    "education": [
+        {
+            "name": "UOC",
+            "description": "Bachelor Degree in Computer Science",
+            "image": "UOC.png"
+        },
+        {
+            "name": "University Of Sheffield",
+            "description": "Erasmus",
+            "image": "University-of-sheffield.png"
+        }
+    ],
+    "experience": {
         "periods": [
             {
                 "id": 7,
                 "from": "March 2017",
                 "to": "May 2017",
                 "title": "Contributor",
-                "employer": 6
-            },
-            {
-                "id": 6,
-                "from": "March 2017",
-                "to": "May 2017",
-                "title": "Contributor",
-                "employer": 5
-            },
-            {
-                "id": 5,
-                "from": "March 2017",
-                "to": "May 2017",
-                "title": "Contributor",
-                "employer": 4
+                "employers": [6,5,4]
             },
             {
                 "id": 4,
                 "from": "October 2016",
                 "to": "March 2017",
                 "title": "Lead Front End Engineer",
-                "employer": 3,
+                "employers": [3],
                 "description": "Lead frontend development and design being updated on new technologies and latest trends. Teach team about frontend development, design patterns, best practices, resources... Identify opportunities and risks and propose new solutions to identified problems in your area of expertise.",
                 "projects": "<p>Develop, improve, refactor the Company App <a href='https://itunes.apple.com/es/app/wefitter-fitness-and-motivation/id1090432973?l=en&mt=8' class='external-link'>WeFitter App</a><p>",
                 "recommendations": [
@@ -106,7 +92,7 @@
                 "from": "June 2015",
                 "to": "September 2016",
                 "title": "Front End Developer",
-                "employer": 2,
+                "employers": [2],
                 "description": "Maintainence of the previously created Reporting System. Front End Developer of the Company after having successfully introduced AngularJS as the client-side framework for the company and becoming its evangelist.",
                 "projects": "<ul><li>eFolder project with AngularJS</li><li>AngularJS widgets e.g. Fac Out Calculator</li><li>Portfolio Analysis Report with AngularJS</li><li>Mobile Version of the Ticketing Tool with Ionic</li></ul>",
                 "recommendations": [
@@ -118,7 +104,7 @@
                 "from": "April 2011",
                 "to": "June 2015",
                 "title": "Analyst Programmer",
-                "employer": 2,
+                "employers": [2],
                 "description": "The creation of a Reporting System for the UWs and Management team with the requirements of the Business Analyst team.",
                 "projects": "<ul><li><strong>Reporting System</strong> with Zend PHP, jQuery, Javascript, MSSQL and Bootstrap<ul><li>Gross Written Premium Report</li><li>Monthly Activity Report</li><li>Fac Out Limits Report</li><li>Claims Acitivity Report</li><li>Broker Trip Report</li><li>Underwriting Activity Report</li><li>Others</li></ul></li><li><strong>Ticketing Tool (Helpdesk App)</strong> for the offices of Barcelona and Madrid with Zend PHP, jQuery, Javascript, MSSQL and UIKit</li><li><strong>Booking Tool (Travel App)</strong> with Zend PHP, jQuery, Javascript, MSSQL and Bootstrap</li></ul>",
                 "recommendations": [
@@ -130,7 +116,7 @@
                 "from": "January 2007",
                 "to": "April 2011",
                 "title": "Web Developer",
-                "employer": 1,
+                "employers": [1],
                 "description": "Projects with PHP, Drupal and MySQL.",
                 "projects": "<ul class='webs'><li>Col·legi de Periodistes de Catalunya <span>www.periodistes.org</span></li><li>Associcació d'Escriptors en Llengua Catalana <span>www.escriptors.cat</span></li><li>Il·lustre Col·legi de l'Advocacia de Barcelona <span>www.icab.cat</span></li><li>Grup Mas i Mas <span>www.masimas.com</span></li><li>La Sala Teatre, Olicatessen ...</li></ul>",
                 "recommendations": [
@@ -233,88 +219,56 @@
             }
         ]
     },
-    "personal": {
-        "community": [
-            {
-                "icon": "github",
-                "name": "Github",
-                "url": "https://github.com/pearpages",
-                "short_url": "github.com/pearpages"
-            },
-            {
-                "icon": "twitter",
-                "name": "Twitter",
-                "url": "https://twitter.com/pearpages",
-                "short_url": "twitter.com/pearpages"
-            },
-            {
-                "icon": "pencil",
-                "name": "Blog",
-                "url": "https://pearpages.com",
-                "short_url": "pearpages.com"
-            },
-            {
-                "icon": "stack-overflow",
-                "name": "Stackoverflow",
-                "url": "http://stackoverflow.com/users/3955722/pere-pages",
-                "short_url": "stackoverflow.com/users/3955722/pere-pages"
-            },
-            {
-                "icon": "linkedin",
-                "name": "Linkedin",
-                "url": "https://www.linkedin.com/in/pearpages/",
-                "short_url": "www.linkedin.com/in/pearpages/"
-            }
-        ],
-        "contact": [
-            {
-                "icon": "phone",
-                "name": "",
-                "url": "",
-                "short_url": "Not Available Online"
-            },
-            {
-                "icon": "envelope",
-                "name": "",
-                "url": "mailto:hello@pearpages.com",
-                "short_url": "hello@pearpages.com"
-            },
-            {
-                "icon": "map-marker",
-                "name": "",
-                "url": "https://goo.gl/maps/BPX7RX98dzL2",
-                "short_url": "Barcelona"
-            }
-        ]
-    },
-    "config": [
+    "community": [
         {
-            "name": "Summary",
-            "id": "summary"
+            "icon": "github",
+            "name": "Github",
+            "url": "https://github.com/pearpages",
+            "short_url": "github.com/pearpages"
         },
         {
-            "name": "Skills",
-            "id": "skills"
+            "icon": "twitter",
+            "name": "Twitter",
+            "url": "https://twitter.com/pearpages",
+            "short_url": "twitter.com/pearpages"
         },
         {
-            "name": "Education",
-            "id": "education"
+            "icon": "pencil",
+            "name": "Blog",
+            "url": "https://pearpages.com",
+            "short_url": "pearpages.com"
         },
         {
-            "name": "Experience",
-            "id": "experience"
+            "icon": "stack-overflow",
+            "name": "Stackoverflow",
+            "url": "http://stackoverflow.com/users/3955722/pere-pages",
+            "short_url": "stackoverflow.com/users/3955722/pere-pages"
         },
         {
-            "name": "Picture",
-            "id": "picture"
+            "icon": "linkedin",
+            "name": "Linkedin",
+            "url": "https://www.linkedin.com/in/pearpages/",
+            "short_url": "www.linkedin.com/in/pearpages/"
+        }
+    ],
+    "contact": [
+        {
+            "icon": "phone",
+            "name": "",
+            "url": "",
+            "short_url": "Not Available Online"
         },
         {
-            "name": "Contact",
-            "id": "contact"
+            "icon": "envelope",
+            "name": "",
+            "url": "mailto:hello@pearpages.com",
+            "short_url": "hello@pearpages.com"
         },
         {
-            "name": "Community",
-            "id": "community"
+            "icon": "map-marker",
+            "name": "",
+            "url": "https://goo.gl/maps/BPX7RX98dzL2",
+            "short_url": "Barcelona"
         }
     ]
 }

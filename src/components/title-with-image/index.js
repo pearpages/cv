@@ -1,5 +1,5 @@
 import React from 'react';
-import './title-with-image.scss';
+import './index.scss';
 
 export default class TitleWithImage extends React.Component {
     render() {

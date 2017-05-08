@@ -1,5 +1,5 @@
 import React from 'react';
-import './experience-container.scss';
+import './index.scss';
 
 export default class ExperienceContainer extends React.Component {
 

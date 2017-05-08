@@ -33,7 +33,7 @@ export default class Menu extends React.Component {
     menu() {
         return (<div className={this.state.collapse ? 'collapse navbar-collapse' : 'navbar-collapse'} id="navbarNav">
             <ul className="navbar-nav">
-                {this.props.data.map( (v) => {
+                {this.props.data.anchors.map( (v) => {
                     return (<li className="nav-item" key={v.id}>
                         <a onClick={this.setActive(v.id)} className={this.getLinkClasses(v.id)} href={'#'+v.id}>{v.name}</a>
                         </li>);

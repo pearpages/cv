@@ -1,24 +1,25 @@
-import Experience from './components/experience';
-import Personal from './components/personal';
+import Secondary from './components/secondary';
+import Main from './components/main';
 import Menu from './components/menu';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Data from './services/data';
+import Config from './services/config';
 import './styles.scss';
 import '../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
-import data from './data.json';
 
 class App extends React.Component {
 
     constructor() {
         super();
-        this.state = {data};
+        this.state = { data: new Data(), config: new Config() };
         this.updateDimensions = this.updateDimensions.bind(this);
     }
 
     updateDimensions() {
-        this.setState({width: window.innerWidth, height: window.innerHeight});
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
 
     componentWillMount() {
@@ -40,11 +41,34 @@ class App extends React.Component {
     render() {
         return (
             <div className={this.hasMobileSize() ? 'mobile' : 'pc'}>
-                <Menu data={this.state.data.config} />
+                <Menu data={this.state.config.getConfig()} />
                 <div className="row" >
-                    {!this.hasMobileSize() ? <Personal data={this.state.data.personal} mobile={false}/> : null}
-                    <Experience data={this.state.data.experience} mobile={this.hasMobileSize()}/>
-                    {this.hasMobileSize() ? <Personal data={this.state.data.personal} mobile={true} /> : null}
+                    {
+                        !this.hasMobileSize() ?
+                            <Secondary
+                                contact={this.state.data.getContact()}
+                                community={this.state.data.getCommunity()}
+                                mobile={false} />
+                            :
+                            null
+                    }
+                    <Main
+                        mobile={this.hasMobileSize()}
+                        summary={this.state.data.getSummary()}
+                        skills={this.state.data.getSkills()}
+                        education={this.state.data.getEducation()}
+                        experience={this.state.data.getExperience()}
+                    />
+
+                    {
+                        this.hasMobileSize() ?
+                            <Secondary
+                                contact={this.state.data.getContact()}
+                                community={this.state.data.getCommunity()}
+                                mobile={true} />
+                            :
+                            null
+                    }
                 </div>
             </div>
         )

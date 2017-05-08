@@ -16,26 +16,17 @@ export default class Period extends React.Component {
         return false;
     }
 
-    makeEmployerObject() {
-        const data = this.props.data;
-        let res = {
-                    icon: 'terminal',
-                    imageFile: data.employer.image,
-                    line1: data.title,
-                    line2: data.employer.name
-                };
-
-        (data.employer.url) ? res.url = this.props.data.employer.url : null;
-        return res;
-    }
-
     render() {
         const data = this.props.data;
         return (<div className="timeline-item">
             <div className="date">{data.from} - {data.to}</div>
 
             <div className="wrapper">
-                <TitleWithImage data={this.makeEmployerObject()} />
+                {
+                    data.employers.map( (employer) => {
+                        return <TitleWithImage key={employer.id} data={employer} />
+                    })
+                }
 
                 {(data.description) ? <div className="period-description">{data.description}</div> : null}
 
