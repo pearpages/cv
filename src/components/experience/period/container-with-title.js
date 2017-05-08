@@ -6,7 +6,7 @@ export default class ContainerWithTitle extends React.Component {
     constructor() {
         super();
         this.state = {
-            hidden: true
+            hidden: false
         }
         this.handleClick = this.handleClick.bind(this);
     }

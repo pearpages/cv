@@ -19,7 +19,7 @@ export default class Period extends React.Component {
     makeEmployerObject() {
         const data = this.props.data;
         let res = {
-                    icon: 'user',
+                    icon: 'terminal',
                     imageFile: data.employer.image,
                     line1: data.title,
                     line2: data.employer.name
