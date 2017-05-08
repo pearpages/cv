@@ -41,7 +41,7 @@ export default class Experience extends React.Component {
                 </div>
 
                 <ExperienceContainer id="skills" name="SKILLS">
-                    <Skills data={this.props.data.skills} />
+                    <Skills data={this.props.data.skills} mobile={this.props.mobile}/>
                 </ExperienceContainer>
 
                 <ExperienceContainer id="education" name="EDUCATION">

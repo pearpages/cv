@@ -39,7 +39,7 @@ export default class Period extends React.Component {
 
                 {(data.description) ? <div className="period-description">{data.description}</div> : null}
 
-                {(data.projects) ? <ContainerWithTitle name="Projects" icon="code" html={data.projects} /> : null}
+                {(data.projects) ? <ContainerWithTitle name="Projects" icon="code-fork" html={data.projects} /> : null}
 
                 {
                     (this.getRecommendations()) ?

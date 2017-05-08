@@ -11,12 +11,14 @@
         }
         p:first-child::before{
             font-family: FontAwesome;
-            content: "\f10d ";
+            content: "\f10d";
+            margin-right: 0.5rem;
         }
 
         p:last-child::after{
             font-family: FontAwesome;
-            content: " \f10e";
+            content: "\f10e";
+            margin-left: 0.5rem;
         }
     }
     .person {

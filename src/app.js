@@ -43,7 +43,7 @@ class App extends React.Component {
                 <Menu data={this.state.data.config} />
                 <div className="row" >
                     {!this.hasMobileSize() ? <Personal data={this.state.data.personal} mobile={false}/> : null}
-                    <Experience data={this.state.data.experience}/>
+                    <Experience data={this.state.data.experience} mobile={this.hasMobileSize()}/>
                     {this.hasMobileSize() ? <Personal data={this.state.data.personal} mobile={true} /> : null}
                 </div>
             </div>

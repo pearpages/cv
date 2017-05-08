@@ -15,7 +15,7 @@ export default class Skills extends React.Component {
                 <hr />
 
                 {this.props.data.bars.map( (data,i) => {
-                    return <ProgressBar data={data} key={i} />
+                    return <ProgressBar data={data} key={i} mobile={this.props.mobile}/>
                 })}
 
             </div>
