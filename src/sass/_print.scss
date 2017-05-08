@@ -12,11 +12,17 @@
             display: none !important;
         }
         text-align: justify;
-        .col-sm-3 {
+        .personal {
             flex: 0 0 25%;
             max-width: 25%;
         }
-        .col-sm-9 {
+        .fa-caret-square-o-up, .fa-caret-square-o-down {
+            display:none;
+        }
+        .hidden{
+            display: block;
+        }
+        .experience {
             flex: 0 0 75%;
             max-width: 75%;
         }
