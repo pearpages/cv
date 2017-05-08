@@ -4,7 +4,6 @@ import './progress-bar.scss';
 export default class ProgressBar extends React.Component {
 
     render() {
-        console.log('mobile',this.props.mobile);
         const data = this.props.data;
         return (
             (this.props.mobile) ?
