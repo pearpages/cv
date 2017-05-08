@@ -34,7 +34,7 @@ class App extends React.Component {
     }
 
     hasMobileSize() {
-        return this.state.width < 576;
+        return this.state.width < 768;
     }
 
     render() {

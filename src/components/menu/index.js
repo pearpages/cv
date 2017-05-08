@@ -26,7 +26,7 @@ export default class Menu extends React.Component {
     }
 
     getMenuClasses() {
-        let classes = 'navbar fixed-top navbar-toggleable-sm navbar-light bg-faded hidden-sm-up';
+        let classes = 'navbar fixed-top navbar-toggleable-sm navbar-light bg-faded hidden-md-up';
         return (!this.state.collapse) ? classes + ' nav-open' : classes;
     }
 

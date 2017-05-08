@@ -1,13 +1,13 @@
 @import '../../../sass/colors';
 
 .recommendation {
+    font-family: 'Open Sans Condensed', sans-serif !important;
     img {
         border-radius: 50%;
     }
     div.text {
         p {
-            font-size: 0.8rem;
-            font-style: italic;
+            font-size: 1.2rem;
         }
         p:first-child::before{
             font-family: FontAwesome;
@@ -20,6 +20,7 @@
         }
     }
     .person {
+        font-family: sans-serif !important;
         text-align: center;
         .name {
             color: $color7;

@@ -6,7 +6,7 @@ export default class Personal extends React.Component {
 
     render() {
         return (
-            <div className="col-md-3 col-sm-3 personal">
+            <div className="col-md-3 col-sm-12 personal">
                 <div id="picture" className="row profile">
                     <div className={"col-md-12 " + (this.props.mobile === true ? 'mobile-picture' : null)}>
                         <img id="profile-picture" className="img-fluid center-block" src="media/pere-pages.jpg" alt="Pere Pages" />

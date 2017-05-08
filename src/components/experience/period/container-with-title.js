@@ -17,9 +17,9 @@ export default class ContainerWithTitle extends React.Component {
 
     getContent() {
         if(typeof(this.props.html) === 'object') {
-            return (!this.state.hidden) ? this.props.html : null;
+            return <div className={(this.state.hidden) ? 'hidden': 'visible'}>{this.props.html}</div>;
         }
-        return (!this.state.hidden) ? <div dangerouslySetInnerHTML={{ __html: this.props.html}} /> : null;
+        return <div className={(this.state.hidden) ? 'hidden': 'visible'} dangerouslySetInnerHTML={{ __html: this.props.html}} />;
     }
 
     render() {

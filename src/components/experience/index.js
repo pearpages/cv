@@ -35,7 +35,7 @@ export default class Experience extends React.Component {
 
     render() {
         return (
-            <div className="col-md-9 col-sm-9 experience">
+            <div className="col-md-9 col-sm-12 experience">
                 <div id="summary" className="row profile">
                     <Summary data={this.props.data.summary} />
                 </div>
