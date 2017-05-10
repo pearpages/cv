@@ -2,6 +2,7 @@ import Secondary from './components/secondary';
 import Main from './components/main';
 import Menu from './components/menu';
 import React from 'react';
+import ScrollReveal from 'scrollreveal';
 import ReactDOM from 'react-dom';
 import Data from './services/data';
 import Config from './services/config';
@@ -28,6 +29,8 @@ class App extends React.Component {
 
     componentDidMount() {
         window.addEventListener("resize", this.updateDimensions);
+        const sr = ScrollReveal();
+        sr.reveal('.experience-container');
     }
 
     componentWillUnmount() {
