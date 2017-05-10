@@ -2,6 +2,10 @@
 
 ## Howto
 
+My curriculum vitae in REACT and Angular1.5.
+
+Printable and reponsive.
+
 ### Install
 
 ```bash
