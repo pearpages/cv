@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --content-base ./public",
-    "start": "npm-run-all build:dev serve",
+    "start": "npm-run-all build serve",
     "serve": "http-server ./public",
-    "build:dev": "./node_modules/.bin/webpack",
+    "build": "./node_modules/.bin/webpack -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
