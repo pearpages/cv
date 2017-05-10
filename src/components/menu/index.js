@@ -1,5 +1,6 @@
 import React from 'react';
 import './index.scss';
+import jump from 'jump.js';
 
 export default class Menu extends React.Component {
 
@@ -22,7 +23,12 @@ export default class Menu extends React.Component {
     }
 
     setActive(anchor) {
-        return () => this.setState({active: anchor, collapse: true});
+        return (event) => {
+            event.preventDefault();
+            this.setState({active: anchor, collapse: true});
+            jump('#'+anchor);
+            window.location.hash=anchor;
+        };
     }
 
     getMenuClasses() {
