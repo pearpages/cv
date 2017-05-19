@@ -1,3 +1,5 @@
+@import '../../../sass/colors';
+
 .desktop-menu {
     position: fixed;
     top: 0;
@@ -18,6 +20,7 @@
         margin: 0 20px;
         padding: 8px;
         display: inline-block;
+        color: $color7;
     }
     span:hover {
         text-decoration: underline;
