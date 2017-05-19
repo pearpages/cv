@@ -10,7 +10,7 @@ export default class Menu extends React.Component {
         this.state = {
             anchors: this.props.anchors,
             collapse: true,
-            active: 'home'
+            active: 'summary'
         };
 
         this.handleClick = this.handleClick.bind(this);
@@ -20,6 +20,10 @@ export default class Menu extends React.Component {
 
     componentDidMount() {
         window.addEventListener("scroll", this.updateScrollPosition);
+        const hash = window.location.hash.substr(1);
+        if(hash !== this.state.active) {
+            this.setState({active: hash});
+        }
     }
 
     componentWillUnmount() {
@@ -33,7 +37,7 @@ export default class Menu extends React.Component {
         anchors.forEach( anchor => {
             const el = document.getElementById(anchor.id);
             const pos = el.getBoundingClientRect();
-            if(pos.top <= 0 && pos.bottom > 0 && pos.top < res) {
+            if(pos.top <= 20 && pos.bottom > 0 && pos.top < res) {
                 res = pos;
                 id = anchor.id;
             }
