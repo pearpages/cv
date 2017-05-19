@@ -75,6 +75,7 @@ export default class Menu extends React.Component {
                 />
                 :
                 <DesktopMenu
+                    name={this.props.name}
                     anchors={this.state.anchors.desktop}
                     setActive={this.setActive()}
                     active={this.state.active}

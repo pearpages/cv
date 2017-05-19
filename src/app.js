@@ -59,7 +59,7 @@ class App extends React.Component {
     render() {
         return (
             <div className={this.hasMobileSize() ? 'mobile' : 'pc'}>
-                <Menu anchors={this.state.config.getConfig().anchors} size={this.state.size}/>
+                <Menu name={this.state.data.getSummary().name} anchors={this.state.config.getConfig().anchors} size={this.state.size}/>
                 <div className="row" >
                     {
                         !this.hasMobileSize() ?

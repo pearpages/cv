@@ -8,6 +8,12 @@
     font-family: Oswald, sans-serif;
     font-weight: lighter;
     box-shadow: 0px 3px 6px 2px #AAA;
+    .right {
+        float: right;
+    }
+    .left {
+        float: left;
+    }
     span {
         margin: 0 20px;
         padding: 8px;
@@ -19,5 +25,10 @@
     }
     span.active {
         color: #0275d8;
+    }
+    .name {
+        font-family: 'Gravitas One', cursive !important;
+        font-size: 1.1rem;
+        padding: 8px;
     }
 }
