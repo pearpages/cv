@@ -2,7 +2,7 @@
 
 ## Howto
 
-My curriculum vitae in REACT and Angular1.5.
+My curriculum vitae in REACT and Angular1.5. Master branch is in REACT.
 
 Printable and reponsive.
 

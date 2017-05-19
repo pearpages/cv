@@ -15,16 +15,31 @@ class App extends React.Component {
 
     constructor() {
         super();
-        this.state = { data: new Data(), config: new Config() };
+        this.state = {
+            data: new Data(),
+            config: new Config()
+        };
         this.updateDimensions = this.updateDimensions.bind(this);
     }
 
+    getSize() {
+        if(window.innerWidth < 768) {
+            return 'mobile';
+        } else {
+            return 'desktop';
+        }
+    }
+
     updateDimensions() {
-        this.setState({ width: window.innerWidth, height: window.innerHeight });
+        if(this.state.size !== this.getSize()) {
+            this.setState({size: this.getSize()});
+        }
     }
 
     componentWillMount() {
-        this.updateDimensions();
+        this.setState({
+            size: this.getSize()
+        })
     }
 
     componentDidMount() {
@@ -38,13 +53,13 @@ class App extends React.Component {
     }
 
     hasMobileSize() {
-        return this.state.width < 768;
+        return this.state.size === 'mobile';
     }
 
     render() {
         return (
             <div className={this.hasMobileSize() ? 'mobile' : 'pc'}>
-                <Menu data={this.state.config.getConfig()} />
+                <Menu anchors={this.state.config.getConfig().anchors} size={this.state.size}/>
                 <div className="row" >
                     {
                         !this.hasMobileSize() ?

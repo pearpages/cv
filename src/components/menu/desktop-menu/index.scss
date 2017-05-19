@@ -1,0 +1,23 @@
+.desktop-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    background: #fff;
+    font-family: Oswald, sans-serif;
+    font-weight: lighter;
+    box-shadow: 0px 3px 6px 2px #AAA;
+    span {
+        margin: 0 20px;
+        padding: 8px;
+        display: inline-block;
+    }
+    span:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    span.active {
+        color: #0275d8;
+    }
+}
