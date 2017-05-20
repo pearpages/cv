@@ -18,7 +18,7 @@ export default class Period extends React.Component {
 
     render() {
         const data = this.props.data;
-        return (<div className="timeline-item">
+        return (<div className="timeline-item anchor">
             <div className="date">{data.from} - {data.to}</div>
 
             <div className="wrapper">

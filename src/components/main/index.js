@@ -11,7 +11,7 @@ export default class Main extends React.Component {
     render() {
         return (
             <div className="col-md-9 col-sm-12 experience">
-                <div id="summary" className="row profile">
+                <div id="summary" className="row anchor profile">
                     <Summary data={this.props.summary} />
                 </div>
 

@@ -2,6 +2,8 @@ import React from 'react'
 import MobileMenu from './mobile-menu';
 import DesktopMenu from './desktop-menu';
 import jump from 'jump.js';
+import GoBottom from '../go-bottom';
+import {getNextNonVisibleAnchor} from '../../utils';
 
 export default class Menu extends React.Component {
 
@@ -62,6 +64,10 @@ export default class Menu extends React.Component {
         };
     }
 
+    handleOnClick () {
+        window.scrollTo(0,getNextNonVisibleAnchor());
+    }
+
     render() {
         return (
             <div>
@@ -81,6 +87,7 @@ export default class Menu extends React.Component {
                     active={this.state.active}
                 />
                 }
+                <GoBottom handleOnClick={this.handleOnClick}/>
             </div>
         );
     }

@@ -1,0 +1,23 @@
+@import '../../sass/colors';
+
+#go-bottom {
+    background: #fff;
+    padding: 10px;
+    position: fixed;
+    right: 0;
+    bottom: 100px;
+    z-index: 99999;
+    border-top-left-radius: 14px;
+    border-bottom-left-radius: 14px;
+    span {
+        color: $color2;
+        font-weight: bold;
+        border: 2px solid $color2;
+        border-radius: 50%;
+        text-align: center;
+        height: 30px;
+        padding: 6px;
+        width: 30px;
+        cursor: pointer;
+    }
+}
