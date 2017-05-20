@@ -6,53 +6,55 @@
 }
 
 @media print {
-    .pc {
-        margin-top: 0px;
-    }
-    -webkit-print-color-adjust: exact !important;
-    nav.navbar {
-        display: none !important;
-    }
-    text-align: justify;
-    .personal {
-        flex: 0 0 25%;
-        max-width: 25%;
-    }
-    .experience {
-        flex: 0 0 75%;
-        max-width: 75%;
-    }
-    .no-print,
-    .fa-caret-square-o-up,
-    .fa-caret-square-o-down {
-        display: none;
-    }
-    .hidden {
-        display: block;
-    }
-    a[href]:after {
-        content: "" !important;
-    }
-    #cv {
+    body {
+        .pc {
+            margin-top: 0px;
+        }
+        -webkit-print-color-adjust: exact !important;
+        nav.navbar {
+            display: none !important;
+        }
+        text-align: justify;
         .personal {
-            .glyphicon::before,
-            span.fa::before {
-                color: $color1 !important;
-            }
-            #contact,
-            #follow-me {
-                padding-left: 0;
-                padding-right: 0;
-            }
+            flex: 0 0 25%;
+            max-width: 25%;
         }
-        .experience .progress {
-            background-color: $color1 !important;
-            .progress-bar {
-                background-color: $color2 !important;
-            }
+        .experience {
+            flex: 0 0 75%;
+            max-width: 75%;
         }
-        .print {
-            display: block
+        .no-print,
+        .fa-caret-square-o-up,
+        .fa-caret-square-o-down {
+            display: none;
+        }
+        .hidden {
+            display: block;
+        }
+        a[href]:after {
+            content: "" !important;
+        }
+        #cv {
+            .personal {
+                .glyphicon::before,
+                span.fa::before {
+                    color: $color1 !important;
+                }
+                #contact,
+                #follow-me {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+            }
+            .experience .progress {
+                background-color: $color1 !important;
+                .progress-bar {
+                    background-color: $color2 !important;
+                }
+            }
+            .print {
+                display: block
+            }
         }
     }
 }
