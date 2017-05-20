@@ -1,6 +1,6 @@
 import React from 'react';
 import Stars from './stars';
-import ProgressBar from './progress-bar';
+import AnimatedProgressBar from '../progressbars/animated-progressbar';
 
 export default class Skills extends React.Component {
     render() {
@@ -15,7 +15,7 @@ export default class Skills extends React.Component {
                 <hr />
 
                 {this.props.data.bars.map( (data,i) => {
-                    return <ProgressBar name={data.name} value={data.value} identifier={i} key={i} mobile={this.props.mobile}/>
+                    return <AnimatedProgressBar name={data.name} value={data.value} identifier={i} key={i} mobile={this.props.mobile}/>
                 })}
 
             </div>

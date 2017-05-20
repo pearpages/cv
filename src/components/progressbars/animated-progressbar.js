@@ -1,5 +1,6 @@
 import React from 'react';
-import './progress-bar.scss';
+import './progressbars.scss';
+import CompactProgressbar from './compact-progressbar';
 
 function isInViewport(element) {
     var rect = element.getBoundingClientRect();
@@ -13,7 +14,7 @@ function isInViewport(element) {
     return res;
 }
 
-export default class ProgressBar extends React.Component {
+export default class AnimatedProgressBar extends React.Component {
 
     constructor() {
         super();
@@ -55,23 +56,8 @@ export default class ProgressBar extends React.Component {
     render() {
         return (
             (this.props.mobile) ?
-                <div className="row">
-                    <div className="col-sm-12">
-                        <div className="progress">
-                            <div className={"mobile progress-bar progress-bar-" + this.props.identifier} role="progressbar" style={{ width: this.state.value + '%' }}>
-                                {this.props.name}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <CompactProgressbar identifier={this.props.identifier} value={this.state.value} name={this.props.name}/>
                 :
-                <div className="row">
-                    <div className="col-sm-3">{this.props.name}</div>
-                    <div className="col-sm-9">
-                        <div className="progress">
-                            <div className={"progress-bar progress-bar-" + this.props.identifier} role="progressbar" style={{ width: this.state.value + '%' }}></div>
-                        </div>
-                    </div>
-                </div>);
+                <Progressbar identifier={this.props.identifier} value={this.state.value} name={this.props.name} />);
     }
 }
