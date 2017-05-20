@@ -1,7 +1,7 @@
 import React from 'react';
 import Summary from './summary';
 import Education from './education';
-import Skills from './skills';
+import Skills from '../skills';
 import Period from '../period';
 import ExperienceContainer from '../experience-container';
 import './index.scss';
