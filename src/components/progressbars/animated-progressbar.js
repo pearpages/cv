@@ -1,6 +1,7 @@
 import React from 'react';
 import './progressbars.scss';
 import CompactProgressbar from './compact-progressbar';
+import Progressbar from './progressbar';
 
 function isInViewport(element) {
     var rect = element.getBoundingClientRect();
