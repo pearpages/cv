@@ -3,7 +3,7 @@ import MobileMenu from './mobile-menu';
 import DesktopMenu from './desktop-menu';
 import jump from 'jump.js';
 import GoBottom from '../go-bottom';
-import {getNextNonVisibleAnchor} from '../../utils';
+import {getNextAnchorElement} from '../../utils';
 
 export default class Menu extends React.Component {
 
@@ -65,7 +65,7 @@ export default class Menu extends React.Component {
     }
 
     handleOnClick () {
-        window.scrollTo(0,getNextNonVisibleAnchor());
+        jump(getNextAnchorElement());
     }
 
     render() {

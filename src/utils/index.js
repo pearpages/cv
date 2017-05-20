@@ -10,15 +10,43 @@ export function isInViewport(element) {
     return res;
 }
 
-export function getNextNonVisibleAnchor() {
+export function getNextNonVisibleAnchorAbsoluteOffset() {
     const anchors = document.querySelectorAll('.anchor');
     let res = 0;
-    let currentPos = window.outerHeight;
-    console.log(currentPos);
+    let bottom = window.innerHeight;
     for (let el of anchors) {
         let top = el.getBoundingClientRect().top;
-        if (top > currentPos) {
-            return top;
+        if (top > bottom) {
+            return top + window.pageYOffset;
+        }
+    }
+    return res;
+}
+
+export function getNextAnchorAbsoluteOffset() {
+    const anchors = document.querySelectorAll('.anchor');
+    let res = 0;
+    for (let el of anchors) {
+        let top = el.getBoundingClientRect().top;
+        if (parseInt(top) > 1) {
+            return top + window.pageYOffset;
+        }
+    }
+    return res;
+}
+
+export function getNextAnchorElement() {
+    const anchors = document.querySelectorAll('.anchor');
+    let res = anchors[Object.keys(anchors)[0]];
+
+    if(document.documentElement.clientHeight === (window.pageYOffset + window.innerHeight)) {
+        return res;
+    }
+
+    for (let el of anchors) {
+        let top = el.getBoundingClientRect().top;
+        if (parseInt(top) > 1) {
+            return el;
         }
     }
     return res;

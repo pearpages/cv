@@ -14,7 +14,7 @@ export default class Sidebar extends React.Component {
 
     render() {
         return (
-            <div className="col-md-12 sidebar">
+            <div className={"col-md-12 sidebar "+(this.props.mobile ?'anchor':'')}>
                 <h4>{this.props.name}</h4>
 
                 {this.renderLinks()}
