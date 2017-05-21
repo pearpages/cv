@@ -1,6 +1,7 @@
 import React from 'react';
 import AnimatedStars from './stars/animated-stars';
 import AnimatedProgressBar from './progressbars/animated-progressbar';
+import OnlyWhenVisible from '../../shared/only-when-visible'
 import './index.scss';
 
 export default function Skills(props) {
@@ -10,7 +11,7 @@ export default function Skills(props) {
             <div className="row skills">
                 {props.data.stars.map((data, i) => {
                     return  <div  key={i} className="col-4 stars">
-                                <AnimatedStars value={data.stars} name={data.name}/>
+                                <OnlyWhenVisible><AnimatedStars value={data.stars} name={data.name}/></OnlyWhenVisible>
                             </div>
                 })}
             </div>
@@ -18,7 +19,7 @@ export default function Skills(props) {
             <hr />
 
             {props.data.bars.map((data, i) => {
-                return <AnimatedProgressBar name={data.name} value={data.value} identifier={i} key={i} mobile={props.mobile} />
+                return <OnlyWhenVisible key={i}><AnimatedProgressBar name={data.name} value={data.value} mobile={props.mobile} /></OnlyWhenVisible>
             })}
 
         </div>

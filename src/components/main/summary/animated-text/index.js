@@ -13,15 +13,20 @@ export default class AnimatedText extends React.Component {
     }
 
     recursive() {
-        if (this.props.text + '_' !== this.state.value) {
-            setTimeout(() => {
-                const string = this.props.text.substr(0, this.state.value.length + 1) + '_';
-                this.setState({ value: string });
-                this.recursive();
-            }, 200);
-        } else {
-            this.setState({ value: this.state.value.substr(0,this.state.value.length - 1) });
+        if (this.props.visible) {
+            if (this.props.text + '_' !== this.state.value) {
+                setTimeout(() => {
+                    const string = this.props.text.substr(0, this.state.value.length + 1) + '_';
+                    this.setState({ value: string });
+                }, 200);
+            } else {
+                this.setState({ value: this.state.value.substr(0, this.state.value.length - 1) });
+            }
         }
+    }
+
+    componentDidUpdate() {
+        this.recursive();
     }
 
     render() {
