@@ -1,6 +1,7 @@
 import React from 'react';
-import Stars from './stars';
+import AnimatedStars from './stars/animated-stars';
 import AnimatedProgressBar from './progressbars/animated-progressbar';
+import './index.scss';
 
 export default function Skills(props) {
 
@@ -8,7 +9,9 @@ export default function Skills(props) {
         <div>
             <div className="row skills">
                 {props.data.stars.map((data, i) => {
-                    return <Stars class="col-4" key={i} data={data} />
+                    return  <div  key={i} className="col-4 stars">
+                                <AnimatedStars value={data.stars} name={data.name}/>
+                            </div>
                 })}
             </div>
 
