@@ -1,24 +1,14 @@
 import React from 'react';
 import LinkWithIcon from '../link-with-icon';
 
-export default class Sidebar extends React.Component {
+export default function Sidebar(props) {
 
-    renderLinks() {
-        let links = [];
-        this.props.data.forEach((v) => {
-            links.push(<LinkWithIcon key={v.icon} linkData={v} />);
-        });
+    return (
+        <div className={"col-md-12 sidebar " + (props.mobile ? 'anchor' : '')}>
+            <h4>{props.name}</h4>
 
-        return links;
-    }
+            {props.data.map((v) => <LinkWithIcon key={v.icon} linkData={v} />)}
+        </div>
+    );
 
-    render() {
-        return (
-            <div className={"col-md-12 sidebar "+(this.props.mobile ?'anchor':'')}>
-                <h4>{this.props.name}</h4>
-
-                {this.renderLinks()}
-            </div>
-        );
-    }
 }
