@@ -2,7 +2,7 @@ import React from 'react';
 import './progressbars.scss';
 import CompactProgressbar from './compact-progressbar';
 import Progressbar from './progressbar';
-import {isInViewport} from '../../utils';
+import {isInViewport} from '../../../../utils';
 
 
 export default class AnimatedProgressBar extends React.Component {

@@ -1,6 +1,6 @@
 import React from 'react';
 import Stars from './stars';
-import AnimatedProgressBar from '../progressbars/animated-progressbar';
+import AnimatedProgressBar from './progressbars/animated-progressbar';
 
 export default class Skills extends React.Component {
     render() {

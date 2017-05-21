@@ -1,6 +1,6 @@
 import React from 'react';
 import TitleWithImage from '../title-with-image';
-import './education.scss';
+import './index.scss';
 
 export default class Education extends React.Component {
     render() {

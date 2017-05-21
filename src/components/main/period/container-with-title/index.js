@@ -1,5 +1,5 @@
 import React from 'react';
-import './container-with-title.scss';
+import './index.scss';
 
 export default class ContainerWithTitle extends React.Component {
 

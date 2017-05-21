@@ -1,6 +1,6 @@
 import React from 'react';
-import AnimatedText from '../animated-text';
-import './summary.scss';
+import AnimatedText from './animated-text';
+import './index.scss';
 
 export default class Summary extends React.Component {
     render() {

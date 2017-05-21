@@ -1,5 +1,5 @@
 import React from 'react';
-import LinkWithIcon from './link-with-icon';
+import LinkWithIcon from '../link-with-icon';
 
 export default class Sidebar extends React.Component {
 

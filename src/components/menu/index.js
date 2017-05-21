@@ -2,7 +2,7 @@ import React from 'react'
 import MobileMenu from './mobile-menu';
 import DesktopMenu from './desktop-menu';
 import jump from 'jump.js';
-import GoBottom from '../go-bottom';
+import GoBottom from './go-bottom';
 import {getNextAnchorElement} from '../../utils';
 
 export default class Menu extends React.Component {

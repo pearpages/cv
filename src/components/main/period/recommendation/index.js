@@ -1,5 +1,5 @@
 import React from 'react';
-import './recommendation.scss';
+import './index.scss';
 
 export default class Recommendation extends React.Component {
     render() {
