@@ -1,9 +1,12 @@
 import React from 'react'
 import './index.scss';
 
-export default class GoBottom extends React.Component {
+export default function GoBottom(props) {
 
-    render () {
-        return (<div onClick={this.props.handleOnClick} id="go-bottom"><span className="fa fa-angle-down"></span></div>);
-    }
+    return (<div
+                onClick={props.handleOnClick}
+                id="go-bottom">
+                    <span className="fa fa-angle-down"></span>
+            </div>);
+
 }
