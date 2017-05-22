@@ -26,6 +26,9 @@
     .person {
         font-family: sans-serif !important;
         text-align: center;
+        .float-right {
+            min-width: 200px;
+        }
         .name {
             color: $color7;
             a {
