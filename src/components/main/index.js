@@ -2,8 +2,10 @@ import React from 'react';
 import Summary from './summary';
 import Education from './education';
 import Skills from './skills';
+import Experience from './experience';
 import Period from './period';
 import ExperienceContainer from './experience-container';
+import OnlyWhenVisible from '../shared/only-when-visible'
 import './index.scss';
 
 export default function Main(props) {
@@ -23,12 +25,9 @@ export default function Main(props) {
             </ExperienceContainer>
 
             <ExperienceContainer id="experience" name="EXPERIENCE">
-                <div className="resume">
-                    {props.experience.map((v) => {
-                        return <Period key={v.id} data={v} />
-                    })}
-                </div>
+                <Experience experience={props.experience} />
             </ExperienceContainer>
+
         </div>
     );
 

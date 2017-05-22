@@ -21,7 +21,7 @@ export default class AnimatedStars extends React.Component {
         if (this.state.value < this.props.value && this.props.visible) {
             setTimeout(() => {
                 this.setState({ value: this.state.value + 0.5 });
-            }, 500);
+            }, 200);
         }
     }
 
