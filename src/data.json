@@ -73,14 +73,20 @@
                 "from": "March 2017",
                 "to": "May 2017",
                 "title": "Contributor",
-                "employers": [6,5,4]
+                "employers": [
+                    6,
+                    5,
+                    4
+                ]
             },
             {
                 "id": 4,
                 "from": "October 2016",
                 "to": "March 2017",
                 "title": "Lead Front End Engineer",
-                "employers": [3],
+                "employers": [
+                    3
+                ],
                 "description": "Lead frontend development and design being updated on new technologies and latest trends. Teach team about frontend development, design patterns, best practices, resources... Identify opportunities and risks and propose new solutions to identified problems in your area of expertise.",
                 "projects": "<p>Develop, improve, refactor the Company App <a href='https://itunes.apple.com/es/app/wefitter-fitness-and-motivation/id1090432973?l=en&mt=8' class='external-link'>WeFitter App</a><p>",
                 "recommendations": [
@@ -92,7 +98,9 @@
                 "from": "June 2015",
                 "to": "September 2016",
                 "title": "Front End Developer",
-                "employers": [2],
+                "employers": [
+                    2
+                ],
                 "description": "Maintainence of the previously created Reporting System. Front End Developer of the Company after having successfully introduced AngularJS as the client-side framework for the company and becoming its evangelist.",
                 "projects": "<ul><li>eFolder project with AngularJS</li><li>AngularJS widgets e.g. Fac Out Calculator</li><li>Portfolio Analysis Report with AngularJS</li><li>Mobile Version of the Ticketing Tool with Ionic</li></ul>",
                 "recommendations": [
@@ -104,7 +112,9 @@
                 "from": "April 2011",
                 "to": "June 2015",
                 "title": "Analyst Programmer",
-                "employers": [2],
+                "employers": [
+                    2
+                ],
                 "description": "The creation of a Reporting System for the UWs and Management team with the requirements of the Business Analyst team.",
                 "projects": "<ul><li><strong>Reporting System</strong> with Zend PHP, jQuery, Javascript, MSSQL and Bootstrap<ul><li>Gross Written Premium Report</li><li>Monthly Activity Report</li><li>Fac Out Limits Report</li><li>Claims Acitivity Report</li><li>Broker Trip Report</li><li>Underwriting Activity Report</li><li>Others</li></ul></li><li><strong>Ticketing Tool (Helpdesk App)</strong> for the offices of Barcelona and Madrid with Zend PHP, jQuery, Javascript, MSSQL and UIKit</li><li><strong>Booking Tool (Travel App)</strong> with Zend PHP, jQuery, Javascript, MSSQL and Bootstrap</li></ul>",
                 "recommendations": [
@@ -116,11 +126,13 @@
                 "from": "January 2007",
                 "to": "April 2011",
                 "title": "Web Developer",
-                "employers": [1],
+                "employers": [
+                    1
+                ],
                 "description": "Projects with PHP, Drupal and MySQL.",
                 "projects": "<ul class='webs'><li>Col·legi de Periodistes de Catalunya <span>www.periodistes.org</span></li><li>Associcació d'Escriptors en Llengua Catalana <span>www.escriptors.cat</span></li><li>Il·lustre Col·legi de l'Advocacia de Barcelona <span>www.icab.cat</span></li><li>Grup Mas i Mas <span>www.masimas.com</span></li><li>La Sala Teatre, Olicatessen ...</li></ul>",
                 "recommendations": [
-                    1
+                    5,1
                 ]
             }
         ],
@@ -164,6 +176,11 @@
         ],
         "recommendations": [
             {
+                "id": 5,
+                "colleague": 5,
+                "text": "<p>Pere is a talented backend and frontend developer, great team player, tech passionate and easy to get on with work mate.</p>"
+            },
+            {
                 "id": 4,
                 "colleague": 4,
                 "text": "<p>Pere is a highly talented web frontend developer. During his time at WeFitter he did great work improving our app and sites using latest technologies like Angular2, which he masters. Hard worker and always open to help, he has taught the team on best development practices, and he inspired us to make better code and be aware of latest trends. </p><p>Apart from professional skills, he is a great team mate and fosters a nice work environment. He makes the office a better and more fun place to be from minute 0. I wish him all the best in his future career!</p>"
@@ -185,6 +202,14 @@
             }
         ],
         "colleagues": [
+            {
+                "id": 5,
+                "name": "Oriol Bel Valls",
+                "title": "IT Analyst & Developer",
+                "image": "colleague.png",
+                "in": "https://www.linkedin.com/in/oriol-bel-valls-a901349/",
+                "employer": 1
+            },
             {
                 "id": 4,
                 "name": "Alvaro R Moya",
