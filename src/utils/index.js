@@ -63,3 +63,7 @@ export function findActiveAnchor(anchors) {
     });
     return id;
 }
+
+export function isDocumentBottom() {
+    return (document.documentElement.clientHeight === (window.innerHeight + window.pageYOffset));
+}

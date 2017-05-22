@@ -3,13 +3,14 @@ import MobileMenu from './mobile-menu';
 import DesktopMenu from './desktop-menu';
 import jump from 'jump.js';
 import GoBottom from './go-bottom';
-import {getNextAnchorElement,findActiveAnchor} from '../../utils';
+import {getNextAnchorElement,findActiveAnchor,isDocumentBottom} from '../../utils';
 
 export default class Menu extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            bottom: false,
             anchors: this.props.anchors,
             collapse: true,
             active: 'summary'
@@ -36,7 +37,9 @@ export default class Menu extends React.Component {
         const anchors = this.props.anchors[this.props.size];
         let id = findActiveAnchor(anchors);
         if(this.state.active !== id && id !== '') {
-            this.setState({active: id});
+            this.setState({active: id,bottom: isDocumentBottom()});
+        } else {
+             this.setState({bottom: isDocumentBottom()});
         }
     }
 
@@ -55,7 +58,7 @@ export default class Menu extends React.Component {
         };
     }
 
-    handleOnClick () {
+    handleGoBottomClick () {
         jump(getNextAnchorElement());
     }
 
@@ -78,7 +81,7 @@ export default class Menu extends React.Component {
                     active={this.state.active}
                 />
                 }
-                <GoBottom handleOnClick={this.handleOnClick}/>
+                <GoBottom bottom={this.state.bottom} handleOnClick={this.handleGoBottomClick}/>
             </div>
         );
     }
