@@ -1,5 +1,6 @@
 import React from 'react';
 import './index.scss';
+import ExternalLink from '../../shared/external-link';
 
 export default function TitleWithImage(props) {
 
@@ -10,7 +11,7 @@ export default function TitleWithImage(props) {
             <div className="name-and-title">
                 <h1><span className={"fa fa-" + data.icon}></span> {data.line1}</h1>
                 {(data.url) ?
-                    <h2><a target="_blank" className="external-link" href={data.url}>{data.line2}</a></h2>
+                    <h2><ExternalLink url={data.url}>{data.line2}</ExternalLink></h2>
                     :
                     <h2>{data.line2}</h2>
                 }
