@@ -32,6 +32,9 @@ export default class AnimatedProgressBar extends React.Component {
             (this.props.mobile) ?
                 <CompactProgressbar value={this.state.value} name={this.props.name} />
                 :
-                <Progressbar value={this.state.value} name={this.props.name} />);
+                <div>
+                <Progressbar className="no-print" value={this.state.value} name={this.props.name} />
+                <CompactProgressbar className="print" value={this.state.value} name={this.props.name} />
+                </div>);
     }
 }

@@ -3,7 +3,7 @@ import './progressbars.scss';
 
 export default function Progressbar(props) {
 
-    return (<div className="row">
+    return (<div className={"row "+props.className}>
         <div className="col-sm-3">{props.name}</div>
         <div className="col-sm-9">
             <div className="progress">
