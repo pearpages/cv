@@ -18,12 +18,8 @@
         .contain {
             margin-top: 2.5rem;
     }
-    .wrapper {
-        border-radius: 10px;
-        border: 1px solid $color42;
-        padding: 20px;
-        background: $color41;
-        box-shadow: inset 0px 0px 6px 2px $color42;
+    .visible {
+        padding-top: 30px;
     }
     h2 {
         cursor: pointer;

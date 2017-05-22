@@ -1,5 +1,5 @@
 import React from 'react'
-import ContainerWithTitle from './container-with-title';
+import ContainerWithTitle from '../../shared/container-with-title';
 import Recommendation from './recommendation';
 import TitleWithImage from '../title-with-image';
 import './index.scss';
@@ -30,11 +30,11 @@ export default class Period extends React.Component {
 
                 {(data.description) ? <div className="period-description">{data.description}</div> : null}
 
-                {(data.projects) ? <ContainerWithTitle name="Projects" icon="code-fork" html={data.projects} /> : null}
+                {(data.projects) ? <ContainerWithTitle size="h3" name="Projects" icon="code-fork" html={data.projects} /> : null}
 
                 {
                     (this.getRecommendations()) ?
-                        <ContainerWithTitle name="Recommendations" icon="handshake-o" html={this.getRecommendations()} /> : null
+                        <ContainerWithTitle size="h3" name="Recommendations" icon="handshake-o">{this.getRecommendations()}</ContainerWithTitle> : null
                 }
             </div>
 

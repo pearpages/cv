@@ -3,10 +3,10 @@ import './index.scss';
 
 export default class ContainerWithTitle extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            hidden: true
+            hidden: props.hidden !== undefined ? props.hidden : true
         }
         this.handleClick = this.handleClick.bind(this);
     }
@@ -16,8 +16,8 @@ export default class ContainerWithTitle extends React.Component {
     }
 
     getContent() {
-        if(typeof(this.props.html) === 'object') {
-            return <div className={(this.state.hidden) ? 'hidden': 'visible'}>{this.props.html}</div>;
+        if(this.props.children) {
+            return <div className={(this.state.hidden) ? 'hidden': 'visible'}>{this.props.children}</div>;
         }
         return <div className={(this.state.hidden) ? 'hidden': 'visible'} dangerouslySetInnerHTML={{ __html: this.props.html}} />;
     }
@@ -25,7 +25,7 @@ export default class ContainerWithTitle extends React.Component {
     render() {
         return (
             <div className="container-with-title">
-                <h3 onClick={this.handleClick}><span className={"icon fa fa-"+this.props.icon}></span> {this.props.name} <span className={"fa fa-caret-square-o-"+((this.state.hidden) ? 'up' : 'down')}></span></h3>
+                <this.props.size onClick={this.handleClick}><span className={"icon fa fa-"+this.props.icon}></span> {this.props.name} <span className={"fa fa-caret-square-o-"+((this.state.hidden) ? 'up' : 'down')}></span></this.props.size>
                 {this.getContent()}
             </div>
         );
