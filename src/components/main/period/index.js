@@ -10,7 +10,6 @@ export default class Period extends React.Component {
         const re = this.props.data.recommendations;
         if (re) {
             return re.map((re) => {
-                console.log(re);
                 return <Recommendation key={re.id} data={re} />
             });
         }

@@ -39,7 +39,7 @@ export function getNextAnchorElement() {
     const anchors = document.querySelectorAll('.anchor');
     let res = anchors[Object.keys(anchors)[0]];
 
-    if(document.documentElement.clientHeight === (window.pageYOffset + window.innerHeight)) {
+    if (document.documentElement.clientHeight === (window.pageYOffset + window.innerHeight)) {
         return res;
     }
 
@@ -50,4 +50,16 @@ export function getNextAnchorElement() {
         }
     }
     return res;
+}
+
+export function findActiveAnchor(anchors) {
+    let id = anchors[0].id;
+    anchors.find(anchor => {
+        const el = document.getElementById(anchor.id);
+        const pos = el.getBoundingClientRect();
+        if (pos.top <= 20 && pos.bottom > 0) {
+            id = anchor.id;
+        }
+    });
+    return id;
 }

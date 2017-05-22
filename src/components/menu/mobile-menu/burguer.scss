@@ -1,0 +1,10 @@
+@import '../../../sass/colors';
+
+#mobile-menu {
+    position: fixed;
+    top: 25px;
+    font-size: 20px;
+    right: 25px;
+    z-index: 9999999;
+    color: $color7;
+}

@@ -3,7 +3,7 @@ import MobileMenu from './mobile-menu';
 import DesktopMenu from './desktop-menu';
 import jump from 'jump.js';
 import GoBottom from './go-bottom';
-import {getNextAnchorElement} from '../../utils';
+import {getNextAnchorElement,findActiveAnchor} from '../../utils';
 
 export default class Menu extends React.Component {
 
@@ -15,13 +15,13 @@ export default class Menu extends React.Component {
             active: 'summary'
         };
 
-        this.handleClick = this.handleClick.bind(this);
+        this.handleMobileMenuClick = this.handleMobileMenuClick.bind(this);
         this.setActive = this.setActive.bind(this);
-        this.updateScrollPosition = this.updateScrollPosition.bind(this);
+        this.updateActiveElmentByScrollPosition = this.updateActiveElmentByScrollPosition.bind(this);
     }
 
     componentDidMount() {
-        window.addEventListener("scroll", this.updateScrollPosition);
+        window.addEventListener("scroll", this.updateActiveElmentByScrollPosition);
         const hash = window.location.hash.substr(1);
         if(hash !== this.state.active) {
             this.setState({active: hash});
@@ -29,27 +29,18 @@ export default class Menu extends React.Component {
     }
 
     componentWillUnmount() {
-        window.addRemoveListener("scroll", this.updateScrollPosition);
+        window.addRemoveListener("scroll", this.updateActiveElmentByScrollPosition);
     }
 
-    updateScrollPosition(event) {
+    updateActiveElmentByScrollPosition(event) {
         const anchors = this.props.anchors[this.props.size];
-        let res = 99999999;
-        let id = '';
-        anchors.forEach( anchor => {
-            const el = document.getElementById(anchor.id);
-            const pos = el.getBoundingClientRect();
-            if(pos.top <= 20 && pos.bottom > 0 && pos.top < res) {
-                res = pos;
-                id = anchor.id;
-            }
-        });
+        let id = findActiveAnchor(anchors);
         if(this.state.active !== id && id !== '') {
             this.setState({active: id});
         }
     }
 
-    handleClick(event) {
+    handleMobileMenuClick(event) {
         this.setState({ collapse: !this.state.collapse });
     }
 
@@ -77,7 +68,7 @@ export default class Menu extends React.Component {
                     active={this.state.active}
                     collapse={this.state.collapse}
                     setActive={this.setActive()}
-                    handleClick={this.handleClick}
+                    handleBurguerClick={this.handleMobileMenuClick}
                 />
                 :
                 <DesktopMenu
