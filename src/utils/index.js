@@ -64,6 +64,6 @@ export function findActiveAnchor(anchors) {
     return id;
 }
 
-export function isDocumentBottom() {
-    return (document.documentElement.clientHeight === (window.innerHeight + window.pageYOffset));
+export function isDocumentBottom(margin = 0) {
+    return ( (document.documentElement.clientHeight - margin )  <= (window.innerHeight + window.pageYOffset));
 }

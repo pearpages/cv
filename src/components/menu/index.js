@@ -37,9 +37,9 @@ export default class Menu extends React.Component {
         const anchors = this.props.anchors[this.props.size];
         let id = findActiveAnchor(anchors);
         if(this.state.active !== id && id !== '') {
-            this.setState({active: id,bottom: isDocumentBottom()});
+            this.setState({active: id,bottom: isDocumentBottom(350)});
         } else {
-             this.setState({bottom: isDocumentBottom()});
+             this.setState({bottom: isDocumentBottom(350)});
         }
     }
 
