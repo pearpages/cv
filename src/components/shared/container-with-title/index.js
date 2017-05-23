@@ -17,7 +17,7 @@ export default class ContainerWithTitle extends React.Component {
 
     getStyle() {
         if(this.state.hidden) {
-            return {height: '0px', padding: '0px'}
+            return {height: '0px', paddingTop: '0px'}
         }
     }
 
