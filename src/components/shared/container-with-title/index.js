@@ -6,15 +6,9 @@ export default class ContainerWithTitle extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {hidden: false};
+        this.state = {hidden: this.props.hidden};
         this.handleClick = this.handleClick.bind(this);
         this.getStyle = this.getStyle.bind(this);
-    }
-
-    componentDidMount() {
-        const height = this.refs.content.clientHeight;
-        console.log(this.refs.content,height);
-        this.setState({hidden: this.props.hidden, initialHeight: height});
     }
 
     handleClick() {
@@ -24,24 +18,14 @@ export default class ContainerWithTitle extends React.Component {
     getStyle() {
         if(this.state.hidden) {
             return {height: '0px', padding: '0px'}
-        } else {
-            return {height: this.state.initialHeight};
         }
     }
 
     getContent() {
         if(this.props.children) {
-            return <div
-                        className="container"
-                        ref="content"
-                        style={this.getStyle()}
-                        >{this.props.children}</div>;
+            return this.props.children;
         }
-        return <div
-                    className="container"
-                    ref="content"
-                    style={this.getStyle()}
-                    dangerouslySetInnerHTML={{ __html: this.props.html}} />;
+        return <div dangerouslySetInnerHTML={{ __html: this.props.html}} ></div>;
     }
 
     render() {
@@ -53,7 +37,11 @@ export default class ContainerWithTitle extends React.Component {
                     icon={this.props.icon}
                     hidden={this.state.hidden}
                     >{this.props.name}</ContainerTitle>
-                    {this.getContent()}
+                    <div
+                        className="container"
+                        ref="content"
+                        style={this.getStyle()}
+                        >{this.getContent()}</div>
             </div>
         );
     }

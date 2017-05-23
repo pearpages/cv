@@ -1,0 +1,22 @@
+@import '../../../../../sass/colors';
+
+.person {
+    font-family: sans-serif !important;
+    text-align: center;
+    .float-right {
+        min-width: 200px;
+    }
+    .name {
+        color: $color7;
+        a {
+            cursor: pointer;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    }
+    .position {
+        font-weight: bold;
+        font-size: 0.7rem;
+    }
+}

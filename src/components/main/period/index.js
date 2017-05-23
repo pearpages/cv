@@ -2,42 +2,46 @@ import React from 'react'
 import ContainerWithTitle from '../../shared/container-with-title';
 import Recommendation from './recommendation';
 import TitleWithImage from '../title-with-image';
+import Timeline from './timeline'
 import './index.scss';
 
-export default class Period extends React.Component {
+export default function Period(props) {
 
-    getRecommendations() {
-        const re = this.props.data.recommendations;
-        if (re) {
-            return re.map((re) => {
-                return <Recommendation key={re.id} data={re} />
-            });
-        }
-        return false;
+    const data = props.data;
+    return (<Timeline from={data.from} to={data.to}>
+        {Period.getEmployers(data)}
+        {Period.getDescription(data)}
+        {Period.getProjects(data)}
+        {Period.getRecommendations(data)}
+    </Timeline>);
+}
+
+Period.mapRecommendations = function (data) {
+    const re = data.recommendations;
+    if (re) {
+        return re.map((re) => {
+            return <Recommendation key={re.id} data={re} />
+        });
     }
+    return false;
+}
 
-    render() {
-        const data = this.props.data;
-        return (<div className="timeline-item anchor">
-            <div className="date">{data.from} - {data.to}</div>
+Period.getEmployers = function (data) {
+    return data.employers.map((employer) => {
+        return <TitleWithImage key={employer.id} data={employer} />
+    })
+}
 
-            <div className="wrapper">
-                {
-                    data.employers.map( (employer) => {
-                        return <TitleWithImage key={employer.id} data={employer} />
-                    })
-                }
+Period.getDescription = function (data) {
+    return (data.description) ? <div className="period-description">{data.description}</div> : null;
+}
 
-                {(data.description) ? <div className="period-description">{data.description}</div> : null}
+Period.getProjects = function (data) {
+    return (data.projects) ? <ContainerWithTitle hidden={true} size="h3" name="Projects" icon="code-fork" html={data.projects} /> : null;
+}
 
-                {(data.projects) ? <ContainerWithTitle size="h3" name="Projects" icon="code-fork" html={data.projects} /> : null}
-
-                {
-                    (this.getRecommendations()) ?
-                        <ContainerWithTitle size="h3" name="Recommendations" icon="handshake-o">{this.getRecommendations()}</ContainerWithTitle> : null
-                }
-            </div>
-
-        </div>);
-    }
+Period.getRecommendations = function (data) {
+    let recommendations = this.mapRecommendations(data);
+    return (recommendations) ?
+        <ContainerWithTitle hidden={true} size="h3" name="Recommendations" icon="handshake-o">{recommendations}</ContainerWithTitle> : null
 }
