@@ -2,4 +2,12 @@
     h3 {
         cursor: pointer;
     }
+    .container {
+        padding-top: 20px;
+        overflow: hidden;
+        transition: height 300ms, padding 400ms;
+    }
+    .container  .container {
+        padding: 0px;
+    }
 }
