@@ -12,13 +12,10 @@ export default function Secondary(props) {
                 </div>
             </div>
 
-            <div id="contact" className="row section dark-blue">
-                <Sidebar id="contact" name="CONTACT ME" mobile={props.mobile} data={props.contact} />
-            </div>
+            <Sidebar id="contact" name="CONTACT ME" mobile={props.mobile} data={props.contact} />
 
-            <div id="community" className="row section dark-blue">
-                <Sidebar id="community" name="COMMUNITY" mobile={props.mobile} data={props.community} />
-            </div>
+            <Sidebar id="community" name="COMMUNITY" mobile={props.mobile} data={props.community} />
+
         </div>);
 
 }

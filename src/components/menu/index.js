@@ -52,14 +52,14 @@ export default class Menu extends React.Component {
             return (event) => {
                 event.preventDefault();
                 this.setState({ active: anchor, collapse: true });
-                jump('#' + anchor);
+                jump('#' + anchor,300);
                 window.location.hash = anchor;
             };
         };
     }
 
     handleGoBottomClick () {
-        jump(getNextAnchorElement());
+        jump(getNextAnchorElement(),{duration:300});
     }
 
     render() {

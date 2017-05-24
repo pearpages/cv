@@ -1,4 +1,4 @@
-export function isInViewport(element) {
+export function isWholeInViewport(element) {
     var rect = element.getBoundingClientRect();
     var html = document.documentElement;
     const res = (
@@ -8,6 +8,11 @@ export function isInViewport(element) {
         rect.right <= (window.innerWidth || html.clientWidth)
     );
     return res;
+}
+
+export function isInViewport(element) {
+    var rect = element.getBoundingClientRect();
+    return rect.top >= 0 && rect.top <= window.innerHeight|| rect.bottom >= 0 && rect.top <= window.innerHeight;
 }
 
 export function getNextNonVisibleAnchorAbsoluteOffset() {

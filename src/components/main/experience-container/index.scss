@@ -1,11 +1,10 @@
 @import '../../../sass/colors';
-
-.pc .experience-container{
+.pc .experience-container {
     padding: 40px 40px;
     margin-bottom: 30px;
 }
 
-.mobile .experience-container{
+.mobile .experience-container {
     padding: 20px 20px;
     margin-bottom: 30px;
     h3 {
@@ -14,19 +13,26 @@
 }
 
 .experience-container {
+    transition: right 300ms;
+    position: relative;
+    right: -9000px;
     background-color: $color4;
-        .contain {
-            margin-top: 2.5rem;
+    .contain {
+        margin-top: 2.5rem;
     }
     h2 {
         cursor: pointer;
     }
-    .col-md-12{
+    .col-md-12 {
         padding: 0;
         margin: 0;
     }
 }
 
-.experience-container > .col-md-12 > .container-with-title > .visible {
+.experience-container.ready {
+    right: 0;
+}
+
+.experience-container>.col-md-12>.container-with-title>.visible {
     padding-top: 30px;
 }

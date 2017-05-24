@@ -5,11 +5,11 @@ export default class OnlyWhenVisible extends React.Component {
 
     constructor() {
         super();
-        this.state = { visible: false, id: OnlyWhenVisible.makeId() };
+        this.state = { visible: false };
     }
 
     componentDidMount() {
-        const el = document.getElementById('only-when-visible-' + this.state.id);
+        const el = this.refs.content;
         if (isInViewport(el)) {
             this.setState({ visible: true });
         } else {
@@ -29,13 +29,6 @@ export default class OnlyWhenVisible extends React.Component {
     }
 
     render() {
-        return (<span id={'only-when-visible-' + this.state.id}>
-            {React.cloneElement(this.props.children, { visible: this.state.visible })}
-        </span>);
+        return (<span ref="content">{React.cloneElement(this.props.children, { visible: this.state.visible })}</span>);
     }
-}
-
-OnlyWhenVisible._id = 0;
-OnlyWhenVisible.makeId = function () {
-    return ++OnlyWhenVisible._id;
 }
