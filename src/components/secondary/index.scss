@@ -58,12 +58,13 @@
 
 .sidebar,
 #picture {
-    position: relative;
-    left: -9000px;
-    transition: left 300ms;
+    // here
+    opacity: 0;
+    transition: opacity 700ms 300ms;
 }
 
 .sidebar.ready,
 #picture.ready {
-    left: 0;
+    // here
+    opacity: 1;
 }

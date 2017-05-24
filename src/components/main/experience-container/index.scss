@@ -13,9 +13,9 @@
 }
 
 .experience-container {
-    transition: right 300ms;
-    position: relative;
-    right: -9000px;
+    // here
+    transition: opacity 700ms 300ms;
+    opacity: 0;
     background-color: $color4;
     .contain {
         margin-top: 2.5rem;
@@ -30,7 +30,8 @@
 }
 
 .experience-container.ready {
-    right: 0;
+    // here
+    opacity: 1;
 }
 
 .experience-container>.col-md-12>.container-with-title>.visible {

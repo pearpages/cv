@@ -10,12 +10,13 @@ $border-color: rgba(black, .3);
         padding: 20px;
         background: $color41;
         box-shadow: inset 0px 0px 6px 2px $color42;
-        transition: right 300ms;
-        right: -9000px;
-        position: relative;
+        // here
+        transition: opacity 700ms 300ms;
+        opacity: 0;
     }
     .wrapper.ready{
-        right: 0;
+        // here
+        opacity: 1;
     }
     p {
         font-size: 1rem;
@@ -41,5 +42,6 @@ $border-color: rgba(black, .3);
     }
     &:last-child {
         border-image: linear-gradient( to bottom, $border-color 60%, rgba($border-color, 0)) 1 100%;
+        border-right: 0;
     }
 }
