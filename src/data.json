@@ -58,12 +58,14 @@
         {
             "name": "UOC",
             "description": "Bachelor Degree in Computer Science",
-            "image": "UOC.png"
+            "image": "UOC.png",
+            "url": "http://www.uoc.edu/portal/en/index.html"
         },
         {
             "name": "University Of Sheffield",
             "description": "Erasmus",
-            "image": "University-of-sheffield.png"
+            "image": "University-of-sheffield.png",
+            "url": "https://www.sheffield.ac.uk/"
         }
     ],
     "experience": {

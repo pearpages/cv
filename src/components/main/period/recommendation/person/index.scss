@@ -7,9 +7,9 @@
         min-width: 200px;
     }
     .name {
-        color: $color7;
         a {
             cursor: pointer;
+            color: $color7;
         }
         a:hover {
             text-decoration: underline;

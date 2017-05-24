@@ -14,7 +14,8 @@ export default function Education(props) {
                                 icon: 'graduation-cap',
                                 imageFile: data.image,
                                 line1: data.description,
-                                line2: data.name
+                                line2: data.name,
+                                url: data.url
                             }} />
                         </li>
                     );
