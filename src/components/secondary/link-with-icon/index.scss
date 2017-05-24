@@ -1,0 +1,11 @@
+a {
+    .fa {
+        transition: transform 300ms;
+    }
+}
+
+a:hover {
+    .fa {
+        transform: scale(1.3);
+    }
+}

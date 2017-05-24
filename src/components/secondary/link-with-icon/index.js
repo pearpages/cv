@@ -1,5 +1,6 @@
 import React from 'react';
 import ExternalLink from '../../shared/external-link'
+import './index.scss';
 
 export default function LinkWithIcon(props) {
 

@@ -1,30 +1,31 @@
 import React from 'react'
-import { isInViewport } from '../../../utils'
+import { isInViewport, isWholeInViewport } from '../../../utils'
 
 export default class OnlyWhenVisible extends React.Component {
 
-    constructor() {
-        super();
-        this.state = { visible: false };
+    constructor(props) {
+        super(props);
+        if (this.props.strategy === 'isWholeInViewPort') {
+            this.state = { visible: false, strategy: isWholeInViewport };
+        } else {
+            this.state = { visible: false, strategy: isInViewport };
+        }
+        this.handleOnScroll = this.handleOnScroll.bind(this);
     }
 
     componentDidMount() {
         const el = this.refs.content;
-        if (isInViewport(el)) {
+        if (this.state.strategy(el)) {
             this.setState({ visible: true });
         } else {
-            this.onScroll = this.onScrollMaker(el).bind(this);
-            window.addEventListener('scroll', this.onScroll);
+            window.addEventListener('scroll', this.handleOnScroll);
         }
     }
 
-    onScrollMaker(element) {
-        return function (event) {
-            const res = isInViewport(element);
-            if (res) {
-                window.removeEventListener('scroll', this.onScroll);
-                this.setState({ visible: true });
-            }
+    handleOnScroll(event) {
+        if (this.state.strategy(this.refs.content)) {
+            this.setState({ visible: true });
+            window.removeEventListener('scroll', this.handleOnScroll);
         }
     }
 

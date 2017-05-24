@@ -1,4 +1,6 @@
 import React from 'react';
+import OnlyWhenVisible from '../../../shared/only-when-visible'
+import Wrapper from './wrapper'
 import './index.scss';
 
 export default function Timeline(props) {
@@ -6,9 +8,9 @@ export default function Timeline(props) {
     return (<div className="timeline-item anchor">
             <div className="date">{props.from} - {props.to}</div>
 
-            <div className="wrapper">
-                {props.children}
-            </div>
+            <OnlyWhenVisible>
+                <Wrapper {...props}/>
+            </OnlyWhenVisible>
 
         </div>);
 
