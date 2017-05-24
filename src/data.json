@@ -126,7 +126,7 @@
                 "employers": [
                     2
                 ],
-                "description": "Maintainence of the previously created Reporting System. Front End Developer of the Company after having successfully introduced AngularJS as the client-side framework for the company and becoming its evangelist.",
+                "description": "Lead Front End Developer of the Company after having successfully introduced AngularJS as the client-side framework for the company and becoming its evangelist.",
                 "projects": [
                     {
                         "name": "eFolder",
@@ -142,7 +142,7 @@
                     },
                     {
                         "name": "Mobile Ticketing Tool",
-                        "description": "Ionic mobile App for reporting any issue by the Underwriters"
+                        "description": "Fullstack project. Ionic mobile App for reporting any issue by the Underwriters"
                     }
                 ],
                 "recommendations": [
@@ -157,7 +157,7 @@
                 "employers": [
                     2
                 ],
-                "description": "The creation of a Reporting System for the UWs and Management team with the requirements of the Business Analyst team.",
+                "description": "In charge of the from scratch fullstack development and maintenence of a Reporting System, for the UWs and Management team, with the requirements of the Business Analyst team.",
                 "projects": [
                     {
                         "name": "Report System Platform",
