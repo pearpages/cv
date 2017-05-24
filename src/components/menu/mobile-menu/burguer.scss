@@ -2,9 +2,10 @@
 
 #mobile-menu {
     position: fixed;
-    top: 25px;
+    top: 1px;
     font-size: 20px;
-    right: 25px;
+    right: 1px;
     z-index: 9999999;
-    color: $color7;
+    color: #666;
+    padding: 24px;
 }

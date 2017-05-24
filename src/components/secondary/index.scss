@@ -1,5 +1,4 @@
 @import '../../sass/colors';
-
 .personal {
     a {
         color: $color1;
@@ -55,4 +54,16 @@
             }
         }
     }
+}
+
+.sidebar,
+#picture {
+    position: relative;
+    left: -9000px;
+    transition: left 300ms;
+}
+
+.sidebar.ready,
+#picture.ready {
+    left: 0;
 }
