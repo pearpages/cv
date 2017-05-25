@@ -1,12 +1,55 @@
 @import 'sass/colors';
 @import 'sass/print';
 
+/* latin */
+
+@font-face {
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Oswald Regular'), local('Oswald-Regular'), url(/fonts/_P8jt3Y65hJ9c4AzRE0V1OvvDin1pK8aKteLpeZ5c0A.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+
+/* latin */
+
+@font-face {
+    font-family: 'Open Sans Condensed';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Open Sans Cond Light'), local('OpenSans-CondensedLight'), url(/fonts/gk5FxslNkTTHtojXrkp-xMmDra0ONnO3FPH--kzkC5zr7w4p9aSvGirXi6XmeXNA.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+
+/* latin */
+
+@font-face {
+    font-family: 'Gravitas One';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Gravitas One'), local('GravitasOne'), url(/fonts/nBHdBv6zVNU8MtP6w9FwTRampu5_7CjHW5spxoeN3Vs.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+
+/* latin */
+
+@font-face {
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Quicksand Regular'), local('Quicksand-Regular'), url(/fonts/sKd0EMYPAh5PYCRKSryvW5Bw1xU1rKptJj_0jans920.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
 @media screen {
-    .print{
-        display:none !important;
+    .print {
+        display: none !important;
     }
     .hidden {
-        display:none;
+        display: none;
     }
     a.external-link::after {
         font-family: FontAwesome;
@@ -15,24 +58,33 @@
     }
 }
 
-h1,h2,h3,h4 {
+h1,
+h2,
+h3,
+h4 {
     font-family: 'Oswald', sans-serif !important;
 }
+
 body {
     font-family: 'Quicksand', sans-serif !important;
     background: $body !important;
 }
-.fa-caret-square-o-up, .fa-caret-square-o-down {
+
+.fa-caret-square-o-up,
+.fa-caret-square-o-down {
     font-size: 12px !important;
 }
+
 .pc {
-    margin-top:50px;
+    margin-top: 50px;
 }
+
 .animated {
-    transition: opacity 700ms;
+    transition: opacity 300ms;
     opacity: 0;
     display: block;
 }
-.animated.ready{
+
+.animated.ready {
     opacity: 1;
 }
