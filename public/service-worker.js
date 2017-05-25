@@ -1,12 +1,14 @@
-var cacheName = 'my-resume-v1';
+var cacheName = 'my-resume-v1.1';
 var filesToCache = [
     '/',
     'styles.css',
     'media/pere-pages.jpg',
     'bundle.js',
     'af7ae505a9eed503f8b8e6982036873e.woff2',
-    'fonts/nBHdBv6zVNU8MtP6w9FwTRampu5_7CjHW5spxoeN3Vs.woff2',
-    'fonts/_P8jt3Y65hJ9c4AzRE0V1OvvDin1pK8aKteLpeZ5c0A.woff2',
+    '7bb7f747d0a1ba96339dd90f9e5df3a1.woff2',
+    '9d9e6c932fc3a209e5d295e86e59ecfd.woff2',
+    'af7ae505a9eed503f8b8e6982036873e.woff2',
+    '9bf2c58dcc3c54da4a5d0b3ebbf09764.woff2',
     'media/UOC.png',
     'media/University-of-sheffield.png',
     'media/icons/favicon-180.png',
@@ -15,7 +17,6 @@ var filesToCache = [
     'media/angular-beers.png',
     'media/cinema-js.png',
     'media/angularcamp-bcn.png',
-    'fonts/gk5FxslNkTTHtojXrkp-xMmDra0ONnO3FPH--kzkC5zr7w4p9aSvGirXi6XmeXNA.woff2',
     'media/wefitter.png',
     'media/alvaro-r-moya.jpg',
     'media/tokio-marine.png',
@@ -27,22 +28,22 @@ var filesToCache = [
 ];
 
 self.addEventListener('install', function (e) {
-    console.log('[ServiceWorker] Install')
+    // console.log('[ServiceWorker] Install')
     e.waitUntil(
         caches.open(cacheName).then(function (cache) {
-            console.log('[ServiceWorker] Caching app shell');
+            // console.log('[ServiceWorker] Caching app shell');
             return cache.addAll(filesToCache);
         })
     );
 });
 
 self.addEventListener('activate', function (e) {
-    console.log('[ServiceWorker] Activate');
+    // console.log('[ServiceWorker] Activate');
     e.waitUntil(
         caches.keys().then(function (keyList) {
             return Promise.all(keyList.map(function (key) {
                 if (key !== cacheName) {
-                    console.log('[ServiceWorker] Removing old cache', key);
+                    // console.log('[ServiceWorker] Removing old cache', key);
                     return caches.delete(key);
                 }
             }))
@@ -51,7 +52,7 @@ self.addEventListener('activate', function (e) {
 });
 
 self.addEventListener('fetch', function (e) {
-    console.log('[ServiceWorker] Fetch', e.request.url);
+    // console.log('[ServiceWorker] Fetch', e.request.url);
     e.respondWith(
         caches.match(e.request).then(function (response) {
             return response || fetch(e.request);
