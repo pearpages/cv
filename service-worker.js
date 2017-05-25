@@ -1,4 +1,4 @@
-var cacheName = 'my-resume-v1.1';
+var cacheName = 'my-resume-v1.2';
 var filesToCache = [
     '/',
     'styles.css',
