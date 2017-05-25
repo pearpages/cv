@@ -2,7 +2,7 @@
     "summary": {
         "name": "Pere Pages Soms",
         "title": "Full Stack Developer",
-        "summary": "<p>I am a programmer with over 10 years experience. My main languages are Javascript and PHP. I have worked in Web Development and Insurance, in Front End and Back End projects, independently and with teams, alongside Designers and Business Analysts.</p><p>I like simplicity, minimalism and quality. For me, code must be easy to understand, consistent, testable, short and modular.</p><p>I try to write code daily, attend talks weekly and meet colleagues as often as I can.</p>"
+        "summary": "<p>I am a developer with over 10 years experience. My main languages are Javascript and PHP. I have worked in several cross teams in international environoments, in Web Development and Insurance, in Front End and Back End projects, alongside Designers and Business Analysts.</p><p>I like simplicity, minimalism and quality. For me, code must be easy to understand, clean, consistent, testable, short and modular.</p><p>I try to write code daily, attend talks weekly and meet colleagues as often as I can.</p>"
     },
     "skills": {
         "bars": [
@@ -126,7 +126,7 @@
                 "employers": [
                     2
                 ],
-                "description": "Lead Front End Developer of the Company after having successfully introduced AngularJS as the client-side framework for the company and becoming its evangelist.",
+                "description": "Lead Front End dev that introduced Angular as main framework, having the role of help teach and introduce best practices across teams and projects.",
                 "projects": [
                     {
                         "name": "eFolder",
@@ -157,7 +157,7 @@
                 "employers": [
                     2
                 ],
-                "description": "In charge of the from scratch fullstack development and maintenence of a Reporting System, for the UWs and Management team, with the requirements of the Business Analyst team.",
+                "description": "In charge of the from scratch fullstack development and maintenence of a Reporting System for the UWs and Management team, with the requirements of the Business Analyst team.",
                 "projects": [
                     {
                         "name": "Report System Platform",
@@ -208,7 +208,7 @@
                 "employers": [
                     1
                 ],
-                "description": "Solo development of projects either in PHP or Drupal framework. Layout, Front End and Back End.",
+                "description": "Full-Stack developer responsible of building web applications in PHP/drupal, from the data connections to responsive Front End.",
                 "projects": [
                     {
                         "name": "Col·legi de Periodistes de Catalunya",
