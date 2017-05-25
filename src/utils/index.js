@@ -11,8 +11,9 @@ export function isWholeInViewport(element) {
 }
 
 export function isInViewport(element) {
+    if(element === undefined) return false;
     var rect = element.getBoundingClientRect();
-    return rect.top >= 0 && rect.top <= window.innerHeight|| rect.bottom >= 0 && rect.top <= window.innerHeight;
+    return rect.top >= 0 && rect.top <= window.innerHeight || rect.bottom >= 0 && rect.top <= window.innerHeight;
 }
 
 export function getNextNonVisibleAnchorAbsoluteOffset() {
@@ -61,14 +62,16 @@ export function findActiveAnchor(anchors) {
     let id = anchors[0].id;
     anchors.find(anchor => {
         const el = document.getElementById(anchor.id);
-        const pos = el.getBoundingClientRect();
-        if (pos.top <= 20 && pos.bottom > 0) {
-            id = anchor.id;
+        if (el) {
+            const pos = el.getBoundingClientRect();
+            if (pos.top <= 20 && pos.bottom > 0) {
+                return anchor.id;
+            }
         }
     });
     return id;
 }
 
 export function isDocumentBottom(margin = 0) {
-    return ( (document.documentElement.clientHeight - margin )  <= (window.innerHeight + window.pageYOffset));
+    return ((document.documentElement.clientHeight - margin) <= (window.innerHeight + window.pageYOffset));
 }
