@@ -24,11 +24,11 @@
     <link rel="stylesheet" href="styles.css">
 
     <!-- Favicons -->
-    <link rel="shortcut icon" type="image/png" href="/media/icons/favicon-16.png" sizes="16x16">
-    <link rel="shortcut icon" type="image/png" href="/media/icons/favicon-32.png" sizes="32x32">
-    <link rel="shortcut icon" type="image/png" href="/media/icons/favicon-150.png" sizes="150x150">
-    <link rel="shortcut icon" type="image/png" href="/media/icons/favicon-180.png" sizes="180x180">
-    <link rel="shortcut icon" type="image/png" href="/media/icons/favicon-192.png" sizes="192x192">
+    <link rel="shortcut icon" type="image/png" href="media/icons/favicon-16.png" sizes="16x16">
+    <link rel="shortcut icon" type="image/png" href="media/icons/favicon-32.png" sizes="32x32">
+    <link rel="shortcut icon" type="image/png" href="media/icons/favicon-150.png" sizes="150x150">
+    <link rel="shortcut icon" type="image/png" href="media/icons/favicon-180.png" sizes="180x180">
+    <link rel="shortcut icon" type="image/png" href="media/icons/favicon-192.png" sizes="192x192">
 
     <!-- WebApp -->
     <meta name="theme-color" content="#0275D8">
@@ -37,18 +37,18 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="app-mobile-web-app-title" content="Pere Pages">
-    <link rel="apple-touch-icon" sizes="180x180" href="/media/icons/favicon-180.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="media/icons/favicon-180.png">
 
     <!-- MS -->
-    <meta name="msapplication-square150x150logo" content="favicon-150.png" href="favicon-150.png" />
+    <meta name="msapplication-square150x150logo" content="favicon-150.png" href="media/icons/favicon-150.png" />
 
     <!-- Manifest -->
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="manifest.json">
 
     <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker
-                .register('/service-worker.js?v1')
+                .register('service-worker.js?v1')
                 .then(function (registration) {
                     console.log('Service Worker Registered');
                 });
