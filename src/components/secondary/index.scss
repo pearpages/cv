@@ -55,16 +55,3 @@
         }
     }
 }
-
-.sidebar,
-#picture {
-    // here
-    opacity: 0;
-    transition: opacity 700ms 300ms;
-}
-
-.sidebar.ready,
-#picture.ready {
-    // here
-    opacity: 1;
-}

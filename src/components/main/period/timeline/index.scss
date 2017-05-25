@@ -10,13 +10,6 @@ $border-color: rgba(black, .3);
         padding: 20px;
         background: $color41;
         box-shadow: inset 0px 0px 6px 2px $color42;
-        // here
-        transition: opacity 700ms 300ms;
-        opacity: 0;
-    }
-    .wrapper.ready{
-        // here
-        opacity: 1;
     }
     p {
         font-size: 1rem;

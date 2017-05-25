@@ -16,7 +16,8 @@ export default class OnlyWhenVisible extends React.Component {
     componentDidMount() {
         const el = this.refs.content;
         if (this.state.strategy(el)) {
-            this.setState({ visible: true });
+            this.setState({ visible: true, ready: false });
+            setTimeout(() => this.setState({ ready: true }), 100);
         } else {
             window.addEventListener('scroll', this.handleOnScroll);
         }
@@ -25,11 +26,24 @@ export default class OnlyWhenVisible extends React.Component {
     handleOnScroll(event) {
         if (this.state.strategy(this.refs.content)) {
             this.setState({ visible: true });
+            if (this.props.animate) {
+                setTimeout(() => this.setState({ ready: true }), 100);
+            }
             window.removeEventListener('scroll', this.handleOnScroll);
         }
     }
 
     render() {
-        return (<span ref="content">{React.cloneElement(this.props.children, { visible: this.state.visible })}</span>);
+        return (<span ref={"content"} className={(this.props.animate ? 'animated ' : '') + (this.state.ready ? 'ready' : '')}>
+            {(this.state.visible) ?
+                /* DOMTypeElement */
+                (typeof this.props.children.type === 'string') ?
+                    this.props.children
+                    :
+                    React.cloneElement(this.props.children, { visible: this.state.visible })
+                :
+                null
+            }
+        </span>);
     }
 }

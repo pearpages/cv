@@ -9,15 +9,15 @@ export default function Secondary(props) {
     return (
         <div className="col-md-3 col-sm-12 personal">
 
-            <OnlyWhenVisible>
+            <OnlyWhenVisible animate={true}>
                 <Picture mobile={props.mobile}/>
             </OnlyWhenVisible>
 
-            <OnlyWhenVisible>
+            <OnlyWhenVisible animate={true}>
                 <Sidebar id="contact" name="CONTACT ME" mobile={props.mobile} data={props.contact} />
             </OnlyWhenVisible>
 
-            <OnlyWhenVisible>
+            <OnlyWhenVisible animate={true}>
                 <Sidebar id="community" name="COMMUNITY" mobile={props.mobile} data={props.community} />
             </OnlyWhenVisible>
 

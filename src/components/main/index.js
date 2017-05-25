@@ -16,19 +16,19 @@ export default function Main(props) {
                 <Summary data={props.summary} />
             </div>
 
-            <OnlyWhenVisible>
+            <OnlyWhenVisible animate={true}>
                 <ExperienceContainer id="skills" name="SKILLS">
                     <Skills data={props.skills} mobile={props.mobile} />
                 </ExperienceContainer>
             </OnlyWhenVisible>
 
-            <OnlyWhenVisible>
+            <OnlyWhenVisible animate={true}>
                 <ExperienceContainer id="education" name="EDUCATION">
                     <Education data={props.education} />
                 </ExperienceContainer>
             </OnlyWhenVisible>
 
-            <OnlyWhenVisible>
+            <OnlyWhenVisible animate={true}>
                 <ExperienceContainer id="experience" name="EXPERIENCE">
                     <Experience experience={props.experience} />
                 </ExperienceContainer>

@@ -28,3 +28,11 @@ body {
 .pc {
     margin-top:50px;
 }
+.animated {
+    transition: opacity 700ms;
+    opacity: 0;
+    display: block;
+}
+.animated.ready{
+    opacity: 1;
+}

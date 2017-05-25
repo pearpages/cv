@@ -8,7 +8,7 @@ export default function Timeline(props) {
     return (<div className="timeline-item anchor">
             <div className="date">{props.from} - {props.to}</div>
 
-            <OnlyWhenVisible>
+            <OnlyWhenVisible animate={true}>
                 <Wrapper {...props}/>
             </OnlyWhenVisible>
 
