@@ -24,7 +24,8 @@ export default class Menu extends React.Component {
     componentDidMount() {
         window.addEventListener("scroll", this.updateActiveElmentByScrollPosition);
         const hash = window.location.hash.substr(1);
-        if(hash !== this.state.active) {
+        if(hash.length > 0 && hash !== this.state.active) {
+            jump('#' + hash,{duration:300});
             this.setState({active: hash});
         }
     }
@@ -51,9 +52,9 @@ export default class Menu extends React.Component {
         return (anchor) => {
             return (event) => {
                 event.preventDefault();
-                this.setState({ active: anchor, collapse: true });
                 jump('#' + anchor,{duration:300});
                 window.location.hash = anchor;
+                this.setState({ active: anchor, collapse: true });
             };
         };
     }
