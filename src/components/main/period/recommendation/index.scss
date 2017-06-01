@@ -1,5 +1,4 @@
 @import '../../../../sass/colors';
-
 .recommendation {
     font-family: 'Open Sans Condensed', sans-serif !important;
     margin-bottom: 15px;
@@ -10,19 +9,26 @@
     }
     div.text {
         p {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: #444;
         }
-        p:first-child::before{
-            font-family: FontAwesome;
+        p::before {
             content: "\f10d";
             margin-right: 0.5rem;
+            display: inline-block;
+            font: normal normal normal 14px/1 FontAwesome;
+            font-size: inherit;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
         }
-
-        p:last-child::after{
-            font-family: FontAwesome;
+        p::after {
             content: "\f10e";
             margin-left: 0.5rem;
+            display: inline-block;
+            font: normal normal normal 14px/1 FontAwesome;
+            font-size: inherit;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
         }
     }
 }

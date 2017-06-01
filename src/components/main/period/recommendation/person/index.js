@@ -13,6 +13,9 @@ export default function Person(props) {
                 </OnlyWhenVisible>
                 <div className="info">
                     <div className="name"><ExternalLink url={props.colleague.in}>{props.colleague.name}</ExternalLink></div>
+                    <div className="in-url no-screen">
+                        {props.colleague.in}
+                    </div>
                     <div className="position"><span className="fa fa-user"></span> {props.colleague.title}</div>
                 </div>
             </div>

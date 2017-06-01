@@ -40,7 +40,7 @@ export default class ContainerWithTitle extends React.Component {
                     hidden={this.state.hidden}
                     >{this.props.name}</ContainerTitle>
                     <div
-                        className="container"
+                        className="container print"
                         ref="content"
                         style={this.getStyle()}
                         >{this.getContent()}</div>
