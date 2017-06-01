@@ -20,8 +20,10 @@
 
 .employer-header {
     min-height: 68px;
+    clear: left;
     .employer-image {
         margin-right: 20px;
+        float: left;
         img {
             border: dotted 1px $color6;
             border-radius: 6px;
@@ -45,5 +47,6 @@
     }
     .name-and-title {
         padding: 12px;
+        float: left;
     }
 }
