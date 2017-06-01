@@ -22,7 +22,7 @@ class App extends React.Component {
     }
 
     getSize() {
-        if(window.innerWidth < 768) {
+        if (window.innerWidth < 768) {
             return 'mobile';
         } else {
             return 'desktop';
@@ -30,8 +30,8 @@ class App extends React.Component {
     }
 
     updateDimensions() {
-        if(this.state.size !== this.getSize()) {
-            this.setState({size: this.getSize()});
+        if (this.state.size !== this.getSize()) {
+            this.setState({ size: this.getSize() });
         }
     }
 
@@ -56,7 +56,7 @@ class App extends React.Component {
     render() {
         return (
             <div className={this.hasMobileSize() ? 'mobile' : 'pc'}>
-                <Menu name={this.state.data.getSummary().name} anchors={this.state.config.getConfig().anchors} size={this.state.size}/>
+                <Menu name={this.state.data.getSummary().name} anchors={this.state.config.getConfig().anchors} size={this.state.size} />
                 <div className="row" >
                     {
                         !this.hasMobileSize() ?
@@ -85,6 +85,11 @@ class App extends React.Component {
                             null
                     }
                 </div>
+                <footer>
+                    <p>This resume is part of a project I have published in <span className="fa fa-github"></span> Github: <a href="https://github.com/pearpages/cv">https://github.com/pearpages/cv</a> for generating CVs from a json source.
+                    </p>
+                    <p className="no-screen">This is the printed version of the site. If you want to check to online version you can find it here: <a href="https://pearpages.com/cv">https://pearpages.com/cv</a>.</p>
+                </footer>
             </div>
         )
     }
