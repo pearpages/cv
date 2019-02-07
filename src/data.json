@@ -2,7 +2,7 @@
     "summary": {
         "name": "Pere Pages Soms",
         "title": "Full Stack Developer",
-        "summary": "<p>I am a developer with over 10 years experience. My main languages are Javascript and PHP. I have worked in several cross teams in international environoments, in Web Development and Insurance, in Front End and Back End projects, alongside Designers and Business Analysts.</p><p>I like simplicity, minimalism and quality. For me, code must be easy to understand, clean, consistent, testable, short and modular.</p><p>I try to write code daily, attend talks weekly and meet colleagues as often as I can.</p>"
+        "summary": "<p>I am a developer with over 10 years experience. I have worked in several cross teams in international environoments, in Front End and Back End projects, alongside Designers and Business Analysts.</p><p>I like simplicity, minimalism and quality. For me, code must be easy to understand, clean, consistent, testable, short and modular.</p><p>I try to write code daily, attend talks weekly and meet colleagues as often as I can.</p>"
     },
     "skills": {
         "bars": [
@@ -11,7 +11,7 @@
                 "value": "80"
             },
             {
-                "name": "Angular 1.5",
+                "name": "AngularJS",
                 "value": "85"
             },
             {
@@ -19,8 +19,8 @@
                 "value": "75"
             },
             {
-                "name": "Angular 2",
-                "value": "80"
+                "name": "Angular",
+                "value": "90"
             },
             {
                 "name": "REACT",
@@ -29,20 +29,12 @@
             {
                 "name": "Node",
                 "value": "70"
-            },
-            {
-                "name": "Bootstrap",
-                "value": "80"
-            },
-            {
-                "name": "CSS",
-                "value": "75"
             }
         ],
         "stars": [
             {
                 "name": "English",
-                "stars": 4
+                "stars": 4.5
             },
             {
                 "name": "Spanish",
@@ -71,11 +63,33 @@
     "experience": {
         "periods": [
             {
+                "id": 8,
+                "from": "June 2017",
+                "to": "Currently",
+                "title": "Senior Frontend / Team Lead",
+                "description": "Frontend lead. From MVP to Angular latest version. Development of gamification features. Creation of backoffice tools. Integration of payment system.",
+                "stack": "Angular7, Rxjs, Ngrx, Webpack, Angular-cli, SCSS BEM, Git, Jenkins, Protractor, Jasmine, Typescript, Vanilla JS, Prettier, Codelyzer",
+                "projects": [
+                    {"name": "Karjala Kasino", "url": "https://www.karjalakasino.com/"},
+                    {"name": "Agent Spinner", "url": "https://www.agentspinner.com/"},
+                    {"name": "Devcode", "description": "Payment System Integration"},
+                    {"name": "Atlas", "description": "Internal CMS"},
+                    {"name": "Adhoc Campaigns", "description": "Vanilla JS"}
+                ],
+                "employers": [
+                    7
+                ],
+                "recommendations": [
+                    6, 7, 8, 9
+                ]
+            },
+            {
                 "id": 7,
                 "from": "March 2017",
                 "to": "May 2017",
                 "title": "Contributor",
                 "description": "Pro bono contribution. Organization of the events and development of all tools for the Meetups and Community.",
+                "stack": "Angular Platform & JS technologies",
                 "projects" : [
                     {"name":"Angular Beers", "url":"https://angularbeers.org/"},
                     {"name":"Cinema JS", "url":"https://cinemajs.tech"},
@@ -96,6 +110,7 @@
                     3
                 ],
                 "description": "Lead frontend development and design being updated on new technologies and latest trends. Teach team about frontend development, design patterns, best practices, resources... Identify opportunities and risks and propose new solutions to identified problems in your area of expertise.",
+                "stack": "Ionic, AngularJS, SCSS, Git, Protractor, Jasmine, JS",
                 "projects": [
                     {
                         "name": "WeFitter App",
@@ -127,6 +142,7 @@
                     2
                 ],
                 "description": "Lead Front End dev that introduced Angular as main framework, having the role of help teach and introduce best practices across teams and projects.",
+                "stack": "AngularJS, CSS, Git, Jasmine, Bootstrap, Vanilla JS",
                 "projects": [
                     {
                         "name": "eFolder",
@@ -158,6 +174,7 @@
                     2
                 ],
                 "description": "In charge of the from scratch fullstack development and maintenence of a Reporting System for the UWs and Management team, with the requirements of the Business Analyst team.",
+                "stack": "Apache, Zend Framework, PHP, CSS, Bootstrap, MSSQL, Semantic UI",
                 "projects": [
                     {
                         "name": "Report System Platform",
@@ -209,6 +226,7 @@
                     1
                 ],
                 "description": "Full-Stack developer responsible of building web applications in PHP/drupal, from the data connections to responsive Front End.",
+                "stack": "MySQL, Drupal, PHP, Apache, Subversion",
                 "projects": [
                     {
                         "name": "Col·legi de Periodistes de Catalunya",
@@ -277,6 +295,12 @@
                 "name": "Angular Beers",
                 "image": "angular-beers.png",
                 "url": "https://angularbeers.org/"
+            },
+            {
+                "id": 7,
+                "name": "We are blue orange",
+                "image": "weareblueorange.png",
+                "url": "http://weareblueorange.com/"
             }
         ],
         "recommendations": [
@@ -304,6 +328,26 @@
                 "id": 1,
                 "colleague": 1,
                 "text": "<p>Worked with Pere for some years in many backend (PHP/Drupal) related projects and as far as I remember, he was a very dedicated developer.</p><p>He was reading or asking others when didn't know something, always used to pay attention on all project aspects and details, was helping others even when didn't have time to deal with his own issues.</p><p>Lately I've seen his transition from the backend development to frontend using the latest and modern JavaScript libraries and frameworks and still keeping the same spirit as years before. And if you have any questions, feel free to contact me.</p>"
+            },
+            {
+                "id": 6,
+                "colleague": 6,
+                "text": "<p>It was a pleasure to work with Pere. He always grasped my designs quickly and was quick to implement them. The same for changes and feedback. His estimations for tasks and projects were always realistic. He works very focused and sticks to the workflow but also can be flexible . When I had amateur coding questions he explained everything to me patiently. Also working and interacting with him on a personal level was great.</p>"
+            },
+            {
+                "id": 7,
+                "colleague": 7,
+                "text": "<p>I worked with Pere while I was at Blue Orange. I found him to be a skill front-end developer who is able to solver problems, learn very quickly and delivery on-time and on-specification. He is also very easy to work with: hard-working, knowledgeable and willing help out wherever needed. I highly recommend him to anyone looking for a good front-end developer.</p>"
+            },
+            {
+                "id": 8,
+                "colleague": 8,
+                "text": "<p>I've worked with Pere during my time at Blue Orange were he was a Senior Frontend Developer, I found Pere to be very responsive, knowledgeable and easy to work with. His skills in frontend development and different technologies were crucial to deliver the project on time and according to the specifications. Pere's work ethics are second to none, always very professional and thinking outside of the box to find solutions, on top of this he delivered on time every single time. Pere is a great asset to have in the team and easy to communicate with. I would not hesitate to recommend Pere to any company wishing to hire an amazing frontend developer with great work ethics.</p>"
+            },
+            {
+                "id": 9,
+                "colleague": 9,
+                "text": "<p>I coincided with Pere while working at We Are Blue Orange SL. He's a brilliant engineer with very clear ideas that always does what's best for the team. We were working in a multi casino Angular application and his way to tackle the problems and organize the team were key to our success. Thank you Pere, I really enjoyed working with you and I would love to do it again in the future.</p>"
             }
         ],
         "colleagues": [
@@ -311,7 +355,7 @@
                 "id": 5,
                 "name": "Oriol Bel Valls",
                 "title": "IT Analyst & Developer",
-                "image": "colleague.png",
+                "image": "oriolbel.jpg",
                 "in": "https://www.linkedin.com/in/oriol-bel-valls-a901349/",
                 "employer": 1
             },
@@ -346,6 +390,38 @@
                 "image": "georgi-svetoslavov.jpg",
                 "in": "https://no.linkedin.com/in/gsvetoslavov",
                 "employer": 1
+            },
+            {
+                "id": 6,
+                "name": "Jonas Hoffmann",
+                "title": "Communications Designer at Komoot",
+                "image": "jonas-hoffmann.jpg",
+                "in": "https://www.linkedin.com/in/jonas-hoffmann-256729a2/",
+                "employer": 7
+            },
+            {
+                "id": 7,
+                "name": "Jonah ellinger",
+                "title": "CTO at Reactivation Group Ltd",
+                "image": "jonah-ellinger.jpg",
+                "in": "https://www.linkedin.com/in/jonahellinger/",
+                "employer": 7
+            },
+            {
+                "id": 8,
+                "name": "Neil Azzopardi",
+                "title": "UI/UX lead at 21.com",
+                "image": "neil-azzopardi.jpg",
+                "in": "https://www.linkedin.com/in/neilazzopardi/",
+                "employer": 7
+            },
+            {
+                "id": 9,
+                "name": "Eric Ruiz Franco",
+                "title": "Mobile Application Developer at IMG Media",
+                "image": "eric-ruiz-franco.jpg",
+                "in": "https://www.linkedin.com/in/eric-ruiz-franco-b549a3146/",
+                "employer": 7
             }
         ]
     },
