@@ -11,10 +11,6 @@
                 "value": "80"
             },
             {
-                "name": "AngularJS",
-                "value": "85"
-            },
-            {
                 "name": "Ionic",
                 "value": "75"
             },
@@ -68,7 +64,7 @@
                 "to": "Currently",
                 "title": "Senior Frontend / Team Lead",
                 "description": "Frontend lead. From MVP to Angular latest version. Development of gamification features. Creation of backoffice tools. Integration of payment system.",
-                "stack": "Angular7, Rxjs, Ngrx, Webpack, Angular-cli, SCSS BEM, Git, Jenkins, Protractor, Jasmine, Typescript, Vanilla JS, Prettier, Codelyzer",
+                "stack": "Angular7, Rxjs, Ngrx, Webpack, Angular-cli, SCSS BEM, Git, Jenkins, Protractor, Jasmine, Typescript, Vanilla JS, Prettier, Codelyzer, SCRUM, Jira",
                 "projects": [
                     {"name": "Karjala Kasino", "url": "https://www.karjalakasino.com/"},
                     {"name": "Agent Spinner", "url": "https://www.agentspinner.com/"},
@@ -142,7 +138,7 @@
                     2
                 ],
                 "description": "Lead Front End dev that introduced Angular as main framework, having the role of help teach and introduce best practices across teams and projects.",
-                "stack": "AngularJS, CSS, Git, Jasmine, Bootstrap, Vanilla JS",
+                "stack": "AngularJS, CSS, Git, Jasmine, Bootstrap, Vanilla JS, SCRUM, Jira",
                 "projects": [
                     {
                         "name": "eFolder",
