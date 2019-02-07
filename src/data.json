@@ -8,7 +8,11 @@
         "bars": [
             {
                 "name": "Javascript",
-                "value": "80"
+                "value": "90"
+            },
+            {
+                "name": "Typescript",
+                "value": "90"
             },
             {
                 "name": "Ionic",
@@ -63,7 +67,7 @@
                 "from": "June 2017",
                 "to": "Currently",
                 "title": "Senior Frontend / Team Lead",
-                "description": "Frontend lead. From MVP to Angular latest version. Development of gamification features. Creation of backoffice tools. Integration of payment system.",
+                "description": "Frontend lead. Transition from MVP to Angular latest version. Development of gamification features. Creation of backoffice tools. Integration of payment system.",
                 "stack": "Angular7, Rxjs, Ngrx, Webpack, Angular-cli, SCSS BEM, Git, Jenkins, Protractor, Jasmine, Typescript, Vanilla JS, Prettier, Codelyzer, SCRUM, Jira",
                 "projects": [
                     {"name": "Karjala Kasino", "url": "https://www.karjalakasino.com/"},

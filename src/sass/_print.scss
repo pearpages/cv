@@ -34,7 +34,11 @@
         a[href]:after {
             content: "" !important;
         }
-        #cv {
+        #cv.container {
+            .container,
+            .container.print {
+                min-width: 0px !important;
+            }
             .personal {
                 .glyphicon::before,
                 span.fa::before {
