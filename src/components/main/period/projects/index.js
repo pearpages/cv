@@ -6,7 +6,7 @@ import './index.scss'
 
 export default function Projects(props) {
 
-    return ((props.projects) ? <ContainerWithTitle hidden={true} size="h3" name="Projects" icon="code-fork" >{props.projects.map( (p,i) => {
+    return ((props.projects.length) ? <ContainerWithTitle className="projects" hidden={true} size="h3" name="Projects" icon="code-fork" >{props.projects.map( (p,i) => {
         return (
             <div key={i} className="project">
                 <h4 className="name">{p.name}</h4>

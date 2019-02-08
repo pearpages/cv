@@ -16,11 +16,7 @@ export default class ContainerWithTitle extends React.Component {
     }
 
     getStyle() {
-        if(this.state.hidden) {
-            return {maxHeight: '0px',fontSize: 0,transform: 'scaleY(0)',transformOrigin: 'top',paddingTop: '0px',paddingBottom: '0px'}
-        } else {
-            return {transform: 'scaleY(1)',transformOrigin: 'top'}
-        }
+        return {transform: 'scaleY(1)',transformOrigin: 'top'}
     }
 
     getContent() {
@@ -32,15 +28,15 @@ export default class ContainerWithTitle extends React.Component {
 
     render() {
         return (
-            <div className="container-with-title">
+            <div className={`container-with-title ${this.props.className ? this.props.className : ''}`}>
                 <ContainerTitle
                     size={this.props.size}
                     onClick={this.handleClick}
                     icon={this.props.icon}
-                    hidden={this.state.hidden}
+                    hidden={false}
                     >{this.props.name}</ContainerTitle>
                     <div
-                        className="container print"
+                        className="content print"
                         ref="content"
                         style={this.getStyle()}
                         >{this.getContent()}</div>

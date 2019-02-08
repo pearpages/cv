@@ -14,6 +14,6 @@ export default function Period(props) {
         {(data.description) ? <div className="period-description">{data.description}</div> : null}
         <Stack stack={data.stack ? data.stack : ''} />
         <Projects projects={data.projects} />
-        <Recommendations data={props.data}/>
+        {/* <Recommendations data={props.data}/> */}
     </Timeline>);
 }

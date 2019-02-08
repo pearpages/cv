@@ -1,7 +1,7 @@
 @import '../../../../sass/colors';
 $border-color: rgba(black, .3);
 .timeline-item {
-    padding: 3em 0 4em 1em;
+    padding: 3em 0 1em 1em;
     position: relative;
     border-left: 2px solid $border-color;
     .wrapper {

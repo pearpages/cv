@@ -2,12 +2,12 @@
     h3 {
         cursor: pointer;
     }
-    .container {
+    .content {
         padding-top: 20px;
         max-height: 9000px;
         transition: transform 300ms, font-size 250ms, max-height 250ms;
     }
-    .container  .container {
+    .content  .content {
         padding: 0px;
         padding-bottom: 20px;
     }

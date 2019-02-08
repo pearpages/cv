@@ -11,22 +11,28 @@ import './index.scss';
 export default function Main(props) {
 
     return (
-        <div className="col-md-9 col-sm-12 experience">
+        <div className="col-sm-12 experience">
             <div id="summary" className="row anchor profile">
                 <Summary data={props.summary} />
             </div>
 
-            <OnlyWhenVisible animate={true}>
-                <ExperienceContainer id="skills" name="SKILLS">
-                    <Skills data={props.skills} mobile={props.mobile} />
-                </ExperienceContainer>
-            </OnlyWhenVisible>
+            <div className="row">
+                <div className="col-sm-6">
+                    <OnlyWhenVisible animate={true}>
+                        <ExperienceContainer id="skills" name="SKILLS">
+                            <Skills data={props.skills} mobile={props.mobile} />
+                        </ExperienceContainer>
+                    </OnlyWhenVisible>
+                </div>
 
-            <OnlyWhenVisible animate={true}>
-                <ExperienceContainer id="education" name="EDUCATION">
-                    <Education data={props.education} />
-                </ExperienceContainer>
-            </OnlyWhenVisible>
+                <div className="col-sm-6">
+                    <OnlyWhenVisible animate={true}>
+                        <ExperienceContainer id="education" name="EDUCATION">
+                            <Education data={props.education} />
+                        </ExperienceContainer>
+                    </OnlyWhenVisible>
+                </div>
+            </div>
 
             <OnlyWhenVisible animate={true}>
                 <ExperienceContainer id="experience" name="EXPERIENCE">

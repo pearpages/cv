@@ -42,45 +42,10 @@
     <!-- MS -->
     <meta name="msapplication-square150x150logo" content="favicon-150.png" href="media/icons/favicon-150.png" />
 
-    <!-- Manifest -->
-    <link rel="manifest" href="manifest.json">
-
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker
-                .register('service-worker.js?v1.1')
-                .then(function (registration) {
-                    // fine!
-                });
-        }
-    </script>
-
 </head>
 
 <body>
     <div id="cv" class="container">
-        <div class="row">
-            <div class="col-md-9 col-sm-12 experience">
-                <div id="summary" class="row anchor profile">
-                    <div class="col-md-12">
-                        <h1 class="name">Pere Pages Soms</h1>
-                        <h3 class="title"><span class="fa fa-terminal"></span>
-                            <!-- react-text: 14 -->
-                            <!-- /react-text --><span class="ready"><span>Full Stack Developer</span></span>
-                        </h3>
-                        <div class="summary">
-                            <p>I am a programmer with over 10 years experience. My main languages are Javascript and PHP. I
-                                have worked in Web Development and Insurance, in Front End and Back End projects, independently
-                                and with teams, alongside Designers and Business Analysts.</p>
-                            <p>I like simplicity, minimalism and quality. For me, code must be easy to understand, consistent,
-                                testable, short and modular.</p>
-                            <p>I try to write code daily, attend talks weekly and meet colleagues as often as I can.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-12 personal"><span class="animated ready"><div id="picture" class="row profile  ready"><div class="col-md-12 null"><img id="profile-picture" class="img-fluid center-block" src="media/pere-pages.jpg" alt="Pere Pages"></div></div></span></div>
-        </div>
     </div>
     <script src="bundle.js"></script>
 </body>

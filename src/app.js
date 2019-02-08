@@ -56,17 +56,7 @@ class App extends React.Component {
     render() {
         return (
             <div className={this.hasMobileSize() ? 'mobile' : 'pc'}>
-                <Menu name={this.state.data.getSummary().name} anchors={this.state.config.getConfig().anchors} size={this.state.size} />
                 <div className="row" >
-                    {
-                        !this.hasMobileSize() ?
-                            <Secondary
-                                contact={this.state.data.getContact()}
-                                community={this.state.data.getCommunity()}
-                                mobile={false} />
-                            :
-                            null
-                    }
                     <Main
                         mobile={this.hasMobileSize()}
                         summary={this.state.data.getSummary()}
@@ -74,16 +64,10 @@ class App extends React.Component {
                         education={this.state.data.getEducation()}
                         experience={this.state.data.getExperience()}
                     />
-
-                    {
-                        this.hasMobileSize() ?
-                            <Secondary
-                                contact={this.state.data.getContact()}
-                                community={this.state.data.getCommunity()}
-                                mobile={true} />
-                            :
-                            null
-                    }
+                    <Secondary
+                        contact={this.state.data.getContact()}
+                        community={this.state.data.getCommunity()}
+                        mobile={true} />
                 </div>
                 <footer>
                     <p>This resume is part of a project I have published in <span className="fa fa-github"></span> Github: <a href="https://github.com/pearpages/cv">https://github.com/pearpages/cv</a> for generating CVs from a json source.
