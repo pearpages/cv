@@ -68,13 +68,13 @@
                 "to": "Currently",
                 "title": "Senior Frontend / Team Lead",
                 "description": "Frontend lead. Transition from MVP to Angular latest version. Development of gamification features. Creation of backoffice tools. Integration of payment system.",
-                "stack": "Angular7, Rxjs, Ngrx, Webpack, Angular-cli, SCSS BEM, Git, Jenkins, Protractor, Jasmine, Typescript, Vanilla JS, Prettier, Codelyzer, SCRUM, Jira",
+                "stack": "Angular7, Rxjs, Ngrx, Webpack, Angular-cli, SCSS BEM, Git, Jenkins, Protractor, Jasmine, Typescript, Javascript, Prettier, Codelyzer, SCRUM, Jira",
                 "projects": [
                     {"name": "Karjala Kasino", "url": "https://www.karjalakasino.com/"},
                     {"name": "Agent Spinner", "url": "https://www.agentspinner.com/"},
                     {"name": "Devcode", "description": "Payment System Integration"},
                     {"name": "Atlas", "description": "Internal CMS"},
-                    {"name": "Adhoc Campaigns", "description": "Vanilla JS"}
+                    {"name": "Adhoc Campaigns", "description": "Vanilla Javascript"}
                 ],
                 "employers": [
                     7
@@ -142,7 +142,7 @@
                     2
                 ],
                 "description": "Lead Front End dev that introduced Angular as main framework, having the role of help teach and introduce best practices across teams and projects.",
-                "stack": "AngularJS, CSS, Git, Jasmine, Bootstrap, Vanilla JS, SCRUM, Jira",
+                "stack": "AngularJS, CSS, Git, Jasmine, Bootstrap, Vanilla Javascript, SCRUM, Jira",
                 "projects": [
                     {
                         "name": "eFolder",

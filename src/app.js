@@ -69,10 +69,8 @@ class App extends React.Component {
                         community={this.state.data.getCommunity()}
                         mobile={true} />
                 </div>
-                <footer>
-                    <p>This resume is part of a project I have published in <span className="fa fa-github"></span> Github: <a href="https://github.com/pearpages/cv">https://github.com/pearpages/cv</a> for generating CVs from a json source.
-                    </p>
-                    <p className="no-screen">This is the printed version of the site. If you want to check to online version you can find it here: <a href="https://pearpages.com/cv">https://pearpages.com/cv</a>.</p>
+                <footer style={{fontSize: '12px'}}>
+                    This resume is part of a project I have published in <span className="fa fa-github"></span> Github: <a href="https://github.com/pearpages/cv">https://github.com/pearpages/cv</a> for generating CVs from a json source. This is the printed version of the site. If you want to check to online version you can find it here: <a href="https://pearpages.com/cv">https://pearpages.com/cv</a>.
                 </footer>
             </div>
         )
