@@ -53,8 +53,34 @@ npm run dev
 sips -z 630 1200 /tmp/og-card@2x.png --out public/media/og-card.png
 ```
 
+## The PDF
+
+`perepages.com/cv.pdf` is a separately designed **one-page** A4 document — not the web page
+reflowed onto paper. It is its own print page (`print.html` → `src/print/`), rendered by headless
+Chromium, with its own typography: Source Serif 4 and Inter, nothing shared with the site's type.
+`src/data/print.ts` holds the editorial cut.
+
+```bash
+npm run pdf      # → dist/cv.pdf (and public/cv.pdf, gitignored, so `npm run dev` serves it)
+npm run dev      # then open /print.html and use ⌘P to preview the exact output
+```
+
+One side is the design constraint: it forces every line to earn its place, which is what leaves
+room for the white space. The site remains the full record.
+
+The build **fails** rather than shipping something wrong. It measures the real print layout in the
+browser and rejects the PDF if:
+
+- it runs past one page, or anything overflows the page box;
+- any element marked `data-oneline` wraps onto a second line;
+- a font lands as Type 3 (which is what happens if a *variable* font ever gets imported here);
+- the page is not A4.
+
+Fonts must stay on the static `@fontsource/*` packages. The site's `@fontsource-variable/*` ones
+degrade to Type 3 glyph procedures in Chrome's PDF output — text drawn rather than set, three times
+the file size, and the worst case for ATS text extraction.
+
 ## Printing
 
-⌘P is a supported output, not an afterthought — `src/styles/_print.scss` collapses the hero to a
-masthead, drops navigation and the time axis, and prints link targets inline so a paper copy still
-resolves.
+⌘P still works — `src/styles/_print.scss` collapses the hero to a masthead and drops the navigation
+— but it is a courtesy fallback now. The PDF above is the paper edition.

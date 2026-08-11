@@ -1,0 +1,24 @@
+<!doctype html>
+<!--
+  Source for dist/cv.pdf — a build-time artefact, not a page of the site.
+
+  It is rendered by headless Chromium in scripts/build-pdf.mjs and removed from
+  dist/ afterwards, so it never ships. Nothing here is styled for a viewport:
+  the layout is an A4 page, declared in `@page` and honoured by Playwright's
+  `preferCSSPageSize`.
+
+  To work on it: `npm run pdf:watch`, then open /print.html and use the
+  browser's own print preview (⌘P) to see exactly what the PDF will be.
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Pere Pages Soms — CV</title>
+  </head>
+  <body>
+    <div id="cv-print"></div>
+    <script type="module" src="/src/print/main.tsx"></script>
+  </body>
+</html>

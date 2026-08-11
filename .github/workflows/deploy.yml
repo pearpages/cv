@@ -28,9 +28,25 @@ jobs:
 
       - run: npm ci
 
+      # The paper edition is rendered from print.html by headless Chromium.
+      # Cached on the Playwright version, because a version bump ships a
+      # different browser build and must not reuse the old one.
+      - uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
+      - if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps chromium
+
       # Gate the deploy on types: a type error fails here rather than shipping.
+      # `src/data/print.ts` — the PDF's editorial cut — is checked here too.
       - run: npm run typecheck
 
+      # Builds the site, then renders dist/cv.pdf from it. A CV that has grown
+      # past one page, that wraps a line meant to stay on one, or that loses its
+      # embedded fonts, fails this step instead of shipping.
       - run: npm run build
 
       - uses: actions/configure-pages@v5

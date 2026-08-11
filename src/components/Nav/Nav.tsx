@@ -58,9 +58,13 @@ export function Nav() {
             ))}
           </ul>
 
-          <button className="nav__print" type="button" onClick={() => window.print()}>
-            Print
-          </button>
+          {/* Not `window.print()`. The paper edition is a separately designed
+              two-page document typeset from the same data (`pdf/cv.typ`),
+              built by `npm run pdf` and served from the site root — not this
+              page reflowed onto A4. */}
+          <a className="nav__print" href="/cv.pdf" download="pere-pages-soms-cv.pdf">
+            Download CV
+          </a>
         </div>
       </nav>
     </>

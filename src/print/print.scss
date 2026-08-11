@@ -1,0 +1,271 @@
+/**
+ * The paper edition. Entirely independent of `src/styles/` — this page shares
+ * no tokens, no reset and no type with the site, on purpose.
+ *
+ * Archivo, Instrument Sans and Geist Mono are a *screen* brand: a grotesque
+ * drawn to carry an 18vw wordmark and a monospace drawn for code. At 9pt on
+ * paper they read as a dashboard. Source Serif 4 and Inter are drawn for
+ * documents.
+ *
+ * All lengths are in mm and pt. There is no viewport here — the page is the
+ * only box that exists — so no rem, no vw, no clamp().
+ */
+
+@page {
+  size: A4;
+  /* Playwright passes `preferCSSPageSize: true`, so this wins over the
+     `format` option. Without it Chromium scales content to fit the paper,
+     silently changing every type size on the page. */
+  margin: 16mm 20mm 14mm;
+}
+
+// ── Ink ────────────────────────────────────────────────────────────────────
+// Near-black rather than #000: pure black under a serif prints harsh and
+// haloes on a laser. Colour is rationed to links, the one place it carries
+// meaning.
+$ink: #14161d;
+$muted: #55596a;
+$rule: #c9cbd4;
+$link: #1e2ed6;
+
+$serif: 'Source Serif 4', Georgia, serif;
+$sans: 'Inter', system-ui, sans-serif;
+
+// The page is 210mm wide with 20mm margins, so lines could run to 170mm —
+// about 105 characters, far past comfortable. Rules and headings use the full
+// width; text is capped so it stays readable.
+//
+// Two caps, because the two kinds of text want different ones: the summary is
+// continuous prose and needs a real measure, while the bullets and notes are
+// single clauses that read fine wider — and every millimetre there buys a line
+// back on a page that has exactly one.
+$measure-prose: 148mm;
+$measure: 163mm;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* The page content box is 210mm - 20mm - 20mm. Pinning the document to it
+   makes the on-screen layout identical to the printed one at any viewport,
+   which is what makes the build's in-page measurements meaningful: without it
+   they are taken at browser width and describe a layout that is never printed.
+   Inside the PDF the page box is already this wide, so it changes nothing
+   there. */
+.cv {
+  width: 170mm;
+}
+
+html {
+  /* Chrome modifies colours when printing unless told not to. Paired with
+     `printBackground: true` in the PDF call. */
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+body {
+  background: #fff;
+  color: $ink;
+  font-family: $serif;
+  font-size: 9.5pt;
+  line-height: 1.38;
+  /* Browsers break lines greedily and hyphenate crudely. Ragged right with no
+     hyphenation is the cleanest result available here. */
+  hyphens: none;
+  text-rendering: geometricPrecision;
+  font-kerning: normal;
+  font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+a {
+  color: $link;
+  text-decoration: none;
+}
+
+// ── Masthead ───────────────────────────────────────────────────────────────
+.cv__masthead {
+  padding-bottom: 2.6mm;
+  border-bottom: 0.4pt solid $ink;
+}
+
+.cv__name {
+  /* Deliberately restrained. The static font ships a single optical size cut
+     for text, so a 26pt setting would use text-optical letterforms at display
+     size and read sturdy. Whitespace carries the masthead instead of scale. */
+  font-family: $serif;
+  font-size: 19.5pt;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.012em;
+  font-variant-numeric: normal;
+}
+
+.cv__headline {
+  margin-top: 1.2mm;
+  font-family: $sans;
+  font-size: 8.4pt;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $muted;
+}
+
+.cv__contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2mm 5mm;
+  margin-top: 2.6mm;
+  list-style: none;
+  font-family: $sans;
+  font-size: 8.3pt;
+  color: $muted;
+}
+
+// ── Summary ────────────────────────────────────────────────────────────────
+.cv__summary {
+  max-width: $measure-prose;
+  margin-top: 3.4mm;
+  font-size: 9.8pt;
+  line-height: 1.46;
+}
+
+// ── Sections ───────────────────────────────────────────────────────────────
+.cv__section {
+  margin-top: 3.4mm;
+}
+
+.cv__section-title {
+  display: flex;
+  align-items: center;
+  gap: 4mm;
+  margin-bottom: 2.8mm;
+  font-family: $sans;
+  font-size: 7.4pt;
+  font-weight: 600;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+
+  /* The hairline runs from the end of the word to the right margin. It is the
+     page's only ornament and all of its horizontal structure — there are no
+     boxes, panels or fills anywhere. */
+  &::after {
+    content: '';
+    flex: 1;
+    height: 0.4pt;
+    background: $rule;
+  }
+}
+
+// ── A role ─────────────────────────────────────────────────────────────────
+.role {
+  /* On a block, never on a flex or grid child — Chromium's fragmentation is
+     weakest there. Moot at one page, but it should not be the thing relied on. */
+  break-inside: avoid;
+
+  & + & {
+    margin-top: 3mm;
+  }
+}
+
+.role__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8mm;
+}
+
+.role__employer {
+  font-size: 11pt;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.role__dates {
+  flex-shrink: 0;
+  font-family: $sans;
+  font-size: 8.4pt;
+  font-weight: 400;
+  color: $muted;
+  font-variant-numeric: normal;
+}
+
+.role__title {
+  margin-top: 0.4mm;
+  font-style: italic;
+  font-size: 9.5pt;
+}
+
+.role__note {
+  max-width: $measure;
+  margin-top: 0.8mm;
+  color: $muted;
+}
+
+.role__highlights {
+  max-width: $measure;
+  margin-top: 1.2mm;
+  list-style: none;
+
+  li {
+    /* Hanging indent: the marker sits in the indent so wrapped lines align
+       with the first, which is what makes a list read as a list. */
+    padding-left: 3.6mm;
+    text-indent: -3.6mm;
+
+    &::before {
+      content: '–';
+      margin-right: 1.6mm;
+      color: $muted;
+    }
+  }
+
+  li + li {
+    margin-top: 0.6mm;
+  }
+}
+
+// ── Label / value rows ─────────────────────────────────────────────────────
+// Used by Skills and Also. Two blocks in the same shape are most of what makes
+// the lower half of the page read as composed rather than assembled.
+.rows {
+  display: grid;
+  row-gap: 1mm;
+}
+
+.rows__row {
+  display: grid;
+  grid-template-columns: 38mm 1fr;
+  column-gap: 5mm;
+  align-items: baseline;
+}
+
+.rows__label {
+  font-family: $sans;
+  font-size: 8.2pt;
+  font-weight: 600;
+}
+
+// ── Selected work ──────────────────────────────────────────────────────────
+.work {
+  list-style: none;
+}
+
+.work__item + .work__item {
+  margin-top: 1.1mm;
+}
+
+.work__name {
+  font-weight: 600;
+}
+
+.work__package {
+  font-family: $sans;
+  font-size: 7.8pt;
+  color: $muted;
+}
+
+.work__blurb {
+  color: $muted;
+}

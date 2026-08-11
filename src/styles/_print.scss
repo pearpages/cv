@@ -1,10 +1,14 @@
 /**
- * Print is a first-class output here, not an afterthought — the previous
- * site was printable and that stays true.
+ * A courtesy fallback, not the paper edition.
  *
- * ⌘P should yield a compact, ATS-parsable document: the poster collapses to
- * a header, navigation and decoration disappear, colour drops to ink on
- * white, and link targets are printed inline so a paper copy stays useful.
+ * The real paper edition is `perepages.com/cv.pdf` — a separately designed
+ * two-page A4 document typeset in Typst from `src/data/print.ts` (see
+ * `pdf/cv.typ`). This block exists only so that ⌘P on the site yields
+ * something reasonable rather than printing the full-viewport hero: the
+ * poster collapses to a header, navigation and decoration disappear, colour
+ * drops to ink on white, and link targets are printed inline.
+ *
+ * Improvements to how the CV reads on paper belong in `pdf/`, not here.
  */
 
 @media print {

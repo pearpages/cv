@@ -93,6 +93,69 @@ Nothing in `cv.ts` may be invented. Every claim traces to the original `data.jso
 git history, or a verifiable external source (GitHub/npm for the projects section). If something
 cannot be sourced, leave a `TODO` and ask.
 
+## The paper edition
+
+`perepages.com/cv.pdf` is **not the site printed**. It is a separate **one-page** A4 document with
+its own typography and layout, rendered from `print.html` by headless Chromium in
+`scripts/build-pdf.mjs`. Screen and paper share *content*, not design.
+
+It was built in Typst first, twice, and both were rejected. The lesson worth keeping is not
+"Typst is bad" — it produced a genuinely better page model and real optical sizing — but that
+**the recurring defect was always the same one: something wrapped that was meant to fit on one
+line, and I was estimating character widths instead of measuring them.** A DOM can be asked. That
+is the reason this lives in HTML now, along with the fact that Pere maintains it and writes CSS
+for a living.
+
+**One page is a design constraint, not a budget.** A two-page draft existed and was wrong:
+everything fitted, so nothing had to be cut, and the page filled with 9pt type and no air. One side
+forces every line to beat another line to be there, and that is what buys the white space. If it
+ever feels cramped, cut content — never shrink type.
+
+- `src/data/print.ts` is the **editorial cut**, and it is tool-independent: it survived the move
+  off Typst unchanged. It derives from `cv.ts` and never restates content. Do not prune `cv.ts` to
+  make its job easier — the site is the long record, and the PDF links there.
+- `src/print/Cv.tsx` is structure, `src/print/print.scss` is the design. Neither shares anything
+  with `src/styles/` — not tokens, not the reset, not the type.
+- **The PDF does not use the site's typefaces.** Source Serif 4 for prose, Inter for labels only.
+  Archivo/Instrument Sans/Geist Mono are a screen brand — a grotesque for a full-viewport wordmark
+  and a monospace for code — and at 9pt on paper they read as a dashboard.
+- **Fonts must be the static `@fontsource/*` packages, never `@fontsource-variable/*`.** Chrome
+  silently degrades variable fonts to Type 3 glyph procedures in PDF output: every glyph becomes a
+  drawing instruction, the file triples, and cheap ATS text extractors are on their weakest footing.
+  The build asserts no Type 3 rather than trusting this.
+- **No logo.** A mark competes with the name for the page's one moment of attention.
+- **No left rail.** An earlier draft hung dates in a 40mm margin column, which took 25% of the
+  measure off every line and caused the wrapping it was then blamed on. Dates sit at the end of the
+  employer line.
+
+### The layout invariants
+
+`data-oneline` marks text that must not wrap; the build measures every one of them and fails with
+the offending text. Three mechanics make this correct, and each was got wrong first:
+
+1. **`Element.getClientRects()` returns one rect per line only for *inline* elements.** A block
+   always returns exactly 1, so the obvious check passes everything. Measure a `Range` over the
+   element's contents instead.
+2. **One line produces several rects** — one per inline child — and children at different font
+   sizes sit at different `top` values *on that same line*. Counting distinct tops reports false
+   wraps; merge vertically-overlapping rects into bands and count bands.
+3. **`.cv` is pinned to `width: 170mm`**, the `@page` content box. Without it the DOM lays out at
+   browser width and every measurement describes a layout that is never printed. This is the one
+   that made the checker miss a real wrap.
+
+Separators between inline spans must be **real characters, not CSS margins** — a margin leaves no
+word boundary in the text layer, and extraction ran `Modals@pearpages/modalsaccessible…` together.
+
+### Gates
+
+The build fails if the document exceeds one page, if any `data-oneline` element wraps, if anything
+overflows the page box, if a font lands as Type 3, or if the MediaBox is not A4. The byte-level
+checks assert their own regexes still match: a regex that silently stops matching turns a gate into
+a check that always passes.
+
+`_print.scss` survives as a ⌘P courtesy so the site doesn't print its hero. It is not the
+deliverable.
+
 ## Deployment
 
 Apex of `perepages.com`, served by this repo. `base: '/'` in `vite.config.ts` — a `/cv/` base
@@ -112,7 +175,8 @@ It flushes the 2017 webpack-era service worker. Leave it until returning visitor
    the rest is not.
 2. **Splitting one tenure into four inflates skill evidence.** `skillEvidence` counts roles, so one
    employer now contributes four (`Git · 7 roles`, `Agile · 4 roles`). Accepted as the cost of the
-   four-entry layout — but if it ever reads as job-hopping, count distinct employers instead.
+   four-entry layout — but if it ever reads as job-hopping, count distinct employers instead. The
+   PDF already sidesteps this by merging them into one employer block.
 3. **Headline** — "Frontend Architect & Engineering Lead" is a proposal, pending confirmation.
 4. **Community dates** — the old data only carried March–May 2017 for AngularCamp / Angular Beers /
    CinemaJS, which cannot be right; entries currently render without dates.

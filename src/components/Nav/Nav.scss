@@ -93,8 +93,12 @@
   }
 }
 
+/* An anchor to the generated PDF, not a button — it needs the anchor resets
+   the reset stylesheet does not give it. */
 .nav__print {
   flex-shrink: 0;
+  text-decoration: none;
+  white-space: nowrap;
   padding: var(--space-1) var(--space-4);
   border: 1px solid var(--rule-strong);
   border-radius: var(--radius);
