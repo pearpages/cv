@@ -1,0 +1,120 @@
+/**
+ * Design tokens.
+ *
+ * The page runs in two acts. Act I (the hero) is a saturated ultramarine
+ * field carrying the wordmark. Act II (the document) is a light, quiet
+ * reading surface where the ultramarine is demoted from ground to accent.
+ * The poster can be loud because the document is silent.
+ *
+ * Everything below is a CSS custom property so the dark scheme is a
+ * redefinition rather than a second set of rules.
+ */
+
+:root {
+  color-scheme: light dark;
+
+  /* Palette ------------------------------------------------------- */
+  --ultramarine: #1e2ed6;
+  --ultramarine-deep: #1522a8;
+  --ultramarine-lift: #8b97ff;
+  --ink: #0c0e14;
+  --paper: #f3f4f7;
+  --bone: #ededf2;
+  --graphite: #5a6072;
+  --saffron: #ffb020;
+
+  /* Semantic — light document ------------------------------------- */
+  --surface: var(--paper);
+  --surface-raised: #fff;
+  --surface-sunken: #e9ebf1;
+  --text: var(--ink);
+  --text-muted: var(--graphite);
+  /* 4.75:1 on --surface. The obvious lighter grey (#878da1) lands at 3.0:1,
+     which fails AA for the small mono labels this is used on. */
+  --text-faint: #666c80;
+  --rule: color-mix(in oklab, var(--ink) 13%, transparent);
+  --rule-strong: color-mix(in oklab, var(--ink) 30%, transparent);
+  --accent: var(--ultramarine);
+  --accent-quiet: color-mix(in oklab, var(--ultramarine) 10%, transparent);
+  --on-accent: var(--bone);
+
+  /* The single warm signal. Three uses page-wide, no more. */
+  --signal: var(--saffron);
+
+  --focus: var(--ultramarine);
+
+  /* Type ---------------------------------------------------------- */
+  --font-display: 'Archivo Variable', 'Archivo', system-ui, sans-serif;
+  --font-body: 'Instrument Sans Variable', 'Instrument Sans', system-ui, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --text-2xs: clamp(0.6875rem, 0.67rem + 0.08vw, 0.75rem);
+  --text-xs: clamp(0.75rem, 0.73rem + 0.1vw, 0.8125rem);
+  --text-sm: clamp(0.875rem, 0.85rem + 0.12vw, 0.9375rem);
+  --text-base: clamp(1rem, 0.97rem + 0.18vw, 1.0625rem);
+  --text-lg: clamp(1.125rem, 1.06rem + 0.32vw, 1.3125rem);
+  --text-xl: clamp(1.375rem, 1.24rem + 0.62vw, 1.75rem);
+  --text-2xl: clamp(1.75rem, 1.48rem + 1.25vw, 2.5rem);
+  --text-3xl: clamp(2.25rem, 1.76rem + 2.3vw, 3.5rem);
+
+  --leading-tight: 1.08;
+  --leading-snug: 1.3;
+  --leading-normal: 1.6;
+
+  --tracking-tight: -0.02em;
+  --tracking-wide: 0.08em;
+  --tracking-wider: 0.16em;
+
+  /* Space --------------------------------------------------------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+
+  /* Layout -------------------------------------------------------- */
+  --page-max: 76rem;
+  --gutter: clamp(1.25rem, 5vw, 4.5rem);
+  --measure: 64ch;
+  --radius: 3px;
+  --radius-lg: 10px;
+
+  /* Motion -------------------------------------------------------- */
+  --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur: 260ms;
+  --dur-slow: 620ms;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: #090b11;
+    --surface-raised: #11141d;
+    --surface-sunken: #05070b;
+    --text: #e9eaf1;
+    --text-muted: #a0a6ba;
+    --text-faint: #767d92;
+    --rule: color-mix(in oklab, #fff 14%, transparent);
+    --rule-strong: color-mix(in oklab, #fff 32%, transparent);
+
+    /* Ultramarine at full saturation fails contrast on a dark ground,
+       so the accent lifts rather than the text darkening. */
+    --accent: var(--ultramarine-lift);
+    --accent-quiet: color-mix(in oklab, var(--ultramarine-lift) 14%, transparent);
+    --on-accent: var(--bone);
+    --focus: var(--ultramarine-lift);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur: 0ms;
+    --dur-slow: 0ms;
+  }
+}

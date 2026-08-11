@@ -1,0 +1,98 @@
+<!doctype html>
+<!--
+  Source for public/media/og-card.png (1200×630).
+
+  A build-time artefact, not a page of the site: it is rendered in a browser
+  and captured, so the card uses the real Archivo width axis rather than a
+  fallback face.
+
+  The card is a fixed 1200×630 box pinned to the top-left corner and sized in
+  pixels — never viewport units — so the capture is identical regardless of
+  the window it is taken in. Crop the top-left 1200×630 of the screenshot.
+-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>OG card source</title>
+  <script type="module">
+    import '@fontsource-variable/archivo/wdth.css';
+    import '@fontsource-variable/geist-mono';
+  </script>
+  <style>
+    * { margin: 0; box-sizing: border-box; }
+
+    html, body {
+      background: #6b7280;
+      overflow: hidden;
+    }
+
+    .card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1200px;
+      height: 630px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 64px;
+      background: #1e2ed6;
+      color: #ededf2;
+    }
+
+    .wordmark {
+      font-family: 'Archivo Variable', sans-serif;
+      font-weight: 800;
+      font-stretch: 110%;
+      font-size: 138px;
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+    }
+
+    .meta {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 32px;
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 2px solid rgba(237, 237, 242, 0.34);
+    }
+
+    .headline {
+      font-family: 'Archivo Variable', sans-serif;
+      font-weight: 500;
+      font-stretch: 100%;
+      font-size: 28px;
+      letter-spacing: 0.005em;
+      white-space: nowrap;
+    }
+
+    .facts {
+      font-family: 'Geist Mono Variable', monospace;
+      font-size: 17px;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: rgba(237, 237, 242, 0.7);
+      white-space: nowrap;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <div class="wordmark">
+      <div>Pere</div>
+      <div>Pages</div>
+      <div>Soms</div>
+    </div>
+    <div class="meta">
+      <div class="headline">Frontend Architect &amp; Engineering Lead</div>
+      <div class="facts">19 years / Barcelona</div>
+    </div>
+  </div>
+</body>
+
+</html>

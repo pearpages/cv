@@ -1,0 +1,51 @@
+.education {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: var(--space-6) var(--space-7);
+}
+
+.education-item {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.education-item__logo {
+  width: 3rem;
+  height: 3rem;
+  padding: var(--space-1);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: #fff;
+  object-fit: contain;
+}
+
+.education-item__institution {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 650;
+  font-stretch: 104%;
+  letter-spacing: var(--tracking-tight);
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+  }
+
+  a:hover {
+    color: var(--accent);
+  }
+
+  svg {
+    opacity: 0.5;
+  }
+}
+
+.education-item__credential {
+  margin-block-start: var(--space-1);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+

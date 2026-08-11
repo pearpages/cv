@@ -1,0 +1,116 @@
+.nav__sentinel {
+  position: absolute;
+  inset-block-start: 0;
+  height: 1px;
+  width: 100%;
+}
+
+.nav {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 20;
+  background: color-mix(in oklab, var(--surface) 82%, transparent);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid transparent;
+  transition:
+    border-color var(--dur) var(--ease),
+    opacity var(--dur) var(--ease);
+
+  /* Before the document covers the hero there is nothing to navigate. */
+  opacity: 0;
+  pointer-events: none;
+
+  &.is-stuck {
+    opacity: 1;
+    pointer-events: auto;
+    border-bottom-color: var(--rule);
+  }
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  min-height: 3.5rem;
+}
+
+.nav__mark {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  font-stretch: 82%;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-inline-start: auto;
+
+  /* Below the desktop breakpoint the list scrolls rather than folding into
+     a menu — one gesture instead of open, choose, close. */
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.nav__link {
+  display: block;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-faint);
+  white-space: nowrap;
+  transition: color var(--dur-fast) var(--ease);
+
+  &:hover {
+    color: var(--text);
+  }
+
+  &.is-active {
+    color: var(--accent);
+    background: var(--accent-quiet);
+  }
+}
+
+.nav__print {
+  flex-shrink: 0;
+  padding: var(--space-1) var(--space-4);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition:
+    color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease);
+
+  &:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+}
+
+@media (max-width: 56rem) {
+  .nav__mark {
+    display: none;
+  }
+
+  .nav__links {
+    margin-inline-start: 0;
+  }
+}

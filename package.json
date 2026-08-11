@@ -1,27 +1,30 @@
 {
   "name": "cv",
   "version": "2.0.0",
-  "description": "Pere Pages Soms CV — React + Vite",
+  "description": "Pere Pages Soms — CV at perepages.com",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
   },
   "author": "Pere Pages Soms",
   "license": "ISC",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.5.2",
-    "@popperjs/core": "^2.11.8",
-    "bootstrap": "^5.3.3",
-    "jump.js": "^1.0.2",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "@fontsource-variable/archivo": "^5.3.0",
+    "@fontsource-variable/geist-mono": "^5.3.0",
+    "@fontsource-variable/instrument-sans": "^5.3.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.1",
-    "sass": "^1.77.8",
-    "vite": "^5.4.0"
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^6.0.5",
+    "sass": "^1.102.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.2.1"
   }
 }

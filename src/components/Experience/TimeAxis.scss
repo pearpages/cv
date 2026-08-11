@@ -1,0 +1,89 @@
+.time-axis {
+  margin: 0 0 var(--space-8);
+}
+
+.time-axis__caption {
+  margin-block-end: var(--space-3);
+}
+
+.time-axis__track {
+  position: relative;
+  height: 2.25rem;
+  border-block-end: 1px solid var(--rule);
+}
+
+.time-axis__segment {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: var(--offset);
+  width: var(--length);
+  height: 100%;
+  padding-inline-end: 2px;
+
+  a {
+    display: block;
+    height: 100%;
+    position: relative;
+  }
+}
+
+.time-axis__bar {
+  display: block;
+  height: 100%;
+  background: color-mix(in oklab, var(--accent) 34%, transparent);
+  border-radius: 2px 2px 0 0;
+  transition: background var(--dur-fast) var(--ease);
+}
+
+.time-axis__segment a:hover .time-axis__bar,
+.time-axis__segment a:focus-visible .time-axis__bar {
+  background: var(--accent);
+}
+
+/* One of the three saffron moments on the page: the role still running. */
+.time-axis__segment.is-current .time-axis__bar {
+  background: var(--signal);
+}
+
+.time-axis__tooltip {
+  position: absolute;
+  inset-block-end: calc(100% + var(--space-2));
+  inset-inline-start: 0;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius);
+  background: var(--text);
+  color: var(--surface);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-fast) var(--ease);
+}
+
+.time-axis__segment a:hover .time-axis__tooltip,
+.time-axis__segment a:focus-visible .time-axis__tooltip {
+  opacity: 1;
+}
+
+/* Visible to screen readers, never to the eye. */
+.time-axis__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.time-axis__ticks {
+  display: flex;
+  justify-content: space-between;
+  margin-block-start: var(--space-2);
+}
+
+.time-axis__tick {
+  font-size: var(--text-2xs);
+  color: var(--text-faint);
+}

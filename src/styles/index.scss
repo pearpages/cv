@@ -1,0 +1,105 @@
+@use 'tokens';
+@use 'reset';
+@use 'typography';
+@use 'print';
+
+/* Shared layout primitives -------------------------------------------- */
+
+.page {
+  /* The hero is fixed at the back; the document is offset by one viewport
+     and scrolls up over it, carrying its own opaque reading surface. */
+  position: relative;
+  z-index: 1;
+  margin-block-start: 100dvh;
+  background: var(--surface);
+}
+
+.shell {
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.skip-link {
+  position: absolute;
+  inset-inline-start: var(--space-4);
+  inset-block-start: var(--space-4);
+  z-index: 100;
+  padding: var(--space-2) var(--space-4);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  border-radius: var(--radius);
+  transform: translateY(-200%);
+  transition: transform var(--dur) var(--ease);
+
+  &:focus {
+    transform: translateY(0);
+  }
+}
+
+.print-only {
+  display: none;
+}
+
+/* Sections ------------------------------------------------------------- */
+
+.section {
+  padding-block: var(--space-9);
+  border-top: 1px solid var(--rule);
+
+  &:first-of-type {
+    border-top: 0;
+  }
+}
+
+.section__head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  margin-bottom: var(--space-7);
+}
+
+.section__title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 650;
+  font-stretch: 108%;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+}
+
+.section__count {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+/* A hairline that runs to the edge of the section head. */
+.section__rule {
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* Tag — used for stacks and skills alike ------------------------------- */
+
+.tag {
+  display: inline-block;
+  padding: 0.18em 0.62em;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  line-height: 1.5;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}

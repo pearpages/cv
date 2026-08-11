@@ -1,0 +1,30 @@
+.footer {
+  padding-block: var(--space-8) var(--space-7);
+  border-block-start: 1px solid var(--rule);
+}
+
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+/* The wordmark returns, quiet and condensed — the name is the first and the
+   last thing on the page. */
+.footer__mark {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 6vw, 3.25rem);
+  font-weight: 800;
+  font-stretch: 70%;
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--text);
+}
+
+.footer__note {
+  font-size: var(--text-xs);
+  color: var(--text-faint);
+}

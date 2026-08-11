@@ -1,0 +1,176 @@
+/**
+ * The hero is fixed behind the document, which scrolls over it like a
+ * curtain. That gives the wordmark a full viewport of scroll to animate
+ * across without any JS on the scroll path.
+ */
+
+.hero {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--ultramarine);
+  color: var(--bone);
+  overflow: hidden;
+}
+
+/* Wider than the document shell — the poster runs closer to the edges than
+   the reading surface does. */
+.hero__inner {
+  width: 100%;
+  padding-inline: var(--gutter);
+}
+
+.hero__wordmark {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+
+  /* Bounded by height as well as width: three stacked lines have to clear
+     the meta row on a short laptop viewport. */
+  font-size: clamp(2.75rem, min(18vw, 23dvh), 15rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+
+  /* Starting point of the width axis. Archivo's wdth runs 62%–125%; the
+     `wdth` Fontsource entrypoint is imported precisely for this. */
+  font-stretch: 72%;
+}
+
+.hero__word {
+  display: block;
+}
+
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-6);
+  margin-block-start: clamp(var(--space-4), 3dvh, var(--space-6));
+  padding-block-start: var(--space-4);
+  border-block-start: 1px solid color-mix(in oklab, var(--bone) 32%, transparent);
+}
+
+.hero__headline {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 500;
+  font-stretch: 100%;
+  letter-spacing: 0.01em;
+}
+
+.hero__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  /* 5.1:1 on the ultramarine ground; at 66% it drops to 4.0:1. */
+  color: color-mix(in oklab, var(--bone) 78%, transparent);
+}
+
+/* Scroll cue ---------------------------------------------------------- */
+
+.hero__cue {
+  position: absolute;
+  inset-inline-start: var(--gutter);
+  inset-block-end: var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: color-mix(in oklab, var(--bone) 72%, transparent);
+}
+
+.hero__cue-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+}
+
+.hero__cue-line {
+  display: block;
+  width: 4rem;
+  height: 1px;
+  background: currentColor;
+  transform-origin: left center;
+  animation: hero-cue 2.6s var(--ease) infinite;
+}
+
+@keyframes hero-cue {
+  0%,
+  100% {
+    transform: scaleX(0.35);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/**
+ * The signature: one real variable-font axis, driven by scroll.
+ *
+ * Scroll-driven animations run off the main thread, so this costs nothing.
+ * Without support the wordmark simply holds a fixed width — the design does
+ * not depend on the motion, only benefits from it.
+ */
+@supports (animation-timeline: scroll()) {
+  .hero__wordmark {
+    animation: wordmark-expand linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 100dvh;
+  }
+
+  .hero__inner {
+    animation: hero-recede linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 100dvh;
+  }
+}
+
+@keyframes wordmark-expand {
+  from {
+    font-stretch: 72%;
+    letter-spacing: 0.01em;
+  }
+  to {
+    font-stretch: 125%;
+    letter-spacing: -0.04em;
+  }
+}
+
+@keyframes hero-recede {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.12;
+  }
+}
+
+/* Motion is an enhancement; the layout is complete without it. */
+@media (prefers-reduced-motion: reduce) {
+  .hero__wordmark {
+    animation: none;
+    font-stretch: 96%;
+  }
+
+  .hero__inner {
+    animation: none;
+    opacity: 1;
+  }
+
+  .hero__cue-line {
+    animation: none;
+    transform: scaleX(1);
+  }
+}

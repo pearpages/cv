@@ -1,0 +1,50 @@
+import { languages, profile, projects, roles } from '../../data/cv';
+import { careerSpan } from '../../lib/derive';
+import { Section } from '../Section/Section';
+import './About.scss';
+
+export function About() {
+  const { years } = careerSpan(roles);
+
+  const facts = [
+    { label: 'Experience', value: `${years} years` },
+    { label: 'Based in', value: profile.location },
+    { label: 'Focus', value: 'Frontend architecture, Angular, TypeScript, React' },
+    { label: 'Open source', value: `${projects.length} published projects` },
+  ];
+
+  return (
+    <Section id="about" title="About">
+      <div className="about">
+        <div className="about__prose prose">
+          {profile.summary.map((paragraph) => (
+            <p key={paragraph.slice(0, 24)}>{paragraph}</p>
+          ))}
+        </div>
+
+        <dl className="about__facts">
+          {facts.map((fact) => (
+            <div className="about__fact" key={fact.label}>
+              <dt className="label">{fact.label}</dt>
+              <dd>{fact.value}</dd>
+            </div>
+          ))}
+
+          <div className="about__fact">
+            <dt className="label">Languages</dt>
+            <dd>
+              <ul className="about__languages">
+                {languages.map((language) => (
+                  <li key={language.name}>
+                    <span className="about__language-name">{language.name}</span>
+                    <span className="about__language-level">{language.level}</span>
+                  </li>
+                ))}
+              </ul>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </Section>
+  );
+}

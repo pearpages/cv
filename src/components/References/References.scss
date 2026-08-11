@@ -1,0 +1,81 @@
+.references {
+  columns: 2;
+  column-gap: var(--space-7);
+}
+
+/* Masonry via CSS columns: the quotes vary a lot in length, and a grid
+   would leave ragged whitespace under the short ones. */
+.reference {
+  break-inside: avoid;
+  margin-block-end: var(--space-6);
+  padding: var(--space-5);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--surface-raised);
+}
+
+.reference__quote {
+  font-size: var(--text-sm);
+  line-height: 1.62;
+  color: var(--text);
+
+  p + p {
+    margin-block-start: var(--space-3);
+  }
+
+  /* An opening quote set in the display face, sitting in the margin so the
+     text edge stays flush. */
+  p:first-child::before {
+    content: '“';
+    float: left;
+    margin-inline-start: -0.42em;
+    font-family: var(--font-display);
+    font-size: 2.4em;
+    line-height: 0.78;
+    color: var(--accent);
+  }
+}
+
+.reference__author {
+  margin-block-start: var(--space-4);
+  padding-block-start: var(--space-3);
+  border-block-start: 1px solid var(--rule);
+}
+
+.reference__name {
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.reference__title {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.reference__context {
+  margin-block-start: var(--space-2);
+}
+
+.reference__url {
+  font-size: var(--text-2xs);
+  color: var(--text-faint);
+  word-break: break-all;
+}
+
+@media (max-width: 60rem) {
+  .references {
+    columns: 1;
+  }
+}
+
+@media print {
+  .references {
+    columns: 2;
+    column-gap: 10pt;
+  }
+
+  .reference {
+    padding: 6pt;
+    margin-block-end: 8pt;
+  }
+}

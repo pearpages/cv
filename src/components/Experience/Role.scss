@@ -1,0 +1,198 @@
+.role {
+  display: grid;
+  grid-template-columns: 12rem minmax(0, 1fr);
+  gap: var(--space-7);
+  padding-block: var(--space-7);
+  border-block-start: 1px solid var(--rule);
+
+  &:first-child {
+    border-block-start: 0;
+    padding-block-start: 0;
+  }
+}
+
+/* Left rail — everything the reader scans rather than reads. */
+.role__rail {
+  position: sticky;
+  inset-block-start: 5rem;
+  align-self: start;
+}
+
+.role__dates {
+  font-size: var(--text-xs);
+  color: var(--text);
+  letter-spacing: 0.01em;
+}
+
+.role__duration {
+  margin-block-start: var(--space-1);
+  font-size: var(--text-2xs);
+  color: var(--text-faint);
+}
+
+.role__current {
+  display: inline-block;
+  margin-block-start: var(--space-2);
+  padding: 0.1em 0.5em;
+  border-radius: var(--radius);
+  background: var(--signal);
+  color: #2a1c00;
+  font-size: var(--text-2xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+/**
+ * The logos arrive as PNGs with assorted — and often opaque — backgrounds.
+ * Inverting them for dark mode turns anything with a white background into
+ * a solid block, so they sit on a constant light chip instead and read the
+ * same in both schemes.
+ */
+.role__logo {
+  width: auto;
+  max-width: 8rem;
+  height: auto;
+  max-height: 2.75rem;
+  margin-block-start: var(--space-4);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: #fff;
+  object-fit: contain;
+  object-position: center;
+  opacity: 0.82;
+  transition: opacity var(--dur) var(--ease);
+}
+
+.role:hover .role__logo {
+  opacity: 1;
+}
+
+/* Body ----------------------------------------------------------------- */
+
+.role__title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 650;
+  font-stretch: 104%;
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+}
+
+.role__employer {
+  margin-block-start: var(--space-1);
+  font-size: var(--text-sm);
+}
+
+.role__location {
+  color: var(--text-faint);
+}
+
+.role__summary {
+  max-width: var(--measure);
+  margin-block-start: var(--space-4);
+  font-size: var(--text-base);
+}
+
+.role__highlights {
+  max-width: var(--measure);
+  margin-block-start: var(--space-4);
+  display: grid;
+  gap: var(--space-2);
+
+  li {
+    position: relative;
+    padding-inline-start: var(--space-5);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+
+  /* A rule rather than a bullet — it echoes the hairlines the rest of the
+     document is built from. */
+  li::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: 0.72em;
+    width: var(--space-3);
+    height: 1px;
+    background: var(--rule-strong);
+  }
+}
+
+.role__stack {
+  margin-block-start: var(--space-5);
+}
+
+.role__projects {
+  margin-block-start: var(--space-5);
+}
+
+.role__project-list {
+  margin-block-start: var(--space-2);
+  display: grid;
+  gap: var(--space-1);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.role__project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--rule-strong);
+  text-underline-offset: 0.2em;
+
+  &:hover {
+    color: var(--accent);
+    text-decoration-color: currentColor;
+  }
+}
+
+.role__project-icon {
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+.role__project-name {
+  color: var(--text);
+}
+
+.role__references {
+  margin-block-start: var(--space-5);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+
+  .label {
+    display: inline;
+    margin-inline-end: var(--space-1);
+  }
+}
+
+@media (max-width: 60rem) {
+  .role {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+  }
+
+  .role__rail {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .role__duration,
+  .role__current {
+    margin-block-start: 0;
+  }
+
+  .role__logo {
+    margin-block-start: 0;
+    max-height: 1.75rem;
+  }
+}
