@@ -9,6 +9,7 @@ import { Nav } from './components/Nav/Nav';
 import { Projects } from './components/Projects/Projects';
 import { References } from './components/References/References';
 import { Skills } from './components/Skills/Skills';
+import { Writing } from './components/Writing/Writing';
 
 export function App() {
   return (
@@ -27,6 +28,7 @@ export function App() {
           <Skills />
           <Experience />
           <Projects />
+          <Writing />
           <Community />
           <References />
           <Education />

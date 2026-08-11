@@ -1,4 +1,4 @@
-import { languages, profile, projects, roles } from '../../data/cv';
+import { languages, profile, projects, roles, writing } from '../../data/cv';
 import { careerSpan } from '../../lib/derive';
 import { Section } from '../Section/Section';
 import './About.scss';
@@ -6,11 +6,20 @@ import './About.scss';
 export function About() {
   const { years } = careerSpan(roles);
 
+  /* Counts the projects with a public repo, not every project — one of them
+     is a product whose source is closed, and calling that open source would
+     be a lie the reader can check. */
+  const openSource = projects.filter((project) => project.repo).length;
+
   const facts = [
     { label: 'Experience', value: `${years} years` },
     { label: 'Based in', value: profile.location },
-    { label: 'Focus', value: 'Frontend architecture, Angular, TypeScript, React' },
-    { label: 'Open source', value: `${projects.length} published projects` },
+    { label: 'Focus', value: 'Frontend architecture, React, TypeScript, Angular' },
+    { label: 'Open source', value: `${openSource} published projects` },
+    {
+      label: 'Writing',
+      value: `${writing.postCount}+ posts since ${writing.since}`,
+    },
   ];
 
   return (

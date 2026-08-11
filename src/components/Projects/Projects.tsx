@@ -40,15 +40,19 @@ export function Projects() {
                   <span>Live demo</span>
                 </a>
               )}
-              <a
-                className="project__link"
-                href={project.repo}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <GitHubIcon width={14} height={14} />
-                <span>Source</span>
-              </a>
+              {/* Not everything shipped is open source — a product keeps its
+                  repo private, and an unguarded link would be dead. */}
+              {project.repo && (
+                <a
+                  className="project__link"
+                  href={project.repo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <GitHubIcon width={14} height={14} />
+                  <span>Source</span>
+                </a>
+              )}
             </p>
           </li>
         ))}

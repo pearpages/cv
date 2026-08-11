@@ -1,0 +1,81 @@
+/**
+ * Same two-column split as `.about` — prose on the left, a bordered rail on
+ * the right — so the section reads as part of the document rather than a new
+ * device. It collapses at the same breakpoint for the same reason.
+ */
+.writing {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.writing__description {
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--text-muted);
+}
+
+.writing__topics {
+  margin-block-start: var(--space-4);
+}
+
+.writing__home {
+  display: inline-block;
+  margin-block-start: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+
+.writing__selected {
+  padding-inline-start: var(--space-6);
+  border-inline-start: 1px solid var(--rule);
+}
+
+.writing__list {
+  display: grid;
+  gap: var(--space-3);
+  margin-block-start: var(--space-3);
+  font-size: var(--text-sm);
+}
+
+/**
+ * Matches the project links inside a role — same underline, same hover.
+ *
+ * `inline`, not `inline-flex`: these titles wrap to two lines, and a flex box
+ * pushes the arrow to the far edge of the rail where it reads as detached.
+ * Inline keeps it hugging the last word.
+ */
+.writing__post {
+  display: inline;
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--rule-strong);
+  text-underline-offset: 0.2em;
+  transition: color var(--dur-fast) var(--ease);
+
+  &:hover {
+    color: var(--accent);
+    text-decoration-color: currentColor;
+  }
+}
+
+.writing__post-icon {
+  display: inline-block;
+  margin-inline-start: 0.3em;
+  vertical-align: baseline;
+}
+
+@media (max-width: 60rem) {
+  .writing {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-6);
+  }
+
+  .writing__selected {
+    padding-inline-start: 0;
+    border-inline-start: 0;
+    padding-block-start: var(--space-5);
+    border-block-start: 1px solid var(--rule);
+  }
+}

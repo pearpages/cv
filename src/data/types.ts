@@ -86,8 +86,30 @@ export interface ShowcaseProject {
   packageName?: string;
   /** Live demo. */
   url?: string;
-  repo: string;
+  /**
+   * Public source, when there is any. Optional because not every shipped
+   * thing is open source — a product keeps its repo private, and the About
+   * sidebar counts the ones that have this rather than all projects.
+   */
+  repo?: string;
   stack: string[];
+}
+
+/**
+ * The blog. Not a project — a sustained practice, and the only live evidence
+ * behind the AI-tooling claims in the summary.
+ */
+export interface Writing {
+  url: string;
+  /** What the blog is, in one line. */
+  description: string;
+  /** Year of the first post. */
+  since: number;
+  /** Snapshot — see the note in `cv.ts`. Only ever undercounts. */
+  postCount: number;
+  topics: string[];
+  /** Chosen exemplars, not the latest N. */
+  selected: { title: string; url: string }[];
 }
 
 export interface Language {

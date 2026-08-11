@@ -71,6 +71,21 @@ reintroduce that shape.
   skills are never asserted in two places.
 - **Percentage skill bars are gone on purpose.** Self-scored numbers read as a negative signal and
   carry no ATS weight. Grouped taxonomy plus derived evidence replaced them.
+- A skill in `skillGroups` with no matching `stack` entry anywhere renders with no evidence line.
+  That is the honest outcome, not a bug — but it also means **adding a skill without a role or
+  project behind it is an empty claim**. Next.js and Astro sat bare until Bitepals and the two
+  Astro sites were added to `projects`.
+- `repo` on a `ShowcaseProject` is optional: Bitepals is a product with a private repo. The About
+  sidebar's "Open source" count is `projects.filter(p => p.repo).length`, not `projects.length`,
+  so a closed-source project can never inflate it.
+
+### Writing
+
+`writing` in `cv.ts` powers the Writing section. `postCount` is a hand-written snapshot (78, taken
+11 Aug 2026) and `selected` is three **hand-picked exemplars, not the latest three** — a CV shows
+your best, not your most recent. `pearpages.com/blog/rss.xml` exists, and a build-time fetch was
+considered and rejected: it would tie every deploy to another host being up and would order posts
+by recency rather than merit.
 
 ### Content rule
 

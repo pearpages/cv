@@ -10,6 +10,7 @@ import type {
   Section,
   ShowcaseProject,
   SkillGroup,
+  Writing,
 } from './types';
 import { PRESENT } from './types';
 
@@ -49,6 +50,7 @@ export const sections: Section[] = [
   { id: 'skills', label: 'Skills' },
   { id: 'experience', label: 'Experience' },
   { id: 'projects', label: 'Projects' },
+  { id: 'writing', label: 'Writing' },
   { id: 'community', label: 'Community' },
   { id: 'references', label: 'References' },
   { id: 'education', label: 'Education' },
@@ -470,6 +472,29 @@ export const skillGroups: SkillGroup[] = [
 
 export const projects: ShowcaseProject[] = [
   {
+    name: 'Bitepals',
+    description:
+      'Invite-only product for finding places to eat through people you actually trust, rather than through ratings. Shipped in three languages with locale routing, accounts and a private social graph.',
+    url: 'https://bitepals.com',
+    stack: ['Next.js', 'React', 'TypeScript', 'i18n'],
+  },
+  {
+    name: 'Masia Blanca',
+    description:
+      'Public-interest site about the marine reserve off Coma-ruga, in Catalan — its history, its fish and how to visit. Independent, with sourced photography and credits.',
+    url: 'https://masiablanca.soms.cat',
+    repo: 'https://github.com/pearpages/masiablanca',
+    stack: ['Astro', 'TypeScript'],
+  },
+  {
+    name: 'Cota de tast',
+    description:
+      'The 44 restaurants of the Cerdanya, both sides of the border, ordered by altitude — from Bellver at 1,048 m to Font-Romeu at 1,760 m.',
+    url: 'https://cerdanya.soms.cat',
+    repo: 'https://github.com/pearpages/cerdanya',
+    stack: ['Astro', 'TypeScript'],
+  },
+  {
     name: 'Modals',
     packageName: '@pearpages/modals',
     description:
@@ -509,6 +534,45 @@ export const projects: ShowcaseProject[] = [
     stack: ['React', 'TypeScript', 'Vite'],
   },
 ];
+
+/**
+ * `postCount` is a snapshot taken 11 August 2026 from the sitemap (78 dated
+ * posts, 2020→2026, most recent that week). It is deliberately a hand-written
+ * number rather than a build-time fetch of `pearpages.com/blog/rss.xml`: a
+ * feed would tie every deploy to another host being up, and would pick posts
+ * by recency instead of by merit. It can only ever undercount.
+ *
+ * `selected` are chosen exemplars, not the latest three — one on AI system
+ * architecture, one on React core, one on browser internals.
+ */
+export const writing: Writing = {
+  url: 'https://pearpages.com',
+  description:
+    'I write up what I learn, mostly while it is still half-formed. Lately that has meant a lot on working with AI coding tools, alongside the frontend and browser-internals posts that have been the through-line since 2020.',
+  since: 2020,
+  postCount: 78,
+  topics: [
+    'AI-assisted development',
+    'Frontend architecture',
+    'React',
+    'Browser internals',
+    'Tooling',
+  ],
+  selected: [
+    {
+      title: 'From Agent Loops to Agent Graphs',
+      url: 'https://pearpages.com/blog/2026/07/24/from-agent-loops-to-agent-graphs',
+    },
+    {
+      title: 'Understanding Modern Routing in the React Ecosystem',
+      url: 'https://pearpages.com/blog/2026/06/05/understanding-modern-routing-in-the-react-ecosystem',
+    },
+    {
+      title: 'Inside the Cookie Jar, How Chrome Actually Handles Cookies',
+      url: 'https://pearpages.com/blog/2025/10/19/inside-the-cookie-jar-how-chrome-actually-handles-cookies',
+    },
+  ],
+};
 
 /**
  * Previously buried as a three-month "Contributor" job entry. Organising a
