@@ -2,3 +2,5 @@ node_modules/
 *.log
 .sass-cache
 .DS_Store
+dist/
+.vite/
