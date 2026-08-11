@@ -24,6 +24,29 @@
   color: var(--text);
 }
 
+/* The notes stack as one block so the big wordmark keeps the row to itself. */
+.footer__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.footer__credit {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.footer__credit-icon {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: auto;
+  aspect-ratio: 1;
+}
+
 .footer__note {
   font-size: var(--text-xs);
   color: var(--text-faint);

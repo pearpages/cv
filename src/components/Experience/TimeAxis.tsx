@@ -23,7 +23,15 @@ export function TimeAxis() {
       <ul className="time-axis__track">
         {entries.map(({ role, offset, length }) => (
           <li
-            className={`time-axis__segment${role.to === PRESENT ? ' is-current' : ''}`}
+            className={
+              `time-axis__segment` +
+              (role.to === PRESENT ? ' is-current' : '') +
+              /* Tooltips are nowrap and anchored to the segment's start edge,
+                 so the ones in the last third run off the axis. Flip them to
+                 hang from the end edge instead — derived from the layout, no
+                 measuring. */
+              (offset + length > 66 ? ' is-trailing' : '')
+            }
             key={role.id}
             style={{ '--offset': `${offset}%`, '--length': `${length}%` } as React.CSSProperties}
           >

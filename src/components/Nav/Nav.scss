@@ -35,6 +35,9 @@
 }
 
 .nav__mark {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
   font-family: var(--font-display);
   font-size: var(--text-sm);
   font-weight: 700;
@@ -42,6 +45,13 @@
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
   white-space: nowrap;
+}
+
+.nav__mark-logo {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: auto;
+  aspect-ratio: 1;
 }
 
 .nav__links {
@@ -105,8 +115,9 @@
   }
 }
 
+/* The name is what runs out of room, not the mark. */
 @media (max-width: 56rem) {
-  .nav__mark {
+  .nav__mark-name {
     display: none;
   }
 

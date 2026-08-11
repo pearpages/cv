@@ -14,12 +14,17 @@ import type {
 import { PRESENT } from './types';
 
 /* ------------------------------------------------------------------ *
- * TODO — 2017→2026
- * The `blue-orange` role below still ends at `present` with the stack as
- * it stood in 2017 (Angular 7, Protractor, Jenkins). Pere is sending the
- * real history for this span. When it arrives: close that role with its
- * true end date and add the newer ones above it. Nothing else needs to
- * change — the time axis and skill evidence both derive from these dates.
+ * TODO — Ocado transition dates
+ * The four `ocado-*` roles below are one tenure (joined 18 March 2019,
+ * still there) split by team, as Pere asked. Only the *first* date is
+ * sourced: 2019-03. The three internal transitions — Communications →
+ * multibranding frontend team → Subscriptions → Payments — are estimates
+ * read off the narrative ("after a company reorg…", "after a couple of
+ * years…"). Replace them with the real months; the time axis and the
+ * durations both derive from these.
+ *
+ * Per-team `stack` entries are likewise thin. React is sourced (Pere was
+ * hired to introduce it); everything else beyond it needs confirming.
  * ------------------------------------------------------------------ */
 
 export const profile: Profile = {
@@ -28,9 +33,9 @@ export const profile: Profile = {
   headline: 'Frontend Architect & Engineering Lead',
   location: 'Barcelona, Spain',
   summary: [
-    'Frontend architect and engineering lead with 19 years building production web applications — the last decade in TypeScript and Angular, with React, Node and Ionic alongside. I have worked in insurance, health and iGaming, in international cross-functional teams beside designers, business analysts and backend engineers.',
-    'Twice I have been the person who introduced a framework and then taught it: AngularJS at Tokio Marine HCC, where I became the company reference for frontend, and again leading the migration to modern Angular at We Are Blue Orange. Technical leadership, code review, mentoring and setting standards are as much of the job as the code is.',
-    'I like simplicity, minimalism and quality. Code should be easy to understand, clean, consistent, testable, short and modular. I write code daily, publish open-source React components, and spent years organising the Barcelona JavaScript community.',
+    'Frontend architect and engineering lead with 19 years building production web applications — the last seven at Ocado Technology in Barcelona, on the React and TypeScript frontend of a multi-brand grocery ecommerce platform, and the decade before that in Angular. I have worked in retail, insurance, health and iGaming, in international cross-functional teams beside designers, business analysts and backend engineers.',
+    'Three times I have been the person who introduced a framework and then taught it: AngularJS at Tokio Marine HCC, where I became the company reference for frontend; modern Angular at We Are Blue Orange; and React at Ocado, where I joined as the office’s first frontend engineer and made the case for it to a team of backend developers. Technical leadership, code review, mentoring and setting standards are as much of the job as the code is.',
+    'I like simplicity, minimalism and quality. Code should be easy to understand, clean, consistent, testable, short and modular. I write code daily, publish open-source React components, work with AI tooling as part of the loop rather than beside it, and spent years organising the Barcelona JavaScript community.',
   ],
   languages: [
     { name: 'Catalan', level: 'Native' },
@@ -51,6 +56,12 @@ export const sections: Section[] = [
 ];
 
 export const employers: Employer[] = [
+  {
+    id: 'ocado',
+    name: 'Ocado Technology',
+    logo: 'ocado.png',
+    url: 'https://www.ocadogroup.com/',
+  },
   {
     id: 'blue-orange',
     name: 'We Are Blue Orange',
@@ -78,10 +89,106 @@ export const employers: Employer[] = [
 ];
 
 export const roles: Role[] = [
+  /**
+   * The Payments entry carries the tenure-wide work — AI tooling, the
+   * cross-team collaboration, the meetups, recruitment — because it is the
+   * open role and that work is still going. It is not exclusive to Payments.
+   */
+  {
+    id: 'ocado-payments',
+    from: '2024-01',
+    to: PRESENT,
+    title: 'Senior Software Engineer',
+    employer: 'ocado',
+    location: 'Barcelona',
+    summary:
+      'Frontend engineering in the Payments vertical, alongside cross-team work with Platform and Analytics.',
+    highlights: [
+      'Frontend engineer on the Payments domain of the grocery ecommerce platform.',
+      'Collaborated beyond the team with Platform and Analytics, and built internal reporting tools used outside my own vertical.',
+      'Worked with AI tooling as part of the daily loop — GitHub Copilot through to Claude — writing prompts and reusable skills, and sharing that practice with the team.',
+      'Helped organise the meetup events hosted at the Barcelona office, and took part in recruitment and technical interviewing.',
+      'Kept investing in the wider ecosystem outside the day job — Next.js, Astro and the React projects listed below.',
+    ],
+    stack: [
+      'React',
+      'TypeScript',
+      'JavaScript',
+      'GitHub Copilot',
+      'Claude',
+      'Git',
+      'Agile',
+    ],
+    projects: [
+      { name: 'Payments', description: 'Frontend of the payments domain' },
+      { name: 'Reporting tools', description: 'Internal tooling built for other teams' },
+    ],
+    references: [],
+  },
+  {
+    id: 'ocado-subscriptions',
+    from: '2022-01',
+    to: '2024-01',
+    title: 'Senior Software Engineer',
+    employer: 'ocado',
+    location: 'Barcelona',
+    summary:
+      'Followed the Subscriptions domain into a fully vertical team when the company reorganised.',
+    highlights: [
+      'Moved with the Subscriptions domain when a company-wide reorganisation turned the horizontal frontend teams into fully vertical, cross-functional ones.',
+      'Worked on the subscriptions product alongside backend engineers, designers and product in a single vertical team.',
+    ],
+    stack: ['React', 'TypeScript', 'JavaScript', 'Git', 'Agile'],
+    projects: [{ name: 'Subscriptions', description: 'Customer subscriptions product' }],
+    references: [],
+  },
+  {
+    id: 'ocado-multibranding',
+    from: '2020-03',
+    to: '2022-01',
+    title: 'Senior Software Engineer',
+    employer: 'ocado',
+    location: 'Barcelona',
+    summary:
+      'Moved to a newly formed frontend team owning shared customer features across the multi-brand ecommerce toolkit.',
+    highlights: [
+      'Built and maintained settings, addresses, communications preferences and subscriptions — one frontend codebase serving several retail brands.',
+      'Part of the frontend team formed to own these features as a discipline, rather than have them spread across backend teams.',
+    ],
+    stack: ['React', 'TypeScript', 'JavaScript', 'Git', 'Agile'],
+    projects: [
+      {
+        name: 'Ecommerce multibranding toolkit',
+        description: 'Settings, addresses, communications and subscriptions across brands',
+      },
+    ],
+    references: [],
+  },
+  {
+    id: 'ocado-communications',
+    from: '2019-03',
+    to: '2020-03',
+    title: 'Senior Software Engineer',
+    employer: 'ocado',
+    location: 'Barcelona',
+    summary:
+      'Joined as the Barcelona office’s first frontend engineer, to support the backend team and make the case for React.',
+    highlights: [
+      'Hired as the first dedicated frontend engineer in the office, working alongside backend engineers who had been carrying the client-side work themselves.',
+      'Acted as the internal advocate for React — introducing it, teaching it and arguing for it in a room that had not used it.',
+      'Owned the Communications team’s backoffice tooling for customer receipts and newsletters, spread across a pair of applications.',
+    ],
+    stack: ['React', 'JavaScript', 'TypeScript', 'Git', 'Agile'],
+    projects: [
+      { name: 'Receipts backoffice', description: 'Backoffice tooling for customer receipts' },
+      { name: 'Newsletters backoffice', description: 'Backoffice tooling for newsletters' },
+    ],
+    references: [],
+  },
   {
     id: 'blue-orange-lead',
     from: '2017-06',
-    to: PRESENT,
+    to: '2019-02',
     title: 'Senior Frontend Engineer / Team Lead',
     employer: 'blue-orange',
     location: 'Barcelona',
@@ -317,7 +424,11 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     name: 'Frameworks & UI',
-    skills: ['Angular', 'React', 'AngularJS', 'Ionic', 'Node.js', 'Bootstrap'],
+    skills: ['React', 'Angular', 'Next.js', 'Astro', 'AngularJS', 'Ionic', 'Node.js'],
+  },
+  {
+    name: 'AI-assisted development',
+    skills: ['Claude', 'GitHub Copilot', 'Prompt design', 'Agent skills'],
   },
   {
     name: 'State & data',
@@ -347,6 +458,7 @@ export const skillGroups: SkillGroup[] = [
       'Technical leadership',
       'Mentoring',
       'Code review',
+      'Recruitment & technical interviewing',
       'Design systems',
       'BEM',
       'Agile',

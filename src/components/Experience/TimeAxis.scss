@@ -1,5 +1,17 @@
 .time-axis {
   margin: 0 0 var(--space-8);
+
+  /**
+   * The tooltips are absolutely positioned and `white-space: nowrap`, so on a
+   * phone the ones near the right edge widened the *document* and let the
+   * whole page be dragged sideways — even at `opacity: 0`, since hidden
+   * absolute boxes still count toward the scrollable area.
+   *
+   * `clip` on one axis only: `hidden`/`auto` would force the block axis to
+   * scroll too and cut the tooltips off above the track.
+   */
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 .time-axis__caption {
@@ -59,6 +71,13 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--dur-fast) var(--ease);
+}
+
+/* Segments in the last third hang their tooltip from the end edge, so it
+   reads inside the axis rather than off it. */
+.time-axis__segment.is-trailing .time-axis__tooltip {
+  inset-inline-start: auto;
+  inset-inline-end: 0;
 }
 
 .time-axis__segment a:hover .time-axis__tooltip,

@@ -39,6 +39,26 @@ the weight axis only and the hero animation silently does nothing.
 Saffron (`--signal`) is rationed to about three uses page-wide: the current-role badge and the
 current segment of the time axis. Do not spend it elsewhere.
 
+### The pearpages mark
+
+`public/media/pearpages-mark.png` is the mark every site in the family carries (pearpages.com,
+orchard.pearpages.com, masiablanca.soms.cat). It appears three times, always small: ~52px above
+the hero wordmark, 24px in the nav, and 20px in the footer credit. It is a **maker's stamp, not a
+co-star** — sizing it up would take back the thing the hero exists to prove, that type carries the
+identity here.
+
+The footer credit is the family signature, copied in form from the other sites — mark, then
+"Made by [pearpages](https://pearpages.com)" with `rel="author"`. Orchard says "Made by Pere
+Pages", Masia Blanca "Fet per pearpages"; same shape, same destination. Keep it in step with them.
+
+- It keeps its cream disc. The mascot's dark navy outline is too close to `--ultramarine` in value
+  to survive on the bare hero ground.
+- It is decorative (`alt=""`); the wordmark and the nav name carry the accessible name.
+- Below `56rem` the nav hides the *name*, not the mark — the mark alone stays as the way back to
+  the top.
+- The favicon set in `public/media/icons/` derives from the same source. Before 2026 these were
+  screenshots of the 2017 CV; do not let them drift back out of sync with the mark.
+
 ## Data
 
 `src/data/cv.ts` is the single source of content, typed by `src/data/types.ts`. `src/lib/derive.ts`
@@ -69,8 +89,17 @@ It flushes the 2017 webpack-era service worker. Leave it until returning visitor
 
 ## Outstanding
 
-1. **2017→2026 is unverified.** The Blue Orange role still ends at `'present'` with its 2017 stack.
-   Pere is supplying the real history; see the TODO at the top of `cv.ts`.
-2. **Headline** — "Frontend Architect & Engineering Lead" is a proposal, pending confirmation.
-3. **Community dates** — the old data only carried March–May 2017 for AngularCamp / Angular Beers /
+1. **Ocado internal dates are estimates.** Blue Orange now closes at `2019-02` and the Ocado tenure
+   runs `2019-03 → present`, split into four `ocado-*` entries by team at Pere's request. Only the
+   start is sourced (18 March 2019). The three team transitions — Communications → multibranding
+   frontend → Subscriptions → Payments — are read off the narrative, not confirmed. See the TODO at
+   the top of `cv.ts`. The per-team `stack` arrays are thin for the same reason: React is sourced,
+   the rest is not.
+2. **Splitting one tenure into four inflates skill evidence.** `skillEvidence` counts roles, so one
+   employer now contributes four (`Git · 7 roles`, `Agile · 4 roles`). Accepted as the cost of the
+   four-entry layout — but if it ever reads as job-hopping, count distinct employers instead.
+3. **Headline** — "Frontend Architect & Engineering Lead" is a proposal, pending confirmation.
+4. **Community dates** — the old data only carried March–May 2017 for AngularCamp / Angular Beers /
    CinemaJS, which cannot be right; entries currently render without dates.
+5. **Hovering the current time-axis segment overrides its saffron** with `--accent`, because the
+   hover rule follows `.is-current` in `TimeAxis.scss`. Pre-existing, cosmetic.

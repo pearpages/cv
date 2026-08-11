@@ -15,6 +15,18 @@ export function Hero() {
   return (
     <header className="hero">
       <div className="hero__inner">
+        {/* The pearpages mark, the same one every site in the family carries.
+            Decorative — the wordmark below already names the page — and
+            deliberately small: a maker's stamp on the poster, not a co-star
+            of the name. */}
+        <img
+          className="hero__mark"
+          src="/media/pearpages-mark.png"
+          alt=""
+          width={256}
+          height={256}
+        />
+
         {/* The words are block-level, so the text content concatenates to
             "PerePagesSoms". Name the heading explicitly rather than relying
             on a screen reader to infer the breaks. */}

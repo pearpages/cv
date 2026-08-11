@@ -29,8 +29,19 @@ export function Nav() {
       <div ref={sentinel} className="nav__sentinel" aria-hidden="true" />
       <nav className={`nav no-print${stuck ? ' is-stuck' : ''}`} aria-label="Sections">
         <div className="nav__inner shell">
+          {/* The mark carries the family identity through Act II, where the
+              hero is no longer on screen. It supplements the name rather
+              than replacing it — until the viewport is too narrow for both,
+              where the mark alone stays as the way back to the top. */}
           <a className="nav__mark" href="#top">
-            {profile.name}
+            <img
+              className="nav__mark-logo"
+              src="/media/pearpages-mark.png"
+              alt=""
+              width={256}
+              height={256}
+            />
+            <span className="nav__mark-name">{profile.name}</span>
           </a>
 
           <ul className="nav__links">

@@ -24,6 +24,22 @@
   padding-inline: var(--gutter);
 }
 
+/**
+ * The mark keeps its cream disc. The mascot is drawn with a dark navy
+ * outline that sits too close to --ultramarine in value to survive on the
+ * bare hero ground — the disc is what holds the drawing together.
+ *
+ * It is not in `wordmark-expand`: it rides `hero-recede` on .hero__inner
+ * with everything else, so it fades as the document covers Act I.
+ */
+.hero__mark {
+  display: block;
+  width: clamp(2.25rem, 4vw, 3.25rem);
+  height: auto;
+  aspect-ratio: 1;
+  margin-block-end: var(--space-5);
+}
+
 .hero__wordmark {
   display: flex;
   flex-direction: column;
