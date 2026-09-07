@@ -58,13 +58,19 @@ export function Nav() {
             ))}
           </ul>
 
-          {/* Not `window.print()`. The paper edition is a separately designed
+          {/* Parked. The paper edition is still built by `npm run pdf` and
+              still deploys to /cv.pdf — it is just no longer advertised here.
+              Uncomment this and the matching `.nav__print` rule in Nav.scss to
+              restore it.
+
+              Not `window.print()`. The paper edition is a separately designed
               one-page document rendered from the same data (`src/print/`),
-              built by `npm run pdf` and served from the site root — not this
-              page reflowed onto A4. */}
+              served from the site root — not this page reflowed onto A4.
+
           <a className="nav__print" href="/cv.pdf" download="pere-pages-soms-cv.pdf">
             Download CV
           </a>
+          */}
         </div>
       </nav>
     </>

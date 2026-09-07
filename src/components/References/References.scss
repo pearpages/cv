@@ -73,15 +73,3 @@
     columns: 1;
   }
 }
-
-@media print {
-  .references {
-    columns: 2;
-    column-gap: 10pt;
-  }
-
-  .reference {
-    padding: 6pt;
-    margin-block-end: 8pt;
-  }
-}

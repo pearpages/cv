@@ -1,158 +1,43 @@
 /**
- * A courtesy fallback, not the paper edition.
+ * Printing the site is deliberately disabled.
  *
- * The real paper edition is `perepages.com/cv.pdf` — a separately designed
- * one-page A4 document rendered by headless Chromium from `src/print/`, cut
- * editorially in `src/data/print.ts`. This block exists only so that ⌘P on the
- * site yields something reasonable rather than printing the full-viewport
- * hero: the poster collapses to a header, navigation and decoration
- * disappear, colour drops to ink on white, and link targets are printed
- * inline.
+ * The paper edition is `perepages.com/cv.pdf` — a separately designed one-page
+ * A4 document rendered by headless Chromium from `src/print/`, cut editorially
+ * in `src/data/print.ts`. Reflowing this page onto A4 produced a second,
+ * worse document that competed with it, so ⌘P now yields a blank sheet
+ * pointing at the real one.
  *
- * Improvements to how the CV reads on paper belong in `src/print/`, not here.
+ * The previous courtesy stylesheet — hero collapsed to a masthead, ink on
+ * white, link targets printed inline — is in git history if it is ever wanted
+ * back. Improvements to how the CV reads on paper belong in `src/print/`.
  */
 
 @media print {
   @page {
     size: A4;
-    margin: 14mm 14mm 16mm;
+    margin: 20mm;
   }
 
-  :root {
-    --surface: #fff;
-    --surface-raised: #fff;
-    --surface-sunken: #fff;
-    --text: #000;
-    --text-muted: #333;
-    --text-faint: #555;
-    --rule: #bbb;
-    --rule-strong: #666;
-    --accent: #000;
-    --on-accent: #fff;
-    --gutter: 0;
-    --space-9: 1.25rem;
-    --space-10: 1.5rem;
-  }
-
+  html,
   body {
-    font-size: 10pt;
-    line-height: 1.42;
     background: #fff;
   }
 
-  .no-print,
-  .nav,
-  .skip-link,
-  .hero__cue {
+  /* `#cv` and the module script are body's only children (index.html), so this
+     hides the whole document — including the fixed hero, which would otherwise
+     print on every page. */
+  body > * {
     display: none !important;
   }
 
-  .print-only {
-    display: revert !important;
-  }
-
-  /* Act I collapses into a single compact masthead. The hero is fixed on
-     screen, which would otherwise print on every page or not at all. */
-  .hero {
-    position: static;
-    inset: auto;
-    height: auto;
-    min-height: 0;
+  /* A stamp, not a headline: quiet, top-left, naming the document the reader
+     actually wants rather than leaving a mystery sheet. */
+  body::after {
+    content: 'perepages.com/cv.pdf';
     display: block;
-    padding: 0 0 8pt;
-    background: #fff;
-    color: #000;
-    border-bottom: 1.5pt solid #000;
-    page-break-after: avoid;
-  }
-
-  .hero__inner {
-    animation: none !important;
-    opacity: 1 !important;
-    padding-inline: 0;
-  }
-
-  /* The hero palette is built for bone-on-ultramarine. On white, those
-     colours vanish — restate them against the printed ground. */
-  .hero__meta {
-    margin-block-start: 4pt;
-    padding-block-start: 4pt;
-    border-block-start-color: #999;
-  }
-
-  .hero__facts {
-    color: #333;
-  }
-
-  .page {
-    margin-top: 0;
-  }
-
-  .hero__wordmark {
-    display: block;
-    font-size: 26pt;
-    line-height: 1.02;
-    font-stretch: 100%;
-    animation: none !important;
-  }
-
-  .hero__word {
-    display: inline;
-
-    & + & {
-      margin-left: 0.24em;
-    }
-  }
-
-  .hero__headline {
-    font-size: 11pt;
-  }
-
-  .section {
-    padding: 10pt 0 0;
-    border: 0;
-    page-break-inside: auto;
-  }
-
-  .section__title {
-    font-size: 12pt;
-    page-break-after: avoid;
-  }
-
-  /* Never split an entry across a page break. */
-  .role,
-  .project,
-  .reference,
-  .community-item,
-  .education-item,
-  .skill-group {
-    page-break-inside: avoid;
-    break-inside: avoid;
-  }
-
-  /* The proportional axis is a screen device; on paper the dates do the job. */
-  .time-axis {
-    display: none;
-  }
-
-  /* Print where a link actually goes — a paper CV is a dead end otherwise. */
-  .role__projects a[href^='http']::after,
-  .project a[href^='http']::after,
-  .contact a[href^='http']::after,
-  .reference a[href^='http']::after {
-    content: ' (' attr(href) ')';
-    font-size: 8pt;
-    color: #555;
-    word-break: break-all;
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  /* Force the few backgrounds that carry meaning to actually render. */
-  * {
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
+    font-family: var(--font-mono);
+    font-size: 9pt;
+    letter-spacing: var(--tracking-wide);
+    color: #666;
   }
 }

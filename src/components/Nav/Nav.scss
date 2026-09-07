@@ -93,8 +93,12 @@
   }
 }
 
-/* An anchor to the generated PDF, not a button — it needs the anchor resets
-   the reset stylesheet does not give it. */
+/* Parked with the Download CV anchor it styles — see Nav.tsx. Uncomment both
+   together or neither.
+
+   An anchor to the generated PDF, not a button — it needs the anchor resets
+   the reset stylesheet does not give it.
+
 .nav__print {
   flex-shrink: 0;
   text-decoration: none;
@@ -118,6 +122,7 @@
     border-color: var(--accent);
   }
 }
+*/
 
 /* The name is what runs out of room, not the mark. */
 @media (max-width: 56rem) {

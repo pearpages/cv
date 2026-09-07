@@ -248,8 +248,30 @@ overflows the page box, if a font lands as Type 3, or if the MediaBox is not A4.
 checks assert their own regexes still match: a regex that silently stops matching turns a gate into
 a check that always passes.
 
-`_print.scss` survives as a ⌘P courtesy so the site doesn't print its hero. It is not the
-deliverable.
+### Printing the site is disabled
+
+`_print.scss` used to be a ⌘P courtesy — hero collapsed to a masthead, ink on white, link targets
+printed inline. It is now a **blanking rule**: `@media print` hides `body > *` and prints a single
+quiet line, `perepages.com/cv.pdf`, so ⌘P yields one blank A4 sheet pointing at the real paper
+edition instead of a second, worse document competing with it. The old stylesheet is in git history.
+
+The nav's **Download CV** anchor is **commented out, not deleted** (`Nav.tsx`, with its `.nav__print`
+rule in `Nav.scss` — uncomment both or neither). `npm run pdf` still runs, all five gates still run,
+and `cv.pdf` still deploys; it is simply no longer advertised. Anyone holding the URL can still
+fetch it.
+
+Two consequences to know before touching this:
+
+- **`.print-only` is now inert.** The class is retained in `src/styles/index.scss`, as is its markup
+  in `Footer.tsx`, `Contact.tsx` and `References.tsx`. Nothing renders it any more, but deleting it
+  would turn restoring the print stylesheet from an uncomment into a rewrite. `no-print` on `.nav`
+  is redundant for the same reason and kept for the same reason.
+- **There must be exactly one `@media print` block on the site.** `References.scss` carried a second,
+  uncoordinated one (`columns: 2`) that survived unnoticed; it was deleted. A print rule anywhere
+  outside `_print.scss` is now a bug — it can only style something that can never render.
+
+None of this reaches the PDF. `print.html` → `src/print/main.tsx` → `src/print/print.scss` has zero
+`@use`/`@import`, so the two stylesheet graphs are disjoint and share only *data*.
 
 ## Deployment
 
