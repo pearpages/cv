@@ -336,6 +336,22 @@ Apex of `perepages.com`, served by this repo. `base: '/'` in `vite.config.ts` �
 404s and white-screens the site. Push to `master` → `.github/workflows/deploy.yml` typechecks,
 builds and publishes. Nothing built is committed; there is no `docs/` directory any more.
 
+**GitHub Pages is on `build_type: "workflow"`, not a branch folder.** Until 7 Sep 2026 the repo
+served the legacy setup — *deploy from branch `master`, path `/docs`* — and `deploy.yml` had never
+run, because `master` still held the 2017 webpack site. Flipping it is a *repo setting*, not
+anything in this tree: `gh api -X PUT repos/pearpages/cv/pages -f build_type=workflow`. The
+`source` field still reports `master` `/docs` afterwards; it is vestigial and ignored once the
+build type is `workflow`. Do not "fix" it back.
+
+The two halves have to move together. Deleting `docs/` while Pages still points at it takes the
+site down at the next rebuild, and pointing Pages at Actions before a workflow has ever succeeded
+does the same — a few minutes of 404 between them is unavoidable, not a mistake.
+
+`public/CNAME` (`perepages.com`) is what keeps the custom domain: Vite copies it into `dist/`, so
+it travels inside the Pages artifact. Without it every deploy would drop the domain. The old
+`docs/CNAME` did the same job and went with `docs/`. An `origin/gh-pages` branch survives from an
+even earlier setup and is referenced by nothing.
+
 `public/service-worker.js` is a deliberate no-op that unregisters itself and deletes all caches.
 It flushes the 2017 webpack-era service worker. Leave it until returning visitors have cycled.
 
@@ -446,6 +462,9 @@ What is left is everything that needs a fact only Pere has.
 16. **`location: 'Barcelona'` repeats on all ten role cards**, plus the hero, About, contact and
     JSON-LD. Flagged during the audit and deliberately left alone: it is information, the
     repetition is quiet, and removing it would leave `Role.location` dead in the data.
-17. **This branch does not deploy.** `deploy.yml` triggers on `master` only, and the repo sits on
-    `new-branding`. Nothing committed since 11 Aug 2026 — the whole rebrand, and now this audit —
-    has reached perepages.com. Merge to `master` or change the trigger.
+17. ~~**This branch does not deploy.**~~ *Resolved 7 Sep 2026.* `new-branding` fast-forwarded onto
+    `master` (it was a clean ancestor, so `docs/`, `vendor/` and `webpack.config.js` left in the
+    same commit), Pages moved to `build_type: "workflow"`, and the first `deploy.yml` run went
+    green — typecheck, both skills gates, build, all five PDF gates, `deploy-pages`. perepages.com
+    now serves the rebrand and `/cv.pdf` resolves. See *Deployment* for the setting that made it
+    work, which is the part not visible in this tree.
