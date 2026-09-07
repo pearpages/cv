@@ -18,11 +18,18 @@ import { PRESENT } from './types';
  * TODO — Ocado transition dates
  * The four `ocado-*` roles below are one tenure (joined 18 March 2019,
  * still there) split by team, as Pere asked. Only the *first* date is
- * sourced: 2019-03. The three internal transitions — Communications →
- * multibranding frontend team → Subscriptions → Payments — are estimates
- * read off the narrative ("after a company reorg…", "after a couple of
- * years…"). Replace them with the real months; the time axis and the
- * durations both derive from these.
+ * sourced: 2019-03.
+ *
+ * The three internal transitions — Communications → multibranding frontend
+ * team → Subscriptions → Payments — carry Pere's *durations*, not his months.
+ * He gave the ends of the chain ("Communications was about two years",
+ * "Payments a year tops"); the boundary months are rounded to fit those
+ * lengths, and the middle two divide what is left. So the shape of the
+ * tenure is his and the precision is not. Replace the months when he has
+ * them; the time axis and the durations both derive from these.
+ *
+ * They are a chain: each `to` is the next role's `from`. Break that and the
+ * axis draws a gap or an overlap where there is neither.
  *
  * Per-team `stack` entries are likewise thin. React is sourced (Pere was
  * hired to introduce it); everything else beyond it needs confirming.
@@ -104,7 +111,7 @@ export const roles: Role[] = [
    */
   {
     id: 'ocado-payments',
-    from: '2024-01',
+    from: '2025-10',
     to: PRESENT,
     title: 'Senior Software Engineer',
     employer: 'ocado',
@@ -140,8 +147,8 @@ export const roles: Role[] = [
   },
   {
     id: 'ocado-subscriptions',
-    from: '2022-01',
-    to: '2024-01',
+    from: '2024-01',
+    to: '2025-10',
     title: 'Senior Software Engineer',
     employer: 'ocado',
     location: 'Barcelona',
@@ -172,8 +179,8 @@ export const roles: Role[] = [
   },
   {
     id: 'ocado-multibranding',
-    from: '2020-03',
-    to: '2022-01',
+    from: '2021-03',
+    to: '2024-01',
     title: 'Senior Software Engineer',
     employer: 'ocado',
     location: 'Barcelona',
@@ -211,7 +218,7 @@ export const roles: Role[] = [
   {
     id: 'ocado-communications',
     from: '2019-03',
-    to: '2020-03',
+    to: '2021-03',
     title: 'Senior Software Engineer',
     employer: 'ocado',
     location: 'Barcelona',

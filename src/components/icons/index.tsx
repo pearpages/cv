@@ -86,6 +86,23 @@ export function ArrowUpRightIcon(props: IconProps) {
   );
 }
 
+export function SunIcon(props: IconProps) {
+  return (
+    <svg {...stroke} aria-hidden="true" {...props}>
+      <circle cx="12" cy="12" r="4.2" />
+      <path d="M12 2.5v2.2M12 19.3v2.2M4.22 4.22l1.56 1.56M18.22 18.22l1.56 1.56M2.5 12h2.2M19.3 12h2.2M4.22 19.78l1.56-1.56M18.22 5.78l1.56-1.56" />
+    </svg>
+  );
+}
+
+export function MoonIcon(props: IconProps) {
+  return (
+    <svg {...stroke} aria-hidden="true" {...props}>
+      <path d="M20 14.3A8.3 8.3 0 0 1 9.7 4a8.5 8.5 0 1 0 10.3 10.3Z" />
+    </svg>
+  );
+}
+
 const LINK_ICONS: Record<LinkKind, (props: IconProps) => React.JSX.Element> = {
   email: MailIcon,
   location: PinIcon,

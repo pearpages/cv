@@ -17,8 +17,12 @@ were removed in the 2026 rebrand and should not come back. Icons are inline SVG 
 - Class names are BEM-ish: `.role`, `.role__rail`, `.role__logo`, `.is-current`.
 - Colour, type, space and motion are CSS custom properties in `src/styles/_tokens.scss`. Do not
   hardcode a hex value in a component stylesheet; add a token.
-- Dark mode is a redefinition of the same tokens under `prefers-color-scheme`. Anything defined
-  only inside the dark block is a bug.
+- Dark mode is a redefinition of the same tokens, written once in the `dark-scheme` mixin and
+  emitted twice — behind `prefers-color-scheme` and behind `[data-theme='dark']`. Anything defined
+  only inside `dark-scheme` is a bug. See *The theme toggle* below before editing that file.
+- `--logo-chip` and `--on-signal` are deliberately **not** redefined in `dark-scheme`. "Add a token"
+  does not mean "add a token that flips": the logo chips carry opaque PNGs that turn into solid
+  blocks when inverted, and `--signal` is the same saffron in both schemes, so the ink on it is too.
 - Testing: `npm test -- --run` if tests are ever added (never bare `npm test` — it watches).
 
 ## Design direction — "load-bearing typography, two acts"
@@ -266,12 +270,52 @@ Two consequences to know before touching this:
   in `Footer.tsx`, `Contact.tsx` and `References.tsx`. Nothing renders it any more, but deleting it
   would turn restoring the print stylesheet from an uncomment into a rewrite. `no-print` on `.nav`
   is redundant for the same reason and kept for the same reason.
+- **`.nav__print` now has a live neighbour.** `.nav__theme` sits directly above it in `Nav.scss`
+  and is real, styled, rendered code. Restoring the PDF anchor means uncommenting the two parked
+  blocks only — and the anchor goes *before* the toggle in `Nav.tsx`, so the toggle stays at the
+  trailing edge.
 - **There must be exactly one `@media print` block on the site.** `References.scss` carried a second,
   uncoordinated one (`columns: 2`) that survived unnoticed; it was deleted. A print rule anywhere
   outside `_print.scss` is now a bug — it can only style something that can never render.
 
 None of this reaches the PDF. `print.html` → `src/print/main.tsx` → `src/print/print.scss` has zero
 `@use`/`@import`, so the two stylesheet graphs are disjoint and share only *data*.
+
+## The theme toggle
+
+The scheme follows the OS until the reader says otherwise. `src/hooks/useTheme.ts` and the button
+in `Nav.tsx` are the visible half; the load-bearing half is an invariant across three files.
+
+- **`data-theme` on `<html>` means an explicit choice, and is absent until there is one.** That
+  absence is what keeps `prefers-color-scheme` in charge with no JS involved. Stamping the resolved
+  theme on mount looks harmless and quietly converts every visitor into a pinned one.
+- **In `_tokens.scss`, the `[data-theme]` blocks must stay last.**
+  `:root:not([data-theme='light'])` and `:root[data-theme='dark']` both compute to (0,2,0) —
+  `:not()` takes its argument's specificity — so source order is the only thing settling a
+  conflict. Move the explicit block above the media query and "force light on a dark OS" breaks
+  silently.
+- **The inline script in `index.html` must stay a classic script in `<head>`, and below the
+  `theme-color` meta.** Vite appends its `<script>` and `<link rel="stylesheet">` at the *end* of
+  `<head>`, so anything above them runs before the stylesheet element exists — that ordering is the
+  whole anti-flash mechanism, and `type="module"` would forfeit it. Below the meta because
+  `querySelector` only sees nodes already parsed.
+- **One `theme-color` meta, managed by JS.** It used to be a media-scoped pair; a media-scoped meta
+  cannot observe an attribute, and the UA takes the first one whose media matches, so a media-less
+  meta alongside them would make the pair dead weight. `useTheme` keys it on the *resolved* theme,
+  not on the stored choice — with nothing stored it still has to follow the OS.
+- `public/manifest.json`'s `theme_color` is the one place the light value is unavoidably pinned;
+  no manifest media mechanism ships anywhere.
+- The two hex values live in `_tokens.scss`, `index.html` and `useTheme.ts`. Three copies, on
+  purpose — the inline one cannot be bundled. Change them together.
+
+The toggle is **unreachable during Act I** by design: the nav is hidden until the document covers
+the hero, and the hero is `--ultramarine` on `--bone` in *both* schemes, so there is nothing on
+screen it could change. Scrolling reveals the document and the control that restyles it together.
+
+`.nav` gained `visibility: hidden` alongside its `opacity: 0` at the same time. Neither opacity nor
+`pointer-events` removes an element from the tab order, so a keyboard user at the top of the page
+was already tabbing through nine invisible links; an invisible button that restyles the whole
+document made that worth fixing rather than noting.
 
 ## Deployment
 
@@ -287,10 +331,19 @@ It flushes the 2017 webpack-era service worker. Leave it until returning visitor
 Items 2, 5, 6 and 7 were resolved by the content audit (see *Skills: what the section is for*).
 What is left is everything that needs a fact only Pere has.
 
-1. **Ocado internal dates are estimates.** Blue Orange closes at `2019-02`, the Ocado tenure runs
-   `2019-03 → present`, split into four `ocado-*` entries by team at Pere's request. Only the start
-   is sourced (18 March 2019); the three team transitions are read off the narrative. See the TODO
-   at the top of `cv.ts`.
+1. **Ocado internal dates carry Pere's durations, not his months** — *half resolved.* Blue Orange
+   closes at `2019-02`, the Ocado tenure runs `2019-03 → present`, split into four `ocado-*`
+   entries by team at Pere's request. The start is still the only sourced date (18 March 2019).
+   The three internal transitions were estimates read off the narrative until Pere corrected the
+   ends of the chain — Communications about two years, Payments a year at most — which moved
+   `2020-03 → 2021-03`, `2022-01 → 2024-01` and `2024-01 → 2025-10`. The boundary months are
+   rounded to fit those lengths and the middle two divide the remainder, so the *shape* of the
+   tenure is now his and the precision is not. See the TODO at the top of `cv.ts`.
+
+   One consequence to know: `ocado-payments` ends in `PRESENT`, which resolves against `new Date()`,
+   so "a year tops" is true at the time of writing and grows by a month every month. It crosses two
+   years in late 2027. Like `writing.postCount`, it is a snapshot that needs revisiting rather than
+   a fact the data enforces.
 2. **The four-way Ocado split is now the most expensive decision in the file.** It no longer
    inflates skill counts (those are gone), but it still puts four identical `Senior Software
    Engineer` headings back to back and makes Experience read `9 roles` for six employers in

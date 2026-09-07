@@ -40,6 +40,14 @@
 
   /* The single warm signal. Three uses page-wide, no more. */
   --signal: var(--saffron);
+  /* Saffron is the one colour that does not move between schemes, so the
+     text that sits on it does not move either. */
+  --on-signal: #2a1c00;
+
+  /* Constant light chip for the employer/institution logos. They arrive as
+     PNGs with opaque backgrounds, so they cannot be inverted — see the note
+     in Role.scss. This is the one place the light surface is pinned. */
+  --logo-chip: #fff;
 
   --focus: var(--ultramarine);
 
@@ -91,24 +99,60 @@
   --dur-slow: 620ms;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --surface: #090b11;
-    --surface-raised: #11141d;
-    --surface-sunken: #05070b;
-    --text: #e9eaf1;
-    --text-muted: #a0a6ba;
-    --text-faint: #767d92;
-    --rule: color-mix(in oklab, #fff 14%, transparent);
-    --rule-strong: color-mix(in oklab, #fff 32%, transparent);
+/**
+ * Scheme resolution, in three parts.
+ *
+ * The dark values are written once, in the mixin, and emitted twice: once
+ * behind the OS preference and once behind an explicit choice. `data-theme`
+ * is stamped on <html> by the inline script in index.html before first paint.
+ *
+ * ORDER MATTERS. `:root:not([data-theme='light'])` and `:root[data-theme='dark']`
+ * both compute to specificity (0,2,0) — `:not()` takes the specificity of its
+ * argument — so the explicit block only wins because it comes last. Moving it
+ * above the media query would break "force light on a dark OS" silently.
+ *
+ * There is no rule for forcing light: the guard simply stops matching and the
+ * base :root palette applies. That is what light being the base buys.
+ */
 
-    /* Ultramarine at full saturation fails contrast on a dark ground,
-       so the accent lifts rather than the text darkening. */
-    --accent: var(--ultramarine-lift);
-    --accent-quiet: color-mix(in oklab, var(--ultramarine-lift) 14%, transparent);
-    --on-accent: var(--bone);
-    --focus: var(--ultramarine-lift);
+@mixin dark-scheme {
+  --surface: #090b11;
+  --surface-raised: #11141d;
+  --surface-sunken: #05070b;
+  --text: #e9eaf1;
+  --text-muted: #a0a6ba;
+  --text-faint: #767d92;
+  --rule: color-mix(in oklab, #fff 14%, transparent);
+  --rule-strong: color-mix(in oklab, #fff 32%, transparent);
+
+  /* Ultramarine at full saturation fails contrast on a dark ground,
+     so the accent lifts rather than the text darkening. */
+  --accent: var(--ultramarine-lift);
+  --accent-quiet: color-mix(in oklab, var(--ultramarine-lift) 14%, transparent);
+  --on-accent: var(--bone);
+  --focus: var(--ultramarine-lift);
+}
+
+/* No explicit choice — follow the OS, exactly as before. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    @include dark-scheme;
   }
+}
+
+/* An explicit choice overrides the OS in both directions. Keep last. */
+:root[data-theme='dark'] {
+  @include dark-scheme;
+}
+
+/* `color-scheme` has to follow the choice too, or the scrollbars, the form
+   controls and the canvas behind the page keep the OS's opinion. */
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
 }
 
 @media (prefers-reduced-motion: reduce) {

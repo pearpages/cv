@@ -39,8 +39,42 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/media/icons/favicon-180.png">
   <link rel="manifest" href="/manifest.json">
 
-  <meta name="theme-color" content="#1e2ed6" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#090b11" media="(prefers-color-scheme: dark)">
+  <!--
+    One theme-color, not a media-scoped pair. A media-scoped meta cannot
+    follow the `data-theme` attribute the toggle sets, so the pair could only
+    ever describe the OS preference. The script below keeps this one in step
+    with whichever scheme actually renders; nothing is lost by collapsing them
+    because <body> is a single empty div — there is no no-JS rendering to
+    preserve. Light is the ultramarine hero, which is what sits under the
+    browser chrome at the top of the page; dark is the document surface.
+  -->
+  <meta name="theme-color" content="#1e2ed6">
+  <script>
+    // Blocking, and early: this has to stamp <html> before the stylesheet is
+    // parsed or the wrong scheme paints for a frame. It is deliberately a
+    // duplicate of the resolution in src/hooks/useTheme.ts — that module is
+    // bundled and cannot run this early, and this cannot be bundled without
+    // losing the property that makes it work.
+    (function () {
+      var stored = null;
+      try {
+        stored = localStorage.getItem('perepages-theme');
+      } catch (error) {
+        // Storage access throws outright in some privacy modes.
+      }
+      if (stored === 'light' || stored === 'dark') {
+        document.documentElement.dataset.theme = stored;
+      } else {
+        stored = null;
+      }
+      var dark = stored
+        ? stored === 'dark'
+        : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document
+        .querySelector('meta[name="theme-color"]')
+        .setAttribute('content', dark ? '#090b11' : '#1e2ed6');
+    })();
+  </script>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Pere Pages">

@@ -14,14 +14,21 @@
   border-bottom: 1px solid transparent;
   transition:
     border-color var(--dur) var(--ease),
-    opacity var(--dur) var(--ease);
+    opacity var(--dur) var(--ease),
+    visibility var(--dur) var(--ease);
 
-  /* Before the document covers the hero there is nothing to navigate. */
+  /* Before the document covers the hero there is nothing to navigate.
+     `visibility`, not just `opacity`: neither opacity nor pointer-events
+     takes an element out of the tab order, so without it a keyboard user at
+     the top of the page tabs through nine invisible links and an invisible
+     button that restyles the whole document. */
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
 
   &.is-stuck {
     opacity: 1;
+    visibility: visible;
     pointer-events: auto;
     border-bottom-color: var(--rule);
   }
@@ -90,6 +97,39 @@
   &.is-active {
     color: var(--accent);
     background: var(--accent-quiet);
+  }
+}
+
+/**
+ * The theme toggle. It borrows .nav__link's colour language rather than the
+ * bordered .nav__print pill below — this is the only control on the page and
+ * a box around it would make it the loudest thing in the bar.
+ *
+ * The reset gives `button` only `font` and `color`, so everything else it
+ * inherits from the UA has to be cleared here.
+ */
+.nav__theme {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  /* Comfortably past the 24px minimum target; the icon inside is much smaller. */
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  background: none;
+  color: var(--text-faint);
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease);
+
+  &:hover {
+    color: var(--text);
+  }
+
+  svg {
+    width: 1.05rem;
+    height: 1.05rem;
   }
 }
 

@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { profile, sections } from '../../data/cv';
 import { useActiveSection } from '../../hooks/useActiveSection';
+import { useTheme } from '../../hooks/useTheme';
+import { MoonIcon, SunIcon } from '../icons';
 import './Nav.scss';
 
 const SECTION_IDS = sections.map((section) => section.id);
@@ -9,6 +11,7 @@ export function Nav() {
   const sentinel = useRef<HTMLDivElement>(null);
   const [stuck, setStuck] = useState(false);
   const active = useActiveSection(SECTION_IDS);
+  const { theme, toggle } = useTheme();
 
   // The nav appears once the document has covered the hero. A sentinel at
   // the top of the page beats measuring scroll offsets on every frame.
@@ -57,6 +60,32 @@ export function Nav() {
               </li>
             ))}
           </ul>
+
+          {/* The only control on the page, so it stays as quiet as the links
+              it sits beside.
+
+              `aria-pressed` rather than an action label that changes ("Switch
+              to dark theme"): a screen reader does not reliably re-announce a
+              focused element's new name, so that version confirms the press
+              only visually — which is no confirmation at all here. The pressed
+              state is announced for free. The icon therefore shows the
+              *current* state to agree with it; mixing the two axes is the
+              failure mode. `title` carries the action for everyone else.
+
+              It is out of reach during Act I, since the nav is hidden until
+              the document covers the hero. That costs nothing: the hero is
+              ultramarine in both schemes, so there is nothing to toggle while
+              it is on screen. */}
+          <button
+            className="nav__theme"
+            type="button"
+            onClick={toggle}
+            aria-label="Dark theme"
+            aria-pressed={theme === 'dark'}
+            title={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+          >
+            {theme === 'dark' ? <MoonIcon /> : <SunIcon />}
+          </button>
 
           {/* Parked. The paper edition is still built by `npm run pdf` and
               still deploys to /cv.pdf — it is just no longer advertised here.

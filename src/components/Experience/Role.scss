@@ -36,7 +36,7 @@
   padding: 0.1em 0.5em;
   border-radius: var(--radius);
   background: var(--signal);
-  color: #2a1c00;
+  color: var(--on-signal);
   font-size: var(--text-2xs);
   font-weight: 600;
   letter-spacing: var(--tracking-wide);
@@ -58,7 +58,7 @@
   padding: var(--space-2) var(--space-3);
   border: 1px solid var(--rule);
   border-radius: var(--radius);
-  background: #fff;
+  background: var(--logo-chip);
   object-fit: contain;
   object-position: center;
   opacity: 0.82;
