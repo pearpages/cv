@@ -4,7 +4,7 @@
  * `cv.ts` is the full record; one A4 side is not, and the gap between them is
  * the whole job of this module. It is the *editorial cut*, written down and
  * type-checked rather than left to emerge from whatever happened to overflow.
- * `pdf/cv.typ` renders exactly what this exports and nothing else.
+ * `src/print/Cv.tsx` renders exactly what this exports and nothing else.
  *
  * One page is a hard constraint, and it is the reason the page can breathe:
  * every line here has to beat another line to be on it. What loses is not
@@ -108,10 +108,12 @@ export const printModel: PrintModel = {
   ],
 
   /**
-   * Seven groups to four, and set as prose rather than as a list. The site's
-   * derived evidence lines ('4 roles · 2015→now') are dropped: on one page the
-   * experience above *is* the evidence, and repeating a technology beside
-   * every role was the single biggest source of noise in the two-page draft.
+   * Nine groups to six, and set as prose rather than as a list. This is the
+   * narrowest cut on the page and the one that diverges most from the site:
+   * the screen list is a keyword surface that can afford breadth, while here
+   * every row costs a line of a single side. Repeating a technology beside
+   * every role was the biggest source of noise in the rejected two-page draft,
+   * and on one page the experience above *is* the evidence.
    */
   skills: [
     // Every value is kept short enough to sit on one line at this measure. A
@@ -127,13 +129,13 @@ export const printModel: PrintModel = {
     // filtered a candidate on it, and at this measure a word that wins nothing
     // is a word taken off a line that could have carried Accessibility.
     { name: 'Languages', value: 'TypeScript, JavaScript, CSS, SCSS' },
-    { name: 'Frameworks', value: 'React, Angular, Next.js' },
+    { name: 'Frameworks', value: 'React, Redux, Angular, Next.js, Node.js' },
     {
       name: 'AI-assisted development',
       value: 'Claude, Claude Code, Copilot, prompt and agent design',
     },
     { name: 'Interface', value: 'Accessibility, design systems, Storybook, i18n' },
-    { name: 'Build & testing', value: 'Vite, Webpack, Git, GitHub Actions, Playwright' },
+    { name: 'Build & testing', value: 'Vite, Webpack, Git, GitHub Actions, Playwright, Cypress' },
     // The old 'Practice' row — frontend architecture, technical leadership,
     // mentoring — is gone, and adding the Interface row above is what forced
     // the choice: six rows ran the page to a second side. Losing it is the

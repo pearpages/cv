@@ -42,7 +42,14 @@
 .time-axis__bar {
   display: block;
   height: 100%;
-  background: color-mix(in oklab, var(--accent) 34%, transparent);
+
+  /* Mixed with `--surface`, not `transparent`. The two render identically on
+     the page ground, but roles may overlap — WeFitter runs a month into
+     AngularCamp — and two translucent fills stacking read as a third, brighter
+     micro-segment sitting between them. An opaque fill lets the upper bar
+     simply cover the lower one, which is what an overlap should look like on
+     an axis whose only job is to make length mean something. */
+  background: color-mix(in oklab, var(--accent) 34%, var(--surface));
   border-radius: 2px 2px 0 0;
   transition: background var(--dur-fast) var(--ease);
 }
@@ -96,10 +103,27 @@
   white-space: nowrap;
 }
 
+/* Absolutely positioned, not `justify-content: space-between`. Even spacing
+   put every label somewhere other than the year it names — "2010" sat under a
+   bar that starts in January 2007. The labels have to be placed by the same
+   arithmetic as the bars or they contradict them. */
 .time-axis__ticks {
-  display: flex;
-  justify-content: space-between;
+  position: relative;
+  block-size: 1lh;
   margin-block-start: var(--space-2);
+  font-size: var(--text-2xs);
+  color: var(--text-faint);
+}
+
+.time-axis__tick {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: var(--offset);
+  white-space: nowrap;
+}
+
+.time-axis__tick.is-trailing {
+  transform: translateX(-100%);
 }
 
 .time-axis__tick {

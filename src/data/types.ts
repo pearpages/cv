@@ -41,6 +41,13 @@ export interface Role {
    * equals the next role's `from` where the two are contiguous. The time axis
    * draws segments between these values, and any other reading leaves a
    * one-month sliver of empty axis between consecutive jobs.
+   *
+   * Roles may **overlap**, and one pair does: `wefitter-lead` runs to
+   * `2017-04` while `angularcamp-organiser` opens at `2017-03`, because the
+   * community work started before the job ended. Nothing here assumes roles
+   * are disjoint — but `timelineScale` draws every segment at the same
+   * `inset-block-start`, so overlapping bars stack rather than nest. That is
+   * fine for one month; a longer overlap would need the axis to lane them.
    */
   to: YearMonth | Present;
   title: string;

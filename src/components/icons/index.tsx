@@ -86,22 +86,6 @@ export function ArrowUpRightIcon(props: IconProps) {
   );
 }
 
-export function MenuIcon(props: IconProps) {
-  return (
-    <svg {...stroke} aria-hidden="true" {...props}>
-      <path d="M4 7h16M4 12h16M4 17h16" />
-    </svg>
-  );
-}
-
-export function CloseIcon(props: IconProps) {
-  return (
-    <svg {...stroke} aria-hidden="true" {...props}>
-      <path d="M6 6l12 12M18 6L6 18" />
-    </svg>
-  );
-}
-
 const LINK_ICONS: Record<LinkKind, (props: IconProps) => React.JSX.Element> = {
   email: MailIcon,
   location: PinIcon,

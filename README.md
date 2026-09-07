@@ -22,10 +22,15 @@ npm run dev      # http://localhost:5173
 All content lives in **`src/data/cv.ts`**, typed by `src/data/types.ts`. There is no CMS and no JSON
 to keep in sync — edit the TypeScript and the page follows.
 
-Dates are ISO `YYYY-MM`. That matters: the proportional time axis and the skill evidence lines
-("Angular — 4 roles, 2015→now") are both computed from them by `src/lib/derive.ts`, so a role's
-`stack` array is the single source for what a technology claim rests on. Add a technology to a role
-and the evidence updates itself.
+Dates are ISO `YYYY-MM`. That matters: the proportional time axis and every duration on the page
+are computed from them by `src/lib/derive.ts`.
+
+A role's or project's `stack` array is the single source for what a technology claim rests on.
+`npm run check:skills` enforces that in both directions and runs first in `npm run build`: every
+skill in `skillGroups` must appear in some `stack` or in `writing.topics`, and every technology in
+a `stack` must be claimed as a skill or excluded on the record in `DELIBERATELY_UNCLAIMED`. Adding
+a technology to a role therefore either gives a skill its backing or asks you to decide about it —
+which is what stopped six modern technologies from sitting unclaimed in project tags for months.
 
 ## Deploying
 

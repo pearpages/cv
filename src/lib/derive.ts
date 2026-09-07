@@ -82,12 +82,23 @@ export interface AxisEntry {
  * Lays the roles out on a single proportional axis, so a four-year tenure
  * reads as four times the length of a one-year one. Length means something.
  */
+/**
+ * The month range the axis covers.
+ *
+ * Shared by `timelineScale` and `axisTicks` on purpose: bars and labels
+ * measured against two different spans is exactly how the labels came to
+ * contradict the bars they sit under.
+ */
+function axisSpan(roles: Role[], now: Date): { first: number; total: number } {
+  const first = Math.min(...roles.map((role) => toMonths(role.from, now)));
+  const last = Math.max(...roles.map((role) => toMonths(role.to, now)));
+  return { first, total: Math.max(1, last - first) };
+}
+
 export function timelineScale(roles: Role[], now = new Date()): AxisEntry[] {
   const starts = roles.map((role) => toMonths(role.from, now));
   const ends = roles.map((role) => toMonths(role.to, now));
-  const first = Math.min(...starts);
-  const last = Math.max(...ends);
-  const total = Math.max(1, last - first);
+  const { first, total } = axisSpan(roles, now);
 
   return roles.map((role, index) => ({
     role,
@@ -96,13 +107,49 @@ export function timelineScale(roles: Role[], now = new Date()): AxisEntry[] {
   }));
 }
 
-/** Decade ticks covering the career, for labelling the axis. */
-export function axisTicks(roles: Role[], step = 5, now = new Date()): number[] {
+export interface AxisTick {
+  year: number;
+  /** Percentage from the start of the career to 1 January of this year. */
+  offset: number;
+}
+
+/**
+ * Year labels for the axis, each carrying the position it belongs at.
+ *
+ * Two things were wrong before, and they compounded. The first tick was
+ * `Math.ceil(startYear / step) * step`, which rounded a career starting in
+ * 2007 *up* to 2010; and the labels were laid out with `justify-content:
+ * space-between`, so they were spaced evenly rather than placed at the years
+ * they name. Together they put "2010" directly beneath the start of a bar that
+ * begins in January 2007 — a three-year lie on the one element that exists
+ * because position and length carry meaning.
+ *
+ * So the first label is the career start pinned to the origin, and every other
+ * label sits at its real offset.
+ */
+export function axisTicks(roles: Role[], step = 5, now = new Date()): AxisTick[] {
   const { startYear, endYear } = careerSpan(roles, now);
-  const first = Math.ceil(startYear / step) * step;
-  const ticks: number[] = [];
-  for (let year = first; year <= endYear; year += step) ticks.push(year);
-  return ticks;
+  const { first, total } = axisSpan(roles, now);
+
+  const years = [startYear];
+  for (let year = Math.ceil((startYear + 1) / step) * step; year <= endYear; year += step) {
+    years.push(year);
+  }
+
+  /* Two labels closer than this overlap and read as one smudge. 2007→2010 is
+     15 points apart so nothing is dropped today, but a career starting in 2009
+     would collide with the 2010 tick. */
+  const minGap = 5;
+
+  return years.reduce<AxisTick[]>((ticks, year) => {
+    // The start label anchors the origin whatever month the first role began;
+    // labelling it at 1 January would place it before the axis starts.
+    const offset =
+      year === startYear ? 0 : ((toMonths(`${year}-01`, now) - first) / total) * 100;
+    const previous = ticks[ticks.length - 1];
+    if (previous && offset - previous.offset < minGap) return ticks;
+    return [...ticks, { year, offset }];
+  }, []);
 }
 
 /**

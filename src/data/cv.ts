@@ -121,7 +121,9 @@ export const roles: Role[] = [
     stack: [
       'React',
       'TypeScript',
+      'Redux',
       'JavaScript',
+      'Playwright',
       'GitHub Copilot',
       'Claude',
       'Claude Code',
@@ -149,7 +151,22 @@ export const roles: Role[] = [
       'Built and shipped the customer subscriptions product, embedded with backend, design and product in one vertical team.',
       'Carried the frontend of the domain through the reorganisation that split the horizontal frontend teams into vertical ones, without a break in delivery.',
     ],
-    stack: ['React', 'TypeScript', 'JavaScript', 'Git', 'Agile'],
+    // Kanban is sourced — Pere named this team and Blue Orange specifically.
+    // TODO: Cypress and BDD are placed here on inference, not on sourcing. He
+    // said "Cypress in previous jobs" and "BDD in many jobs"; on this CV Ocado
+    // is four jobs, and these are the React-era teams before the current one.
+    // If either was actually pre-Ocado, move it.
+    stack: [
+      'React',
+      'TypeScript',
+      'Redux',
+      'JavaScript',
+      'Cypress',
+      'BDD',
+      'Git',
+      'Agile',
+      'Kanban',
+    ],
     projects: [{ name: 'Subscriptions', description: 'Customer subscriptions product' }],
     references: [],
   },
@@ -170,12 +187,16 @@ export const roles: Role[] = [
     // role they belong to is not. They sit here because this is the tenure
     // that owned shared components across brands, which is the shape they
     // fit. Confirm before treating the placement as sourced.
+    // TODO: Cypress and BDD likewise — see the note on ocado-subscriptions.
     stack: [
       'React',
       'TypeScript',
+      'Redux',
       'JavaScript',
       'Design systems',
       'Storybook',
+      'Cypress',
+      'BDD',
       'Git',
       'Agile',
     ],
@@ -201,7 +222,20 @@ export const roles: Role[] = [
       'Acted as the internal advocate for React — introducing it, teaching it and arguing for it in a room that had not used it.',
       'Owned the Communications team’s backoffice tooling for customer receipts and newsletters, spread across a pair of applications.',
     ],
-    stack: ['React', 'JavaScript', 'TypeScript', 'Git', 'Agile'],
+    // TODO: WebdriverIO and the page-object pattern are confirmed as real but
+    // undated. They sit on the earliest Ocado team because WebdriverIO driving
+    // page objects is the older enterprise-QA shape and predates the Cypress
+    // era above. Move them if that is wrong.
+    stack: [
+      'React',
+      'JavaScript',
+      'TypeScript',
+      'Redux',
+      'WebdriverIO',
+      'Page objects',
+      'Git',
+      'Agile',
+    ],
     projects: [
       { name: 'Receipts backoffice', description: 'Backoffice tooling for customer receipts' },
       { name: 'Newsletters backoffice', description: 'Backoffice tooling for newsletters' },
@@ -224,11 +258,22 @@ export const roles: Role[] = [
       'Created Atlas, the internal CMS the team ran campaigns from.',
       'Set the frontend standards the team worked to — SCSS/BEM, Prettier, Codelyzer, and Jasmine and Protractor suites running on Jenkins.',
     ],
+    // Kanban is sourced — Pere named this employer specifically. Scrum stays
+    // alongside it: nineteen months is long enough to have run both.
+    // TODO: BDD is inferred here, not sourced — see ocado-subscriptions.
+    //
+    // Redux starts here and runs through every role after it. Pere: "redux is
+    // almost a standard and I started using it from We Are Blue Orange" — so
+    // it sits on this role and on all four `ocado-*` entries, which is what
+    // "started using from" means. It reads as one story rather than two,
+    // because NgRx below *is* Redux for Angular: same architecture, and this
+    // is where both begin.
     stack: [
       'Angular',
       'TypeScript',
       'RxJS',
       'NgRx',
+      'Redux',
       'JavaScript',
       'SCSS',
       'BEM',
@@ -236,11 +281,13 @@ export const roles: Role[] = [
       'Angular CLI',
       'Jasmine',
       'Protractor',
+      'BDD',
       'Jenkins',
       'Prettier',
       'Codelyzer',
       'Git',
       'Scrum',
+      'Kanban',
       'Jira',
     ],
     projects: [
@@ -268,7 +315,7 @@ export const roles: Role[] = [
     employer: 'angularcamp',
     location: 'Barcelona',
     summary:
-      'Three months between jobs spent full time on the Barcelona JavaScript community, pro bono.',
+      'Three months on the Barcelona JavaScript community, pro bono — picked up before WeFitter ended, and full time from April until Blue Orange began.',
     highlights: [
       'Organised AngularCamp Barcelona, the city’s Angular conference, and built the tooling that ran it.',
       'Ran the Angular Beers meetup and the CinemaJS talk screenings alongside it.',
@@ -297,7 +344,13 @@ export const roles: Role[] = [
   {
     id: 'wefitter-lead',
     from: '2016-10',
-    to: '2017-03',
+    // The one place `to` is deliberately NOT the transition month. The source
+    // data ran this role 'October 2016' to 'March 2017', which is six months
+    // read inclusively; converting that `to` as an exclusive transition month
+    // silently cut it to five and erased an overlap that was in the original.
+    // March 2017 is genuinely shared with `angularcamp-organiser` — the
+    // community work started before the job ended.
+    to: '2017-04',
     title: 'Lead Front End Engineer',
     employer: 'wefitter',
     location: 'Barcelona',
@@ -519,36 +572,71 @@ export const skillGroups: SkillGroup[] = [
       'GitHub Copilot',
       'Agent design',
       'Prompt design',
+      'LLM APIs',
       'LLM tooling',
     ],
   },
   {
     name: 'Accessibility & UI',
-    skills: ['Accessibility', 'Design systems', 'Storybook', 'i18n'],
+    skills: ['Accessibility', 'Design systems', 'Design tokens', 'Storybook', 'i18n'],
   },
   {
+    // Added after a sweep of what the repository actually does, rather than of
+    // what `cv.ts` already said. Canvas, Deno, MV3, PWA and npm publishing had
+    // been sitting in project `stack` arrays all along, rendering as card tags
+    // and never claimed — swept out with the legacy PHP-era items by accident.
+    // The rest are proved by this repo and were named in no stack at all, so
+    // the gate could not see them either way.
+    name: 'Web platform',
+    skills: [
+      'Canvas API',
+      'Service workers',
+      'PWA',
+      'Chrome Extensions MV3',
+      'Structured data',
+      'Scroll-driven animation',
+      'Variable fonts',
+    ],
+  },
+  {
+    // Until now this group rested entirely on personal projects and this
+    // repo's PDF build — seven years of React at Ocado carried no testing
+    // evidence at all. Playwright in particular was claimed on the strength of
+    // a build script; it is a current professional tool, which is a different
+    // order of claim.
     name: 'Testing',
-    skills: ['Vitest', 'React Testing Library', 'Playwright'],
+    skills: [
+      'Playwright',
+      'Cypress',
+      'WebdriverIO',
+      'BDD',
+      'Page objects',
+      'Vitest',
+      'React Testing Library',
+    ],
   },
   {
     name: 'Build & delivery',
     skills: [
       'Vite',
       'Webpack',
+      'Node.js',
+      'Deno',
       'Git',
       'GitHub Actions',
       'Jenkins',
       'pnpm',
       'Monorepo',
+      'npm publishing',
     ],
   },
   {
     name: 'State & data',
-    skills: ['RxJS', 'NgRx', 'MSSQL', 'MySQL'],
+    skills: ['RxJS', 'NgRx', 'Redux', 'MSSQL', 'MySQL'],
   },
   {
     name: 'Ways of working',
-    skills: ['Agile', 'Scrum'],
+    skills: ['Agile', 'Scrum', 'Kanban', 'Domain modelling'],
   },
 ];
 
@@ -583,7 +671,7 @@ export const projects: ShowcaseProject[] = [
       'A comprehensive, accessible and flexible modal system for React applications, published to npm.',
     url: 'https://modals.pearpages.com',
     repo: 'https://github.com/pearpages/modals',
-    stack: ['React', 'TypeScript', 'Accessibility', 'npm'],
+    stack: ['React', 'TypeScript', 'Accessibility', 'npm publishing'],
   },
   {
     name: 'Heatmap',
@@ -592,7 +680,7 @@ export const projects: ShowcaseProject[] = [
       'React component rendering GitHub-style contribution heatmaps, published to npm.',
     url: 'https://heatmap.pearpages.com',
     repo: 'https://github.com/pearpages/heatmap',
-    stack: ['React', 'TypeScript', 'npm'],
+    stack: ['React', 'TypeScript', 'npm publishing'],
   },
   {
     name: 'Orchard',
@@ -616,7 +704,7 @@ export const projects: ShowcaseProject[] = [
       'Browser games sharing one engine — no Node, no npm and zero runtime dependencies, with everything drawn from canvas paths rather than asset files.',
     url: 'https://carlitos.pearpages.com',
     repo: 'https://github.com/pearpages/carlitos',
-    stack: ['Deno', 'TypeScript', 'Canvas'],
+    stack: ['Deno', 'TypeScript', 'Canvas API'],
   },
   {
     name: 'RSS',
@@ -639,7 +727,7 @@ export const projects: ShowcaseProject[] = [
     description: 'A browser game built using nothing but Observables.',
     url: 'https://space.pages.ninja',
     repo: 'https://github.com/pearpages/reactive-game',
-    stack: ['RxJS', 'JavaScript', 'Canvas'],
+    stack: ['RxJS', 'JavaScript', 'Canvas API'],
   },
   {
     name: 'Subscriptions Tracker',
@@ -649,15 +737,37 @@ export const projects: ShowcaseProject[] = [
     stack: ['React', 'TypeScript', 'Vite'],
   },
   /**
+   * Turns a scripted text file into a narrated MP3 — speaker parsing, chunking,
+   * one synthesis request per speaker turn, then ffmpeg concat without
+   * re-encoding. Two engines behind one interface: Gemini's TTS preview model
+   * and Edge TTS.
+   *
+   * It is here because it is the only thing in the record that shows building
+   * *against* an LLM API rather than coding with an assistant — a different
+   * claim, and the stronger of the two. It is also the only backing for
+   * Node.js, which has been used across two full-stack tenures and every build
+   * script in this repo, and was nonetheless unclaimable for want of a stack
+   * entry naming it.
+   */
+  {
+    name: 'Podcast',
+    description:
+      'Turns a scripted text file into a single narrated MP3, one voice or several. Speaker turns are chunked and synthesised separately against Gemini or Edge TTS, then stitched with ffmpeg without re-encoding.',
+    repo: 'https://github.com/pearpages/podcast',
+    stack: ['TypeScript', 'Node.js', 'LLM APIs', 'pnpm'],
+  },
+  /**
    * This site. Listed last, and listed at all because the interesting part is
    * not that it exists — it is that the build refuses to ship a broken one:
    * the PDF is measured in a real browser and rejected if it runs to a second
    * page, wraps a line marked unwrappable, embeds a Type 3 font or stops
    * being A4.
    *
-   * It is also the only backing for Playwright and GitHub Actions, both of
-   * which are used here and nowhere else in this file. Without this entry the
-   * skills gate rejects them, which is the gate working correctly.
+   * The stack is long because this entry is doing double duty: it is the only
+   * backing for most of the *Web platform* group. Every item below is
+   * demonstrably here — the service worker in `public/`, the token system in
+   * `_tokens.scss`, the Person schema in `index.html`, the `wdth` axis and the
+   * scroll timeline in `Hero.scss`. Nothing was added to pad it.
    */
   {
     name: 'This CV',
@@ -670,9 +780,15 @@ export const projects: ShowcaseProject[] = [
       'TypeScript',
       'Vite',
       'SCSS',
+      'Node.js',
       'Playwright',
       'GitHub Actions',
       'Accessibility',
+      'Design tokens',
+      'Structured data',
+      'Service workers',
+      'Scroll-driven animation',
+      'Variable fonts',
     ],
   },
 ];
@@ -740,7 +856,7 @@ export const community: CommunityRole[] = [
     from: '2017-03',
     to: '2017-06',
     description:
-      'Barcelona’s Angular conference. Organised the event and built the tooling that ran it — full time between WeFitter and Blue Orange, which is what the spring of 2017 was spent on.',
+      'Barcelona’s Angular conference. Organised the event and built the tooling that ran it — picked up while still at WeFitter and carried on full time until Blue Orange, which is what the spring of 2017 was spent on.',
     logo: 'angularcamp-bcn.png',
     url: 'https://angularcamp.org/',
   },

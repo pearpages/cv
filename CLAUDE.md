@@ -90,7 +90,10 @@ Two consequences that are easy to undo by accident:
 - **Keyword surface does not mean maximise keywords.** WordPress, Drupal and Docusaurus were cut
   because they mis-sort into a different market segment, not because they are untrue; Protractor
   and Jasmine because they date the testing knowledge to 2017; HTML, SQL, Jira, Prettier, BEM,
-  Angular CLI and the generic "Unit testing"/"REST APIs"/"CI/CD" because they win nothing. 52 → 37.
+  Angular CLI and the generic "Unit testing"/"REST APIs"/"CI/CD" because they win nothing.
+  52 → 37, then 37 → 50 once the reverse check found what the first pass had missed, then to 56 as
+  Pere named the testing stack, Kanban and Redux. Breadth is not the problem; *unbacked or
+  mis-sorting* breadth is. Every one of the 56 is backed.
 - **Leadership left the section.** `Frontend architecture`, `Technical leadership`, `Mentoring`,
   `Code review` and `Recruitment` are the headline's claim, and a grey chip in a 37-item list is
   the weakest way to make it. They live in `profile.summary` and in role highlights now, where they
@@ -133,6 +136,37 @@ same hand. `writing.topics` is therefore load-bearing, not decoration — each e
 subject with posts behind it.
 
 - The section heading carries **no count**. "52 technologies" advertised the padding.
+
+#### The gate runs in both directions
+
+The first version only checked claims → backing. That proves the list is honest and says nothing
+about whether it is *complete*, and the cost showed up immediately: `Canvas API`, `Deno`,
+`Chrome Extensions MV3`, `PWA`, `Domain modelling` and `npm publishing` had been sitting in project
+`stack` arrays for months, rendering as card tags, never claimed as skills — swept out alongside
+the legacy PHP-era items because nothing forced the decision to be written down.
+
+So the gate now also checks backing → claims. Every technology in any `stack` must either appear in
+`skillGroups` or be listed in **`DELIBERATELY_UNCLAIMED`** in `scripts/check-skills.mjs` with a
+one-line reason. A third check fails on *stale* exclusions — an entry for something no longer in
+any stack — because a list of reasons that stops describing the data is worse than no list.
+
+**Dropping a technology now costs a line of justification.** That is the whole mechanism. The
+fourteen current exclusions are all defensible, and not one of them was defended anywhere until the
+reverse check demanded it.
+
+#### Where the skills came from
+
+Two sweeps, and the second found much more than the first:
+
+- **`cv.ts` itself** — which is what the first pass read, and why it missed everything above.
+- **The repository and the public record** — `package.json`, the build scripts, the stylesheets,
+  the public GitHub repos and the npm registry. This is where *Node.js*, *Service workers*,
+  *Design tokens*, *Structured data*, *Scroll-driven animation*, *Variable fonts* and *LLM APIs*
+  came from. They were demonstrably true and named in no `stack`, so no gate could have seen them.
+
+`This CV` and `Podcast` in `projects` are the backing entries for most of that. Their stacks are
+long on purpose — every item is genuinely in the repo it names, and removing a project correctly
+breaks the build for the skills it was holding up.
 
 ### Writing
 
@@ -251,37 +285,79 @@ What is left is everything that needs a fact only Pere has.
    reference quotes are more concrete than the CV is. Worth sourcing: how many retail brands the
    multibranding toolkit served; how many casino brands the Blue Orange gamification set shipped
    across; team sizes led at Blue Orange and WeFitter.
-5. **One employment gap remains** — `blue-orange-lead` closes `2019-02` and `ocado-communications`
+5. **WeFitter overlaps AngularCamp by a month, deliberately.** `wefitter-lead` now runs
+   `2016-10 → 2017-04` (six months) against `angularcamp-organiser`'s `2017-03 → 2017-06`. This
+   corrected a conversion bug, not a fact: the source `data.json` ran WeFitter "October 2016 →
+   March 2017", six months read inclusively, and converting that `to` as an exclusive transition
+   month cut it to five and erased an overlap the original had. **`Role.to` is therefore not always
+   the transition month** — see the note on the type. `TimeAxis` draws every segment at the same
+   `inset-block-start`, so overlapping bars stack rather than lane; the bar fill was changed from
+   `color-mix(… , transparent)` to `color-mix(… , var(--surface))` so two stacked bars no longer
+   compound into a brighter sliver that reads as a third micro-segment. A longer overlap would
+   need real laning.
+6. **One employment gap remains** — `blue-orange-lead` closes `2019-02` and `ocado-communications`
    opens `2019-03`, so the axis draws a one-month sliver. It is *sourced* (Pere joined Ocado on 18
    March 2019). Under the transition-month rule on `Role.to`, setting Blue Orange's `to` to
    `2019-03` would close it without contradicting that — but only Pere can say whether he went
    straight across or had a month out. Ask before changing it.
-6. **Community dates** — *resolved for AngularCamp* (March–June 2017, confirmed; it is also a role
+7. **Community dates** — *resolved for AngularCamp* (March–June 2017, confirmed; it is also a role
    in `roles` as `angularcamp-organiser`, deliberately appearing in both Experience and Community).
    Angular Beers and CinemaJS stay undated — `CommunityRole.from`/`to` are optional for that reason.
-7. **Every reference predates Ocado.** Nine testimonials, newest from Blue Orange in 2019. Seven
+8. **Every reference predates Ocado.** Nine testimonials, newest from Blue Orange in 2019. Seven
    years of the strongest work has nothing against it, and the praise visibly stops where the
    current job starts. They are now ordered by what they evidence rather than by employer — Alvaro
    Moya and Loris Candylaftis lead because they speak to teaching and setting practice — but no
    ordering fixes the gap. It needs one recent colleague.
-8. **Storybook and design systems are confirmed, their role is not.** Both sit in
-   `ocado-multibranding`'s `stack` because that is the tenure that owned shared components across
-   brands, which is the shape they fit. Confirm the placement. There is a TODO on the array.
-9. **Docker, Express, Node.js and WordPress left `skillGroups`.** Docker and WordPress were
-   previously added on Pere's confirmation that they are real professional experience, but no role
-   or project backs them, so the new gate rejects them. Docker in particular is worth restoring —
-   ask which roles used it and add it to those `stack` arrays. Node.js has the same problem despite
-   two full-stack tenures. (WordPress and Express are better left out on the merits; see the skills
-   note above.)
-10. **`pearpages.com` and `perepages.com` both appear on the PDF**, one letter apart — the blog and
+9. **Several confirmed skills sit in inferred roles.** All are real — Pere confirmed each — but
+   the tenure they are attached to is a guess, and each carries a `TODO` on the array:
+   - *Storybook* and *Design systems* → `ocado-multibranding`, the tenure that owned shared
+     components across brands.
+   - *Cypress* and *BDD* → `ocado-subscriptions` and `ocado-multibranding`. Pere said "Cypress in
+     previous jobs" and "BDD in many jobs"; on this CV Ocado *is* four jobs, so the React-era teams
+     before the current one are the reading. *BDD* also sits on `blue-orange-lead`.
+   - *WebdriverIO* and *Page objects* → `ocado-communications`, the earliest Ocado team, because
+     WebdriverIO driving page objects is the older enterprise-QA shape and predates Cypress.
+
+   Only *Playwright* on `ocado-payments` ("right now") and *Kanban* on `blue-orange-lead` and
+   `ocado-subscriptions` are sourced to a named employer or team.
+10. **The Ocado unit-testing layer is still blank.** Pere named E2E tools only, so five roles and
+   seven years of React still carry no unit or component testing. Jest is the obvious absence;
+   `Vitest` and `React Testing Library` are claimed but backed only by personal projects. Ask.
+   *(The sibling gap — no state library named across seven years of React — is now closed: Redux
+   runs on `blue-orange-lead` and all four `ocado-*` roles, sourced to "started using it from We
+   Are Blue Orange". It sits beside NgRx rather than against it, since NgRx is Redux for Angular
+   and Blue Orange is where both begin. Open: whether Ocado is on plain Redux or **Redux Toolkit** —
+   RTK has been the official recommendation since 2021 and is the better keyword, but Pere said
+   "Redux" and it has not been inferred past that.)*
+11. **Docker and Express are still unclaimed; Node.js is resolved.** Node.js is back, backed by
+   `Podcast` and by this repo's build scripts. Docker and Express have real public evidence in
+   `github.com/pearpages/fun-with-docker` — Compose, three networked services, lifecycle and
+   cleanup shell scripts — but it is a 2023 sandbox, not professional work, and adding it to
+   `projects` to back a skill would be the tail wagging the dog. Pere has separately confirmed
+   Docker as real professional experience: **name the role and add it to that `stack`**, which is
+   better backing than a toy repo. (WordPress stays out on the merits.)
+12. **Not claimed, pending confirmation:** *Web performance* — defensible from this repo (scroll
+   timelines keeping JS off the scroll path, IntersectionObserver replacing scroll handlers,
+   `width`/`height` on every image, zero runtime dependencies) but with no numbers and no
+   professional evidence behind it. *GitLab CI* — the `flashcards` README mentions GitLab Pages,
+   which may be template residue. Both left out rather than asserted.
+13. **`pearpages.com` and `perepages.com` both appear on the PDF**, one letter apart — the blog and
     this CV. Both are correct and contextually labelled (contact block vs. the `Writing` row), so
     nothing was changed, but it is a real mistyping risk and only Pere can decide whether to
     consolidate the domains.
-11. **Hovering the current time-axis segment overrides its saffron** with `--accent`, because the
+14. **The time-axis ticks were wrong twice over** — *fixed.* `axisTicks` used
+    `Math.ceil(startYear / step) * step`, which rounded a 2007 career start up to 2010; and the
+    labels were laid out with `justify-content: space-between`, so they were evenly spaced rather
+    than placed at the years they name. Together they put "2010" under a bar that begins in January
+    2007. Ticks now carry their own `offset`, computed from the same `axisSpan()` the bars use, so
+    labels and bars cannot drift apart again. The last label is `is-trailing`
+    (`transform: translateX(-100%)`) because `.time-axis` clips the inline axis. Verified by
+    measuring rather than eyeballing — it looked plausible for months.
+15. **Hovering the current time-axis segment overrides its saffron** with `--accent`, because the
     hover rule follows `.is-current` in `TimeAxis.scss`. Pre-existing, cosmetic.
-12. **`location: 'Barcelona'` repeats on all ten role cards**, plus the hero, About, contact and
+16. **`location: 'Barcelona'` repeats on all ten role cards**, plus the hero, About, contact and
     JSON-LD. Flagged during the audit and deliberately left alone: it is information, the
     repetition is quiet, and removing it would leave `Role.location` dead in the data.
-13. **This branch does not deploy.** `deploy.yml` triggers on `master` only, and the repo sits on
+17. **This branch does not deploy.** `deploy.yml` triggers on `master` only, and the repo sits on
     `new-branding`. Nothing committed since 11 Aug 2026 — the whole rebrand, and now this audit —
     has reached perepages.com. Merge to `master` or change the trigger.

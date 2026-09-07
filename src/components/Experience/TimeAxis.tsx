@@ -50,8 +50,19 @@ export function TimeAxis() {
       </ul>
 
       <ul className="time-axis__ticks" aria-hidden="true">
-        {ticks.map((year) => (
-          <li className="time-axis__tick mono" key={year}>
+        {ticks.map(({ year, offset }) => (
+          <li
+            className={
+              `time-axis__tick mono` +
+              /* Same trick as the tooltips above: a label anchored by its left
+                 edge runs past the end of the track near 100%, and
+                 `.time-axis` clips the inline axis. Anchor the last one by its
+                 right edge instead. */
+              (offset > 85 ? ' is-trailing' : '')
+            }
+            key={year}
+            style={{ '--offset': `${offset}%` } as React.CSSProperties}
+          >
             {year}
           </li>
         ))}
