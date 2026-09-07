@@ -67,17 +67,72 @@ imported JSON in place and memoising at module scope, which double-applied on ho
 reintroduce that shape.
 
 - `from`/`to` are ISO `YYYY-MM`; `to` may be `'present'`. The proportional time axis depends on it.
-- `stack` is a `string[]` per role. Skill evidence ("4 roles · 2015→now") derives from it, so
-  skills are never asserted in two places.
+- `stack` is a `string[]` per role, and one of the three things that can back a skill claim.
 - **Percentage skill bars are gone on purpose.** Self-scored numbers read as a negative signal and
-  carry no ATS weight. Grouped taxonomy plus derived evidence replaced them.
-- A skill in `skillGroups` with no matching `stack` entry anywhere renders with no evidence line.
-  That is the honest outcome, not a bug — but it also means **adding a skill without a role or
-  project behind it is an empty claim**. Next.js and Astro sat bare until Bitepals and the two
-  Astro sites were added to `projects`.
+  carry no ATS weight.
 - `repo` on a `ShowcaseProject` is optional: Bitepals is a product with a private repo. The About
   sidebar's "Open source" count is `projects.filter(p => p.repo).length`, not `projects.length`,
-  so a closed-source project can never inflate it.
+  so a closed-source project can never inflate it. It now renders as "N of M projects" — without
+  the denominator it read as a contradiction of the Projects section's own count.
+- **`projects` includes this site** (`This CV`, listed last). It earns the slot by being the only
+  backing for Playwright and GitHub Actions, and because the interesting part is the build refusing
+  to ship a broken PDF. Remove it and the skills gate correctly rejects both.
+
+### Skills: what the section is for
+
+**Keyword surface and navigation — not a proof.** Proving is delegated to Projects and Writing,
+which carry evidence a stranger can check: an installable package, a public repo, a post with a
+date on it. This is the one section that is deliberately *not* autobiographical, so it is tuned to
+the roles being targeted rather than to everything ever touched.
+
+Two consequences that are easy to undo by accident:
+
+- **Keyword surface does not mean maximise keywords.** WordPress, Drupal and Docusaurus were cut
+  because they mis-sort into a different market segment, not because they are untrue; Protractor
+  and Jasmine because they date the testing knowledge to 2017; HTML, SQL, Jira, Prettier, BEM,
+  Angular CLI and the generic "Unit testing"/"REST APIs"/"CI/CD" because they win nothing. 52 → 37.
+- **Leadership left the section.** `Frontend architecture`, `Technical leadership`, `Mentoring`,
+  `Code review` and `Recruitment` are the headline's claim, and a grey chip in a 37-item list is
+  the weakest way to make it. They live in `profile.summary` and in role highlights now, where they
+  can be argued. The PDF dropped its `Practice` row for the same reason.
+
+#### The derived evidence line, and why it went
+
+`formatEvidence` used to render "React · 4 roles · 2019→now" under each skill. It is gone, and
+should not come back in that shape:
+
+- It counted role **rows**, so splitting the Ocado tenure into four made it read `Git · 7 roles`.
+  A figure that moves when `cv.ts` is refactored, with no fact changing, was never describing the
+  career.
+- It read **only role stacks**, and the recent Ocado stacks are thin — so it dated `CSS` to 2016
+  and `SCSS` to 2019, on a site hand-rolled in Sass. Stale end dates on core skills read as decay.
+- It **contradicted the page**: `Agile · 4 roles · 2019→now` sat above Karine Lesueur's testimonial
+  describing an Agile analyst/programmer loop at Tokio Marine in 2011.
+- It was **asymmetric by construction**. What goes easily into a `stack` array is a *tool*; what
+  does not is a *capability*. So `Jira` carried a citation while `Technical leadership` and
+  `Prompt design` rendered bare — the mechanism under-served every claim that mattered most.
+- It was **not third-party evidence**. Both sides of the cross-reference were self-reported. It
+  wore the costume of a citation while asserting the same thing twice, which is the flaw that
+  retired the percentage bars.
+
+**What replaced it, in two parts:**
+
+1. **A link, not a figure.** `skillSource()` in `derive.ts` returns `'projects' | 'writing' |
+   'experience'`, and each skill links to that section. A link cannot overstate what it points at.
+   Externally checkable evidence wins: a package or repo beats a post, and both beat a line in the
+   work history. The chips are *not* dressed as links — the affordance is held back to hover and
+   focus, because thirty blue underlined words would wreck the one thing the section must do.
+2. **A build gate, not a rendered admission.** `scripts/check-skills.mjs` fails the build when a
+   skill has no backing. The valuable half of the old mechanism was always the authoring
+   constraint — you cannot claim a skill with nothing behind it — and that costs the reader nothing
+   if it never renders. Runs first in `npm run build`; also `npm run check:skills`.
+
+**Backing may come from a role `stack`, a project `stack`, or `writing.topics`.** Writing counts
+because four published posts on agent design are better evidence than a `stack` array typed by the
+same hand. `writing.topics` is therefore load-bearing, not decoration — each entry must be a
+subject with posts behind it.
+
+- The section heading carries **no count**. "52 technologies" advertised the padding.
 
 ### Writing
 
@@ -114,6 +169,12 @@ ever feels cramped, cut content — never shrink type.
 - `src/data/print.ts` is the **editorial cut**, and it is tool-independent: it survived the move
   off Typst unchanged. It derives from `cv.ts` and never restates content. Do not prune `cv.ts` to
   make its job easier — the site is the long record, and the PDF links there.
+- The PDF's skills block dropped its **Practice** row (frontend architecture, technical leadership,
+  mentoring) to make room for **Interface** (accessibility, design systems, Storybook, i18n). Six
+  rows ran the page to a second side, and the page-count gate caught it. The right trade twice
+  over: the summary two inches above already claims the leadership in a sentence that argues for
+  itself. Career figures in the summary are written as dates ("since 2007", "since 2019"), never as
+  a count of years — a count needs re-typing every January in six places, and did.
 - `src/print/Cv.tsx` is structure, `src/print/print.scss` is the design. Neither shares anything
   with `src/styles/` — not tokens, not the reset, not the type.
 - **The PDF does not use the site's typefaces.** Source Serif 4 for prose, Inter for labels only.
@@ -167,18 +228,60 @@ It flushes the 2017 webpack-era service worker. Leave it until returning visitor
 
 ## Outstanding
 
-1. **Ocado internal dates are estimates.** Blue Orange now closes at `2019-02` and the Ocado tenure
-   runs `2019-03 → present`, split into four `ocado-*` entries by team at Pere's request. Only the
-   start is sourced (18 March 2019). The three team transitions — Communications → multibranding
-   frontend → Subscriptions → Payments — are read off the narrative, not confirmed. See the TODO at
-   the top of `cv.ts`. The per-team `stack` arrays are thin for the same reason: React is sourced,
-   the rest is not.
-2. **Splitting one tenure into four inflates skill evidence.** `skillEvidence` counts roles, so one
-   employer now contributes four (`Git · 7 roles`, `Agile · 4 roles`). Accepted as the cost of the
-   four-entry layout — but if it ever reads as job-hopping, count distinct employers instead. The
-   PDF already sidesteps this by merging them into one employer block.
-3. **Headline** — "Frontend Architect & Engineering Lead" is a proposal, pending confirmation.
-4. **Community dates** — the old data only carried March–May 2017 for AngularCamp / Angular Beers /
-   CinemaJS, which cannot be right; entries currently render without dates.
-5. **Hovering the current time-axis segment overrides its saffron** with `--accent`, because the
-   hover rule follows `.is-current` in `TimeAxis.scss`. Pre-existing, cosmetic.
+Items 2, 5, 6 and 7 were resolved by the content audit (see *Skills: what the section is for*).
+What is left is everything that needs a fact only Pere has.
+
+1. **Ocado internal dates are estimates.** Blue Orange closes at `2019-02`, the Ocado tenure runs
+   `2019-03 → present`, split into four `ocado-*` entries by team at Pere's request. Only the start
+   is sourced (18 March 2019); the three team transitions are read off the narrative. See the TODO
+   at the top of `cv.ts`.
+2. **The four-way Ocado split is now the most expensive decision in the file.** It no longer
+   inflates skill counts (those are gone), but it still puts four identical `Senior Software
+   Engineer` headings back to back and makes Experience read `9 roles` for six employers in
+   nineteen years — which scans as job-hopping. `print.ts` already merges them into one tenure, and
+   that merge is what makes the PDF immune to the unsourced dates above. **Recommend doing the same
+   on the site**, with the four teams as an internal progression line; it dissolves item 1 as well.
+   Pere's call, since the split was his request.
+3. **Headline** — "Frontend Architect & Engineering Lead" against a title of `Senior Software
+   Engineer` since 2019, still pending confirmation. Moving the leadership claims out of the skill
+   chips and into the prose was done partly to make the body earn it, but the gap is real and a
+   recruiter will see it.
+4. **No metrics anywhere.** Ten roles, forty-odd highlights, not one number — no brand count, team
+   size, user scale or delivery figure. This is the single biggest remaining quality gap, and the
+   reference quotes are more concrete than the CV is. Worth sourcing: how many retail brands the
+   multibranding toolkit served; how many casino brands the Blue Orange gamification set shipped
+   across; team sizes led at Blue Orange and WeFitter.
+5. **One employment gap remains** — `blue-orange-lead` closes `2019-02` and `ocado-communications`
+   opens `2019-03`, so the axis draws a one-month sliver. It is *sourced* (Pere joined Ocado on 18
+   March 2019). Under the transition-month rule on `Role.to`, setting Blue Orange's `to` to
+   `2019-03` would close it without contradicting that — but only Pere can say whether he went
+   straight across or had a month out. Ask before changing it.
+6. **Community dates** — *resolved for AngularCamp* (March–June 2017, confirmed; it is also a role
+   in `roles` as `angularcamp-organiser`, deliberately appearing in both Experience and Community).
+   Angular Beers and CinemaJS stay undated — `CommunityRole.from`/`to` are optional for that reason.
+7. **Every reference predates Ocado.** Nine testimonials, newest from Blue Orange in 2019. Seven
+   years of the strongest work has nothing against it, and the praise visibly stops where the
+   current job starts. They are now ordered by what they evidence rather than by employer — Alvaro
+   Moya and Loris Candylaftis lead because they speak to teaching and setting practice — but no
+   ordering fixes the gap. It needs one recent colleague.
+8. **Storybook and design systems are confirmed, their role is not.** Both sit in
+   `ocado-multibranding`'s `stack` because that is the tenure that owned shared components across
+   brands, which is the shape they fit. Confirm the placement. There is a TODO on the array.
+9. **Docker, Express, Node.js and WordPress left `skillGroups`.** Docker and WordPress were
+   previously added on Pere's confirmation that they are real professional experience, but no role
+   or project backs them, so the new gate rejects them. Docker in particular is worth restoring —
+   ask which roles used it and add it to those `stack` arrays. Node.js has the same problem despite
+   two full-stack tenures. (WordPress and Express are better left out on the merits; see the skills
+   note above.)
+10. **`pearpages.com` and `perepages.com` both appear on the PDF**, one letter apart — the blog and
+    this CV. Both are correct and contextually labelled (contact block vs. the `Writing` row), so
+    nothing was changed, but it is a real mistyping risk and only Pere can decide whether to
+    consolidate the domains.
+11. **Hovering the current time-axis segment overrides its saffron** with `--accent`, because the
+    hover rule follows `.is-current` in `TimeAxis.scss`. Pre-existing, cosmetic.
+12. **`location: 'Barcelona'` repeats on all ten role cards**, plus the hero, About, contact and
+    JSON-LD. Flagged during the audit and deliberately left alone: it is information, the
+    repetition is quiet, and removing it would leave `Role.location` dead in the data.
+13. **This branch does not deploy.** `deploy.yml` triggers on `master` only, and the repo sits on
+    `new-branding`. Nothing committed since 11 Aug 2026 — the whole rebrand, and now this audit —
+    has reached perepages.com. Merge to `master` or change the trigger.

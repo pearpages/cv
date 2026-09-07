@@ -47,6 +47,16 @@
   margin-block-start: var(--space-1);
 }
 
+/* Only AngularCamp carries dates, so this sits beside the role rather than on
+   its own line — an undated entry must not leave a visible hole. */
+.community-item__range {
+  &::before {
+    content: ' · ';
+  }
+
+  color: var(--text-muted);
+}
+
 .community-item__description {
   margin-block-start: var(--space-2);
   font-size: var(--text-sm);

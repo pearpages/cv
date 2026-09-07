@@ -5,7 +5,7 @@ import './Projects.scss';
 
 export function Projects() {
   return (
-    <Section id="projects" title="Projects" count={`${projects.length} shown`}>
+    <Section id="projects" title="Projects" count={`${projects.length}`}>
       <ul className="projects">
         {projects.map((project) => (
           <li className="project" key={project.name}>

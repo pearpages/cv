@@ -1,4 +1,4 @@
-import { languages, profile, projects, roles, writing } from '../../data/cv';
+import { languages, profile, projects, roles } from '../../data/cv';
 import { careerSpan } from '../../lib/derive';
 import { Section } from '../Section/Section';
 import './About.scss';
@@ -15,11 +15,10 @@ export function About() {
     { label: 'Experience', value: `${years} years` },
     { label: 'Based in', value: profile.location },
     { label: 'Focus', value: 'Frontend architecture, React, TypeScript, Angular' },
-    { label: 'Open source', value: `${openSource} published projects` },
-    {
-      label: 'Writing',
-      value: `${writing.postCount}+ posts since ${writing.since}`,
-    },
+    /* "of N" matters: the Projects section shows more than this, because one
+       of them is closed-source. Without the denominator the two numbers read
+       as a contradiction rather than a distinction. */
+    { label: 'Open source', value: `${openSource} of ${projects.length} projects` },
   ];
 
   return (

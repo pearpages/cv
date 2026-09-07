@@ -36,6 +36,12 @@ export interface Project {
 export interface Role {
   id: string;
   from: YearMonth;
+  /**
+   * The month of the transition, not the last month worked — so a role's `to`
+   * equals the next role's `from` where the two are contiguous. The time axis
+   * draws segments between these values, and any other reading leaves a
+   * one-month sliver of empty axis between consecutive jobs.
+   */
   to: YearMonth | Present;
   title: string;
   employer: EmployerId;
@@ -77,6 +83,14 @@ export interface CommunityRole {
   description: string;
   logo: string;
   url: string;
+  /**
+   * Only where the dates are confirmed. AngularCamp carries them because the
+   * March–June 2017 stretch is the one that explains a gap between two roles;
+   * Angular Beers and CinemaJS ran longer than any range I can source, and
+   * stay undated rather than be guessed at.
+   */
+  from?: YearMonth;
+  to?: YearMonth | Present;
 }
 
 export interface ShowcaseProject {

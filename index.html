@@ -7,7 +7,7 @@
 
   <title>Pere Pages Soms — Frontend Architect &amp; Engineering Lead</title>
   <meta name="description"
-    content="Pere Pages Soms is a frontend architect and engineering lead in Barcelona with 19 years building production web applications — the last seven in React and TypeScript at Ocado Technology.">
+    content="Pere Pages Soms is a frontend architect and engineering lead in Barcelona, building production web applications since 2007 — and at Ocado Technology since 2019, on a React and TypeScript ecommerce platform.">
   <link rel="canonical" href="https://perepages.com/">
   <meta name="author" content="Pere Pages Soms">
 
@@ -15,7 +15,7 @@
   <meta property="og:type" content="profile">
   <meta property="og:title" content="Pere Pages Soms — Frontend Architect &amp; Engineering Lead">
   <meta property="og:description"
-    content="19 years building production web applications. The last seven in React and TypeScript at Ocado Technology, in Barcelona.">
+    content="Building production web applications since 2007. At Ocado Technology since 2019, in React and TypeScript. Barcelona.">
   <meta property="og:site_name" content="Pere Pages Soms">
   <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://perepages.com/">
@@ -30,7 +30,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Pere Pages Soms — Frontend Architect &amp; Engineering Lead">
   <meta name="twitter:description"
-    content="19 years building production web applications. The last seven in React and TypeScript at Ocado Technology, in Barcelona.">
+    content="Building production web applications since 2007. At Ocado Technology since 2019, in React and TypeScript. Barcelona.">
   <meta name="twitter:image" content="https://perepages.com/media/og-card.png">
   <meta name="twitter:creator" content="@pearpages">
 
@@ -49,6 +49,10 @@
     A CV has exactly one search query to win: this person's name. The Person
     schema is what lets Google answer it with a knowledge panel rather than a
     blue link.
+
+    %KNOWS_ABOUT% is filled at build time from `skillGroups` by the plugin in
+    vite.config.ts, so the machine-readable claims cannot drift from the ones
+    on the page. Hand-maintained, this list had already drifted both ways.
   -->
   <script type="application/ld+json">
   {
@@ -58,7 +62,7 @@
     "givenName": "Pere",
     "familyName": "Pages Soms",
     "jobTitle": "Frontend Architect & Engineering Lead",
-    "description": "Frontend architect and engineering lead with 19 years building production web applications, the last seven in React and TypeScript at Ocado Technology.",
+    "description": "Frontend architect and engineering lead building production web applications since 2007, and at Ocado Technology since 2019 in React and TypeScript.",
     "url": "https://perepages.com/",
     "email": "mailto:hello@pearpages.com",
     "address": {
@@ -67,32 +71,7 @@
       "addressCountry": "ES"
     },
     "knowsLanguage": ["ca", "es", "en"],
-    "knowsAbout": [
-      "Frontend architecture",
-      "TypeScript",
-      "JavaScript",
-      "React",
-      "Next.js",
-      "Astro",
-      "Angular",
-      "AngularJS",
-      "RxJS",
-      "NgRx",
-      "Node.js",
-      "Ionic",
-      "SCSS",
-      "Design systems",
-      "Web accessibility",
-      "Technical leadership",
-      "Mentoring",
-      "Code review",
-      "Continuous integration",
-      "Agile",
-      "Scrum",
-      "PHP",
-      "MySQL",
-      "MSSQL"
-    ],
+    "knowsAbout": %KNOWS_ABOUT%,
     "alumniOf": [
       {
         "@type": "CollegeOrUniversity",

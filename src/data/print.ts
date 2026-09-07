@@ -92,7 +92,7 @@ export const printModel: PrintModel = {
 
   /** Three paragraphs down to two sentences. */
   summary:
-    'Frontend architect and engineering lead, 19 years, the last seven at Ocado Technology on the React and TypeScript frontend of a multi-brand grocery platform. Three times I have introduced a framework to a company and then taught it.',
+    'Frontend architect and engineering lead. Web applications since 2007, Ocado Technology since 2019 — the React and TypeScript frontend of a multi-brand grocery platform. Three times I have introduced a framework to a company and then taught it.',
 
   /**
    * Stack Overflow is cut — four fit on a line and it is the weakest of the
@@ -122,17 +122,25 @@ export const printModel: PrintModel = {
     // Astro is absent deliberately: the two Astro sites did not survive the
     // cut to three projects, so on *this* page it would be a skill with
     // nothing behind it — the empty-claim trap. The site still lists it.
-    { name: 'Languages', value: 'TypeScript, JavaScript, HTML, CSS, SCSS' },
-    { name: 'Frameworks', value: 'React, Angular, Next.js, Node.js' },
+    //
+    // HTML is gone for the same reason it left the site: nobody has ever
+    // filtered a candidate on it, and at this measure a word that wins nothing
+    // is a word taken off a line that could have carried Accessibility.
+    { name: 'Languages', value: 'TypeScript, JavaScript, CSS, SCSS' },
+    { name: 'Frameworks', value: 'React, Angular, Next.js' },
     {
       name: 'AI-assisted development',
-      value: 'Claude, GitHub Copilot, prompt design, agent skills',
+      value: 'Claude, Claude Code, Copilot, prompt and agent design',
     },
-    { name: 'Build & testing', value: 'Vite, Webpack, Git, GitHub Actions, unit and E2E' },
-    {
-      name: 'Practice',
-      value: 'Frontend architecture, technical leadership, mentoring',
-    },
+    { name: 'Interface', value: 'Accessibility, design systems, Storybook, i18n' },
+    { name: 'Build & testing', value: 'Vite, Webpack, Git, GitHub Actions, Playwright' },
+    // The old 'Practice' row — frontend architecture, technical leadership,
+    // mentoring — is gone, and adding the Interface row above is what forced
+    // the choice: six rows ran the page to a second side. Losing it is the
+    // right trade twice over. A comma-separated list is the weakest way to
+    // claim leadership, and the summary two inches up already claims it in a
+    // sentence that argues for itself: three frameworks introduced and taught.
+    // The Ocado highlights carry the rest.
   ],
 
   tenures: [
@@ -180,8 +188,9 @@ export const printModel: PrintModel = {
   ],
 
   /**
-   * Three of eight, one clause each. The two npm packages carry the
-   * open-source claim; Bitepals carries Next.js and shipping a product.
+   * Four of twelve, one clause each. The two npm packages carry the
+   * open-source claim; Bitepals carries Next.js and shipping a product;
+   * Futbol Manager carries the architecture, which nothing else here shows.
    */
   projects: [
     // Each of these has to sit on one line beside its name, so the blurbs are
@@ -203,12 +212,19 @@ export const printModel: PrintModel = {
       blurb: 'GitHub-style contribution heatmaps',
       url: project('Heatmap').url!,
     },
+    {
+      name: 'Futbol Manager',
+      blurb: 'statistically resolved football management, pure domain core',
+      url: project('Futbol Manager').url!,
+    },
   ],
 
   /**
-   * The tail of the CV, as single lines. Community carries no dates: the
-   * source data only ever held March–May 2017, which cannot be the full story
-   * (CLAUDE.md, outstanding item 4). Better undated than wrong.
+   * The tail of the CV, as single lines. AngularCamp's dates are now confirmed
+   * (March–June 2017, full time between WeFitter and Blue Orange) and the site
+   * shows them; the original March–May source data was right after all. They
+   * stay off this line for space — Angular Beers and CinemaJS remain genuinely
+   * undated, and three names plus one range does not fit in one row.
    */
   also: [
     {

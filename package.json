@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/build-pdf.mjs",
+    "build": "npm run check:skills && vite build && node scripts/build-pdf.mjs",
+    "check:skills": "node scripts/check-skills.mjs",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "pdf": "node scripts/build-pdf.mjs"

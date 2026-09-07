@@ -24,9 +24,15 @@
   }
 
   /* An opening quote set in the display face, sitting in the margin so the
-     text edge stays flush. */
+     text edge stays flush. Decorative only — there is no closing mark by
+     design, which is the ordinary pull-quote convention.
+
+     The `/ ''` is the alternative-text half of `content`: it hands assistive
+     tech an empty string so the mark is not announced. `blockquote` already
+     carries the semantics, and a spoken "left double quotation mark" before
+     every reference is noise. */
   p:first-child::before {
-    content: '“';
+    content: '“' / '';
     float: left;
     margin-inline-start: -0.42em;
     font-family: var(--font-display);

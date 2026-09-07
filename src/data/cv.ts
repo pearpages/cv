@@ -34,7 +34,7 @@ export const profile: Profile = {
   headline: 'Frontend Architect & Engineering Lead',
   location: 'Barcelona, Spain',
   summary: [
-    'Frontend architect and engineering lead with 19 years building production web applications — the last seven at Ocado Technology in Barcelona, on the React and TypeScript frontend of a multi-brand grocery ecommerce platform, and the decade before that in Angular. I have worked in retail, insurance, health and iGaming, in international cross-functional teams beside designers, business analysts and backend engineers.',
+    'Frontend architect and engineering lead, building production web applications since 2007 — at Ocado Technology since 2019, in Barcelona, on the React and TypeScript frontend of a multi-brand grocery ecommerce platform, and the decade before that in Angular. I have worked in retail, insurance, health and iGaming, in international cross-functional teams beside designers, business analysts and backend engineers.',
     'Three times I have been the person who introduced a framework and then taught it: AngularJS at Tokio Marine HCC, where I became the company reference for frontend; modern Angular at We Are Blue Orange; and React at Ocado, where I joined as the office’s first frontend engineer and made the case for it to a team of backend developers. Technical leadership, code review, mentoring and setting standards are as much of the job as the code is.',
     'I like simplicity, minimalism and quality. Code should be easy to understand, clean, consistent, testable, short and modular. I write code daily, publish open-source React components, work with AI tooling as part of the loop rather than beside it, and spent years organising the Barcelona JavaScript community.',
   ],
@@ -77,6 +77,12 @@ export const employers: Employer[] = [
     url: 'https://www.wefitter.com/',
   },
   {
+    id: 'angularcamp',
+    name: 'AngularCamp Barcelona',
+    logo: 'angularcamp-bcn.png',
+    url: 'https://angularcamp.org/',
+  },
+  {
     id: 'tokio-marine',
     name: 'Tokio Marine HCC',
     logo: 'tokio-marine.png',
@@ -106,10 +112,10 @@ export const roles: Role[] = [
     summary:
       'Frontend engineering in the Payments vertical, alongside cross-team work with Platform and Analytics.',
     highlights: [
-      'Frontend engineer on the Payments domain of the grocery ecommerce platform.',
       'Collaborated beyond the team with Platform and Analytics, and built internal reporting tools used outside my own vertical.',
-      'Worked with AI tooling as part of the daily loop — GitHub Copilot through to Claude — writing prompts and reusable skills, and sharing that practice with the team.',
-      'Helped organise the meetup events hosted at the Barcelona office, and took part in recruitment and technical interviewing.',
+      'Worked with AI tooling as part of the daily loop — GitHub Copilot through to Claude Code — writing prompts and reusable agent skills, and sharing that practice with the team.',
+      'Reviewed code, mentored engineers and took part in recruitment and technical interviewing.',
+      'Helped organise the meetup events hosted at the Barcelona office.',
       'Kept investing in the wider ecosystem outside the day job — Next.js, Astro and the React projects listed below.',
     ],
     stack: [
@@ -118,6 +124,9 @@ export const roles: Role[] = [
       'JavaScript',
       'GitHub Copilot',
       'Claude',
+      'Claude Code',
+      'Prompt design',
+      'Agent design',
       'Git',
       'Agile',
     ],
@@ -137,8 +146,8 @@ export const roles: Role[] = [
     summary:
       'Followed the Subscriptions domain into a fully vertical team when the company reorganised.',
     highlights: [
-      'Moved with the Subscriptions domain when a company-wide reorganisation turned the horizontal frontend teams into fully vertical, cross-functional ones.',
-      'Worked on the subscriptions product alongside backend engineers, designers and product in a single vertical team.',
+      'Built and shipped the customer subscriptions product, embedded with backend, design and product in one vertical team.',
+      'Carried the frontend of the domain through the reorganisation that split the horizontal frontend teams into vertical ones, without a break in delivery.',
     ],
     stack: ['React', 'TypeScript', 'JavaScript', 'Git', 'Agile'],
     projects: [{ name: 'Subscriptions', description: 'Customer subscriptions product' }],
@@ -155,9 +164,21 @@ export const roles: Role[] = [
       'Moved to a newly formed frontend team owning shared customer features across the multi-brand ecommerce toolkit.',
     highlights: [
       'Built and maintained settings, addresses, communications preferences and subscriptions — one frontend codebase serving several retail brands.',
-      'Part of the frontend team formed to own these features as a discipline, rather than have them spread across backend teams.',
+      'Built the shared components these features were assembled from, so behaviour stayed consistent across brands instead of being reimplemented per team.',
     ],
-    stack: ['React', 'TypeScript', 'JavaScript', 'Git', 'Agile'],
+    // TODO: Storybook and design-system work are confirmed as real, but the
+    // role they belong to is not. They sit here because this is the tenure
+    // that owned shared components across brands, which is the shape they
+    // fit. Confirm before treating the placement as sourced.
+    stack: [
+      'React',
+      'TypeScript',
+      'JavaScript',
+      'Design systems',
+      'Storybook',
+      'Git',
+      'Agile',
+    ],
     projects: [
       {
         name: 'Ecommerce multibranding toolkit',
@@ -200,7 +221,7 @@ export const roles: Role[] = [
       'Led the migration from MVP to a modern Angular architecture, with RxJS and NgRx handling application state.',
       'Built the gamification feature set shipped across multiple casino brands.',
       'Integrated the Devcode payment system.',
-      'Created Atlas, the internal CMS the team runs campaigns from.',
+      'Created Atlas, the internal CMS the team ran campaigns from.',
       'Set the frontend standards the team worked to — SCSS/BEM, Prettier, Codelyzer, and Jasmine and Protractor suites running on Jenkins.',
     ],
     stack: [
@@ -231,6 +252,48 @@ export const roles: Role[] = [
     ],
     references: ['eric-ruiz-franco', 'neil-azzopardi', 'jonah-ellinger', 'jonas-hoffmann'],
   },
+  /**
+   * Three months between two jobs, spent on the Barcelona JavaScript community.
+   * Recovered from the pre-rebrand `data.json` (commit 032cc45), where it was
+   * one "Contributor" entry with three co-employers — AngularCamp, Cinema JS
+   * and Angular Beers. `Role` carries a single employer, so the conference is
+   * the employer here and the other two ride along as projects, as they did
+   * originally. `to` is 2017-06 by the transition-month rule on `Role.to`.
+   */
+  {
+    id: 'angularcamp-organiser',
+    from: '2017-03',
+    to: '2017-06',
+    title: 'Organiser',
+    employer: 'angularcamp',
+    location: 'Barcelona',
+    summary:
+      'Three months between jobs spent full time on the Barcelona JavaScript community, pro bono.',
+    highlights: [
+      'Organised AngularCamp Barcelona, the city’s Angular conference, and built the tooling that ran it.',
+      'Ran the Angular Beers meetup and the CinemaJS talk screenings alongside it.',
+      'Developed the community tools the three events shared.',
+    ],
+    stack: ['Angular', 'JavaScript'],
+    projects: [
+      {
+        name: 'AngularCamp',
+        description: 'Barcelona’s Angular conference',
+        url: 'https://angularcamp.org/',
+      },
+      {
+        name: 'Angular Beers',
+        description: 'Barcelona’s Angular meetup',
+        url: 'https://angularbeers.org/',
+      },
+      {
+        name: 'CinemaJS',
+        description: 'JavaScript talks screened cinema-style',
+        url: 'https://cinemajs.tech/',
+      },
+    ],
+    references: [],
+  },
   {
     id: 'wefitter-lead',
     from: '2016-10',
@@ -244,7 +307,7 @@ export const roles: Role[] = [
       'Shipped the WeFitter mobile app with Ionic and AngularJS.',
       'Built the Angular 2 backoffice the business ran the platform from.',
       'Delivered Charity Challenge for Testo and the Wellness Cities site.',
-      'Taught the team frontend patterns, best practices and current tooling, and flagged technical risk and opportunity in my area of expertise.',
+      'Taught the team frontend patterns, testing and current tooling, and made the call on which technical risks were worth taking.',
     ],
     stack: [
       'Angular',
@@ -275,7 +338,7 @@ export const roles: Role[] = [
   {
     id: 'tokio-marine-frontend',
     from: '2015-06',
-    to: '2016-09',
+    to: '2016-10',
     title: 'Front End Developer',
     employer: 'tokio-marine',
     location: 'Barcelona',
@@ -415,58 +478,77 @@ export const roles: Role[] = [
 ];
 
 /**
- * Grouped rather than ranked. Self-assigned percentages tell a reader
- * nothing; where a skill was actually used is derivable from `roles`
- * above, so `lib/derive.ts` computes that instead.
+ * Grouped rather than ranked, and tuned to the roles being targeted rather
+ * than to the whole history — this is the one section that is deliberately
+ * *not* autobiographical. Its job is to be found (by a reader scanning, by a
+ * parser matching) and to point at where the proof lives; the proving itself
+ * belongs to Projects and Writing, which carry evidence a third party can
+ * check — published packages, public repos, posts with dates on them.
+ *
+ * Two rules hold it honest, and `scripts/check-skills.mjs` enforces the first
+ * at build time rather than printing it:
+ *
+ * 1. Every skill here must appear in a role `stack`, a project `stack`, or
+ *    `writing.topics`. A skill with nothing behind it is an empty claim.
+ * 2. Nothing generic ("Unit testing", "REST APIs", "CI/CD") and nothing that
+ *    is ceremony rather than skill (Jira, Prettier). The named tool already
+ *    carries the category, and the padding costs more than it wins.
+ *
+ * The derived "4 roles · 2015→now" line that used to render under each skill
+ * is gone. It counted role *rows*, so splitting one Ocado tenure into four
+ * inflated it to "Git · 7 roles"; and because it read only role stacks, it
+ * dated CSS to 2016 on a site hand-rolled in Sass. A figure that moves when
+ * `cv.ts` is refactored was never describing the career. Both sides of it
+ * were self-reported anyway — it had the form of a citation without the
+ * substance, which is the flaw that retired the percentage bars before it.
  */
 export const skillGroups: SkillGroup[] = [
   {
-    name: 'Languages',
-    skills: ['TypeScript', 'JavaScript', 'HTML', 'CSS', 'SCSS', 'PHP', 'SQL'],
+    name: 'Core',
+    skills: ['TypeScript', 'JavaScript', 'CSS', 'SCSS', 'PHP'],
   },
   {
-    name: 'Frameworks & UI',
-    skills: ['React', 'Angular', 'Next.js', 'Astro', 'AngularJS', 'Ionic', 'Node.js'],
+    name: 'React & frameworks',
+    skills: ['React', 'Next.js', 'Astro', 'Angular', 'AngularJS', 'Ionic'],
   },
   {
     name: 'AI-assisted development',
-    skills: ['Claude', 'GitHub Copilot', 'Prompt design', 'Agent skills'],
+    skills: [
+      'Claude',
+      'Claude Code',
+      'GitHub Copilot',
+      'Agent design',
+      'Prompt design',
+      'LLM tooling',
+    ],
   },
   {
-    name: 'State & data',
-    skills: ['RxJS', 'NgRx', 'REST APIs', 'MSSQL', 'MySQL'],
+    name: 'Accessibility & UI',
+    skills: ['Accessibility', 'Design systems', 'Storybook', 'i18n'],
   },
   {
     name: 'Testing',
-    skills: ['Jasmine', 'Protractor', 'Unit testing', 'End-to-end testing'],
+    skills: ['Vitest', 'React Testing Library', 'Playwright'],
   },
   {
     name: 'Build & delivery',
     skills: [
       'Vite',
       'Webpack',
-      'Angular CLI',
       'Git',
-      'Jenkins',
       'GitHub Actions',
-      'CI/CD',
-      'Prettier',
+      'Jenkins',
+      'pnpm',
+      'Monorepo',
     ],
   },
   {
-    name: 'Practice',
-    skills: [
-      'Frontend architecture',
-      'Technical leadership',
-      'Mentoring',
-      'Code review',
-      'Recruitment & technical interviewing',
-      'Design systems',
-      'BEM',
-      'Agile',
-      'Scrum',
-      'Jira',
-    ],
+    name: 'State & data',
+    skills: ['RxJS', 'NgRx', 'MSSQL', 'MySQL'],
+  },
+  {
+    name: 'Ways of working',
+    skills: ['Agile', 'Scrum'],
   },
 ];
 
@@ -521,6 +603,38 @@ export const projects: ShowcaseProject[] = [
     stack: ['TypeScript', 'Chrome Extensions MV3', 'pnpm', 'Monorepo'],
   },
   {
+    name: 'Futbol Manager',
+    description:
+      'A football management game in the idiom of PC Fútbol — results resolved statistically rather than simulated in real time. The domain layer is pure: no framework, no clock, no unseeded randomness, and every save carries a schema version with a migration behind it.',
+    url: 'https://futbol.pearpages.com',
+    repo: 'https://github.com/pearpages/futbol-manager',
+    stack: ['TypeScript', 'Vitest', 'Monorepo', 'Domain modelling'],
+  },
+  {
+    name: 'Carlitos',
+    description:
+      'Browser games sharing one engine — no Node, no npm and zero runtime dependencies, with everything drawn from canvas paths rather than asset files.',
+    url: 'https://carlitos.pearpages.com',
+    repo: 'https://github.com/pearpages/carlitos',
+    stack: ['Deno', 'TypeScript', 'Canvas'],
+  },
+  {
+    name: 'RSS',
+    description:
+      'Mobile-first reader that aggregates several feeds into a single card-based reading list.',
+    url: 'https://rss.pages.ninja',
+    repo: 'https://github.com/pearpages/rss',
+    stack: ['React', 'TypeScript', 'Vite'],
+  },
+  {
+    name: 'Fit Tracker',
+    description:
+      'Mobile-first workout tracker, installable as a progressive web app and usable offline.',
+    url: 'https://fit.pages.ninja',
+    repo: 'https://github.com/pearpages/fit-tracker',
+    stack: ['React', 'TypeScript', 'Sass', 'React Testing Library', 'PWA'],
+  },
+  {
     name: 'Reactive Game',
     description: 'A browser game built using nothing but Observables.',
     url: 'https://space.pages.ninja',
@@ -530,8 +644,36 @@ export const projects: ShowcaseProject[] = [
   {
     name: 'Subscriptions Tracker',
     description: 'Mobile-first app for keeping track of recurring subscriptions.',
+    url: 'https://subs.pages.ninja',
     repo: 'https://github.com/pearpages/subscriptions-tracker',
     stack: ['React', 'TypeScript', 'Vite'],
+  },
+  /**
+   * This site. Listed last, and listed at all because the interesting part is
+   * not that it exists — it is that the build refuses to ship a broken one:
+   * the PDF is measured in a real browser and rejected if it runs to a second
+   * page, wraps a line marked unwrappable, embeds a Type 3 font or stops
+   * being A4.
+   *
+   * It is also the only backing for Playwright and GitHub Actions, both of
+   * which are used here and nowhere else in this file. Without this entry the
+   * skills gate rejects them, which is the gate working correctly.
+   */
+  {
+    name: 'This CV',
+    description:
+      'The site you are reading, and the one-page PDF it builds. Headless Chromium measures the printed layout and fails the build rather than publish a page that wraps, overflows or drops to a font ATS parsers cannot read.',
+    url: 'https://perepages.com',
+    repo: 'https://github.com/pearpages/cv',
+    stack: [
+      'React',
+      'TypeScript',
+      'Vite',
+      'SCSS',
+      'Playwright',
+      'GitHub Actions',
+      'Accessibility',
+    ],
   },
 ];
 
@@ -548,11 +690,22 @@ export const projects: ShowcaseProject[] = [
 export const writing: Writing = {
   url: 'https://pearpages.com',
   description:
-    'I write up what I learn, mostly while it is still half-formed. Lately that has meant a lot on working with AI coding tools, alongside the frontend and browser-internals posts that have been the through-line since 2020.',
+    'I write up what I learn, mostly while it is still half-formed. Lately that has meant a lot on working with AI coding tools, alongside the frontend and browser-internals posts that have been the through-line since 2020. The site itself is a Docusaurus build I maintain, components and all.',
   since: 2020,
   postCount: 78,
+  /**
+   * These double as a backing source for `skillGroups` — a skill may rest on
+   * a role stack, a project stack, or a topic written about here. Four posts
+   * on agent graphs, Claude Code token accounting, harness engineering and
+   * model selection are stronger backing for those claims than a `stack`
+   * array typed by the same hand. So each entry must be a subject with
+   * published posts behind it, not an aspiration.
+   */
   topics: [
     'AI-assisted development',
+    'Agent design',
+    'Claude Code',
+    'LLM tooling',
     'Frontend architecture',
     'React',
     'Browser internals',
@@ -584,8 +737,10 @@ export const community: CommunityRole[] = [
   {
     name: 'AngularCamp Barcelona',
     role: 'Organiser',
+    from: '2017-03',
+    to: '2017-06',
     description:
-      'Barcelona’s Angular conference. Organised the event and built the tooling that ran it.',
+      'Barcelona’s Angular conference. Organised the event and built the tooling that ran it — full time between WeFitter and Blue Orange, which is what the spring of 2017 was spent on.',
     logo: 'angularcamp-bcn.png',
     url: 'https://angularcamp.org/',
   },
@@ -622,7 +777,39 @@ export const education: Education[] = [
   },
 ];
 
+/**
+ * Ordered by what they evidence, not by employer or date. The headline claims
+ * architecture and leading; Alvaro and Loris speak directly to teaching and
+ * setting practice, so they lead. The warmest quotes are not the most useful
+ * ones — "great to work with" is table stakes, and it goes last.
+ *
+ * TODO: every one of these predates Ocado. Seven years of the strongest work
+ * has no reference against it, and the praise visibly stops where the current
+ * job starts. No wording fixes that — it needs one recent colleague.
+ */
 export const references: Reference[] = [
+  {
+    id: 'alvaro-r-moya',
+    name: 'Alvaro R Moya',
+    title: 'CTO at WeFitter',
+    linkedin: 'https://es.linkedin.com/in/alvarormoya',
+    employer: 'wefitter',
+    quote: [
+      'Pere is a highly talented web frontend developer. During his time at WeFitter he did great work improving our app and sites using latest technologies like Angular 2, which he masters. Hard worker and always open to help, he has taught the team on best development practices, and he inspired us to make better code and be aware of latest trends.',
+      'Apart from professional skills, he is a great team mate and fosters a nice work environment. He makes the office a better and more fun place to be from minute 0. I wish him all the best in his future career!',
+    ],
+  },
+  {
+    id: 'loris-candylaftis',
+    name: 'Loris Candylaftis',
+    title: 'IT Manager at Tokio Marine HCC',
+    linkedin: 'https://es.linkedin.com/in/loriscandylaftis',
+    employer: 'tokio-marine',
+    quote: [
+      'I had the pleasure to work with Pere for over five years, where he worked as front-end developer in my team. Pere was a valuable colleague, with very strong team spirit, always available to help and share his knowledge. During his tenure he worked on different projects with various technologies, ranging from PHP (Zend Framework), Symfony, and finally Angular which he eventually specialised in.',
+      'Pere is a serious worker who likes to improve and keep up to date with the technology. I would strongly recommend him to any team looking for an experienced front-end developer that has a good sense of user experience.',
+    ],
+  },
   {
     id: 'eric-ruiz-franco',
     name: 'Eric Ruiz Franco',
@@ -655,27 +842,6 @@ export const references: Reference[] = [
     ],
   },
   {
-    id: 'jonas-hoffmann',
-    name: 'Jonas Hoffmann',
-    title: 'Communications Designer at Komoot',
-    linkedin: 'https://www.linkedin.com/in/jonas-hoffmann-256729a2/',
-    employer: 'blue-orange',
-    quote: [
-      'It was a pleasure to work with Pere. He always grasped my designs quickly and was quick to implement them. The same for changes and feedback. His estimations for tasks and projects were always realistic. He works very focused and sticks to the workflow but can also be flexible. When I had amateur coding questions he explained everything to me patiently. Also working and interacting with him on a personal level was great.',
-    ],
-  },
-  {
-    id: 'alvaro-r-moya',
-    name: 'Alvaro R Moya',
-    title: 'CTO at WeFitter',
-    linkedin: 'https://es.linkedin.com/in/alvarormoya',
-    employer: 'wefitter',
-    quote: [
-      'Pere is a highly talented web frontend developer. During his time at WeFitter he did great work improving our app and sites using latest technologies like Angular 2, which he masters. Hard worker and always open to help, he has taught the team on best development practices, and he inspired us to make better code and be aware of latest trends.',
-      'Apart from professional skills, he is a great team mate and fosters a nice work environment. He makes the office a better and more fun place to be from minute 0. I wish him all the best in his future career!',
-    ],
-  },
-  {
     id: 'karine-lesueur',
     name: 'Karine Lesueur',
     title: 'Operations Manager at Tokio Marine HCC',
@@ -687,24 +853,13 @@ export const references: Reference[] = [
     ],
   },
   {
-    id: 'loris-candylaftis',
-    name: 'Loris Candylaftis',
-    title: 'IT Manager at Tokio Marine HCC',
-    linkedin: 'https://es.linkedin.com/in/loriscandylaftis',
-    employer: 'tokio-marine',
+    id: 'jonas-hoffmann',
+    name: 'Jonas Hoffmann',
+    title: 'Communications Designer at Komoot',
+    linkedin: 'https://www.linkedin.com/in/jonas-hoffmann-256729a2/',
+    employer: 'blue-orange',
     quote: [
-      'I had the pleasure to work with Pere for over five years, where he worked as front-end developer in my team. Pere was a valuable colleague, with very strong team spirit, always available to help and share his knowledge. During his tenure he worked on different projects with various technologies, ranging from PHP (Zend Framework), Symfony, and finally Angular which he eventually specialised in.',
-      'Pere is a serious worker who likes to improve and keep up to date with the technology. I would strongly recommend him to any team looking for an experienced front-end developer that has a good sense of user experience.',
-    ],
-  },
-  {
-    id: 'oriol-bel-valls',
-    name: 'Oriol Bel Valls',
-    title: 'IT Analyst & Developer',
-    linkedin: 'https://www.linkedin.com/in/oriol-bel-valls-a901349/',
-    employer: 'putput',
-    quote: [
-      'Pere is a talented backend and frontend developer, great team player, tech passionate and easy to get on with work mate.',
+      'It was a pleasure to work with Pere. He always grasped my designs quickly and was quick to implement them. The same for changes and feedback. His estimations for tasks and projects were always realistic. He works very focused and sticks to the workflow but can also be flexible. When I had amateur coding questions he explained everything to me patiently. Also working and interacting with him on a personal level was great.',
     ],
   },
   {
@@ -717,6 +872,16 @@ export const references: Reference[] = [
       'Worked with Pere for some years in many backend (PHP/Drupal) related projects and as far as I remember, he was a very dedicated developer.',
       'He was reading or asking others when he didn’t know something, always used to pay attention to all project aspects and details, and was helping others even when he didn’t have time to deal with his own issues.',
       'Lately I’ve seen his transition from backend development to frontend using the latest and modern JavaScript libraries and frameworks and still keeping the same spirit as years before.',
+    ],
+  },
+  {
+    id: 'oriol-bel-valls',
+    name: 'Oriol Bel Valls',
+    title: 'IT Analyst & Developer',
+    linkedin: 'https://www.linkedin.com/in/oriol-bel-valls-a901349/',
+    employer: 'putput',
+    quote: [
+      'Pere is a talented backend and frontend developer, great team player, tech passionate and easy to get on with work mate.',
     ],
   },
 ];

@@ -1,4 +1,11 @@
-import { PRESENT, type Present, type Role, type ShowcaseProject, type YearMonth } from '../data/types';
+import {
+  PRESENT,
+  type Present,
+  type Role,
+  type ShowcaseProject,
+  type SkillGroup,
+  type YearMonth,
+} from '../data/types';
 
 /**
  * Everything here is a pure function of the data in `src/data/cv.ts`.
@@ -98,66 +105,63 @@ export function axisTicks(roles: Role[], step = 5, now = new Date()): number[] {
   return ticks;
 }
 
-export interface SkillEvidence {
-  roleCount: number;
-  projectCount: number;
-  fromYear?: number;
-  toYear?: number;
-  /** True when the most recent use is a role that has not ended. */
-  current: boolean;
-}
+/**
+ * Where a skill's proof lives. `'projects'` and `'writing'` point at
+ * something a stranger can check — an installable package, a public repo, a
+ * post with a date on it. `'experience'` is the weakest of the three and
+ * exists so the reader can still find the claim in context.
+ */
+export type SkillSource = 'projects' | 'writing' | 'experience';
 
 const normalise = (value: string) => value.toLowerCase().replace(/[.\s/-]/g, '');
 
 /**
- * Where a skill was actually used, computed from the roles and projects
- * rather than asserted. A skill with no evidence renders without a line —
- * which is the honest outcome, not a gap to paper over.
+ * The section a skill can be proved from, or `null` when nothing backs it.
+ *
+ * This replaced a derived "4 roles · 2015→now" line. That line counted role
+ * *rows*, so splitting one tenure into four inflated it, and it read only
+ * role stacks, so it dated CSS to 2016 on a site written in Sass. Worse, both
+ * sides of the cross-reference were self-reported: it wore the costume of a
+ * citation while asserting the same thing twice.
+ *
+ * A link is the honest version of the same intent. It cannot overstate what
+ * it points at, and the reader can go and look.
+ *
+ * Externally checkable evidence wins: a package or a repo beats a post, and
+ * both beat a line in the work history.
  */
-export function skillEvidence(
+export function skillSource(
   skill: string,
   roles: Role[],
   projects: ShowcaseProject[],
-  now = new Date(),
-): SkillEvidence {
+  writingTopics: readonly string[],
+): SkillSource | null {
   const target = normalise(skill);
-  const matched = roles.filter((role) => role.stack.some((item) => normalise(item) === target));
-  const projectCount = projects.filter((project) =>
-    project.stack.some((item) => normalise(item) === target),
-  ).length;
+  const has = (items: readonly string[]) => items.some((item) => normalise(item) === target);
 
-  if (matched.length === 0) {
-    return { roleCount: 0, projectCount, current: false };
-  }
-
-  return {
-    roleCount: matched.length,
-    projectCount,
-    fromYear: Math.min(...matched.map((role) => yearOf(role.from, now))),
-    toYear: Math.max(...matched.map((role) => yearOf(role.to, now))),
-    current: matched.some((role) => role.to === PRESENT),
-  };
+  if (projects.some((project) => has(project.stack))) return 'projects';
+  if (has(writingTopics)) return 'writing';
+  if (roles.some((role) => has(role.stack))) return 'experience';
+  return null;
 }
 
-/** '4 roles · 2015→now', '3 projects', or '' when there is nothing to claim. */
-export function formatEvidence(evidence: SkillEvidence): string {
-  if (evidence.roleCount > 0) {
-    const span = evidence.current
-      ? `${evidence.fromYear}→now`
-      : `${evidence.fromYear}→${evidence.toYear}`;
-    const roles = `${evidence.roleCount} role${evidence.roleCount > 1 ? 's' : ''}`;
-    return `${roles} · ${span}`;
-  }
-  if (evidence.projectCount > 0) {
-    return `${evidence.projectCount} project${evidence.projectCount > 1 ? 's' : ''}`;
-  }
-  return '';
-}
-
-/** Every distinct technology named across the roles, for the Person schema. */
-export function allTechnologies(roles: Role[], projects: ShowcaseProject[]): string[] {
+/**
+ * Every skill the page actually claims, for the `knowsAbout` array in the
+ * Person schema — injected at build time by the plugin in `vite.config.ts`.
+ *
+ * It reads `skillGroups` rather than the union of every role and project
+ * stack, so the structured data says exactly what the page says and no more.
+ * The hand-maintained version drifted both ways: it claimed accessibility the
+ * page never claimed, and omitted every AI term the page did. Deriving it is
+ * the only way that stays fixed.
+ *
+ * The legacy technologies in the older role stacks — Drupal, Zend Framework,
+ * Semantic UI — are deliberately not here. They are true, they are visible in
+ * Experience, and putting them in a machine-readable index of what this person
+ * does now would pull the wrong searches.
+ */
+export function claimedSkills(groups: SkillGroup[]): string[] {
   const seen = new Set<string>();
-  for (const role of roles) for (const item of role.stack) seen.add(item);
-  for (const project of projects) for (const item of project.stack) seen.add(item);
+  for (const group of groups) for (const skill of group.skills) seen.add(skill);
   return [...seen].sort((a, b) => a.localeCompare(b));
 }
