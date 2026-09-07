@@ -74,10 +74,18 @@ reintroduce that shape.
 - `stack` is a `string[]` per role, and one of the three things that can back a skill claim.
 - **Percentage skill bars are gone on purpose.** Self-scored numbers read as a negative signal and
   carry no ATS weight.
-- `repo` on a `ShowcaseProject` is optional: Bitepals is a product with a private repo. The About
-  sidebar's "Open source" count is `projects.filter(p => p.repo).length`, not `projects.length`,
-  so a closed-source project can never inflate it. It now renders as "N of M projects" — without
-  the denominator it read as a contradiction of the Projects section's own count.
+- `repo` on a `ShowcaseProject` is optional, and four entries use that: Bitepals is a product with
+  a private repo, `Consulting Integral Garrotxa` and `Trainingacció` are client sites, and `Blog`
+  is a Docusaurus install rather than a repo worth linking. The About sidebar's "Open source" count
+  is `projects.filter(p => p.repo).length`, not `projects.length`, so a closed-source project can
+  never inflate it. It renders as "12 of 16 projects" — without the denominator it read as a
+  contradiction of the Projects section's own count.
+- **The two client sites are the only commercial work in `projects`**, and they sit at the top for
+  that reason. Both descriptions say "client site" outright: it distinguishes them from the side
+  projects around them, and it answers the missing repo before a reader wonders about it. Their
+  `Astro` and `i18n` entries are read off the served HTML — a `generator` meta, `/_astro/` asset
+  paths, `hreflang` — but `TypeScript` is inferred from Pere's other Astro sites and carries a
+  `TODO` saying so. A built Astro site does not reveal its source language.
 - **`projects` includes this site** (`This CV`, listed last). It earns the slot by being the only
   backing for Playwright and GitHub Actions, and because the interesting part is the build refusing
   to ship a broken PDF. Remove it and the skills gate correctly rejects both.
@@ -98,6 +106,11 @@ Two consequences that are easy to undo by accident:
   52 → 37, then 37 → 50 once the reverse check found what the first pass had missed, then to 56 as
   Pere named the testing stack, Kanban and Redux. Breadth is not the problem; *unbacked or
   mis-sorting* breadth is. Every one of the 56 is backed.
+  **`Docusaurus` is now enforced rather than merely described.** It was named here as cut from the
+  moment the section was written, but nothing checked it — no `stack` contained it. Adding the
+  `Blog` project put it in one, the reverse gate failed the build on the next run, and it now has a
+  line in `DELIBERATELY_UNCLAIMED`. That is the mechanism working exactly as intended: the decision
+  was already made, and the gate made someone write down why. WordPress is still only described.
 - **Leadership left the section.** `Frontend architecture`, `Technical leadership`, `Mentoring`,
   `Code review` and `Recruitment` are the headline's claim, and a grey chip in a 37-item list is
   the weakest way to make it. They live in `profile.summary` and in role highlights now, where they

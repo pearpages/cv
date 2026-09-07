@@ -60,6 +60,11 @@ const DELIBERATELY_UNCLAIMED = {
   BEM: 'a naming convention; folded into CSS',
   'Angular CLI': 'subsumed by Angular',
 
+  // True, and mis-sorting. Naming the generator invites a docs-tooling read
+  // of a frontend CV; the seventy-odd posts are the claim, not the static
+  // site generator underneath them.
+  Docusaurus: 'mis-sorts into docs/CMS work; the writing is the claim, not the generator',
+
   // Duplicates.
   Sass: 'duplicate of SCSS',
 };

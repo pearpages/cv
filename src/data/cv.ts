@@ -655,6 +655,34 @@ export const projects: ShowcaseProject[] = [
     url: 'https://bitepals.com',
     stack: ['Next.js', 'React', 'TypeScript', 'i18n'],
   },
+  /**
+   * The two client sites below are the only commercial work in this list, and
+   * they are near the top for that reason — everything else here is a side
+   * project. Neither has a public repo, which is why `repo` is optional and
+   * why the About sidebar counts repos rather than projects.
+   *
+   * Astro and the locale routing are read off the served HTML (a `generator`
+   * meta on Garrotxa, `/_astro/` asset paths on Trainingacció, `hreflang` on
+   * both). TypeScript is not observable in a built Astro site — see the TODOs.
+   */
+  {
+    name: 'Consulting Integral Garrotxa',
+    description:
+      'Client site for a tax, labour, corporate and accounting advisory practice in Olot. Trilingual — Catalan, Spanish and English — with a locale-routed page per language.',
+    url: 'https://igarrotxa.com',
+    // TODO: TypeScript is inferred from the other Astro sites here, not
+    // sourced — a built Astro site does not say which language its source was
+    // written in. Confirm or drop it.
+    stack: ['Astro', 'TypeScript', 'i18n'],
+  },
+  {
+    name: 'Trainingacció',
+    description:
+      'Client site for a personal-training studio in Barcelona — programmes, services and contact, in Catalan and Spanish.',
+    url: 'https://trainingaccio.com',
+    // TODO: TypeScript inferred, not sourced — see the note on Garrotxa.
+    stack: ['Astro', 'TypeScript', 'i18n'],
+  },
   {
     name: 'Masia Blanca',
     description:
@@ -736,13 +764,6 @@ export const projects: ShowcaseProject[] = [
     repo: 'https://github.com/pearpages/reactive-game',
     stack: ['RxJS', 'JavaScript', 'Canvas API'],
   },
-  {
-    name: 'Subscriptions Tracker',
-    description: 'Mobile-first app for keeping track of recurring subscriptions.',
-    url: 'https://subs.pages.ninja',
-    repo: 'https://github.com/pearpages/subscriptions-tracker',
-    stack: ['React', 'TypeScript', 'Vite'],
-  },
   /**
    * Turns a scripted text file into a narrated MP3 — speaker parsing, chunking,
    * one synthesis request per speaker turn, then ffmpeg concat without
@@ -762,6 +783,23 @@ export const projects: ShowcaseProject[] = [
       'Turns a scripted text file into a single narrated MP3, one voice or several. Speaker turns are chunked and synthesised separately against Gemini or Edge TTS, then stitched with ffmpeg without re-encoding.',
     repo: 'https://github.com/pearpages/podcast',
     stack: ['TypeScript', 'Node.js', 'LLM APIs', 'pnpm'],
+  },
+  /**
+   * The blog, as a built thing rather than as writing — the Writing section
+   * owns the posts. Docusaurus is named because it is true and because the
+   * reverse skills gate demands every stack entry be either claimed or
+   * excluded on the record; it is excluded (see check-skills.mjs).
+   *
+   * The stack stops at two entries on purpose. A Docusaurus config may be JS
+   * or TS and the built output does not say which, so TypeScript is not
+   * claimed here the way it is on the Astro sites above.
+   */
+  {
+    name: 'Blog',
+    description:
+      'Seventy-odd posts on frontend architecture, browser internals and working with AI coding tools, published since 2020. A Docusaurus build with its own components.',
+    url: 'https://pearpages.com',
+    stack: ['Docusaurus', 'React'],
   },
   /**
    * This site. Listed last, and listed at all because the interesting part is
@@ -813,7 +851,7 @@ export const projects: ShowcaseProject[] = [
 export const writing: Writing = {
   url: 'https://pearpages.com',
   description:
-    'I write up what I learn, mostly while it is still half-formed. Lately that has meant a lot on working with AI coding tools, alongside the frontend and browser-internals posts that have been the through-line since 2020. The site itself is a Docusaurus build I maintain, components and all.',
+    'I write up what I learn, mostly while it is still half-formed. Lately that has meant a lot on working with AI coding tools, alongside the frontend and browser-internals posts that have been the through-line since 2020.',
   since: 2020,
   postCount: 78,
   /**
