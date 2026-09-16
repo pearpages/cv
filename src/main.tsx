@@ -20,6 +20,11 @@ import '@pearpages/pulp-react/button.css';
 import '@pearpages/pulp-react/icon-button.css';
 import '@pearpages/pulp-react/icon.css';
 
+// The family's "Made by pearpages" credit. Imported here rather than bundled by
+// the component, as the package asks, and before the site's own stylesheets so
+// Footer.scss can place it.
+import '@pearpages/credit/credit.css';
+
 import './styles/index.scss';
 import { App } from './App';
 

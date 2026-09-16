@@ -58,13 +58,19 @@ current segment of the time axis. Do not spend it elsewhere.
 
 `public/media/pearpages-mark.png` is the mark every site in the family carries (pearpages.com,
 orchard.pearpages.com, masiablanca.soms.cat). It appears three times, always small: ~52px above
-the hero wordmark, 24px in the nav, and 20px in the footer credit. It is a **maker's stamp, not a
+the hero wordmark, 24px in the nav, and 22px in the footer credit (sized by `@pearpages/credit`). It is a **maker's stamp, not a
 co-star** — sizing it up would take back the thing the hero exists to prove, that type carries the
 identity here.
 
-The footer credit is the family signature, copied in form from the other sites — mark, then
-"Made by [pearpages](https://pearpages.com)" with `rel="author"`. Orchard says "Made by Pere
-Pages", Masia Blanca "Fet per pearpages"; same shape, same destination. Keep it in step with them.
+The footer credit is the family signature, and it now comes from **`@pearpages/credit`** rather
+than being hand-copied — `<Credit as="div" />` in `Footer.tsx` (`div` because it sits inside the
+existing `<footer>`), its stylesheet imported in `main.tsx` ahead of the site's own. The package
+owns the mark (a data URI, not `/media/pearpages-mark.png`), the wording and the link; don't
+restyle those here. `Footer.scss` owns only what is this site's: `--sk-ink-soft`/`--sk-accent`
+mapped to pulp's semantic tokens (the package's `#667` fallback fails contrast on the dark
+scheme), the left-aligned placement, and the underline the site's reset strips. The package's
+link carries no `rel="author"` and no `target="_blank"`, which the hand-built one had — if either
+matters, fix it in the package so every site gets it.
 
 - It keeps its cream disc. The mascot's dark navy outline is too close to `--ultramarine` in value
   to survive on the bare hero ground.

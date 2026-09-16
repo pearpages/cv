@@ -1,3 +1,4 @@
+import { Credit } from '@pearpages/credit/react';
 import { profile } from '../../data/cv';
 import './Footer.scss';
 
@@ -8,29 +9,13 @@ export function Footer() {
         <p className="footer__mark">{profile.name}</p>
 
         <div className="footer__meta">
-          {/* The signature every site in the family carries — same mark, same
-              wording, same destination. It is a network credit, not an
-              authorship claim: it says this page belongs with the others. */}
-          <p className="footer__credit">
-            <img
-              className="footer__credit-icon"
-              src="/media/pearpages-mark.png"
-              alt=""
-              width={256}
-              height={256}
-            />
-            <span>
-              Made by{' '}
-              <a
-                className="link"
-                href="https://pearpages.com"
-                target="_blank"
-                rel="author noopener noreferrer"
-              >
-                pearpages
-              </a>
-            </span>
-          </p>
+          {/* The signature every site in the family carries, from the shared
+              package so the mark, wording and destination cannot drift. It is
+              a network credit, not an authorship claim: it says this page
+              belongs with the others. `div`, not the default `footer`: this
+              already sits inside one, and a nested footer is a second
+              contentinfo landmark. */}
+          <Credit as="div" />
 
           <p className="footer__note">
             Built with React, TypeScript and Vite. Source at{' '}

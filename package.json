@@ -20,6 +20,7 @@
     "@fontsource-variable/instrument-sans": "^5.3.0",
     "@fontsource/inter": "^5.3.0",
     "@fontsource/source-serif-4": "^5.3.0",
+    "@pearpages/credit": "^0.2.0",
     "@pearpages/pulp-react": "^0.1.0",
     "@pearpages/pulp-tokens": "^0.1.0",
     "react": "^19.2.8",
