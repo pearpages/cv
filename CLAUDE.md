@@ -354,8 +354,26 @@ document made that worth fixing rather than noting.
 ## Deployment
 
 Apex of `perepages.com`, served by this repo. `base: '/'` in `vite.config.ts` — a `/cv/` base
-404s and white-screens the site. Push to `master` → `.github/workflows/deploy.yml` typechecks,
-builds and publishes. Nothing built is committed; there is no `docs/` directory any more.
+404s and white-screens the site. Nothing built is committed; there is no `docs/` directory any
+more.
+
+**Only a `vX.Y.Z` tag deploys; pushing `master` publishes nothing.** A release is:
+
+```bash
+npm version patch|minor|major   # bumps package.json, commits, creates annotated tag vX.Y.Z
+git push --follow-tags          # this push is what deploys
+```
+
+`.github/workflows/deploy.yml` then refuses a tag whose commit is not on `master` (it fails, never
+skips, so green always means published), typechecks, builds and publishes. `--follow-tags` carries
+annotated tags only; a hand-made tag needs `git tag -a` or it silently stays local. The version
+line continues the pre-2026 tags (`2.0` … `5.3.2`, unprefixed); the rebrand is `v6.0.0`.
+`workflow_dispatch` re-deploys an existing tag — pick the tag, not a branch, or the job is skipped.
+
+**The `github-pages` environment allows tags `v*.*.*` only** — a second repo setting not visible
+in this tree. It used to allow the `master` branch, which would reject every tag run at the deploy
+step with the build already green. Inspect with
+`gh api repos/pearpages/cv/environments/github-pages/deployment-branch-policies`.
 
 **GitHub Pages is on `build_type: "workflow"`, not a branch folder.** Until 7 Sep 2026 the repo
 served the legacy setup — *deploy from branch `master`, path `/docs`* — and `deploy.yml` had never
