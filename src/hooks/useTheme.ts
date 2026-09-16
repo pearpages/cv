@@ -5,9 +5,10 @@ export type Theme = 'light' | 'dark';
 const STORAGE_KEY = 'perepages-theme';
 const DARK_QUERY = '(prefers-color-scheme: dark)';
 
-/* --ultramarine and the dark --surface from _tokens.scss. Also inlined in
-   index.html, which needs them before any module has loaded. Three copies of
-   two hex values; change them together. */
+/* pulp's --color-action-primary (light) and --color-surface-base (dark), as
+   literals: a meta tag cannot take a var(). Also inlined in index.html, which
+   needs them before any module has loaded. Two copies of two hex values;
+   change them together, and against the tokens if the brand ever moves. */
 const THEME_COLOR: Record<Theme, string> = {
   light: '#1e2ed6',
   dark: '#090b11',
@@ -21,11 +22,11 @@ function isTheme(value: string | undefined): value is Theme {
  * The reader's light/dark choice.
  *
  * The theme is already applied by the time this runs — the inline script in
- * index.html stamps `data-theme` before the stylesheet is parsed. So the hook
+ * index.html stamps `data-scheme` before the stylesheet is parsed. So the hook
  * reads that decision rather than making it again; deciding twice is exactly
  * the flash the inline script exists to prevent.
  *
- * `choice` and `system` are held apart on purpose. `data-theme` means *an
+ * `choice` and `system` are held apart on purpose. `data-scheme` means *an
  * explicit choice* and stays absent until there is one, which is what leaves
  * `prefers-color-scheme` in charge in CSS with no JS on the path. `system`
  * exists only so the button's icon and the address-bar colour do not go stale
@@ -33,7 +34,7 @@ function isTheme(value: string | undefined): value is Theme {
  */
 export function useTheme(): { theme: Theme; toggle: () => void } {
   const [choice, setChoice] = useState<Theme | null>(() => {
-    const applied = document.documentElement.dataset.theme;
+    const applied = document.documentElement.dataset.scheme;
     return isTheme(applied) ? applied : null;
   });
 
@@ -56,8 +57,8 @@ export function useTheme(): { theme: Theme; toggle: () => void } {
   // `choice`: with nothing chosen it still has to follow the OS.
   useEffect(() => {
     const root = document.documentElement;
-    if (choice) root.dataset.theme = choice;
-    else delete root.dataset.theme;
+    if (choice) root.dataset.scheme = choice;
+    else delete root.dataset.scheme;
 
     document
       .querySelector('meta[name="theme-color"]')

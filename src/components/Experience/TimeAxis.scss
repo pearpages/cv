@@ -21,7 +21,7 @@
 .time-axis__track {
   position: relative;
   height: 2.25rem;
-  border-block-end: 1px solid var(--rule);
+  border-block-end: 1px solid var(--color-border-default);
 }
 
 .time-axis__segment {
@@ -49,14 +49,14 @@
      micro-segment sitting between them. An opaque fill lets the upper bar
      simply cover the lower one, which is what an overlap should look like on
      an axis whose only job is to make length mean something. */
-  background: color-mix(in oklab, var(--accent) 34%, var(--surface));
+  background: color-mix(in oklab, var(--color-action-primary) 34%, var(--color-surface-base));
   border-radius: 2px 2px 0 0;
   transition: background var(--dur-fast) var(--ease);
 }
 
 .time-axis__segment a:hover .time-axis__bar,
 .time-axis__segment a:focus-visible .time-axis__bar {
-  background: var(--accent);
+  background: var(--color-action-primary);
 }
 
 /* One of the three saffron moments on the page: the role still running. */
@@ -70,8 +70,8 @@
   inset-inline-start: 0;
   padding: var(--space-1) var(--space-2);
   border-radius: var(--radius);
-  background: var(--text);
-  color: var(--surface);
+  background: var(--color-text-default);
+  color: var(--color-surface-base);
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
   white-space: nowrap;
@@ -112,7 +112,7 @@
   block-size: 1lh;
   margin-block-start: var(--space-2);
   font-size: var(--text-2xs);
-  color: var(--text-faint);
+  color: var(--color-text-faint);
 }
 
 .time-axis__tick {
@@ -128,5 +128,5 @@
 
 .time-axis__tick {
   font-size: var(--text-2xs);
-  color: var(--text-faint);
+  color: var(--color-text-faint);
 }

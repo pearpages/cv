@@ -7,6 +7,19 @@ import '@fontsource-variable/archivo/wdth.css';
 import '@fontsource-variable/instrument-sans';
 import '@fontsource-variable/geist-mono';
 
+// The cascade order first: layers rank by where they are first named, so this
+// has to precede every stylesheet below.
+import './styles/layers.css';
+
+// pulp's tokens (@layer tokens) and the stylesheets of the components this site
+// uses. `@pearpages/pulp-css` is deliberately absent: it carries pulp's reset and
+// base styles, and this site keeps its own. Tokens first, so the site's own
+// stylesheet can read them.
+import '@pearpages/pulp-tokens/tokens.css';
+import '@pearpages/pulp-react/button.css';
+import '@pearpages/pulp-react/icon-button.css';
+import '@pearpages/pulp-react/icon.css';
+
 import './styles/index.scss';
 import { App } from './App';
 

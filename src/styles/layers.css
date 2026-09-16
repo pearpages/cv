@@ -1,0 +1,14 @@
+/*
+ * Cascade order, declared before anything else is loaded.
+ *
+ * Layer order is fixed by the first time each layer is named, so this file is
+ * imported first in main.tsx — ahead of pulp's tokens and component styles. It
+ * is the same order @pearpages/pulp-css declares; the site does not use that
+ * package (it keeps its own reset and typography), so it states the order here.
+ *
+ * Only the reset is layered on this side. Every component stylesheet stays
+ * unlayered and therefore still wins over everything below, which is how the
+ * site overrides pulp. The reset has to be layered or its `button { font:
+ * inherit; color: inherit }` would beat pulp's own button styles.
+ */
+@layer reset, tokens, vendor, base, components, utilities;

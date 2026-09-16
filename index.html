@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-brand="pulp">
 
 <head>
   <meta charset="UTF-8">
@@ -41,7 +41,7 @@
 
   <!--
     One theme-color, not a media-scoped pair. A media-scoped meta cannot
-    follow the `data-theme` attribute the toggle sets, so the pair could only
+    follow the `data-scheme` attribute the toggle sets, so the pair could only
     ever describe the OS preference. The script below keeps this one in step
     with whichever scheme actually renders; nothing is lost by collapsing them
     because <body> is a single empty div — there is no no-JS rendering to
@@ -63,7 +63,8 @@
         // Storage access throws outright in some privacy modes.
       }
       if (stored === 'light' || stored === 'dark') {
-        document.documentElement.dataset.theme = stored;
+        // `data-scheme` is pulp's axis; absent means "follow the OS".
+        document.documentElement.dataset.scheme = stored;
       } else {
         stored = null;
       }

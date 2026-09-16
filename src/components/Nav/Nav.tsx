@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { profile, sections } from '../../data/cv';
 import { useActiveSection } from '../../hooks/useActiveSection';
 import { useTheme } from '../../hooks/useTheme';
+import { IconButton } from '@pearpages/pulp-react/icon-button';
 import { MoonIcon, SunIcon } from '../icons';
 import './Nav.scss';
 
@@ -76,16 +77,14 @@ export function Nav() {
               the document covers the hero. That costs nothing: the hero is
               ultramarine in both schemes, so there is nothing to toggle while
               it is on screen. */}
-          <button
-            className="nav__theme"
-            type="button"
+          <IconButton
+            variant="ghost"
             onClick={toggle}
-            aria-label="Dark theme"
+            label="Dark theme"
             aria-pressed={theme === 'dark'}
             title={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
-          >
-            {theme === 'dark' ? <MoonIcon /> : <SunIcon />}
-          </button>
+            icon={theme === 'dark' ? <MoonIcon /> : <SunIcon />}
+          />
 
           {/* Parked. The paper edition is still built by `npm run pdf` and
               still deploys to /cv.pdf — it is just no longer advertised here.

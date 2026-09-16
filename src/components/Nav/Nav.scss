@@ -9,7 +9,7 @@
   position: sticky;
   inset-block-start: 0;
   z-index: 20;
-  background: color-mix(in oklab, var(--surface) 82%, transparent);
+  background: color-mix(in oklab, var(--color-surface-base) 82%, transparent);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid transparent;
   transition:
@@ -30,7 +30,7 @@
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-    border-bottom-color: var(--rule);
+    border-bottom-color: var(--color-border-default);
   }
 }
 
@@ -86,52 +86,30 @@
   font-size: var(--text-2xs);
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  color: var(--text-faint);
+  color: var(--color-text-faint);
   white-space: nowrap;
   transition: color var(--dur-fast) var(--ease);
 
   &:hover {
-    color: var(--text);
+    color: var(--color-text-default);
   }
 
   &.is-active {
-    color: var(--accent);
-    background: var(--accent-quiet);
+    color: var(--color-action-primary);
+    background: var(--color-action-primary-quiet);
   }
 }
 
 /**
- * The theme toggle. It borrows .nav__link's colour language rather than the
- * bordered .nav__print pill below — this is the only control on the page and
- * a box around it would make it the loudest thing in the bar.
+ * The theme toggle is pulp's IconButton in its `ghost` variant — square, no
+ * border, quiet until hovered — which is the colour language .nav__link uses
+ * and what this rule used to draw by hand. This is the only control on the
+ * page and a box around it would make it the loudest thing in the bar.
  *
- * The reset gives `button` only `font` and `color`, so everything else it
- * inherits from the UA has to be cleared here.
+ * Nothing is left to style here. The size, radius, hover and focus ring come
+ * from pulp's --button-* and --icon-button-* tokens, which resolve through the
+ * same semantic tokens as everything else on the page.
  */
-.nav__theme {
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  /* Comfortably past the 24px minimum target; the icon inside is much smaller. */
-  width: 2.25rem;
-  height: 2.25rem;
-  padding: 0;
-  border: 0;
-  border-radius: var(--radius);
-  background: none;
-  color: var(--text-faint);
-  cursor: pointer;
-  transition: color var(--dur-fast) var(--ease);
-
-  &:hover {
-    color: var(--text);
-  }
-
-  svg {
-    width: 1.05rem;
-    height: 1.05rem;
-  }
-}
 
 /* Parked with the Download CV anchor it styles — see Nav.tsx. Uncomment both
    together or neither.
@@ -144,22 +122,22 @@
   text-decoration: none;
   white-space: nowrap;
   padding: var(--space-1) var(--space-4);
-  border: 1px solid var(--rule-strong);
+  border: 1px solid var(--color-border-strong);
   border-radius: var(--radius);
   background: transparent;
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   cursor: pointer;
   transition:
     color var(--dur-fast) var(--ease),
     border-color var(--dur-fast) var(--ease);
 
   &:hover {
-    color: var(--accent);
-    border-color: var(--accent);
+    color: var(--color-action-primary);
+    border-color: var(--color-action-primary);
   }
 }
 */

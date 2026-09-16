@@ -1,6 +1,6 @@
 .footer {
   padding-block: var(--space-8) var(--space-7);
-  border-block-start: 1px solid var(--rule);
+  border-block-start: 1px solid var(--color-border-default);
 }
 
 .footer__inner {
@@ -21,7 +21,7 @@
   letter-spacing: var(--tracking-tight);
   text-transform: uppercase;
   line-height: 1;
-  color: var(--text);
+  color: var(--color-text-default);
 }
 
 /* The notes stack as one block so the big wordmark keeps the row to itself. */
@@ -37,7 +37,7 @@
   align-items: center;
   gap: var(--space-2);
   font-size: var(--text-xs);
-  color: var(--text-muted);
+  color: var(--color-text-muted);
 }
 
 .footer__credit-icon {
@@ -49,5 +49,5 @@
 
 .footer__note {
   font-size: var(--text-xs);
-  color: var(--text-faint);
+  color: var(--color-text-faint);
 }

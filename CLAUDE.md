@@ -15,14 +15,25 @@ were removed in the 2026 rebrand and should not come back. Icons are inline SVG 
   computed value (`--offset` / `--length` on the time axis segments) — the value is data, the
   styling still lives in the stylesheet.
 - Class names are BEM-ish: `.role`, `.role__rail`, `.role__logo`, `.is-current`.
-- Colour, type, space and motion are CSS custom properties in `src/styles/_tokens.scss`. Do not
-  hardcode a hex value in a component stylesheet; add a token.
-- Dark mode is a redefinition of the same tokens, written once in the `dark-scheme` mixin and
-  emitted twice — behind `prefers-color-scheme` and behind `[data-theme='dark']`. Anything defined
-  only inside `dark-scheme` is a bug. See *The theme toggle* below before editing that file.
-- `--logo-chip` and `--on-signal` are deliberately **not** redefined in `dark-scheme`. "Add a token"
-  does not mean "add a token that flips": the logo chips carry opaque PNGs that turn into solid
-  blocks when inverted, and `--signal` is the same saffron in both schemes, so the ink on it is too.
+- **Colour comes from `@pearpages/pulp-tokens`**, the `pulp` brand: semantic names only
+  (`--color-surface-base`, `--color-text-default|muted|faint`, `--color-action-primary`,
+  `--color-action-primary-quiet`, `--color-text-on-action`, `--color-border-default|strong|focus`).
+  Never a hex in a component stylesheet, and never a pulp *primitive* (`--color-neutral-500`):
+  primitives are the brand's private business and change when the brand does.
+- Type, space, layout and motion stay this site's own, in `src/styles/_tokens.scss` — the fluid
+  `clamp()` scale and the geometric space ramp are the CV's, not pulp's. So are the three colours
+  pulp has no opinion about: `--ultramarine` (Act I paints it as a *ground*, and it must not lift
+  in the dark scheme the way `--color-action-primary` does), `--signal`/`--on-signal` (the saffron
+  is the same in both schemes, so the ink on it is too) and `--logo-chip` (opaque PNG logos turn
+  into solid blocks when inverted — see the note in `Role.scss`).
+- Dark mode is pulp's: every colour is a `light-dark()` pair resolved by `color-scheme`, which pulp
+  sets from `data-scheme`. There is no dark block in this repo any more, and nothing here may
+  declare `color-scheme` — an unlayered rule would beat pulp's layered one and forcing a scheme
+  would stop working.
+- `src/styles/layers.css` declares the cascade order and is imported **first** in `main.tsx`,
+  because layers rank by where they are first named. Only `_reset.scss` is layered on this side
+  (`@layer reset`), so pulp's component styles beat the reset's `button { font: inherit }`;
+  component stylesheets stay unlayered and still win over everything.
 - Testing: `npm test -- --run` if tests are ever added (never bare `npm test` — it watches).
 
 ## Design direction — "load-bearing typography, two acts"
@@ -296,17 +307,19 @@ None of this reaches the PDF. `print.html` → `src/print/main.tsx` → `src/pri
 
 ## The theme toggle
 
-The scheme follows the OS until the reader says otherwise. `src/hooks/useTheme.ts` and the button
-in `Nav.tsx` are the visible half; the load-bearing half is an invariant across three files.
+The scheme follows the OS until the reader says otherwise. `src/hooks/useTheme.ts` and pulp's
+`IconButton` in `Nav.tsx` are the visible half; the load-bearing half is an invariant across three
+files.
 
-- **`data-theme` on `<html>` means an explicit choice, and is absent until there is one.** That
+- **`data-scheme` on `<html>` means an explicit choice, and is absent until there is one.** That
   absence is what keeps `prefers-color-scheme` in charge with no JS involved. Stamping the resolved
-  theme on mount looks harmless and quietly converts every visitor into a pinned one.
-- **In `_tokens.scss`, the `[data-theme]` blocks must stay last.**
-  `:root:not([data-theme='light'])` and `:root[data-theme='dark']` both compute to (0,2,0) —
-  `:not()` takes its argument's specificity — so source order is the only thing settling a
-  conflict. Move the explicit block above the media query and "force light on a dark OS" breaks
-  silently.
+  scheme on mount looks harmless and quietly converts every visitor into a pinned one. The
+  attribute is pulp's (`@pearpages/pulp-tokens`), which reads it alongside `data-brand="pulp"`.
+- **Scheme resolution lives in pulp now, not here.** Every colour is a `light-dark()` pair picked
+  by `color-scheme`, which pulp sets from `data-scheme`. The old `dark-scheme` mixin, its two
+  emissions and the specificity trap they carried ("the `[data-theme]` blocks must stay last") are
+  gone. Nothing in this repo may declare `color-scheme`: unlayered, it would beat pulp's layered
+  rule and forcing a scheme would stop working.
 - **The inline script in `index.html` must stay a classic script in `<head>`, and below the
   `theme-color` meta.** Vite appends its `<script>` and `<link rel="stylesheet">` at the *end* of
   `<head>`, so anything above them runs before the stylesheet element exists — that ordering is the
@@ -318,8 +331,10 @@ in `Nav.tsx` are the visible half; the load-bearing half is an invariant across 
   not on the stored choice — with nothing stored it still has to follow the OS.
 - `public/manifest.json`'s `theme_color` is the one place the light value is unavoidably pinned;
   no manifest media mechanism ships anywhere.
-- The two hex values live in `_tokens.scss`, `index.html` and `useTheme.ts`. Three copies, on
-  purpose — the inline one cannot be bundled. Change them together.
+- The two hex values live in `index.html` and `useTheme.ts`. Two copies, on purpose — the inline
+  one cannot be bundled. They mirror pulp's `--color-action-primary` (light) and
+  `--color-surface-base` (dark); a `var()` cannot be used in a meta tag, so change them together
+  and check them against the tokens if the brand ever moves.
 
 The toggle is **unreachable during Act I** by design: the nav is hidden until the document covers
 the hero, and the hero is `--ultramarine` on `--bone` in *both* schemes, so there is nothing on

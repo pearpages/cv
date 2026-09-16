@@ -6,7 +6,7 @@
 
 .skill-group__name {
   padding-block-end: var(--space-2);
-  border-block-end: 1px solid var(--rule);
+  border-block-end: 1px solid var(--color-border-default);
 }
 
 .skill-group__list {
@@ -21,9 +21,9 @@
   flex-direction: column;
   gap: 1px;
   padding: 0.32em 0.7em;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--color-border-default);
   border-radius: var(--radius);
-  background: var(--surface-raised);
+  background: var(--color-surface-raised);
 }
 
 .skill__name {
@@ -53,13 +53,13 @@
 
 .skill:has(.skill__name--linked:hover),
 .skill:has(.skill__name--linked:focus-visible) {
-  border-color: var(--accent);
-  background: var(--accent-quiet);
+  border-color: var(--color-action-primary);
+  background: var(--color-action-primary-quiet);
 }
 
 .skill__name--linked:hover,
 .skill__name--linked:focus-visible {
-  color: var(--accent);
+  color: var(--color-action-primary);
 }
 
 /* The chip carries the focus ring, so the inner anchor must not draw a second
@@ -69,6 +69,6 @@
 }
 
 .skill:has(.skill__name--linked:focus-visible) {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--color-action-primary);
   outline-offset: 2px;
 }
