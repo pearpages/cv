@@ -366,8 +366,9 @@ git push --follow-tags          # this push is what deploys
 
 `.github/workflows/deploy.yml` then refuses a tag whose commit is not on `master` (it fails, never
 skips, so green always means published), typechecks, builds and publishes. `--follow-tags` carries
-annotated tags only; a hand-made tag needs `git tag -a` or it silently stays local. The version
-line continues the pre-2026 tags (`2.0` … `5.3.2`, unprefixed); the rebrand is `v6.0.0`.
+annotated tags only; a hand-made tag needs `git tag -a` or it silently stays local. The
+pre-2026 tags (`2.0` … `5.3.2`) were deleted in Sep 2026; the version line restarts from
+`package.json` at `v2.0.0`, the rebrand.
 `workflow_dispatch` re-deploys an existing tag — pick the tag, not a branch, or the job is skipped.
 
 **The `github-pages` environment allows tags `v*.*.*` only** — a second repo setting not visible
