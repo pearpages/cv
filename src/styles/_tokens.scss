@@ -11,8 +11,7 @@
  * Everything else pulp already has is read from pulp rather than restated, so
  * a change to the brand reaches the site. What stays the site's own is what
  * pulp has no equivalent for: the fluid growth of the type scale, leading and
- * tracking, the largest space step, the layout measures and the ink on
- * saffron. See ADR-0011.
+ * tracking, the largest space step and the layout measures. See ADR-0011.
  *
  * The page runs in two acts. Act I (the hero) is a saturated ultramarine
  * field carrying the wordmark. Act II (the document) is a light, quiet
@@ -21,7 +20,7 @@
  */
 
 :root {
-  /* The four colours below must hold still across schemes, which no semantic
+  /* The five colours below must hold still across schemes, which no semantic
      token does, so they are the one place this site reads pulp *primitives*
      — and only here, never in a component stylesheet (P11).
 
@@ -34,9 +33,8 @@
   /* The single warm signal. Three uses page-wide, no more. */
   --signal: var(--color-saffron-500);
   /* Saffron is the one colour that does not move between schemes, so the
-     text that sits on it does not move either. pulp's nearest ink,
-     `--color-saffron-900`, is a shade lighter, so this one stays the site's. */
-  --on-signal: #2a1c00;
+     text that sits on it does not move either: 7.74:1 on `--signal`. */
+  --on-signal: var(--color-saffron-900);
 
   /* Constant light chip for the employer/institution logos. They arrive as
      PNGs with opaque backgrounds, so they cannot be inverted — see the note
