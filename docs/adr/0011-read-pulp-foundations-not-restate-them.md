@@ -1,7 +1,7 @@
 # 0011. Read pulp's foundations instead of restating them
 
 - **Date:** 2026-10-09
-- **Status:** Proposed — would supersede the type/space/motion clause of 0002
+- **Status:** Accepted — supersedes the type/space/motion clause of 0002
 
 ## Context
 

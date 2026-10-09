@@ -24,7 +24,6 @@ Most of these need a fact only Pere has.
 - [ ] **`location: 'Barcelona'` repeats on all ten role cards** — deliberately left: it is information, and removing it would leave `Role.location` dead.
 - [ ] **Revisit snapshots** — `writing.postCount` (78, 11 Aug 2026) and the `ocado-payments` duration.
 
-- [ ] **Accept or reject ADR-0011** (branch `pulp-alignment`) — then mark 0002 superseded in part.
 - [ ] **Remaining site-vs-pulp differences to discuss** — fluid type growth and `--text-2xs`; leading (1.08/1.3/1.6 vs pulp 1.2/1.5) and tracking and `--space-9` (both handed to pulp as tasks, group 17 of its `tasks.md`); display weights 650/700/800; `--on-signal` `#2a1c00` vs `--color-saffron-900` `#3a2800`; `_print.scss` hexes.
 
 ### Scaffold follow-ups
@@ -33,6 +32,7 @@ Most of these need a fact only Pere has.
 
 ## Done
 
+- [x] 2026-10-09: ADR-0011 accepted; ADR-0002's type/space/motion clause marked superseded.
 - [x] 2026-10-09: Site tokens read pulp instead of restating it (ADR-0011 proposed) — same-name `--space-*`/`--radius-lg` overrides removed, redundant `button.css`/`icon.css` imports dropped; computed styles verified identical, focus offset 3px → 2px.
 - [x] 2026-10-09: Scaffolded project knowledge files — 7 files + 10 ADRs created, 5 fixed, 1 follow-up. CLAUDE.md is now a shim over AGENTS.md + principles.md; ADRs 0002–0010 accepted; license set to UNLICENSED.
 - [x] 2026-09-07: `new-branding` fast-forwarded onto `master`, Pages moved to `build_type: "workflow"`, first `deploy.yml` run green; perepages.com serves the rebrand and `/cv.pdf` resolves.

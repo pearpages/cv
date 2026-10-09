@@ -1,7 +1,7 @@
 # 0002. No CSS framework; colour from pulp, the rest the site's own
 
 - **Date:** 2026-10-09 (recorded; decided in the 2026 rebrand)
-- **Status:** Accepted
+- **Status:** Accepted; type/space/motion clause superseded by [0011](0011-read-pulp-foundations-not-restate-them.md)
 
 ## Context
 
