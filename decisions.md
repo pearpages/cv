@@ -21,6 +21,7 @@ accepted.
 | [0008](docs/adr/0008-writing-is-hand-picked.md) | Writing shows hand-picked posts and a snapshot count, not a feed | Accepted | 2026-10-09 |
 | [0009](docs/adr/0009-theme-follows-os-until-chosen.md) | The theme follows the OS until the reader chooses; pulp resolves the scheme | Accepted | 2026-10-09 |
 | [0010](docs/adr/0010-deploy-on-version-tags.md) | Deploy only on version tags, through a Pages workflow | Accepted | 2026-10-09 |
+| [0011](docs/adr/0011-read-pulp-foundations-not-restate-them.md) | Read pulp's foundations instead of restating them | Proposed | 2026-10-09 |
 
 ## Format
 

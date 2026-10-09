@@ -75,11 +75,19 @@ the time axis). Class names are BEM-ish (`.role`, `.role__rail`, `.is-current`).
 *Check:* `package.json` review. [ADR-0002](docs/adr/0002-no-css-framework-colour-from-pulp.md)
 
 **P11. Colour comes from pulp's semantic tokens only.** Never a hex in a component stylesheet,
-never a pulp primitive (`--color-neutral-500`). The only colours of the site's own are
-`--ultramarine`, `--signal`/`--on-signal` and `--logo-chip`, in `src/styles/_tokens.scss`, with
-type, space, layout and motion.
+never a pulp primitive (`--color-neutral-500`). The site's own colours are `--ultramarine`,
+`--bone`, `--signal`/`--on-signal` and `--logo-chip`, in `src/styles/_tokens.scss` — the one file
+allowed to alias pulp primitives, because those colours must not move between schemes.
 *Why:* primitives are the brand's private business and change when the brand does. *Check:*
-review. [ADR-0002](docs/adr/0002-no-css-framework-colour-from-pulp.md)
+review. [ADR-0002](docs/adr/0002-no-css-framework-colour-from-pulp.md),
+[ADR-0011](docs/adr/0011-read-pulp-foundations-not-restate-them.md)
+
+**P11a. Where pulp has a foundation token, read it; never redeclare a pulp name.** Space, radius,
+motion, typefaces, type-scale floors, weights and focus rings come from pulp; `_tokens.scss` holds
+only what pulp lacks.
+*Why:* an unlayered redeclaration overrides pulp everywhere, its components included, and a
+restated value stops following the brand. *Check:* review.
+[ADR-0011](docs/adr/0011-read-pulp-foundations-not-restate-them.md)
 
 **P12. Nothing in this repo declares `color-scheme`, and there is no dark-mode block.** Every
 colour is a `light-dark()` pair resolved by pulp from `data-scheme`.

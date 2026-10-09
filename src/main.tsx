@@ -14,11 +14,10 @@ import './styles/layers.css';
 // pulp's tokens (@layer tokens) and the stylesheets of the components this site
 // uses. `@pearpages/pulp-css` is deliberately absent: it carries pulp's reset and
 // base styles, and this site keeps its own. Tokens first, so the site's own
-// stylesheet can read them.
+// stylesheet can read them. `icon-button.css` already bundles the Button and
+// Icon rules IconButton is built on; importing those sheets too only repeated them.
 import '@pearpages/pulp-tokens/tokens.css';
-import '@pearpages/pulp-react/button.css';
 import '@pearpages/pulp-react/icon-button.css';
-import '@pearpages/pulp-react/icon.css';
 
 // The family's "Made by pearpages" credit. Imported here rather than bundled by
 // the component, as the package asks, and before the site's own stylesheets so

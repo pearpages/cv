@@ -15,7 +15,8 @@ points share one data file and nothing else:
 - `print.html` → `src/print/main.tsx` → `Cv.tsx` — the paper edition, never visited directly;
   `scripts/build-pdf.mjs` renders it to `dist/cv.pdf` in headless Chromium.
 
-Colour, the theme mechanism and a few components come from the family packages
+Colour, the foundation tokens (space, radius, motion, typefaces, type floors, focus rings), the
+theme mechanism and one component (`IconButton`) come from the family packages
 `@pearpages/pulp-tokens` and `@pearpages/pulp-react`; the footer signature from
 `@pearpages/credit`. Fonts are self-hosted through `@fontsource*`. There is no runtime backend.
 
@@ -39,7 +40,7 @@ flowchart LR
 | `src/lib/derive.ts` | Every computed value: durations, time axis, `axisTicks`, `skillSource()` |
 | `src/components/` | One folder per section (`Hero`, `Nav`, `About`, `Experience`, `Skills`, `Projects`, `Writing`, `Community`, `Education`, `References`, `Contact`, `Footer`, `Section`), each `.tsx` + co-located `.scss`; `icons/` holds inline SVG components |
 | `src/hooks/` | `useTheme` (the toggle), `useActiveSection` (nav highlight, IntersectionObserver) |
-| `src/styles/` | `layers.css` (cascade order), `_reset`, `_tokens` (type/space/layout/motion and the site's own colours), `_typography`, `_print` (the blanking rule), `index.scss` |
+| `src/styles/` | `layers.css` (cascade order), `_reset`, `_tokens` (what pulp lacks — fluid type growth, leading, tracking, `--space-9/10`, layout, `--dur-slow` — plus aliases for the site's own colours), `_typography`, `_print` (the blanking rule), `index.scss` |
 | `src/print/` | The paper edition: `Cv.tsx` is structure, `print.scss` is the design |
 | `scripts/` | `check-skills.mjs` (the two-way skills gate), `build-pdf.mjs` (render + five gates) |
 | `public/` | `CNAME`, `manifest.json`, `service-worker.js` (self-unregistering no-op), `media/` (mark, favicons, `og-card.png`) |

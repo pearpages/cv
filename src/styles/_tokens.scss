@@ -8,9 +8,11 @@
  * set, so nothing here may declare it — an unlayered rule would beat pulp's
  * layered one and forcing a scheme would silently stop working.
  *
- * What stays below is what pulp does not own: the hero's literal ultramarine
- * ground, the saffron signal, the logo chip, and this site's type, space,
- * layout and motion scales.
+ * Everything else pulp already has is read from pulp rather than restated, so
+ * a change to the brand reaches the site. What stays the site's own is what
+ * pulp has no equivalent for: the fluid growth of the type scale, leading and
+ * tracking, the two largest space steps, the layout measures, the slow
+ * duration, and the ink on saffron. See ADR-0011.
  *
  * The page runs in two acts. Act I (the hero) is a saturated ultramarine
  * field carrying the wordmark. Act II (the document) is a light, quiet
@@ -19,36 +21,43 @@
  */
 
 :root {
-  /* Act I paints ultramarine as a *ground*, so it names the colour directly.
-     `--color-action-primary` is this same value in the light scheme but lifts
-     in the dark one, which an ink-on-poster field must not do. */
-  --ultramarine: #1e2ed6;
-  --bone: #ededf2;
+  /* The four colours below must hold still across schemes, which no semantic
+     token does, so they are the one place this site reads pulp *primitives*
+     — and only here, never in a component stylesheet (P11).
+
+     Act I paints ultramarine as a *ground*. `--color-action-primary` is this
+     same value in the light scheme but lifts in the dark one, which an
+     ink-on-poster field must not do. */
+  --ultramarine: var(--color-ultramarine-500);
+  --bone: var(--color-neutral-100);
 
   /* The single warm signal. Three uses page-wide, no more. */
-  --signal: #ffb020;
+  --signal: var(--color-saffron-500);
   /* Saffron is the one colour that does not move between schemes, so the
-     text that sits on it does not move either. */
+     text that sits on it does not move either. pulp's nearest ink,
+     `--color-saffron-900`, is a shade lighter, so this one stays the site's. */
   --on-signal: #2a1c00;
 
   /* Constant light chip for the employer/institution logos. They arrive as
      PNGs with opaque backgrounds, so they cannot be inverted — see the note
      in Role.scss. This is the one place the light surface is pinned. */
-  --logo-chip: #fff;
+  --logo-chip: var(--color-neutral-0);
 
   /* Type ---------------------------------------------------------- */
-  --font-display: 'Archivo Variable', 'Archivo', system-ui, sans-serif;
-  --font-body: 'Instrument Sans Variable', 'Instrument Sans', system-ui, sans-serif;
-  --font-mono: 'Geist Mono Variable', ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-display: var(--font-family-display);
+  --font-body: var(--font-family-body);
+  --font-mono: var(--font-family-mono);
 
+  /* The floors are pulp's fixed scale; the growth above them is this site's.
+     `--text-2xs` has no pulp step under it. */
   --text-2xs: clamp(0.6875rem, 0.67rem + 0.08vw, 0.75rem);
-  --text-xs: clamp(0.75rem, 0.73rem + 0.1vw, 0.8125rem);
-  --text-sm: clamp(0.875rem, 0.85rem + 0.12vw, 0.9375rem);
-  --text-base: clamp(1rem, 0.97rem + 0.18vw, 1.0625rem);
-  --text-lg: clamp(1.125rem, 1.06rem + 0.32vw, 1.3125rem);
-  --text-xl: clamp(1.375rem, 1.24rem + 0.62vw, 1.75rem);
-  --text-2xl: clamp(1.75rem, 1.48rem + 1.25vw, 2.5rem);
-  --text-3xl: clamp(2.25rem, 1.76rem + 2.3vw, 3.5rem);
+  --text-xs: clamp(var(--font-size-xs), 0.73rem + 0.1vw, 0.8125rem);
+  --text-sm: clamp(var(--font-size-sm), 0.85rem + 0.12vw, 0.9375rem);
+  --text-base: clamp(var(--font-size-md), 0.97rem + 0.18vw, 1.0625rem);
+  --text-lg: clamp(var(--font-size-lg), 1.06rem + 0.32vw, 1.3125rem);
+  --text-xl: clamp(var(--font-size-xl), 1.24rem + 0.62vw, 1.75rem);
+  --text-2xl: clamp(var(--font-size-2xl), 1.48rem + 1.25vw, 2.5rem);
+  --text-3xl: clamp(var(--font-size-3xl), 1.76rem + 2.3vw, 3.5rem);
 
   --leading-tight: 1.08;
   --leading-snug: 1.3;
@@ -59,28 +68,23 @@
   --tracking-wider: 0.16em;
 
   /* Space --------------------------------------------------------- */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.5rem;
-  --space-6: 2rem;
-  --space-7: 3rem;
-  --space-8: 4rem;
-  --space-9: 6rem;
-  --space-10: 8rem;
+  /* `--space-1` … `--space-8` are pulp's, under the same names. Redeclaring
+     them here, unlayered, would override pulp's everywhere — inside pulp's
+     own components too — so the two steps pulp stops short of continue its
+     ramp from its unit instead. */
+  --space-9: calc(var(--space-unit) * 24);
+  --space-10: calc(var(--space-unit) * 32);
 
   /* Layout -------------------------------------------------------- */
   --page-max: 76rem;
   --gutter: clamp(1.25rem, 5vw, 4.5rem);
   --measure: 64ch;
-  --radius: 3px;
-  --radius-lg: 10px;
+  --radius: var(--radius-control);
 
   /* Motion -------------------------------------------------------- */
-  --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
-  --dur-fast: 140ms;
-  --dur: 260ms;
+  --ease: var(--motion-easing-standard);
+  --dur-fast: var(--motion-duration-fast);
+  --dur: var(--motion-duration-base);
   --dur-slow: 620ms;
 }
 
