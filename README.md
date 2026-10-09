@@ -34,15 +34,19 @@ which is what stopped six modern technologies from sitting unclaimed in project 
 
 ## Deploying
 
-Pushing to `master` runs `.github/workflows/deploy.yml`, which typechecks, builds and publishes to
-GitHub Pages. Nothing built is committed.
+Only a version tag deploys; pushing `master` publishes nothing. A release is:
+
+```bash
+npm version patch|minor|major   # bumps package.json, commits, creates annotated tag vX.Y.Z
+git push --follow-tags          # this push is what deploys
+```
+
+`.github/workflows/deploy.yml` then refuses a tag that is not on `master`, typechecks, builds and
+publishes to GitHub Pages. Nothing built is committed.
 
 The site is served from the **apex** of `perepages.com`, so `vite.config.ts` sets `base: '/'` and
 every asset path is root-relative. A `/cv/` base would 404 there. `public/CNAME` holds the domain
 and Vite copies it into `dist/` verbatim.
-
-> GitHub Pages must be set to **Source: GitHub Actions** (Settings → Pages). The older
-> branch-and-folder mode published a committed `docs/` directory, which no longer exists.
 
 ## Regenerating the social card
 
@@ -87,5 +91,9 @@ the file size, and the worst case for ATS text extraction.
 
 ## Printing
 
-⌘P still works — `src/styles/_print.scss` collapses the hero to a masthead and drops the navigation
-— but it is a courtesy fallback now. The PDF above is the paper edition.
+Printing the site is disabled on purpose: ⌘P yields one sheet pointing at `perepages.com/cv.pdf`,
+so there is only ever one paper edition — the PDF above.
+
+## License
+
+No license — all rights reserved. The CV content is personal; `package.json` says `UNLICENSED`.
