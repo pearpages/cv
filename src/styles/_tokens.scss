@@ -11,8 +11,8 @@
  * Everything else pulp already has is read from pulp rather than restated, so
  * a change to the brand reaches the site. What stays the site's own is what
  * pulp has no equivalent for: the fluid growth of the type scale, leading and
- * tracking, the two largest space steps, the layout measures, the slow
- * duration, and the ink on saffron. See ADR-0011.
+ * tracking, the largest space step, the layout measures and the ink on
+ * saffron. See ADR-0011.
  *
  * The page runs in two acts. Act I (the hero) is a saturated ultramarine
  * field carrying the wordmark. Act II (the document) is a light, quiet
@@ -70,10 +70,9 @@
   /* Space --------------------------------------------------------- */
   /* `--space-1` … `--space-8` are pulp's, under the same names. Redeclaring
      them here, unlayered, would override pulp's everywhere — inside pulp's
-     own components too — so the two steps pulp stops short of continue its
-     ramp from its unit instead. */
+     own components too — so the one step pulp stops short of continues its
+     ramp from its unit instead (requested in pulp's tasks, group 17). */
   --space-9: calc(var(--space-unit) * 24);
-  --space-10: calc(var(--space-unit) * 32);
 
   /* Layout -------------------------------------------------------- */
   --page-max: 76rem;
@@ -85,13 +84,11 @@
   --ease: var(--motion-easing-standard);
   --dur-fast: var(--motion-duration-fast);
   --dur: var(--motion-duration-base);
-  --dur-slow: 620ms;
 }
 
 @media (prefers-reduced-motion: reduce) {
   :root {
     --dur-fast: 0ms;
     --dur: 0ms;
-    --dur-slow: 0ms;
   }
 }

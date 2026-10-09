@@ -40,7 +40,7 @@ flowchart LR
 | `src/lib/derive.ts` | Every computed value: durations, time axis, `axisTicks`, `skillSource()` |
 | `src/components/` | One folder per section (`Hero`, `Nav`, `About`, `Experience`, `Skills`, `Projects`, `Writing`, `Community`, `Education`, `References`, `Contact`, `Footer`, `Section`), each `.tsx` + co-located `.scss`; `icons/` holds inline SVG components |
 | `src/hooks/` | `useTheme` (the toggle), `useActiveSection` (nav highlight, IntersectionObserver) |
-| `src/styles/` | `layers.css` (cascade order), `_reset`, `_tokens` (what pulp lacks — fluid type growth, leading, tracking, `--space-9/10`, layout, `--dur-slow` — plus aliases for the site's own colours), `_typography`, `_print` (the blanking rule), `index.scss` |
+| `src/styles/` | `layers.css` (cascade order), `_reset`, `_tokens` (what pulp lacks — fluid type growth, leading, tracking, `--space-9`, layout — plus aliases for the site's own colours), `_typography`, `_print` (the blanking rule), `index.scss` |
 | `src/print/` | The paper edition: `Cv.tsx` is structure, `print.scss` is the design |
 | `scripts/` | `check-skills.mjs` (the two-way skills gate), `build-pdf.mjs` (render + five gates) |
 | `public/` | `CNAME`, `manifest.json`, `service-worker.js` (self-unregistering no-op), `media/` (mark, favicons, `og-card.png`) |

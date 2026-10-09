@@ -22,13 +22,14 @@ everywhere, inside pulp's own `IconButton` included — harmless only while the 
   `--ease`/`--dur-fast`/`--dur` from pulp's motion tokens. Font weights 500/600 and focus rings
   use `--font-weight-*` and `--focus-ring-*` directly.
 - The site no longer declares `--space-1`…`--space-8` or `--radius-lg`; components use pulp's.
-  `--space-9`/`--space-10` continue the ramp from `--space-unit`.
+  `--space-9` continues the ramp from `--space-unit`; `--space-10` and `--dur-slow` were unused
+  and are deleted.
 - `--ultramarine`, `--bone`, `--signal` and `--logo-chip` alias pulp **primitives**. These four
   must not move between schemes, which no semantic token guarantees. The exception is confined to
   `_tokens.scss`; components still use semantic tokens or the site's aliases only (P11).
 - The site keeps what pulp has no equivalent for: the fluid growth of the type scale, `--text-2xs`,
-  leading, tracking, `--space-9/10`, layout measures, `--dur-slow`, display weights (650/700/800),
-  and `--on-signal`.
+  leading, tracking, `--space-9`, layout measures, display weights (650/700/800) and
+  `--on-signal`. Tracking and `--space-9` are requested from pulp (its tasks, group 17).
 
 ## Consequences
 

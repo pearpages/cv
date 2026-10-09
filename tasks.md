@@ -25,7 +25,7 @@ Most of these need a fact only Pere has.
 - [ ] **Revisit snapshots** — `writing.postCount` (78, 11 Aug 2026) and the `ocado-payments` duration.
 
 - [ ] **Accept or reject ADR-0011** (branch `pulp-alignment`) — then mark 0002 superseded in part.
-- [ ] **Remaining site-vs-pulp differences to discuss** — fluid type growth and `--text-2xs`; leading (1.08/1.3/1.6 vs pulp 1.2/1.5) and tracking; `--space-9/10`; `--dur-slow`; display weights 650/700/800; `--on-signal` `#2a1c00` vs `--color-saffron-900` `#3a2800`; `_print.scss` hexes.
+- [ ] **Remaining site-vs-pulp differences to discuss** — fluid type growth and `--text-2xs`; leading (1.08/1.3/1.6 vs pulp 1.2/1.5) and tracking and `--space-9` (both handed to pulp as tasks, group 17 of its `tasks.md`); display weights 650/700/800; `--on-signal` `#2a1c00` vs `--color-saffron-900` `#3a2800`; `_print.scss` hexes.
 
 ### Scaffold follow-ups
 
